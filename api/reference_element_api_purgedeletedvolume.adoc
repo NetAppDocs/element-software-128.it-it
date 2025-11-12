@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_purgedeletedvolume.html 
+sidebar: sidebar 
+keywords: volume,volumes,purging,purge,deleted,purgedeletedvolume 
+summary: È possibile utilizzare il metodo PurgeDeletedVolume per eliminare immediatamente e definitivamente un volume eliminato.  È necessario eliminare un volume utilizzando DeleteVolume prima di poterlo eliminare. 
+---
+= PurgeDeletedVolume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `PurgeDeletedVolume` metodo per eliminare immediatamente e definitivamente un volume che è stato eliminato.  È necessario eliminare un volume utilizzando `DeleteVolume` prima che possa essere eliminato.
+
+I volumi vengono eliminati automaticamente dopo un certo periodo di tempo, pertanto in genere non è necessario utilizzare questo metodo.
+
+
+
+== Parametro
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+| ID volume | VolumeID del volume da eliminare. | intero | NO | SÌ 
+|===
+
+
+== Valori di ritorno
+
+Questo metodo non ha valori di ritorno.
+
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "PurgeDeletedVolume",
+   "params": {
+      "volumeID"  : 5
+   },
+   "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result": {}
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6
+
+
+
+== Trova maggiori informazioni
+
+xref:reference_element_api_deletevolume.adoc[Elimina volume]

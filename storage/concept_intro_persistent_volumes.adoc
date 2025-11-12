@@ -1,0 +1,21 @@
+---
+permalink: storage/concept_intro_persistent_volumes.html 
+sidebar: sidebar 
+keywords: persistent volumes, what are persistent volumes 
+summary: I volumi persistenti consentono di archiviare i dati di configurazione del nodo di gestione su un cluster di archiviazione specificato, anziché localmente con una macchina virtuale, in modo che i dati possano essere conservati in caso di perdita o rimozione del nodo di gestione.  I volumi persistenti sono una configurazione del nodo di gestione facoltativa ma consigliata. 
+---
+= Volumi persistenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I volumi persistenti consentono di archiviare i dati di configurazione del nodo di gestione su un cluster di archiviazione specificato, anziché localmente con una macchina virtuale, in modo che i dati possano essere conservati in caso di perdita o rimozione del nodo di gestione.  I volumi persistenti sono una configurazione del nodo di gestione facoltativa ma consigliata.
+
+Un'opzione per abilitare i volumi persistenti è inclusa negli script di installazione e aggiornamento quando si distribuisce un nuovo nodo di gestione.  I volumi persistenti sono volumi su un cluster di archiviazione basato sul software Element che contengono informazioni sulla configurazione del nodo di gestione per la VM del nodo di gestione host che persistono oltre la durata della VM.  Se il nodo di gestione viene perso, una VM del nodo di gestione sostitutiva può riconnettersi e recuperare i dati di configurazione per la VM persa.
+
+La funzionalità dei volumi persistenti, se abilitata durante l'installazione o l'aggiornamento, crea automaticamente più volumi con NetApp-HCI- anteposto al nome sul cluster assegnato.  Questi volumi, come qualsiasi volume basato sul software Element, possono essere visualizzati tramite l'interfaccia utente Web del software Element, il plug-in NetApp Element per vCenter Server o l'API, a seconda delle preferenze e dell'installazione.  I volumi persistenti devono essere attivi e funzionanti con una connessione iSCSI al nodo di gestione per mantenere i dati di configurazione correnti che possono essere utilizzati per il ripristino.
+
+
+IMPORTANT: I volumi persistenti associati ai servizi di gestione vengono creati e assegnati a un nuovo account durante l'installazione o l'aggiornamento.  Se si utilizzano volumi persistenti, non modificare o eliminare i volumi o l'account associato.

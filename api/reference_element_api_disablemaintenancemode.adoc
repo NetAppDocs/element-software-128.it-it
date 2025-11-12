@@ -1,0 +1,136 @@
+---
+permalink: api/reference_element_api_disablemaintenancemode.html 
+sidebar: sidebar 
+keywords: disable,maintenance,mode 
+summary: È possibile utilizzare il metodo DisableMaintenanceMode per disattivare la modalità di manutenzione di un nodo di archiviazione.  È consigliabile disattivare la modalità di manutenzione solo dopo aver completato la manutenzione e quando il nodo è online. 
+---
+= Disabilita modalità manutenzione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `DisableMaintenanceMode` metodo per far uscire un nodo di archiviazione dalla modalità di manutenzione.  È consigliabile disattivare la modalità di manutenzione solo dopo aver completato la manutenzione e quando il nodo è online.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+nodi
+ a| 
+Elenco degli ID dei nodi di archiviazione da rimuovere dalla modalità di manutenzione.
+ a| 
+array di interi
+ a| 
+Nessuno
+ a| 
+SÌ
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+asyncHandle
+ a| 
+È possibile utilizzare il metodo GetAsyncResult per recuperare questo asyncHandle e determinare quando la transizione alla modalità di manutenzione è completa.
+ a| 
+intero
+
+
+
+ a| 
+modalità corrente
+ a| 
+Lo stato attuale della modalità di manutenzione del nodo. Valori possibili:
+
+* Disabilitato: non è stata richiesta alcuna manutenzione.
+* FailedToRecover: il nodo non è riuscito a riprendersi dalla modalità di manutenzione.
+* Imprevisto: il nodo è stato trovato offline, ma era in modalità Disabilitato.
+* RecoveringFromMaintenance: il nodo è in fase di ripristino dalla modalità di manutenzione.
+* PreparingForMaintenance: vengono intraprese azioni per preparare un nodo all'esecuzione della manutenzione.
+* ReadyForMaintenance: il nodo è pronto per essere sottoposto a manutenzione.
+
+ a| 
+MaintenanceMode (stringa)
+
+
+
+ a| 
+modalità richiesta
+ a| 
+Lo stato di modalità di manutenzione richiesto del nodo. Valori possibili:
+
+* Disabilitato: non è stata richiesta alcuna manutenzione.
+* FailedToRecover: il nodo non è riuscito a riprendersi dalla modalità di manutenzione.
+* Imprevisto: il nodo è stato trovato offline, ma era in modalità Disabilitato.
+* RecoveringFromMaintenance: il nodo è in fase di ripristino dalla modalità di manutenzione.
+* PreparingForMaintenance: vengono intraprese azioni per preparare un nodo all'esecuzione della manutenzione.
+* ReadyForMaintenance: il nodo è pronto per essere sottoposto a manutenzione.
+
+ a| 
+MaintenanceMode (stringa)
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "method": "DisableMaintenanceMode",
+  "params": {
+    "nodes": [6]
+  },
+"id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {
+        "requestedMode": "Disabled",
+        "asyncHandle": 1,
+        "currentMode": "Enabled"
+    }
+}
+----
+
+
+== Nuovo dalla versione
+
+12,2
+
+
+
+== Trova maggiori informazioni
+
+http://docs.netapp.com/us-en/hci/docs/concept_hci_storage_maintenance_mode.html["Concetti sulla modalità di manutenzione dello storage NetApp HCI"^]

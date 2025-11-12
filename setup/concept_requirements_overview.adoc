@@ -1,0 +1,26 @@
+---
+permalink: setup/concept_requirements_overview.html 
+sidebar: sidebar 
+keywords:  
+summary: Prima di iniziare, dovresti rivedere i prerequisiti. 
+---
+= Requisiti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di iniziare, è opportuno esaminare i prerequisiti per distribuire il software NetApp Element , inclusi i requisiti di rete e delle porte.
+
+* link:../storage/concept_prereq_networking.html["Requisiti di rete"]
+* link:../storage/concept_prereq_switch_configuration_for_solidfire_clusters.html["Configurazione dell'interruttore"]
+* link:../storage/reference_prereq_network_port_requirements.html["Requisiti delle porte di rete"]
+
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+

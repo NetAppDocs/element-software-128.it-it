@@ -1,0 +1,116 @@
+---
+permalink: api/reference_element_api_startvolumepairing.html 
+sidebar: sidebar 
+keywords: volume,pair,pairing,start,starting,startvolumepairing 
+summary: 'È possibile utilizzare il metodo StartVolumePairing per creare una chiave codificata da un volume da utilizzare per l"associazione con un altro volume.  La chiave creata da questo metodo viene utilizzata nel metodo CompleteVolumePairing per stabilire un abbinamento di volumi.' 
+---
+= StartVolumePairing
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `StartVolumePairing` Metodo per creare una chiave codificata da un volume che viene utilizzato per l'associazione con un altro volume.  La chiave che questo metodo crea viene utilizzata nel `CompleteVolumePairing` metodo per stabilire un accoppiamento di volumi.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+modalità
+ a| 
+Modalità del volume su cui avviare il processo di associazione.  La modalità può essere impostata solo se il volume è quello della sorgente. Valori possibili:
+
+* `Async`: Le scritture vengono riconosciute quando vengono completate localmente.  Il cluster non attende che le scritture vengano replicate sul cluster di destinazione.  (Predefinito se non è specificato alcun parametro di modalità.)
+* `Sync`: La sorgente riconosce la scrittura quando i dati vengono archiviati localmente e sul cluster remoto.
+* `SnapshotsOnly`: Vengono replicati solo gli snapshot creati sul cluster di origine.  Le scritture attive dal volume di origine non vengono replicate.
+
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+ID volume
+ a| 
+ID del volume su cui avviare il processo di associazione.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+SÌ
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+volumePairingKey
+ a| 
+Una stringa di caratteri utilizzata daxref:reference_element_api_completevolumepairing.adoc[CompleteVolumePairing] Metodo API.
+ a| 
+corda
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "StartVolumePairing",
+   "params": {
+         "mode": "Async",
+	 "volumeID" : 14
+      },
+   "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+      "volumePairingKey" : "7b226d766970223a223139322e3136382e3133392e313232222c22766f6c756d654944223a312c22766f6c756d654e616d65223a2254657374222c22766f6c756d655061697255554944223a2236393632346663622d323032652d343332352d613536392d656339633635356337623561227d"
+      }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6
+
+
+
+== Trova maggiori informazioni
+
+xref:reference_element_api_completevolumepairing.adoc[CompleteVolumePairing]

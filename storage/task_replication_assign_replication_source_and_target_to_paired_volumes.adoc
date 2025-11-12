@@ -1,0 +1,55 @@
+---
+permalink: storage/task_replication_assign_replication_source_and_target_to_paired_volumes.html 
+sidebar: sidebar 
+keywords: volume pairings, paired volumes, replication source, assign 
+summary: 'Dopo aver associato i volumi, è necessario assegnare un volume di origine e il relativo volume di destinazione della replica.  Un"origine o una destinazione di replicazione può essere uno qualsiasi dei volumi di una coppia di volumi.  È possibile utilizzare questa procedura anche per reindirizzare i dati inviati a un volume di origine a un volume di destinazione remoto nel caso in cui il volume di origine non sia più disponibile.' 
+---
+= Assegnare un'origine e una destinazione di replicazione ai volumi accoppiati
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver associato i volumi, è necessario assegnare un volume di origine e il relativo volume di destinazione della replica.  Un'origine o una destinazione di replicazione può essere uno qualsiasi dei volumi di una coppia di volumi.  È possibile utilizzare questa procedura anche per reindirizzare i dati inviati a un volume di origine a un volume di destinazione remoto nel caso in cui il volume di origine non sia più disponibile.
+
+.Cosa ti servirà
+Hai accesso ai cluster contenenti i volumi di origine e di destinazione.
+
+.Passi
+. Preparare il volume sorgente:
++
+.. Dal cluster che contiene il volume che si desidera assegnare come origine, selezionare *Gestione* > *Volumi*.
+.. Fare clic sull'icona *Azioni* per il volume che si desidera assegnare come origine e fare clic su *Modifica*.
+.. Nell'elenco a discesa *Accesso*, selezionare *Lettura/Scrittura*.
++
+
+IMPORTANT: Se si inverte l'assegnazione di origine e destinazione, questa azione farà sì che la coppia di volumi visualizzi il seguente messaggio finché non verrà assegnata una nuova destinazione di replica: `PausedMisconfigured`
+
++
+La modifica dell'accesso interrompe la replicazione del volume e causa l'interruzione della trasmissione dei dati.  Assicuratevi di aver coordinato queste modifiche in entrambi i siti.
+
+.. Fare clic su *Salva modifiche*.
+
+
+. Preparare il volume di destinazione:
++
+.. Dal cluster che contiene il volume che si desidera assegnare come destinazione, selezionare *Gestione* > *Volumi*.
+.. Fare clic sull'icona Azioni per il volume che si desidera assegnare come destinazione e fare clic su *Modifica*.
+.. Nell'elenco a discesa *Accesso*, selezionare *Destinazione replica*.
++
+
+IMPORTANT: Se si assegna un volume esistente come destinazione di replica, i dati su quel volume verranno sovrascritti.  Dovresti utilizzare un nuovo volume di destinazione che non contenga dati e abbia le stesse caratteristiche del volume di origine, come dimensioni, impostazione 512e e configurazione QoS.  Il volume di destinazione può essere maggiore o uguale al volume di origine, ma non può essere minore.
+
+.. Fare clic su *Salva modifiche*.
+
+
+
+
+
+
+== Trova maggiori informazioni
+
+* xref:task_replication_pair_volumes_using_a_volume_id.adoc[Abbinare i volumi utilizzando un ID volume]
+* xref:task_replication_pair_volumes_using_a_pairing_key.adoc[Abbinare i volumi utilizzando una chiave di associazione]
+

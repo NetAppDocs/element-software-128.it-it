@@ -1,0 +1,45 @@
+---
+permalink: storage/task_data_manage_vol_access_group_delete_an_initiator.html 
+sidebar: sidebar 
+keywords: initiator delete, deleted multiple initiators 
+summary: 'È possibile eliminare un iniziatore quando non è più necessario.  Quando si elimina un iniziatore, il sistema lo rimuove da tutti i gruppi di accesso al volume associati.  Tutte le connessioni che utilizzano l"iniziatore rimangono valide finché la connessione non viene reimpostata.' 
+---
+= Elimina un iniziatore
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile eliminare un iniziatore quando non è più necessario.  Quando si elimina un iniziatore, il sistema lo rimuove da tutti i gruppi di accesso al volume associati.  Tutte le connessioni che utilizzano l'iniziatore rimangono valide finché la connessione non viene reimpostata.
+
+.Passi
+. Fare clic su *Gestione* > *Iniziatori*.
+. Eseguire i passaggi per eliminare un singolo iniziatore o più iniziatori:
++
+[cols="25,75"]
+|===
+| Opzione | Passi 
+
+
+ a| 
+Elimina singolo iniziatore
+ a| 
+.. Fare clic sull'icona *Azioni* relativa all'iniziatore che si desidera eliminare.
+.. Fare clic su *Elimina*.
+.. Conferma l'azione.
+
+
+
+
+ a| 
+Elimina più iniziatori
+ a| 
+.. Seleziona le caselle di controllo accanto agli iniziatori che desideri eliminare.
+.. Fare clic sul pulsante *Azioni in blocco*.
+.. Nel menu che appare, seleziona *Elimina*.
+.. Conferma l'azione.
+
+
+|===
+

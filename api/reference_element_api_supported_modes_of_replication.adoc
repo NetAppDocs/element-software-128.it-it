@@ -1,0 +1,19 @@
+---
+permalink: api/reference_element_api_supported_modes_of_replication.html 
+sidebar: sidebar 
+keywords: supported,replication,modes,clusters,paired,pair,pairs 
+summary: 'Nei cluster accoppiati sono supportate le seguenti modalità di replicazione:' 
+---
+= Modalità di replica supportate per cluster accoppiati
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nei cluster accoppiati sono supportate le seguenti modalità di replicazione:
+
+* Replica asincrona dei dati: i dati inviati al volume di destinazione della replica vengono inviati in modo asincrono.  Il sistema non attende l'invio di una conferma prima di scrivere i dati.
+* Replica sincrona dei dati: i dati inviati al volume di destinazione della replica vengono inviati in modo sincrono.  Quando le operazioni di I/O inviate dall'host vengono riconosciute dal sistema, la conferma del sistema viene inviata all'host e i dati vengono inviati al volume di destinazione della replica.
+* Replica dei dati solo tramite snapshot: solo gli snapshot del volume vengono replicati sul cluster di destinazione.
+

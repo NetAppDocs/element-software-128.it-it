@@ -1,0 +1,52 @@
+---
+permalink: storage/reference_data_manage_vvol_protocol_endpoints_details.html 
+sidebar: sidebar 
+keywords: protocol endpoints, details, vvols, state, type, id 
+summary: La pagina Endpoint del protocollo nella scheda VVols fornisce informazioni sugli endpoint del protocollo. 
+---
+= Dettagli degli endpoint del protocollo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La pagina Endpoint del protocollo nella scheda VVols fornisce informazioni sugli endpoint del protocollo.
+
+* *ID fornitore principale*
++
+ID del fornitore dell'endpoint del protocollo primario.
+
+* *ID fornitore secondario*
++
+ID del provider dell'endpoint del protocollo secondario.
+
+* *ID endpoint protocollo*
++
+L'UUID dell'endpoint del protocollo.
+
+* *Stato dell'endpoint del protocollo*
++
+Lo stato dell'endpoint del protocollo.  I valori possibili sono i seguenti:
+
++
+** Attivo: l'endpoint del protocollo è in uso.
+** Inizio: l'endpoint del protocollo è in fase di avvio.
+** Failover: l'endpoint del protocollo ha subito un failover.
+** Riservato: l'endpoint del protocollo è riservato.
+
+
+* *Tipo di fornitore*
++
+Il tipo di provider dell'endpoint del protocollo.  I valori possibili sono i seguenti:
+
++
+** Primario
+** Secondario
+
+
+* *ID dispositivo SCSI NAA*
++
+Identificatore univoco globale del dispositivo SCSI per l'endpoint del protocollo nel formato NAA IEEE Registered Extended.
+
+

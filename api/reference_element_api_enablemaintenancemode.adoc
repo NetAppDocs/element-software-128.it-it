@@ -1,0 +1,176 @@
+---
+permalink: api/reference_element_api_enablemaintenancemode.html 
+sidebar: sidebar 
+keywords: maintenance,enable,mode 
+summary: È possibile utilizzare il metodo EnableMaintenanceMode per preparare un nodo di archiviazione per la manutenzione.  Gli scenari di manutenzione includono qualsiasi attività che richieda lo spegnimento o il riavvio del nodo. 
+---
+= Abilita modalità di manutenzione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `EnableMaintenanceMode` metodo per preparare un nodo di archiviazione per la manutenzione.  Gli scenari di manutenzione includono qualsiasi attività che richieda lo spegnimento o il riavvio del nodo.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+forza con errori non risolti
+ a| 
+Forza l'attivazione della modalità di manutenzione per questo nodo anche in presenza di errori del cluster bloccanti.
+ a| 
+booleano
+ a| 
+Falso
+ a| 
+NO
+
+
+
+ a| 
+nodi
+ a| 
+Elenco degli ID nodo da mettere in modalità manutenzione.  È supportato un solo nodo alla volta.
+ a| 
+array di interi
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+Limite di scambio primario al minuto
+ a| 
+Numero di slice primarie da scambiare al minuto.  Se non specificato, tutte le sezioni primarie verranno scambiate contemporaneamente.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+tempo scaduto
+ a| 
+Specifica per quanto tempo la modalità di manutenzione deve rimanere abilitata prima di essere disattivata automaticamente.  Formattato come stringa di tempo (ad esempio, HH:mm:ss).  Se non specificato, la modalità di manutenzione rimarrà abilitata finché non verrà disabilitata esplicitamente.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+asyncHandle
+ a| 
+È possibile utilizzare il metodo GetAsyncResult per recuperare questo asyncHandle e determinare quando la transizione alla modalità di manutenzione è completa.
+ a| 
+intero
+
+
+
+ a| 
+modalità corrente
+ a| 
+Lo stato attuale della modalità di manutenzione del nodo. Valori possibili:
+
+* Disabilitato: non è stata richiesta alcuna manutenzione.
+* FailedToRecover: il nodo non è riuscito a riprendersi dalla modalità di manutenzione.
+* RecoveringFromMaintenance: il nodo è in fase di ripristino dalla modalità di manutenzione.
+* PreparingForMaintenance: vengono intraprese azioni per preparare un nodo all'esecuzione della manutenzione.
+* ReadyForMaintenance: il nodo è pronto per essere sottoposto a manutenzione.
+
+ a| 
+MaintenanceMode (stringa)
+
+
+
+ a| 
+modalità richiesta
+ a| 
+Lo stato di modalità di manutenzione richiesto del nodo. Valori possibili:
+
+* Disabilitato: non è stata richiesta alcuna manutenzione.
+* FailedToRecover: il nodo non è riuscito a riprendersi dalla modalità di manutenzione.
+* RecoveringFromMaintenance: il nodo è in fase di ripristino dalla modalità di manutenzione.
+* PreparingForMaintenance: vengono intraprese azioni per preparare un nodo all'esecuzione della manutenzione.
+* ReadyForMaintenance: il nodo è pronto per essere sottoposto a manutenzione.
+
+ a| 
+MaintenanceMode (stringa)
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "method": "EnableMaintenanceMode",
+  "params": {
+    "forceWithUnresolvedFaults": False,
+    "nodes": [6],
+    "perMinutePrimarySwapLimit" : 40,
+    "timeout" : "01:00:05"
+  },
+"id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {
+        "requestedMode": "ReadyForMaintenance",
+        "asyncHandle": 1,
+        "currentMode": "Disabled"
+    }
+}
+----
+
+
+== Nuovo dalla versione
+
+12,2
+
+
+
+== Trova maggiori informazioni
+
+http://docs.netapp.com/us-en/hci/docs/concept_hci_storage_maintenance_mode.html["Concetti sulla modalità di manutenzione dello storage NetApp HCI"^]

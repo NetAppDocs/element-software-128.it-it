@@ -1,0 +1,104 @@
+---
+permalink: api/reference_element_api_liststoragecontainers.html 
+sidebar: sidebar 
+keywords: virtual,volume,storage,container,containers,list,listing,liststoragecontainers 
+summary: È possibile utilizzare il metodo ListStorageContainers per recuperare informazioni su tutti i contenitori di archiviazione dei volumi virtuali noti al sistema. 
+---
+= ListStorageContainers
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `ListStorageContainers` Metodo per recuperare informazioni su tutti i contenitori di archiviazione di volumi virtuali noti al sistema.
+
+
+
+== Parametri
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+storageContainerIDs
+ a| 
+Un elenco di ID di contenitori di archiviazione per i quali recuperare informazioni.  Se si omette questo parametro, il metodo restituisce informazioni su tutti i contenitori di archiviazione nel sistema.
+ a| 
+matrice UUID
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+contenitori di stoccaggio
+ a| 
+Elenco di oggetti contenenti informazioni su tutti i contenitori di archiviazione nel sistema.
+ a| 
+xref:reference_element_api_storagecontainer.adoc[contenitore di stoccaggio]vettore
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "ListStorageContainers",
+   "params": {
+      "storageContainerIDs": ["efda8307-b916-4424-979e-658a3f16894d"]
+   },
+   "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id": 6395,
+  "result": {
+    "storageContainers": [
+      {
+        "accountID": 64,
+        "initiatorSecret": "EJ:08An1MyNQmL!7",
+        "name": "VvolContainer",
+        "protocolEndpointType": "SCSI",
+        "status": "active",
+        "storageContainerID": "efda8307-b916-4424-979e-658a3f16894d",
+        "targetSecret": "g38}zWBK%206jQr~",
+        "virtualVolumes": []
+      }
+    ]
+  }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

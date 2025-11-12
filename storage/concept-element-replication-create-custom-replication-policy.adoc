@@ -1,0 +1,73 @@
+---
+permalink: storage/concept-element-replication-create-custom-replication-policy.html 
+sidebar: sidebar 
+keywords: ontap, cli, create, custom, replication, policy, relationship, 
+summary: È possibile creare una policy di replica personalizzata se la policy predefinita per una relazione non è adatta. 
+---
+= Creare una politica di replica personalizzata
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si crea una relazione di replica, è possibile utilizzare un criterio predefinito o personalizzato.  Per una policy di replica unificata personalizzata, è necessario definire una o più _regole_ che stabiliscano quali copie snapshot vengono trasferite durante l'inizializzazione e l'aggiornamento.
+
+È possibile creare una policy di replica personalizzata se la policy predefinita per una relazione non è adatta.  Ad esempio, potresti voler comprimere i dati in un trasferimento di rete o modificare il numero di tentativi effettuati SnapMirror per trasferire copie di snapshot.
+
+.Informazioni su questo compito
+Il _tipo di policy_ della policy di replica determina il tipo di relazione supportata.  La tabella seguente mostra i tipi di polizza disponibili.
+
+[cols="2*"]
+|===
+
+
+| Tipo di polizza | Tipo di relazione 
+
+
+ a| 
+specchio asincrono
+ a| 
+SnapMirror DR
+
+
+
+ a| 
+specchio-volta
+ a| 
+Replica unificata
+
+|===
+.Fare un passo
+. Crea una policy di replica personalizzata:
++
+`snapmirror policy create -vserver _SVM_ -policy policy -type async-mirror|mirror-vault -comment _comment_ -tries _transfer_tries_ -transfer-priority low|normal -is-network-compression-enabled true|false`
+
++
+Per la sintassi completa dei comandi, vedere la pagina man.
+
++
+A partire da ONTAP 9.5, è possibile specificare la pianificazione per la creazione di una pianificazione di copia snapshot comune per le relazioni sincrone SnapMirror utilizzando `-common-snapshot-schedule` parametro.  Per impostazione predefinita, la pianificazione comune della copia degli snapshot per le relazioni sincrone SnapMirror è di un'ora.  È possibile specificare un valore compreso tra 30 minuti e due ore per la pianificazione della copia degli snapshot per le relazioni sincrone SnapMirror .
+
++
+L'esempio seguente crea un criterio di replica personalizzato per SnapMirror DR che abilita la compressione di rete per i trasferimenti di dati:
+
++
+[listing]
+----
+cluster_dst::> snapmirror policy create -vserver svm1 -policy DR_compressed -type async-mirror -comment “DR with network compression enabled” -is-network-compression-enabled true
+----
++
+L'esempio seguente crea un criterio di replica personalizzato per la replica unificata:
+
++
+[listing]
+----
+cluster_dst::> snapmirror policy create -vserver svm1 -policy my_unified -type mirror-vault
+----
+
+
+.Dopo aver finito
+Per i tipi di policy "`mirror-vault`", è necessario definire regole che determinino quali copie snapshot vengono trasferite durante l'inizializzazione e l'aggiornamento.
+
+Utilizzare il `snapmirror policy show` comando per verificare che il criterio SnapMirror sia stato creato.  Per la sintassi completa dei comandi, vedere la pagina man.

@@ -1,0 +1,93 @@
+---
+permalink: api/reference_element_api_modifyclusterinterfacepreference.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,cluster,interface,preference,modifyclusterinterfacepreference 
+summary: Il metodo ModifyClusterInterfacePreference consente ai sistemi integrati con cluster di archiviazione che eseguono il software Element di modificare una preferenza di interfaccia del cluster esistente.  Questo metodo è per uso interno. 
+---
+= ModificaPreferenzaInterfacciaCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+IL `ModifyClusterInterfacePreference` Il metodo consente ai sistemi integrati con cluster di archiviazione che eseguono il software Element di modificare una preferenza di interfaccia del cluster esistente.  Questo metodo è per uso interno.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+
+
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+nome
+ a| 
+Nome della preferenza dell'interfaccia del cluster da modificare.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+valore
+ a| 
+Il nuovo valore della preferenza dell'interfaccia del cluster.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo non ha valori di ritorno.
+
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+	"method": "ModifyClusterInterfacePreference",
+	"params": {
+	"name": "testname",
+	"value": "newvalue"
+},
+	"id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {}
+}
+----
+
+
+== Nuovo dalla versione
+
+11,0

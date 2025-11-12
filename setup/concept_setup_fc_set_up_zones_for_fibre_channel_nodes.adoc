@@ -1,0 +1,24 @@
+---
+permalink: setup/concept_setup_fc_set_up_zones_for_fibre_channel_nodes.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Quando si crea un nuovo cluster con nodi Fibre Channel e nodi di storage SolidFire , gli indirizzi dei nomi di porta mondiali \(WWPN\) per i nodi sono disponibili nell"interfaccia utente Web.  È possibile utilizzare gli indirizzi WWPN per suddividere in zone lo switch Fibre Channel.' 
+---
+= Impostare le zone per i nodi Fibre Channel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si crea un nuovo cluster con nodi Fibre Channel e nodi di archiviazione SolidFire , gli indirizzi WWPN (Worldwide Port Name) per i nodi sono disponibili nell'interfaccia utente Web.  È possibile utilizzare gli indirizzi WWPN per suddividere in zone lo switch Fibre Channel.
+
+I WWPN vengono registrati nel sistema quando si crea un nuovo cluster con nodi.  Nell'interfaccia utente Element, puoi trovare gli indirizzi WWPN nella colonna WWPN della scheda Porte FC, a cui puoi accedere dalla scheda Cluster.
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+

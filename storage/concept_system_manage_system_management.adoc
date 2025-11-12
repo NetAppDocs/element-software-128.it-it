@@ -1,0 +1,28 @@
+---
+permalink: storage/concept_system_manage_system_management.html 
+sidebar: sidebar 
+keywords: element, cluster, fips, cluster, multi-factor authentication, authentication 
+summary: 'Puoi gestire il tuo sistema nell"interfaccia utente Element.  Ciò include l"abilitazione dell"autenticazione a più fattori, la gestione delle impostazioni del cluster, il supporto degli standard federali di elaborazione delle informazioni (FIPS) e l"utilizzo della gestione delle chiavi esterne.' 
+---
+= Gestisci il tuo sistema
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi gestire il tuo sistema nell'interfaccia utente Element.  Ciò include l'abilitazione dell'autenticazione a più fattori, la gestione delle impostazioni del cluster, il supporto degli standard federali di elaborazione delle informazioni (FIPS) e l'utilizzo della gestione delle chiavi esterne.
+
+* link:task_system_manage_mfa_set_up_multi_factor_authentication.html["Abilita l'autenticazione a più fattori"]
+* link:task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html["Configurare le impostazioni del cluster"]
+* link:task_system_manage_fips_create_a_cluster_supporting_fips_drives.html["Creare un cluster che supporti le unità FIPS"]
+* link:concept_system_manage_key_get_started_with_external_key_management.html["Inizia con la gestione delle chiavi esterne"]
+
+
+
+
+== Per maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+

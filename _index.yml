@@ -1,0 +1,97 @@
+---
+indexpage:
+  title: Documentazione del software SolidFire ed Element
+  summary: Un sistema di archiviazione all-flash SolidFire è composto da componenti
+    hardware quali unità e nodi, combinati in un pool di risorse di archiviazione.  Questo
+    cluster unificato, in quanto sistema di storage unico, è gestito tramite il software
+    NetApp Element .
+  keywords: solidfire, all-flash, storage, hardware, install, maintain, element software,
+    esos, element cli
+  lead: Un sistema di archiviazione all-flash SolidFire è composto da componenti hardware
+    quali unità e nodi, combinati in un pool di risorse di archiviazione.  Utilizzando
+    l'interfaccia Element, l'API o altri strumenti di gestione, è possibile gestire
+    questi cluster di risorse di storage con il software NetApp Element .  Questo
+    sito contiene la documentazione per Element software 12.8.
+  tiles:
+  - title: Iniziare
+    links:
+    - title: Panoramica del prodotto
+      url: "/concepts/concept_intro_product_overview.html"
+    - title: Note di rilascio
+      url: "/concepts/concept_rn_relatedrn_element.html"
+    - title: Cosa c'è di nuovo
+      url: "/concepts/concept_rn_whats_new_element.html"
+    - title: Requisiti
+      url: "/storage/concept_prereq_networking.html"
+    - title: Panoramica della configurazione
+      url: "/setup/concept_setup_overview.html"
+  - title: Installare e manutenere l'hardware
+    links:
+    - title: Informazioni hardware H410S e H610S
+      url: "/hardware/task_h410s_h610s_install.html"
+    - title: Informazioni sull'hardware della serie SF
+      url: "/hardware/task_sfseries_chassisrepl.html"
+    - title: Ritorna alle informazioni sull'immagine di fabbrica
+      url: "/hardware/concept_rtfi_configure.html"
+    - title: Revisioni del firmware supportate per i nodi di storage NetApp H-Series
+      url: "/hardware/fw_storage_nodes.html"
+  - title: Gestisci l'archiviazione
+    links:
+    - title: Utilizzare l'interfaccia utente del software Element
+      url: "/storage/index.html"
+    - title: Utilizzare NetApp Hybrid Cloud Control
+      url: "/hccstorage/task-hcc-manage-storage-clusters.html"
+    - title: Utilizzare l'API del software Element
+      url: "/api/concept_element_api_about_the_api.html"
+    - title: Utilizzare Element Plug-in per vCenter Server
+      url: https://docs.netapp.com/us-en/vcp/
+    - title: Utilizzare NetApp SolidFire Active IQ
+      url: https://docs.netapp.com/us-en/solidfire-active-iq/
+    - title: Lavorare con il nodo di gestione
+      url: "/mnode/task_mnode_work_overview.html"
+  - title: Utilizzare gli strumenti di integrazione (è richiesto l'accesso)
+    links:
+    - title: Elemento CLI
+      url: https://mysupport.netapp.com/site/tools/tool-eula/elem-cli
+    - title: Strumenti PowerShell per gli elementi
+      url: https://mysupport.netapp.com/site/tools/tool-eula/elem-powershell-tools
+    - title: SDK di elementi (Java, .NET, Python)
+      url: https://mysupport.netapp.com/site/products/all/details/netapphci-solidfire-elementsoftware/tools-tab
+    - title: Suite di test API SolidFire Postman
+      url: https://github.com/solidfire/postman
+    - title: Adattatore di replicazione dello storage SolidFire
+      url: https://mysupport.netapp.com/site/products/all/details/elementsra/downloads-tab
+    - title: SolidFire vRO
+      url: https://mysupport.netapp.com/site/products/all/details/solidfire-vro/downloads-tab
+    - title: Fornitore SolidFire VSS
+      url: https://mysupport.netapp.com/site/products/all/details/solidfire-vss-provider/downloads-tab
+  - title: Soluzioni
+    links:
+    - title: Soluzioni NetApp
+      url: https://docs.netapp.com/us-en/netapp-solutions/index.html
+  - title: Demo e tutorial
+    links:
+    - title: Formazione SolidFire di NetApp University (richiesto login)
+      url: https://netapp.sabacloud.com/Saba/Web_spf/NA1PRD0047/common/searchresults/solidfire/LEARNINGEVENT%2COFFERINGTEMPLATE%2CCERTIFICATION%2CCURRICULUM%2COFFERING%2CPACKAGE
+    - title: Come installare e scalare il cluster NetApp Solidfire (video)
+      url: https://www.youtube.com/watch?v=JOe-zwxIZR4
+    - title: Installazione di NetApp SolidFire (video)
+      url: https://youtu.be/YKGK5nNSL68
+  - title: Blog e comunità
+    links:
+    - title: Comunità NetApp
+      url: https://community.netapp.com/t5/AFF-NVMe-EF-Series-and-SolidFire-Discussions/bd-p/flash-storage-systems-discussions
+    - title: Dove trovare aiuto
+      url: https://mysupport.netapp.com/site/products/all/details/element-software/guideme-tab
+  - title: Versioni precedenti
+    links:
+    - title: Documentazione dell'elemento 12.2.1
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=63945&language=en-US
+    - title: Documentazione dell'elemento 12.2
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=63593&language=en-US
+    - title: Documentazione dell'elemento 12.0.1
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=63946&language=en-US
+    - title: Documentazione dell'elemento 12.0
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=63368&language=en-US
+    - title: Documentazione dell'elemento 11.8.2 e versioni precedenti
+      url: "/element-earlierversions.html"

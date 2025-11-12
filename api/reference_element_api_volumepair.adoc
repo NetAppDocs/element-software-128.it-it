@@ -1,0 +1,99 @@
+---
+permalink: api/reference_element_api_volumepair.html 
+sidebar: sidebar 
+keywords: object,objects,volumePair 
+summary: 'L"oggetto volumePair contiene informazioni su un volume abbinato a un altro volume su un cluster diverso.  Se il volume non è associato, questo oggetto è vuoto.  È possibile utilizzare i metodi API ListActivePairedVolumes e ListActiveVolumes per restituire informazioni sui volumi accoppiati.' 
+---
+= volumePair
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto volumePair contiene informazioni su un volume abbinato a un altro volume su un cluster diverso.  Se il volume non è associato, questo oggetto è vuoto.  Puoi usare il `ListActivePairedVolumes` E `ListActiveVolumes` Metodi API per restituire informazioni sui volumi accoppiati.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+clusterPairID
+ a| 
+Il cluster su cui è accoppiato il volume.
+ a| 
+intero
+
+
+
+ a| 
+replica remota
+ a| 
+Dettagli sulla replicazione del volume.  Membri:
+
+* modalità: (stringa) Una tra "Async", "Sync" o "SnapshotsOnly".
+* pauseLimit: (intero) Solo per uso interno.
+* remoteServiceID: (intero) ID del servizio slice remoto.
+* resumeDetails: (stringa) Riservato per uso futuro.
+* snapshotReplication (oggetto JSON)
++
+** stato: (stringa) Lo stato della replica dello snapshot in corso, se ne è in corso una.
+** stateDetails: (stringa) Riservato per uso futuro.
+
+
+* stato: (stringa) Lo stato della replica del volume.
+* stateDetails: (stringa) Riservato per uso futuro.
+
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+remoteSliceID
+ a| 
+ID della slice definita dal cluster sul cluster remoto.
+ a| 
+intero
+
+
+
+ a| 
+remoteVolumeID
+ a| 
+ID del volume sul cluster remoto a cui è associato il volume locale.
+ a| 
+intero
+
+
+
+ a| 
+NomeVolumeRemoto
+ a| 
+Il nome del volume remoto.
+ a| 
+corda
+
+
+
+ a| 
+volumePairUUID
+ a| 
+Un identificatore univoco universale, definito dal cluster, per questa coppia in un formato canonico.
+ a| 
+corda
+
+|===
+
+
+== Trova maggiori informazioni
+
+* xref:reference_element_api_listactivepairedvolumes.adoc[ListActivePairedVolumes]
+* xref:reference_element_api_listactivevolumes.adoc[ListActiveVolumes]
+

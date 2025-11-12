@@ -1,0 +1,160 @@
+---
+permalink: api/reference_element_api_testconnectsvip.html 
+sidebar: sidebar 
+keywords: storage,connection,svip,test,testing,testconnectsvip 
+summary: 'È possibile utilizzare il metodo TestConnectSvip per testare la connessione di archiviazione al cluster di archiviazione.  Il test esegue il ping dell"SVIP tramite pacchetti ICMP e, se ha esito positivo, si connette come iniziatore iSCSI.' 
+---
+= TestConnectSvip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `TestConnectSvip` metodo per testare la connessione di archiviazione al cluster di archiviazione.  Il test esegue il ping dell'SVIP tramite pacchetti ICMP e, se ha esito positivo, si connette come iniziatore iSCSI.
+
+
+
+== Parametro
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+svip
+ a| 
+È possibile passare questo valore per testare la connessione di gestione di un SVIP diverso.  Non è necessario utilizzare questo valore quando si testa la connessione al cluster di destinazione.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+dettagli
+ a| 
+Informazioni sull'operazione di test (oggetto JSON):
+
+* `connected`: Indica se il test è riuscito a connettersi allo SVIP (booleano)
+* `svip`: Il test SVIP è stato eseguito su (stringa)
+* `pingBytes`: Dettagli dei test ping con 56 byte e 9000 byte (oggetto)
++
+** `56`: Risultati del test ping da 56 byte (oggetto JSON):
++
+*** `individualResponseTimes`: Elenco dei tempi di risposta da ciascun nodo dell'ensemble (array di stringhe)
+*** `individualStatus`: Elenco dello stato del ping da ciascun nodo dell'ensemble (array booleano)
+*** `responseTime`: Tempo medio di risposta al ping (stringa)
+*** `successful`: Indica se il test ping ha avuto esito positivo (booleano)
+
+
+** `9000`: Risultati del test ping da 9000 byte (oggetto JSON):
++
+*** `individualResponseTimes`: Elenco dei tempi di risposta da ciascun nodo dell'ensemble (array di stringhe)
+*** `individualStatus`: Elenco dello stato del ping da ciascun nodo dell'ensemble (array booleano)
+*** `responseTime`: Tempo medio di risposta al ping (stringa)
+*** `successful`: Indica se il test ping ha avuto esito positivo (booleano)
+
+
+** `duration`: Tempo necessario per eseguire il test (stringa)
+** `result`: Risultato del test nel suo complesso (stringa)
+
+
+
+ a| 
+corda
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "TestConnectSvip",
+   "params": {
+      "svip" : "172.27.62.50"
+      },
+   "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "details": {
+      "connected": true,
+      "pingBytes": {
+           "56": {
+               "individualResponseTimes": [
+                   "00:00:00.000152",
+                   "00:00:00.000132",
+                   "00:00:00.000119",
+                   "00:00:00.000114",
+                   "00:00:00.000112"
+              ],
+              "individualStatus": [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+              ],
+              "responseTime": "00:00:00.000126",
+              "successful": true
+           },
+          "9000": {
+                "individualResponseTimes": [
+                    "00:00:00.000295",
+                    "00:00:00.000257",
+                    "00:00:00.000172",
+                    "00:00:00.000172",
+                    "00:00:00.000267"
+              ],
+              "individualStatus": [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+             ],
+             "responseTime": "00:00:00.000233",
+             "successful": true
+           }
+        },
+        "svip": "172.27.62.50"
+      },
+      "duration": "00:00:00.421907",
+      "result": "Passed"
+   }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

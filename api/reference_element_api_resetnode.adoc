@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_resetnode.html 
+sidebar: sidebar 
+keywords:  
+summary: 'È possibile utilizzare il metodo ResetNode per ripristinare le impostazioni di fabbrica di un nodo.  Quando si chiama questo metodo, tutti i dati, i pacchetti (aggiornamenti software, ecc.), le configurazioni e i file di registro vengono eliminati dal nodo.  Tuttavia, durante questa operazione le impostazioni di rete del nodo vengono mantenute.  I nodi che partecipano a un cluster non possono essere ripristinati alle impostazioni di fabbrica.' 
+---
+= Reimposta nodo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `ResetNode` metodo per ripristinare un nodo alle impostazioni di fabbrica.  Quando si chiama questo metodo, tutti i dati, i pacchetti (aggiornamenti software, ecc.), le configurazioni e i file di registro vengono eliminati dal nodo.  Tuttavia, durante questa operazione le impostazioni di rete del nodo vengono mantenute.  I nodi che partecipano a un cluster non possono essere ripristinati alle impostazioni di fabbrica.
+
+
+
+== Parametri
+
+L'API ResetNode può essere utilizzata solo sui nodi che si trovano nello stato "Disponibile".  Non può essere utilizzato su nodi che sono "Attivi" in un cluster o in stato "In sospeso".
+
+ATTENZIONE:
+
+Questo metodo cancella tutti i dati dei clienti presenti sul nodo.
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+costruire
+ a| 
+Utilizzato per specificare l'URL di un'immagine software Element remota su cui verrà reimpostato il nodo.
+ a| 
+URL
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+forza
+ a| 
+Impostare su true per reimpostare il nodo.
+ a| 
+booleano
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+opzioni
+ a| 
+Utilizzato per immettere le specifiche per l'esecuzione delle operazioni di reset.  Se necessario, i dettagli saranno forniti dal supporto NetApp .
+ a| 
+Oggetto JSON
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo non ha valori di ritorno.
+
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "ResetNode",
+   "params": {
+      "build" : "file:///sf/rtfi/image/filesystem.squashfs",
+      "force" : true
+              },
+   "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id": null,
+  "result": {
+    "rtfiInfo": {
+      "build": "file:///sf/rtfi/image/filesystem.squashfs",
+      "generation": "9",
+      "options": {
+        "edebug": "",
+        "sf_auto": "0",
+        "sf_bond_mode": "ActivePassive",
+        "sf_check_hardware": "0",
+        "sf_disable_otpw": "0",
+        "sf_fa_host": "",
+        "sf_hostname": "SF-FA18",
+        "sf_inplace": "1",
+        "sf_inplace_die_action": "kexec",
+        "sf_inplace_safe": "0",
+        "sf_keep_cluster_config": "0",
+        "sf_keep_data": "0",
+        "sf_keep_hostname": "0",
+        "sf_keep_network_config": "0",
+        "sf_keep_paths": "\"/var/log/hardware.xml\"",
+        "sf_max_archives": "5",
+        "sf_nvram_size": "",
+        "sf_oldroot": "",
+        "sf_postinst_erase_root_drive": "0",
+        "sf_root_drive": "",
+        "sf_rtfi_cleanup_state": "",
+        "sf_secure_erase": "1",
+        "sf_secure_erase_retries": "5",
+        "sf_slice_size": "",
+        "sf_ssh_key": "1",
+        "sf_ssh_root": "1",
+        "sf_start_rtfi": "1",
+        "sf_status_httpserver": "1",
+        "sf_status_httpserver_stop_delay": "5m",
+        "sf_status_inject_failure": "",
+        "sf_status_json": "0",
+        "sf_support_host": "sfsupport.solidfire.com",
+        "sf_test_hardware": "0",
+        "sf_upgrade": "0",
+        "sf_upgrade_firmware": "0",
+        "sf_upload_logs_url": ""
+     },
+      "statusUrlAll": "http://192.168.130.20/status/all.json",
+      "statusUrlCurrent": "http://192.168.130.20/status/current.json"
+    }
+  }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

@@ -1,0 +1,162 @@
+---
+permalink: api/reference_element_api_createclustersupportbundle.html 
+sidebar: sidebar 
+keywords: CreateClusterSupportBundle,create,cluster,support,bundle,creating 
+summary: È possibile utilizzare CreateClusterSupportBundle sul nodo di gestione per raccogliere i bundle di supporto da tutti i nodi di un cluster.  Quando viene creato un bundle, questo viene memorizzato sul nodo come file .tar.gz.  È possibile eseguire questo metodo solo su un nodo di gestione; non funziona se eseguito su un nodo di archiviazione. 
+---
+= Crea Cluster Support Bundle
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `CreateClusterSupportBundle` sul nodo di gestione per raccogliere i bundle di supporto da tutti i nodi di un cluster.  I singoli pacchetti di supporto dei nodi sono compressi come file tar.gz.  Il bundle di supporto del cluster è un file tar contenente i bundle di supporto del nodo.  È possibile eseguire questo metodo solo su un nodo di gestione; non funziona se eseguito su un nodo di archiviazione.
+
+
+
+== Parametri
+
+
+NOTE: È necessario chiamare questo metodo sul nodo di gestione. Per esempio:
+
+[listing]
+----
+https://<management node IP>:442/json-rpc/10.0
+----
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+consentiIncompleto
+ a| 
+Consente allo script di continuare l'esecuzione se non è possibile raccogliere i bundle da uno o più nodi.
+ a| 
+booleano
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+Nome del bundle
+ a| 
+Nome univoco per ogni pacchetto di supporto creato.  Se non viene fornito alcun nome, come nome del file vengono utilizzati "supportbundle" e il nome del nodo
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+mvip
+ a| 
+L'MVIP del cluster.  I bundle vengono raccolti da tutti i nodi del cluster.  Questo parametro è obbligatorio se il parametro nodes non è specificato.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+nodi
+ a| 
+Gli indirizzi IP dei nodi da cui raccogliere i bundle.  Utilizzare nodes o mvip, ma non entrambi, per specificare i nodi da cui raccogliere i bundle.  Questo parametro è obbligatorio se mvip non è specificato.
+ a| 
+matrice di stringhe
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+password
+ a| 
+La password di amministratore del cluster.  *Nota:* questa password è visibile come testo una volta inserita.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+nome utente
+ a| 
+Nome utente dell'amministratore del cluster.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo non ha valori di ritorno.
+
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+"method": "CreateClusterSupportBundle",
+"params": {
+          "bundlename": "clusterbundle",
+          "mvip": "132.119.120.100"
+     }
+   },
+ "id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id":1,
+  "result":{
+   "details":{
+      "bundleName":"clusterbundle",
+      "extraArgs":"",
+      "files":[
+          "/tmp/supportbundles/clusterbundle.cl-4SD5.tar"
+      ],
+      "output":"timeout -s KILL 1790s /usr/local/bin/sfclustersupportbundle --quiet --name=\"clusterbundle\" --target-directory=\"/tmp/solidfire-dtemp.MM7f0m\" --user=\"admin\" --pass=\"admin\" --mvip=132.119.120.100"
+       },
+       "duration":"00:00:24.938127",
+       "result":"Passed"
+    }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

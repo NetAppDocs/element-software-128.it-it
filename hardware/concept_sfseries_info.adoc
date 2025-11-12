@@ -1,0 +1,32 @@
+---
+permalink: hardware/concept_sfseries_info.html 
+sidebar: sidebar 
+keywords: sf-series nodes, hardware installation, hardware maintenance 
+summary: 'È possibile trovare informazioni sull"installazione e la manutenzione dei nodi di archiviazione della serie SF.' 
+---
+= Informazioni sull'hardware della serie SF
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile trovare informazioni sull'installazione e la manutenzione dei nodi di archiviazione della serie SF.
+
+Ecco i link ai contenuti di installazione e manutenzione:
+
+* link:../media/c-series-isi.pdf["Installare e configurare i nodi SolidFire serie C"^]
+* link:../media/fc-getting-started-guide.pdf["Installare e configurare i nodi Fibre Channel"^]
+* link:../media/solidfire-10-getting-started-guide.pdf["Installa e configura i nodi di archiviazione della serie SF"^]
+* link:task_sfseries_chassisrepl.html["Sostituire un telaio"^]
+* link:task_sfseries_driverepl.html["Sostituire le unità"^]
+* link:task_sfseries_psurepl.html["Sostituire un alimentatore"^]
+
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentazione per le versioni precedenti dei prodotti NetApp SolidFire ed Element"^]
+

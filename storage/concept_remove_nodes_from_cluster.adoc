@@ -1,0 +1,44 @@
+---
+permalink: storage/concept_remove_nodes_from_cluster.html 
+sidebar: sidebar 
+keywords: troubleshoot, nodes removing 
+summary: 'È possibile rimuovere nodi da un cluster per manutenzione o sostituzione.  È consigliabile utilizzare l"interfaccia utente o l"API NetApp Element per rimuovere i nodi prima di metterli offline.' 
+---
+= Rimuovere i nodi da un cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile rimuovere nodi da un cluster per manutenzione o sostituzione.  È consigliabile utilizzare l'interfaccia utente o l'API NetApp Element per rimuovere i nodi prima di metterli offline.
+
+Di seguito è riportata una panoramica della procedura per rimuovere i nodi di archiviazione:
+
+* Assicurarsi che nel cluster vi sia capacità sufficiente per creare una copia dei dati sul nodo.
+* Rimuovere le unità dal cluster utilizzando l'interfaccia utente o il metodo API RemoveDrives.
++
+Ciò comporta che il sistema migrerà i dati dalle unità del nodo ad altre unità nel cluster.  Il tempo impiegato da questo processo dipende dalla quantità di dati da migrare.
+
+* Rimuovere il nodo dal cluster.
+
+
+Prima di spegnere o accendere un nodo, tenere a mente le seguenti considerazioni:
+
+* Lo spegnimento di nodi e cluster comporta dei rischi se non eseguito correttamente.
++
+Lo spegnimento di un nodo deve essere effettuato sotto la supervisione del supporto NetApp .
+
+* Se un nodo è rimasto inattivo per più di 5,5 minuti a causa di qualsiasi tipo di condizione di arresto, la protezione dei dati Double Helix avvia l'attività di scrittura di singoli blocchi replicati su un altro nodo per replicare i dati.  In questo caso, contattare l'assistenza NetApp per ricevere assistenza nell'analisi del nodo non riuscito.
+* Per riavviare o spegnere un nodo in modo sicuro, è possibile utilizzare il comando Shutdown API.
+* Se un nodo è inattivo o spento, è necessario contattare l'assistenza NetApp prima di riportarlo online.
+* Dopo che un nodo è stato riportato online, è necessario aggiungere nuovamente le unità al cluster, a seconda di quanto tempo è stato fuori servizio.
+
+
+
+
+== Per maggiori informazioni
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2844772["Sostituzione di uno chassis SolidFire guasto"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2846861["Sostituzione di un nodo della serie H600S guasto"]

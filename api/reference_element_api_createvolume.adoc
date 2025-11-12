@@ -1,0 +1,247 @@
+---
+permalink: api/reference_element_api_createvolume.html 
+sidebar: sidebar 
+keywords: create,volume,volumes,creating,CreateVolume 
+summary: È possibile utilizzare il metodo CreateVolume per creare un nuovo volume vuoto sul cluster.  Non appena la creazione del volume è completata, il volume è disponibile per la connessione tramite iSCSI. 
+---
+= Crea volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `CreateVolume` metodo per creare un nuovo volume vuoto sul cluster.  Non appena il volume viene creato, è disponibile per la connessione tramite iSCSI.
+
+I volumi creati senza valori QoS specificati utilizzano i valori predefiniti.  È possibile visualizzare i valori predefiniti per un volume utilizzando `GetDefaultQoS` metodo.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+| `access` | Modalità di accesso al volume.  Se questo parametro è incluso, l'unico valore supportato è `snapMirrorTarget` . | corda | Nessuno | NO 
+
+
+| `accountID` | L'ID dell'account proprietario di questo volume. | intero | Nessuno | SÌ 
+
+
+| `associateWithQoSPolicy`  a| 
+Associare il volume al criterio QoS specificato. Valori possibili:
+
+* `true`: associa il volume alla policy QoS specificata nel parametro QoSPolicyID.
+* `false`: Non associare il volume alla policy QoS specificata nel parametro QoSPolicyID.  Se impostato su false, qualsiasi associazione di policy esistente viene rimossa, indipendentemente dal fatto che si specifichi una policy QoS nel parametro QoSPolicy.
+
+| booleano | VERO | NO 
+
+
+| `attributes` | Elenco di coppie nome-valore nel formato oggetto JSON.  La dimensione totale dell'attributo deve essere inferiore a 1000B o 1KB, inclusi i caratteri di formattazione JSON. | Oggetto JSON | Nessuno | NO 
+
+
+| `dontMoveforIopsRebalance`  a| 
+Impedisce lo spostamento di un volume durante il bilanciamento del carico con IOPS effettivi.  Questa impostazione è disponibile a partire da Element 12.8 ed è efficace solo quandolink:reference_element_api_enablefeature.html["VolumeLoadBalanceOnActualIOPS"] è abilitato. Valori possibili:
+
+* `true`: Il volume non bilancia il carico in base agli IOPS effettivi.
+* `false`: Il volume bilancia il carico in base agli IOPS effettivi.
+
+
+*Nota*: il bilanciamento per l'alta disponibilità (guasto del nodo) ha la precedenza su `VolumeLoadBalanceOnActualIOPS` E `dontMoveforIopsRebalance` .
+| booleano | falso | NO 
+
+
+| `enable512e`  a| 
+Abilita l'emulazione del settore da 512 byte. Valori possibili:
+
+* `true`: Il volume fornisce l'emulazione del settore da 512 byte.
+* `false`: L'emulazione 512e non è abilitata.
+
+| booleano | Nessuno | SÌ 
+
+
+| `enableSnapMirrorReplication`  a| 
+Determina se il volume può essere utilizzato per la replica con endpoint SnapMirror . Valori possibili:
+
+* `true`
+* `false`
+
+| booleano | falso | NO 
+
+
+| `fifoSize` | Specifica il numero massimo di snapshot First-In-First-Out (FIFO) supportati dal volume.  Si noti che gli snapshot FIFO e non FIFO utilizzano entrambi lo stesso pool di slot snapshot disponibili su un volume.  Utilizzare questa opzione per limitare il consumo di snapshot FIFO degli slot snapshot disponibili.  Se omesso, il valore predefinito è 24. | intero | 24 | NO 
+
+
+| `minFifoSize` | Specifica il numero minimo di slot snapshot First-In-First-Out (FIFO) riservati dal volume.  Ciò garantisce che se si utilizzano sia snapshot FIFO che snapshot non FIFO su un volume, gli snapshot non FIFO non consumino involontariamente troppi slot FIFO.  Garantisce inoltre che almeno questo numero di snapshot FIFO siano sempre disponibili.  Poiché gli snapshot FIFO e non FIFO condividono lo stesso pool, `minFifoSize` riduce della stessa quantità il numero totale di possibili snapshot non FIFO.  Se omesso, il valore predefinito è 0. | intero | 0 | NO 
+
+
+| `name` | Nome del gruppo di accesso al volume (può essere specificato dall'utente).  Non è obbligatorio che sia unico, ma è consigliato.  Deve essere lungo da 1 a 64 caratteri. | corda | Nessuno | SÌ 
+
+
+| `qos`  a| 
+Impostazioni iniziali della qualità del servizio per questo volume.  Se non ne viene specificato alcuno, vengono utilizzati i valori predefiniti. Valori possibili:
+
+* `minIOPS`
+* `maxIOPS`
+* `burstIOPS`
+
+| Oggetto QoS | Nessuno | NO 
+
+
+| `qosPolicyID` | ID del criterio le cui impostazioni QoS devono essere applicate ai volumi specificati.  Questo parametro è mutuamente esclusivo con il `qos` parametro. | intero | Nessuno | NO 
+
+
+| `totalSize` | Dimensione totale del volume, in byte.  La dimensione è arrotondata al megabyte più vicino. | intero | Nessuno | SÌ 
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+volume
+ a| 
+Oggetto contenente informazioni sul volume appena creato.
+ a| 
+xref:reference_element_api_volume.adoc[volume]
+
+
+
+ a| 
+ID volume
+ a| 
+VolumeID per il volume appena creato.
+ a| 
+intero
+
+
+
+ a| 
+curva
+ a| 
+La curva è un insieme di coppie chiave-valore.  Le chiavi sono le dimensioni I/O in byte.  I valori rappresentano il costo di esecuzione di un IOP a una dimensione I/O specifica.  La curva è calcolata in relazione a un'operazione da 4096 byte impostata a 100 IOPS.
+ a| 
+Oggetto JSON
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "CreateVolume",
+   "params": {
+      "name": "testit",
+      "accountID": 22,
+      "dontMoveForIopsRebalance": true,
+      "totalSize": 100000000000,
+      "enable512e": false,
+      "attributes": {},
+      "qos": {
+         "minIOPS": 500,
+         "maxIOPS": 27000,
+         "burstIOPS": 27000,
+         "burstTime": 60
+      }
+   },
+   "id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "curve": {
+            "1048576": 15000,
+            "131072": 1950,
+            "16384": 270,
+            "262144": 3900,
+            "32768": 500,
+            "4096": 100,
+            "524288": 7600,
+            "65536": 1000,
+            "8192": 160
+        },
+        "volume": {
+            "access": "readWrite",
+            "accountID": 22,
+            "attributes": {},
+            "blockSize": 4096,
+            "createTime": "2024-04-02T13:03:02Z",
+            "currentProtectionScheme": "doubleHelix",
+            "deleteTime": "",
+            "dontMoveForIopsRebalance": true,
+            "enable512e": false,
+            "enableSnapMirrorReplication": false,
+            "fifoSize": 24,
+            "iqn": "iqn.2010-01.com.solidfire:mysqldata.677",
+            "lastAccessTime": null,
+            "lastAccessTimeIO": null,
+            "minFifoSize": 0,
+            "name": "testit",
+            "previousProtectionScheme": null,
+            "purgeTime": "",
+            "qos": {
+                "burstIOPS": 27000,
+                "burstTime": 60,
+                "curve": {
+                    "1048576": 15000,
+                    "131072": 1950,
+                    "16384": 270,
+                    "262144": 3900,
+                    "32768": 500,
+                    "4096": 100,
+                    "524288": 7600,
+                    "65536": 1000,
+                    "8192": 160
+                },
+                "maxIOPS": 27000,
+                "minIOPS": 500
+            },
+            "qosPolicyID": null,
+            "scsiEUIDeviceID": "3365657500000140f47acc0100000000",
+            "scsiNAADeviceID": "6f47acc1000000003365657500000140",
+            "sliceCount": 0,
+            "status": "active",
+            "totalSize": 1000000716800,
+            "virtualVolumeID": null,
+            "volumeAccessGroups": [],
+            "volumeConsistencyGroupUUID": "8ed68e57-13ee-47df-8381-29b125142718",
+            "volumeID": 320,
+            "volumePairs": [],
+            "volumeUUID": "e0e2c938-4ecd-4de9-a1be-f6b17c93ce5d"
+        },
+        "volumeID": 320
+    }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6
+
+
+
+== Trova maggiori informazioni
+
+xref:reference_element_api_getdefaultqos.adoc[OttieniQoS predefinito]

@@ -1,0 +1,93 @@
+---
+permalink: storage/reference_per_node_network_settings_details.html 
+sidebar: sidebar 
+keywords: network settings, per-node UI, storage node, ui 
+summary: È possibile modificare le impostazioni di rete del nodo di archiviazione per fornire al nodo un nuovo set di attributi di rete. 
+---
+= Dettagli delle impostazioni di rete dall'interfaccia utente per nodo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile modificare le impostazioni di rete del nodo di archiviazione per fornire al nodo un nuovo set di attributi di rete.
+
+È possibile visualizzare le impostazioni di rete per un nodo di archiviazione nella pagina *Impostazioni di rete* quando si accede al nodo (`https://<node_IP>:442/hcc/node/network-settings`). È possibile selezionare le impostazioni *Bond1G* (gestione) o *Bond10G* (archiviazione). L'elenco seguente descrive le impostazioni che è possibile modificare quando un nodo di archiviazione è nello stato Disponibile, In sospeso o Attivo:
+
+* *Metodo*
++
+Metodo utilizzato per configurare l'interfaccia.  Metodi possibili:
+
++
+** loopback: utilizzato per definire l'interfaccia loopback IPv4.
+** manuale: utilizzato per definire le interfacce per le quali non viene effettuata alcuna configurazione di default.
+** dhcp: utilizzato per ottenere un indirizzo IP tramite DHCP.
+** statico: utilizzato per definire interfacce Ethernet con indirizzi IPv4 assegnati staticamente.
+
+
+* *Velocità di collegamento*
++
+La velocità negoziata dalla NIC virtuale.
+
+* *Indirizzo IPv4*
++
+L'indirizzo IPv4 per la rete eth0.
+
+* *Maschera di sottorete IPv4*
++
+Suddivisioni degli indirizzi della rete IPv4.
+
+* *Indirizzo gateway IPv4*
++
+Indirizzo di rete del router per inviare pacchetti fuori dalla rete locale.
+
+* *Indirizzo IPv6*
++
+L'indirizzo IPv6 per la rete eth0.
+
+* *Indirizzo gateway IPv6*
++
+Indirizzo di rete del router per inviare pacchetti fuori dalla rete locale.
+
+* *MTU*
++
+Dimensione massima del pacchetto che un protocollo di rete può trasmettere.  Deve essere maggiore o uguale a 1500.  Se si aggiunge una seconda scheda di rete di archiviazione, il valore dovrebbe essere 9000.
+
+* *Server DNS*
++
+Interfaccia di rete utilizzata per la comunicazione del cluster.
+
+* *Cerca domini*
++
+Cerca altri indirizzi MAC disponibili nel sistema.
+
+* *Modalità legame*
++
+Può essere una delle seguenti modalità:
+
++
+** AttivoPassivo (predefinito)
+** CAMICE
+** LACP
+
+
+* *Stato*
++
+Valori possibili:
+
++
+** In funzione
+** Giù
+** Su
+
+
+* *Tag Rete Virtuale*
++
+Tag assegnato al momento della creazione della rete virtuale.
+
+* *Percorsi*
++
+Percorsi statici verso host o reti specifici tramite l'interfaccia associata per la quale i percorsi sono configurati.
+
+

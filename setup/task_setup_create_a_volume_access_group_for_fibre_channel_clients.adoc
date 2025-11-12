@@ -1,0 +1,43 @@
+---
+permalink: setup/task_setup_create_a_volume_access_group_for_fibre_channel_clients.html 
+sidebar: sidebar 
+keywords:  
+summary: 'I gruppi di accesso al volume consentono la comunicazione tra client Fibre Channel e volumi su un sistema di archiviazione SolidFire .  Il mapping degli iniziatori client Fibre Channel \(WWPN\) ai volumi in un gruppo di accesso al volume consente l"I/O dei dati sicuro tra una rete Fibre Channel e un volume SolidFire .' 
+---
+= Creare un gruppo di accesso al volume per i client Fibre Channel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I gruppi di accesso al volume consentono la comunicazione tra client Fibre Channel e volumi su un sistema di archiviazione SolidFire .  Il mapping degli iniziatori client Fibre Channel (WWPN) ai volumi in un gruppo di accesso al volume consente l'I/O dei dati sicuro tra una rete Fibre Channel e un volume SolidFire .
+
+È anche possibile aggiungere iniziatori iSCSI a un gruppo di accesso al volume; in questo modo, gli iniziatori avranno accesso agli stessi volumi nel gruppo di accesso al volume.
+
+.Passi
+. Fare clic su *Gestione* > *Gruppi di accesso*.
+. Fare clic su *Crea gruppo di accesso*.
+. Immettere un nome per il gruppo di accesso al volume nel campo *Nome*.
+. Selezionare e aggiungere gli iniziatori Fibre Channel dall'elenco *Iniziatori Fibre Channel non associati*.
++
+
+NOTE: È possibile aggiungere o eliminare gli iniziatori in un secondo momento.
+
+. *Facoltativo:* selezionare e aggiungere un iniziatore iSCSI dall'elenco *Iniziatori*.
+. Per collegare i volumi al gruppo di accesso, procedere come segue:
++
+.. Selezionare un volume dall'elenco *Volumi*.
+.. Fare clic su *Allega volume*.
+
+
+. Fare clic su *Crea gruppo di accesso*.
+
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+

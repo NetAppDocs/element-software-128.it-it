@@ -1,0 +1,53 @@
+---
+permalink: api/concept_element_api_snapmirror_api_methods.html 
+sidebar: sidebar 
+keywords: SnapMirror,API,method 
+summary: 'I metodi API SnapMirror vengono utilizzati dall"interfaccia utente Web di Element per gestire gli snapshot replicati con sistemi ONTAP remoti.  Questi metodi sono pensati per essere utilizzati solo dall"interfaccia utente web di Element.  Se hai bisogno dell"accesso API alla funzionalità SnapMirror , utilizza le API ONTAP .  Non sono forniti esempi di richiesta e restituzione per i metodi API SnapMirror .' 
+---
+= Metodi API SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I metodi API SnapMirror vengono utilizzati dall'interfaccia utente Web di Element per gestire gli snapshot replicati con sistemi ONTAP remoti.  Questi metodi sono pensati per essere utilizzati solo dall'interfaccia utente web di Element.  Se hai bisogno dell'accesso API alla funzionalità SnapMirror , utilizza le API ONTAP .  Non sono forniti esempi di richiesta e restituzione per i metodi API SnapMirror .
+
+* xref:reference_element_api_abortsnapmirrorrelationship.adoc[AbortSnapMirrorRelationship]
+* xref:reference_element_api_breaksnapmirrorrelationship.adoc[BreakSnapMirrorRelationship]
+* xref:reference_element_api_breaksnapmirrorvolume.adoc[BreakSnapMirrorVolume]
+* xref:reference_element_api_createsnapmirrorendpoint.adoc[CreaSnapMirrorEndpoint]
+* xref:reference_element_api_createsnapmirrorendpoint_unmanaged.adoc[CreateSnapMirrorEndpointUnmanaged]
+* xref:reference_element_api_createsnapmirrorrelationship.adoc[Crea relazioneSnapMirror]
+* xref:reference_element_api_createsnapmirrorvolume.adoc[CreaSnapMirrorVolume]
+* xref:reference_element_api_deletesnapmirrorendpoints.adoc[DeleteSnapMirrorEndpoints]
+* xref:reference_element_api_deletesnapmirrorrelationships.adoc[EliminaSnapMirrorRelazioni]
+* xref:reference_element_api_getontapversioninfo.adoc[GetOntapVersionInfo]
+* xref:reference_element_api_getsnapmirrorclusteridentity.adoc[OttieniSnapMirrorClusterIdentity]
+* xref:reference_element_api_initializesnapmirrorrelationship.adoc[InizializzaSnapMirrorRelationship]
+* xref:reference_element_api_listsnapmirroraggregates.adoc[ListSnapMirrorAggregates]
+* xref:reference_element_api_listsnapmirrorendpoints.adoc[ListSnapMirrorEndpoints]
+* xref:reference_element_api_listsnapmirrorluns.adoc[ListSnapMirrorLuns]
+* xref:reference_element_api_listsnapmirrornetworkinterfaces.adoc[ListSnapMirrorNetworkInterfaces]
+* xref:reference_element_api_listsnapmirrornodes.adoc[ListSnapMirrorNodes]
+* xref:reference_element_api_listsnapmirrorpolicies.adoc[ListSnapMirrorPolicies]
+* xref:reference_element_api_listsnapmirrorschedules.adoc[ListSnapMirrorSchedules]
+* xref:reference_element_api_listsnapmirrorrelationships.adoc[ListSnapMirrorRelationships]
+* xref:reference_element_api_listsnapmirrorvolumes.adoc[ListSnapMirrorVolumes]
+* xref:reference_element_api_listsnapmirrorvservers.adoc[ListSnapMirrorVservers]
+* xref:reference_element_api_modifysnapmirrorendpoint.adoc[ModificaSnapMirrorEndpoint]
+* xref:reference_element_api_modifysnapmirrorendpoint_unmanaged.adoc[ModifySnapMirrorEndpoint (non gestito)]
+* xref:reference_element_api_modifysnapmirrorrelationship.adoc[Modificare la relazione SnapMirror]
+* xref:reference_element_api_updatesnapmirrorrelationship.adoc[Aggiorna relazione SnapMirror]
+* xref:reference_element_api_quiescesnapmirrorrelationship.adoc[QuiesceSnapMirrorRelationship]
+* xref:reference_element_api_resumesnapmirrorrelationship.adoc[ResumeSnapMirrorRelationship]
+* xref:reference_element_api_resyncsnapmirrorrelationship.adoc[ResyncSnapMirrorRelationship]
+
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentazione per le versioni precedenti dei prodotti NetApp SolidFire ed Element"^]
+

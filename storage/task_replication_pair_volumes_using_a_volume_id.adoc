@@ -1,0 +1,63 @@
+---
+permalink: storage/task_replication_pair_volumes_using_a_volume_id.html 
+sidebar: sidebar 
+keywords: volume pairings, volume id, replication 
+summary: È possibile associare un volume a un altro volume su un cluster remoto se si dispone delle credenziali di amministratore del cluster per il cluster remoto. 
+---
+= Abbinare i volumi utilizzando un ID volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile associare un volume a un altro volume su un cluster remoto se si dispone dell'accesso come amministratore del cluster a entrambi i cluster su cui si desidera associare i volumi. Questo metodo utilizza l'ID del volume sul cluster remoto per avviare una connessione.
+
+.Cosa ti servirà
+* Assicurarsi che i cluster contenenti i volumi siano accoppiati.
+* Creare un nuovo volume sul cluster remoto.
++
+
+NOTE: Dopo il processo di associazione è possibile assegnare un'origine e una destinazione di replicazione.  Un'origine o una destinazione di replicazione può essere uno qualsiasi dei volumi di una coppia di volumi.  È necessario creare un volume di destinazione che non contenga dati e che abbia le stesse caratteristiche del volume di origine, come dimensioni, impostazione della dimensione del blocco per i volumi (512e o 4k) e configurazione QoS.  Se si assegna un volume esistente come destinazione di replica, i dati su quel volume verranno sovrascritti.  Il volume di destinazione può essere maggiore o uguale al volume di origine, ma non può essere minore.
+
+* Conoscere l'ID del volume di destinazione.
+
+
+.Passi
+. Selezionare *Gestione* > *Volumi*.
+. Fare clic sull'icona *Azioni* per il volume che si desidera associare.
+. Fare clic su *Associa*.
+. Nella finestra di dialogo *Volume di associazione*, selezionare *Avvia associazione*.
+. Selezionare *Lo voglio* per indicare che si ha accesso al cluster remoto.
+. Selezionare una *Modalità di replicazione* dall'elenco:
++
+** *In tempo reale (asincrono)*: le scritture vengono riconosciute al client dopo essere state eseguite sul cluster di origine.
+** *In tempo reale (sincrono)*: le scritture vengono riconosciute al client dopo essere state eseguite sia sul cluster di origine che su quello di destinazione.
+** *Solo snapshot*: vengono replicati solo gli snapshot creati sul cluster di origine.  Le scritture attive dal volume di origine non vengono replicate.
+
+
+. Selezionare un cluster remoto dall'elenco.
+. Scegli un ID volume remoto.
+. Fare clic su *Avvia associazione*.
++
+Il sistema apre una scheda del browser Web che si connette all'interfaccia utente Element del cluster remoto.  Potrebbe essere necessario accedere al cluster remoto con le credenziali di amministratore del cluster.
+
+. Nell'interfaccia utente dell'elemento del cluster remoto, selezionare *Completa associazione*.
+. Confermare i dettagli in *Conferma associazione volume*.
+. Fare clic su *Completa associazione*.
++
+Dopo aver confermato l'associazione, i due cluster avviano il processo di connessione dei volumi per l'associazione.  Durante il processo di associazione, è possibile visualizzare i messaggi nella colonna *Stato volume* della finestra *Coppie di volumi*.  La coppia di volumi viene visualizzata `PausedMisconfigured` finché non vengono assegnate la coppia di volumi sorgente e destinazione.
+
++
+Dopo aver completato correttamente l'associazione, si consiglia di aggiornare la tabella Volumi per rimuovere l'opzione *Associa* dall'elenco *Azioni* per il volume associato.  Se non si aggiorna la tabella, l'opzione *Coppia* rimane disponibile per la selezione.  Se si seleziona nuovamente l'opzione *Associa*, si apre una nuova scheda e poiché il volume è già associato, il sistema segnala un `StartVolumePairing Failed: xVolumeAlreadyPaired` messaggio di errore nella finestra *Volume coppia* della pagina Element UI.
+
+
+
+
+
+== Trova maggiori informazioni
+
+* xref:reference_replication_volume_pairing_messages.adoc[Messaggi di associazione del volume]
+* xref:reference_replication_volume_pairing_warnings.adoc[Avvisi di associazione del volume]
+* xref:task_replication_assign_replication_source_and_target_to_paired_volumes.adoc[Assegnare un'origine e una destinazione di replicazione ai volumi accoppiati]
+

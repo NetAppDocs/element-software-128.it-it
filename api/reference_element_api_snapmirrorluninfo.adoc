@@ -1,0 +1,112 @@
+---
+permalink: api/reference_element_api_snapmirrorluninfo.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorLunInfo 
+summary: 'L"oggetto snapMirrorLunInfo contiene informazioni sull"oggetto ONTAP LUN.' 
+---
+= snapMirrorLunInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto snapMirrorLunInfo contiene informazioni sull'oggetto ONTAP LUN.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+L'ID del sistema ONTAP di destinazione.
+ a| 
+intero
+
+
+
+ a| 
+creazioneTimestamp
+ a| 
+Ora di creazione del LUN.
+ a| 
+Stringa di data ISO 8601
+
+
+
+ a| 
+lunName
+ a| 
+Il nome del LUN.
+ a| 
+corda
+
+
+
+ a| 
+sentiero
+ a| 
+Il percorso del LUN.
+ a| 
+corda
+
+
+
+ a| 
+misurare
+ a| 
+La dimensione del LUN in byte.
+ a| 
+intero
+
+
+
+ a| 
+dimensioneUsato
+ a| 
+Numero di byte utilizzati dalla LUN.
+ a| 
+intero
+
+
+
+ a| 
+stato
+ a| 
+Lo stato di accesso corrente della LUN. Valori possibili:
+
+* in linea
+* non in linea
+* errore_estero_lun
+* nvfail
+* errore_spazio
+
+ a| 
+corda
+
+
+
+ a| 
+volume
+ a| 
+Nome del volume che contiene il LUN.
+ a| 
+corda
+
+
+
+ a| 
+server virtuale
+ a| 
+Il Vserver che contiene il LUN.
+ a| 
+corda
+
+|===

@@ -1,0 +1,87 @@
+---
+permalink: api/reference_element_api_snapmirroraggregate.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorAggregate 
+summary: 'L"oggetto snapMirrorAggregate contiene informazioni sugli aggregati ONTAP disponibili, ovvero raccolte di dischi resi disponibili ai volumi come storage.  È possibile ottenere queste informazioni utilizzando il metodo API ListSnapMirrorAggregates.' 
+---
+= snapMirrorAggregate
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto snapMirrorAggregate contiene informazioni sugli aggregati ONTAP disponibili, ovvero raccolte di dischi resi disponibili ai volumi come storage.  È possibile ottenere queste informazioni utilizzando il metodo API ListSnapMirrorAggregates.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+L'ID del sistema ONTAP di destinazione.
+ a| 
+intero
+
+
+
+ a| 
+NomeAggregato
+ a| 
+Il nome dell'aggregato.
+ a| 
+corda
+
+
+
+ a| 
+NomeNodo
+ a| 
+Nome del nodo ONTAP proprietario di questo aggregato.
+ a| 
+corda
+
+
+
+ a| 
+dimensioneDisponibile
+ a| 
+Numero di byte disponibili rimanenti nell'aggregato.
+ a| 
+intero
+
+
+
+ a| 
+dimensioneTotale
+ a| 
+La dimensione totale (in byte) dell'aggregato.
+ a| 
+intero
+
+
+
+ a| 
+percentuale di capacità utilizzata
+ a| 
+Percentuale di spazio su disco attualmente in uso.
+ a| 
+intero
+
+
+
+ a| 
+volumeConteggio
+ a| 
+Il numero di volumi totali.
+ a| 
+intero
+
+|===

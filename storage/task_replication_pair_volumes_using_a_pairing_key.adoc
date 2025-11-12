@@ -1,0 +1,74 @@
+---
+permalink: storage/task_replication_pair_volumes_using_a_pairing_key.html 
+sidebar: sidebar 
+keywords: volume pairings, pairing key, replication 
+summary: Se non si dispone delle credenziali di amministratore del cluster per un cluster remoto, è possibile associare un volume a un altro volume su un cluster remoto utilizzando una chiave di associazione. 
+---
+= Abbinare i volumi utilizzando una chiave di associazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si dispone dell'accesso come amministratore del cluster solo al cluster di origine (non si dispone delle credenziali di amministratore del cluster per un cluster remoto), è possibile associare un volume a un altro volume su un cluster remoto utilizzando una chiave di associazione.
+
+.Cosa ti servirà
+* Assicurarsi che i cluster contenenti i volumi siano accoppiati.
+* Assicurarsi che sul cluster remoto sia presente un volume da utilizzare per l'associazione.
++
+
+NOTE: Dopo il processo di associazione è possibile assegnare un'origine e una destinazione di replicazione.  Un'origine o una destinazione di replicazione può essere uno qualsiasi dei volumi di una coppia di volumi.  È necessario creare un volume di destinazione che non contenga dati e che abbia le stesse caratteristiche del volume di origine, come dimensioni, impostazione della dimensione del blocco per i volumi (512e o 4k) e configurazione QoS.  Se si assegna un volume esistente come destinazione di replica, i dati su quel volume verranno sovrascritti.  Il volume di destinazione può essere maggiore o uguale al volume di origine, ma non può essere minore.
+
+
+
+.Passi
+. Selezionare *Gestione* > *Volumi*.
+. Fare clic sull'icona *Azioni* per il volume che si desidera associare.
+. Fare clic su *Associa*.
+. Nella finestra di dialogo *Volume di associazione*, selezionare *Avvia associazione*.
+. Selezionare *Non* per indicare che non si ha accesso al cluster remoto.
+. Selezionare una *Modalità di replicazione* dall'elenco:
++
+** *In tempo reale (asincrono)*: le scritture vengono riconosciute al client dopo essere state eseguite sul cluster di origine.
+** *In tempo reale (sincrono)*: le scritture vengono riconosciute al client dopo essere state eseguite sia sul cluster di origine che su quello di destinazione.
+** *Solo snapshot*: vengono replicati solo gli snapshot creati sul cluster di origine.  Le scritture attive dal volume di origine non vengono replicate.
+
+
+. Fare clic su *Genera chiave*.
++
+
+NOTE: Questa azione genera una chiave di testo per l'associazione e crea una coppia di volumi non configurati sul cluster locale.  Se non si completa la procedura, sarà necessario eliminare manualmente la coppia di volumi.
+
+. Copia la chiave di associazione negli appunti del tuo computer.
+. Rendere la chiave di associazione accessibile all'amministratore del cluster nel sito remoto del cluster.
++
+
+NOTE: La chiave di associazione del volume deve essere trattata in modo sicuro e non utilizzata in un modo che possa consentire un accesso accidentale o non protetto.
+
++
+
+IMPORTANT: Non modificare nessuno dei caratteri nella chiave di associazione.  La chiave diventa non valida se viene modificata.
+
+. Nell'interfaccia utente dell'elemento del cluster remoto, selezionare *Gestione* > *Volumi*.
+. Fare clic sull'icona Azioni per il volume che si desidera associare.
+. Fare clic su *Associa*.
+. Nella finestra di dialogo *Volume di associazione*, selezionare *Completa associazione*.
+. Incolla la chiave di associazione dall'altro cluster nella casella *Chiave di associazione*.
+. Fare clic su *Completa associazione*.
++
+Dopo aver confermato l'associazione, i due cluster avviano il processo di connessione dei volumi per l'associazione.  Durante il processo di associazione, è possibile visualizzare i messaggi nella colonna *Stato volume* della finestra *Coppie di volumi*.  La coppia di volumi viene visualizzata `PausedMisconfigured` finché non vengono assegnate la coppia di volumi sorgente e destinazione.
+
++
+Dopo aver completato correttamente l'associazione, si consiglia di aggiornare la tabella Volumi per rimuovere l'opzione *Associa* dall'elenco *Azioni* per il volume associato.  Se non si aggiorna la tabella, l'opzione *Coppia* rimane disponibile per la selezione.  Se si seleziona nuovamente l'opzione *Associa*, si apre una nuova scheda e poiché il volume è già associato, il sistema segnala un `StartVolumePairing Failed: xVolumeAlreadyPaired` messaggio di errore nella finestra *Volume coppia* della pagina Element UI.
+
+
+
+
+
+== Trova maggiori informazioni
+
+* xref:reference_replication_volume_pairing_messages.adoc[Messaggi di associazione del volume]
+* xref:reference_replication_volume_pairing_warnings.adoc[Avvisi di associazione del volume]
+* xref:task_replication_assign_replication_source_and_target_to_paired_volumes.adoc[Assegnare un'origine e una destinazione di replicazione ai volumi accoppiati]
+

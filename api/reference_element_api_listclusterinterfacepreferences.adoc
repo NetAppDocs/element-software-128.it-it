@@ -1,0 +1,79 @@
+---
+permalink: api/reference_element_api_listclusterinterfacepreferences.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Il metodo ListClusterInterfacePreference consente ai sistemi integrati con cluster di archiviazione che eseguono il software Element di elencare le preferenze dell"interfaccia del cluster esistenti memorizzate nel sistema.  Questo metodo è per uso interno.' 
+---
+= ListClusterInterfacePreferences
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+IL `ListClusterInterfacePreference` Il metodo consente ai sistemi integrati con cluster di archiviazione che eseguono il software Element di elencare le preferenze dell'interfaccia del cluster esistente memorizzate nel sistema.  Questo metodo è per uso interno.
+
+
+
+== Parametri
+
+Questo metodo non ha parametri di input.
+
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+preferenze
+ a| 
+Un elenco di oggetti dell'interfaccia del cluster attualmente archiviati nel cluster di archiviazione, ciascuno contenente il nome e il valore della preferenza.
+ a| 
+Matrice di oggetti JSON
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+	"method": "ListClusterInterfacePreferences",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"preferences": [
+			{
+				"name": "prefname",
+				"value": "testvalue"
+			}
+		]
+	}
+}
+----
+
+
+== Nuovo dalla versione
+
+11,0

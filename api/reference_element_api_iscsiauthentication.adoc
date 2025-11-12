@@ -1,0 +1,62 @@
+---
+permalink: api/reference_element_api_iscsiauthentication.html 
+sidebar: sidebar 
+keywords: ISCSIAuthentication,iscsi,authentication 
+summary: 'L"oggetto ISCSIAuthentication contiene informazioni di autenticazione su una sessione ISCSI.' 
+---
+= Autenticazione ISCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto ISCSIAuthentication contiene informazioni di autenticazione su una sessione ISCSI.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+Metodo di autenticazione
+ a| 
+Metodo di autenticazione utilizzato durante l'accesso alla sessione iSCSI, ad esempio CHAP o Nessuno.
+ a| 
+corda
+
+
+
+ a| 
+chapAlgorithm
+ a| 
+L'algoritmo CHAP utilizzato, ad esempio MD5, SHA1*, SHA-256* o SHA3-256*
+ a| 
+corda
+
+
+
+ a| 
+chapUsername
+ a| 
+Nome utente CHAP specificato dall'iniziatore durante l'accesso a una sessione iSCSI.
+ a| 
+corda
+
+
+
+ a| 
+direzione
+ a| 
+La direzione dell'autenticazione, ad esempio unidirezionale (solo l'iniziatore) o bidirezionale (sia l'iniziatore che la destinazione).
+ a| 
+corda
+
+|===
+* Disponibile a partire da Element 12.7.
+

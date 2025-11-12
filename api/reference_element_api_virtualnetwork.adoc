@@ -1,0 +1,106 @@
+---
+permalink: api/reference_element_api_virtualnetwork.html 
+sidebar: sidebar 
+keywords: object,objects,virtualNetwork 
+summary: 'L"oggetto virtualNetwork contiene informazioni su una specifica rete virtuale.  È possibile utilizzare il metodo API ListVirtualNetworks per recuperare un elenco di queste informazioni per tutte le reti virtuali nel sistema.' 
+---
+= rete virtuale
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto virtualNetwork contiene informazioni su una specifica rete virtuale.  Puoi usare il `ListVirtualNetworks` Metodo API per recuperare un elenco di queste informazioni per tutte le reti virtuali nel sistema.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+blocchi di indirizzi
+ a| 
+L'intervallo di blocchi di indirizzi attualmente assegnati alla rete virtuale.  Membri:
+
+* disponibile: stringa binaria composta da "1" e "0". "1" indica che l'indirizzo IP è disponibile, mentre "0" indica che l'IP non è disponibile.  La stringa viene letta da destra a sinistra, con la cifra all'estrema destra che rappresenta il primo indirizzo IP nell'elenco dei blocchi di indirizzi.
+* dimensione: la dimensione di questo blocco di indirizzi.
+* inizio: il primo indirizzo IP nel blocco.
+
+ a| 
+Matrice di oggetti JSON
+
+
+
+ a| 
+attributi
+ a| 
+Elenco di coppie nome-valore nel formato oggetto JSON.
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+nome
+ a| 
+Il nome assegnato alla rete virtuale.
+ a| 
+corda
+
+
+
+ a| 
+maschera di rete
+ a| 
+L'indirizzo IP della netmask per la rete virtuale.
+ a| 
+corda
+
+
+
+ a| 
+svip
+ a| 
+L'indirizzo IP di archiviazione per la rete virtuale.
+ a| 
+corda
+
+
+
+ a| 
+porta d'accesso
+ a| 
+Il gateway utilizzato per la rete virtuale.
+ a| 
+corda
+
+
+
+ a| 
+ID di rete virtuale
+ a| 
+Identificatore univoco per una rete virtuale.
+ a| 
+intero
+
+
+
+ a| 
+virtualNetworkTag
+ a| 
+Identificatore del tag VLAN.
+ a| 
+intero
+
+|===
+
+
+== Trova maggiori informazioni
+
+xref:reference_element_api_listvirtualnetworks.adoc[ElencoRetiVirtuali]

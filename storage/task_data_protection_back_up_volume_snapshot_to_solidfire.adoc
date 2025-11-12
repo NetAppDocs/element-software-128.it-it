@@ -1,0 +1,42 @@
+---
+permalink: storage/task_data_protection_back_up_volume_snapshot_to_solidfire.html 
+sidebar: sidebar 
+keywords: volume snapshot, backup, solidfire cluster 
+summary: È possibile eseguire il backup di snapshot di volumi residenti su un cluster SolidFire su un cluster SolidFire remoto. 
+---
+= Eseguire il backup di uno snapshot del volume su un cluster SolidFire
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile eseguire il backup di snapshot di volumi residenti su un cluster SolidFire su un cluster SolidFire remoto.
+
+Assicurarsi che i cluster di origine e di destinazione siano accoppiati.
+
+Quando si esegue il backup o il ripristino da un cluster a un altro, il sistema genera una chiave da utilizzare come autenticazione tra i cluster.  Questa chiave di scrittura del volume di massa consente al cluster di origine di autenticarsi con il cluster di destinazione, garantendo un certo livello di sicurezza durante la scrittura sul volume di destinazione.  Come parte del processo di backup o ripristino, è necessario generare una chiave di scrittura del volume di massa dal volume di destinazione prima di avviare l'operazione.
+
+. Nel cluster di destinazione, fare clic su *Gestione* > *Volumi*.
+. Fare clic sull'icona *Azioni* per il volume di destinazione.
+. Nel menu visualizzato, fare clic su *Ripristina da*.
+. Nella finestra di dialogo *Ripristino integrato*, in *Ripristina da*, selezionare * SolidFire*.
+. Selezionare un formato dati in *Formato dati*:
++
+** *Nativo*: formato compresso leggibile solo dai sistemi di archiviazione SolidFire .
+** *Non compresso*: formato non compresso compatibile con altri sistemi.
+
+
+. Fare clic su *Genera chiave*.
+. Copia la chiave dalla casella *Chiave di scrittura volume in blocco* negli appunti.
+. Nel cluster di origine, fare clic su *Protezione dati* > *Snapshot*.
+. Fare clic sull'icona Azioni relativa allo snapshot che si desidera utilizzare per il backup.
+. Nel menu visualizzato, fare clic su *Backup su*.
+. Nella finestra di dialogo **Backup integrato**, in *Backup su*, selezionare * SolidFire*.
+. Selezionare lo stesso formato dati selezionato in precedenza nel campo *Formato dati*.
+. Immettere l'indirizzo IP virtuale di gestione del cluster del volume di destinazione nel campo *MVIP cluster remoto*.
+. Immettere il nome utente del cluster remoto nel campo *Nome utente del cluster remoto*.
+. Immettere la password del cluster remoto nel campo *Password cluster remoto*.
+. Nel campo *Chiave di scrittura volume di massa*, incollare la chiave generata in precedenza sul cluster di destinazione.
+. Fare clic su *Inizia a leggere*.
+

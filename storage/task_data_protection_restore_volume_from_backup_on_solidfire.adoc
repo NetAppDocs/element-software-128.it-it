@@ -1,0 +1,40 @@
+---
+permalink: storage/task_data_protection_restore_volume_from_backup_on_solidfire.html 
+sidebar: sidebar 
+keywords: volume restore, solidfire storage cluster 
+summary: È possibile ripristinare un volume da un backup su un cluster di archiviazione SolidFire . 
+---
+= Ripristinare un volume dal backup su un cluster di archiviazione SolidFire
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile ripristinare un volume da un backup su un cluster di archiviazione SolidFire .
+
+Quando si esegue il backup o il ripristino da un cluster a un altro, il sistema genera una chiave da utilizzare come autenticazione tra i cluster.  Questa chiave di scrittura del volume di massa consente al cluster di origine di autenticarsi con il cluster di destinazione, garantendo un certo livello di sicurezza durante la scrittura sul volume di destinazione.  Come parte del processo di backup o ripristino, è necessario generare una chiave di scrittura del volume di massa dal volume di destinazione prima di avviare l'operazione.
+
+. Nel cluster di destinazione, fare clic su *Gestione* > *Volumi*.
+. Fare clic sull'icona Azioni per il volume che si desidera ripristinare.
+. Nel menu visualizzato, fare clic su *Ripristina da*.
+. Nella finestra di dialogo *Ripristino integrato*, in *Ripristina da*, selezionare * SolidFire*.
+. Selezionare l'opzione corrispondente al backup in *Formato dati*:
++
+** *Nativo*: formato compresso leggibile solo dai sistemi di archiviazione SolidFire .
+** *Non compresso*: formato non compresso compatibile con altri sistemi.
+
+
+. Fare clic su *Genera chiave*.
+. Copiare le informazioni *Bulk Volume Write Key* negli appunti.
+. Nel cluster di origine, fare clic su *Gestione* > *Volumi*.
+. Fare clic sull'icona Azioni per il volume che si desidera utilizzare per il ripristino.
+. Nel menu visualizzato, fare clic su *Backup su*.
+. Nella finestra di dialogo *Backup integrato*, selezionare * SolidFire* in *Backup su*.
+. Selezionare l'opzione corrispondente al backup in *Formato dati*.
+. Immettere l'indirizzo IP virtuale di gestione del cluster del volume di destinazione nel campo *MVIP cluster remoto*.
+. Immettere il nome utente del cluster remoto nel campo *Nome utente del cluster remoto*.
+. Immettere la password del cluster remoto nel campo *Password cluster remoto*.
+. Incolla la chiave dagli appunti nel campo *Chiave di scrittura volume in blocco*.
+. Fare clic su *Inizia a leggere*.
+

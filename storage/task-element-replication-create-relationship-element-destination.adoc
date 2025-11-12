@@ -1,0 +1,62 @@
+---
+permalink: storage/task-element-replication-create-relationship-element-destination.html 
+sidebar: sidebar 
+keywords: ontap, cli, create, relationship, replication, snapmirror 
+summary: A partire da ONTAP 9.4, è possibile utilizzare SnapMirror per replicare copie snapshot di una LUN creata su una sorgente ONTAP su una destinazione Element.  Potresti utilizzare la LUN per migrare i dati da ONTAP al software Element. 
+---
+= Creare una relazione da una sorgente ONTAP a una destinazione Element
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partire da ONTAP 9.4, è possibile utilizzare SnapMirror per replicare copie snapshot di una LUN creata su una sorgente ONTAP su una destinazione Element.  Potresti utilizzare la LUN per migrare i dati da ONTAP al software Element.
+
+.Prima di iniziare
+* Il nodo di destinazione dell'elemento deve essere reso accessibile a ONTAP.
+* Il volume Element deve essere stato abilitato per la replica SnapMirror .
+
+
+.Informazioni su questo compito
+È necessario specificare il percorso di destinazione dell'elemento nel modulo `<hostip:>/lun/<name>` , dove "`lun`" è la stringa effettiva "`lun`" e `name` è il nome del volume Element.
+
+Le regole di replicazione sono le seguenti:
+
+* La relazione di replicazione deve avere una policy di tipo "`async-mirror`".
++
+È possibile utilizzare una policy predefinita o personalizzata.
+
+* Sono supportati solo i LUN iSCSI.
+* Non è possibile replicare più di una LUN da un volume ONTAP a un volume Element.
+* Non è possibile replicare una LUN da un volume ONTAP a più volumi Element.
+
+
+.Fare un passo
+. Creare una relazione di replica da una sorgente ONTAP a una destinazione Element:
++
+`snapmirror create -source-path <SVM:volume>|<cluster://SVM/volume> -destination-path <hostip:>/lun/<name> -type XDP -schedule schedule -policy <policy>`
+
++
+Per la sintassi completa dei comandi, vedere la pagina man.
+
++
+L'esempio seguente crea una relazione SnapMirror DR utilizzando l'impostazione predefinita `MirrorLatest` politica:
+
++
+[listing]
+----
+cluster_dst::> snapmirror create -source-path svm_1:volA_dst -destination-path 10.0.0.11:/lun/0005 -type XDP -schedule my_daily -policy MirrorLatest
+----
++
+L'esempio seguente crea una relazione SnapMirror DR utilizzando il valore personalizzato `my_mirror` politica:
+
++
+[listing]
+----
+cluster_dst::> snapmirror create -source-path svm_1:volA_dst -destination-path 10.0.0.11:/lun/0005 -type XDP -schedule my_daily -policy my_mirror
+----
+
+
+.Dopo aver finito
+Utilizzare il `snapmirror show` comando per verificare che la relazione SnapMirror sia stata creata.  Per la sintassi completa dei comandi, vedere la pagina man.

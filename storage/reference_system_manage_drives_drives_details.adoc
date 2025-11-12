@@ -1,0 +1,55 @@
+---
+permalink: storage/reference_system_manage_drives_drives_details.html 
+sidebar: sidebar 
+keywords: drives, details, manage, filter, cluster 
+summary: La pagina Unità nella scheda Cluster fornisce un elenco delle unità attive nel cluster.  È possibile filtrare la pagina selezionando tra le schede Attivo, Disponibile, Rimozione, Cancellazione e Non riuscito. 
+---
+= Dettagli delle unità
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La pagina Unità nella scheda Cluster fornisce un elenco delle unità attive nel cluster.  È possibile filtrare la pagina selezionando tra le schede Attivo, Disponibile, Rimozione, Cancellazione e Non riuscito.
+
+Quando si inizializza per la prima volta un cluster, l'elenco delle unità attive è vuoto.  È possibile aggiungere unità non assegnate a un cluster ed elencate nella scheda Disponibili dopo la creazione di un nuovo cluster SolidFire .
+
+Nell'elenco delle unità attive compaiono i seguenti elementi.
+
+* *ID unità*
++
+Numero sequenziale assegnato all'unità.
+
+* *ID nodo*
++
+Numero di nodo assegnato quando il nodo viene aggiunto al cluster.
+
+* *Nome nodo*
++
+Il nome del nodo che ospita l'unità.
+
+* *Fessura*
++
+Il numero dello slot in cui si trova fisicamente l'unità.
+
+* *Capacità*
++
+La dimensione dell'unità, in GB.
+
+* *Seriale*
++
+Il numero di serie dell'unità.
+
+* *Usura rimanente*
++
+L'indicatore del livello di usura.
+
++
+Il sistema di archiviazione segnala la quantità approssimativa di usura disponibile su ciascuna unità a stato solido (SSD) per la scrittura e la cancellazione dei dati.  Un'unità che ha consumato il 5 percento dei cicli di scrittura e cancellazione previsti segnala un'usura residua del 95 percento.  Il sistema non aggiorna automaticamente le informazioni sull'usura dell'unità; è possibile aggiornare o chiudere e ricaricare la pagina per aggiornare le informazioni.
+
+* *Tipo*
++
+Il tipo di unità.  Il tipo può essere blocco o metadati.
+
+

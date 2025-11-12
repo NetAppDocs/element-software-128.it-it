@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_listnetworkinterfaces.html 
+sidebar: sidebar 
+keywords: network,interface,interfaces,list,listing,listnetworkinterfaces 
+summary: 'È possibile utilizzare il metodo ListNetworkInterfaces per elencare le informazioni su ciascuna interfaccia di rete su un nodo.  Questo metodo API è pensato per essere utilizzato su singoli nodi; per accedere ai singoli nodi è richiesta l"autenticazione tramite ID utente e password.  Tuttavia, è possibile utilizzare questo metodo sul cluster se al parametro force viene assegnato il valore true nella chiamata al metodo.  Quando il parametro viene utilizzato sul cluster, vengono elencate tutte le interfacce.' 
+---
+= ListNetworkInterfaces
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `ListNetworkInterfaces` metodo per elencare le informazioni su ciascuna interfaccia di rete su un nodo.  Questo metodo API è pensato per essere utilizzato su singoli nodi; per accedere ai singoli nodi è richiesta l'autenticazione tramite ID utente e password.  Tuttavia, è possibile utilizzare questo metodo sul cluster se al parametro force viene assegnato il valore true nella chiamata al metodo.  Quando il parametro viene utilizzato sul cluster, vengono elencate tutte le interfacce.
+
+
+
+== Parametro
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+forza
+ a| 
+Valori possibili:
+
+* true: vengono restituite informazioni su tutte le interfacce di rete nel cluster.
+* false: non viene restituita alcuna informazione.
+
+ a| 
+booleano
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+interfacce
+ a| 
+Un elenco di informazioni di configurazione per ciascuna interfaccia di rete del nodo di archiviazione (o dell'intero cluster di archiviazione, se force = `true` ).
+ a| 
+xref:reference_element_api_networkinterface.adoc[interfaccia di rete]vettore
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+"method": "ListNetworkInterfaces",
+"params": {},
+"id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"nodes": [
+			{
+				"nodeID": 1,
+				"result": {
+					"interfaces": [
+						{
+							"address": "10.117.80.32",
+							"addressV6": "::",
+							"broadcast": "10.117.95.255",
+							"macAddress": "90:b1:1c:42:e0:1a",
+							"mtu": 9000,
+							"name": "Bond10G",
+							"namespace": false,
+							"netmask": "255.255.240.0",
+							"status": "UpAndRunning",
+							"type": "BondMaster",
+							"virtualNetworkTag": 0
+						},
+						{
+							"address": "10.117.64.32",
+							"addressV6": "::",
+							"broadcast": "10.117.79.255",
+							"macAddress": "90:b1:1c:42:e0:1e",
+							"mtu": 1500,
+							"name": "Bond1G",
+							"namespace": false,
+							"netmask": "255.255.240.0",
+							"status": "UpAndRunning",
+							"type": "BondMaster",
+							"virtualNetworkTag": 0
+						},
+						{
+							"address": "0.0.0.0",
+							"addressV6": "::",
+							"broadcast": "0.0.0.0",
+							"macAddress": "90:b1:1c:42:e0:1a",
+							"mtu": 9000,
+							"name": "eth0",
+							"namespace": false,
+							"netmask": "0.0.0.0",
+							"status": "UpAndRunning",
+							"type": "BondSlave",
+							"virtualNetworkTag": 0
+						},
+						{
+							"address": "127.0.0.1",
+							"addressV6": "::",
+							"broadcast": "0.0.0.0",
+							"macAddress": "00:00:00:00:00:00",
+							"mtu": 0,
+							"name": "lo",
+							"namespace": false,
+							"netmask": "0.0.0.0",
+							"status": "UpAndRunning",
+							"type": "Loopback",
+							"virtualNetworkTag": 0
+						}
+					]
+				}
+			}
+		]
+	}
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

@@ -1,0 +1,23 @@
+---
+permalink: storage/task_system_manage_cluster_terms_disable_the_terms_of_use_banner.html 
+sidebar: sidebar 
+keywords: terms of use banner, disable 
+summary: 'Puoi disattivare il banner Termini di utilizzo.  Con il banner disabilitato, all"utente non viene più richiesto di accettare i termini di utilizzo quando utilizza Element UI.' 
+---
+= Disattiva il banner Termini di utilizzo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi disattivare il banner Termini di utilizzo.  Con il banner disabilitato, all'utente non viene più richiesto di accettare i termini di utilizzo quando utilizza Element UI.
+
+* Per configurare i Termini di utilizzo è necessario disporre dei privilegi di amministratore del cluster.
+* Assicurati che i Termini di utilizzo siano abilitati.
++
+.. Fare clic su *Utenti* > *Termini di utilizzo*.
+.. Fare clic su *Disabilita*.
+
+
+

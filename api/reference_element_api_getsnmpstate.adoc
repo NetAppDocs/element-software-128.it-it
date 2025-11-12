@@ -1,0 +1,101 @@
+---
+permalink: api/reference_element_api_getsnmpstate.html 
+sidebar: sidebar 
+keywords: snmp,state,get,getting,getsnmpstate 
+summary: È possibile utilizzare il metodo GetSnmpState per ottenere lo stato corrente della funzionalità SNMP. 
+---
+= OttieniSnmpState
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `GetSnmpState` metodo per ottenere lo stato corrente della funzionalità SNMP.
+
+
+
+== Parametri
+
+Questo metodo non ha parametri di input.
+
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+abilitato
+ a| 
+Valori possibili:
+
+* VERO
+* falso
+
+
+Il valore predefinito è falso. Restituisce true se i nodi nel cluster sono configurati per SNMP.
+ a| 
+booleano
+
+
+
+ a| 
+snmpV3Enabled
+ a| 
+Valori possibili:
+
+* VERO
+* falso
+
+
+Il valore predefinito è falso. Restituisce true se i nodi nel cluster sono configurati per SNMP v3.
+ a| 
+booleano
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "method": "GetSnmpState",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+   "enabled": true,
+   "snmpV3Enabled": false
+   }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6
+
+
+
+== Trova maggiori informazioni
+
+xref:reference_element_api_setsnmpacl.adoc[SetSnmpACL]

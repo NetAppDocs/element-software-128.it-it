@@ -1,0 +1,19 @@
+---
+permalink: storage/task_replication_validate_the_cluster_pair_connection.html 
+sidebar: sidebar 
+keywords: cluster pair connection, validate 
+summary: 'Una volta completata l"associazione dei cluster, potrebbe essere opportuno verificare la connessione della coppia di cluster per garantire il successo della replica.' 
+---
+= Convalida la connessione della coppia di cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una volta completata l'associazione dei cluster, potrebbe essere opportuno verificare la connessione della coppia di cluster per garantire il successo della replica.
+
+. Nel cluster locale, selezionare *Protezione dati* > *Coppie cluster*.
+. Nella finestra *Coppie di cluster*, verificare che la coppia di cluster sia connessa.
+. *Facoltativo:* tornare al cluster locale e alla finestra *Coppie di cluster* e verificare che la coppia di cluster sia connessa.
+

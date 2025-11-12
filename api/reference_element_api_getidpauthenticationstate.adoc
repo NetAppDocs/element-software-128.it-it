@@ -1,0 +1,68 @@
+---
+permalink: api/reference_element_api_getidpauthenticationstate.html 
+sidebar: sidebar 
+keywords: IdP,idp,authentication,retrieve get,idp state 
+summary: È possibile utilizzare il metodo GetIdpAuthenticationState per restituire informazioni sullo stato di autenticazione tramite IdP di terze parti. 
+---
+= Ottieni stato di autenticazione Idp
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `GetIdpAuthenticationState` metodo per restituire informazioni sullo stato dell'autenticazione tramite IdP di terze parti.
+
+
+
+== Parametri
+
+Questo metodo non ha parametri di input.
+
+
+
+== Valori di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+abilitato
+ a| 
+Indica se è abilitata l'autenticazione IdP di terze parti.
+ a| 
+booleano
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "method": "GetIdpAuthenticationState"
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "result": {"enabled": true}
+}
+----
+
+
+== Nuovo dalla versione
+
+12,0

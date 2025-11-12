@@ -1,0 +1,29 @@
+---
+permalink: storage/task_replication_pair_volumes.html 
+sidebar: sidebar 
+keywords: volume pairings, replication, cluster, cluster pair 
+summary: 'Dopo aver stabilito una connessione tra i cluster in una coppia di cluster, è possibile associare un volume su un cluster con un volume sull"altro cluster nella coppia.  Quando viene stabilita una relazione di associazione di volumi, è necessario identificare quale volume è la destinazione della replica.' 
+---
+= Volumi di coppia
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver stabilito una connessione tra i cluster in una coppia di cluster, è possibile associare un volume su un cluster con un volume sull'altro cluster nella coppia.  Quando viene stabilita una relazione di associazione di volumi, è necessario identificare quale volume è la destinazione della replica.
+
+È possibile associare due volumi per la replica in tempo reale archiviati su cluster di archiviazione diversi in una coppia di cluster connessi.  Dopo aver associato due cluster, è possibile configurare i volumi attivi su un cluster in modo che vengano replicati continuamente su un secondo cluster, garantendo una protezione continua dei dati (CDP).  È anche possibile assegnare uno dei due volumi come origine o destinazione della replica.
+
+Gli abbinamenti di volume sono sempre uno a uno.  Dopo che un volume fa parte di un abbinamento con un volume su un altro cluster, non è possibile abbinarlo nuovamente a nessun altro volume.
+
+.Cosa ti servirà
+* Hai stabilito una connessione tra i cluster in una coppia di cluster.
+* Si dispone dei privilegi di amministratore del cluster per uno o entrambi i cluster associati.
+
+
+.Passi
+. xref:task_replication_create_a_target_volume_with_read_write_access.adoc[Crea un volume di destinazione con accesso in lettura o scrittura]
+. xref:task_replication_pair_volumes_using_volume_id_or_pairing_key.adoc[Associare i volumi utilizzando un ID volume o una chiave di associazione]
+. xref:task_replication_assign_replication_source_and_target_to_paired_volumes.adoc[Assegnare un'origine e una destinazione di replicazione ai volumi accoppiati]
+

@@ -1,0 +1,100 @@
+---
+permalink: api/reference_element_api_getclusterhardwareinfo.html 
+sidebar: sidebar 
+keywords: get,getting,cluster,hardware,getclusterhardwareinfo 
+summary: 'È possibile utilizzare il metodo GetClusterHardwareInfo per recuperare lo stato hardware e le informazioni per tutti i nodi Fibre Channel, i nodi iSCSI e le unità nel cluster.  In genere, ciò include produttori, fornitori, versioni e altre informazioni di identificazione dell"hardware associate.' 
+---
+= OttieniClusterHardwareInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `GetClusterHardwareInfo` Metodo per recuperare lo stato hardware e le informazioni per tutti i nodi Fibre Channel, nodi iSCSI e unità nel cluster.  In genere, ciò include produttori, fornitori, versioni e altre informazioni di identificazione dell'hardware associate.
+
+
+
+== Parametro
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+tipo
+ a| 
+Includere nella risposta solo uno dei seguenti tipi di informazioni hardware. Valori possibili:
+
+* unità:
++
+Elenca solo le informazioni sull'unità nella risposta.
+
+* nodi: elenca solo le informazioni sui nodi nella risposta.
+* tutto: include nella risposta sia le informazioni sull'unità che quelle sul nodo.
+
+
+Se questo parametro viene omesso, si presume che il tipo sia all.
+ a| 
+corda
+ a| 
+Tutto
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+clusterHardwareInfo
+ a| 
+Informazioni hardware per tutti i nodi e le unità nel cluster.  Ogni oggetto in questo output è etichettato con il nodeID del nodo specificato.
+ a| 
+xref:reference_element_api_hardwareinfo.adoc[Informazioni hardware]
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "method": "GetClusterHardwareInfo",
+    "params": {
+        "type": "all"
+    },
+    "id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Data la lunghezza di questo esempio di risposta, esso è documentato in un argomento supplementare.
+
+
+
+== Nuovo dalla versione
+
+9,6
+
+
+
+== Trova maggiori informazioni
+
+xref:reference_element_api_response_example_getclusterhardwareinfo.adoc[OttieniClusterHardwareInfo]

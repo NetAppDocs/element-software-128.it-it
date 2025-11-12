@@ -1,0 +1,195 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_upgrade_management_node.html 
+summary: Come parte di un aggiornamento del sistema di archiviazione NetApp SolidFire , si aggiorna il nodo di gestione. 
+keywords: netapp, cluster, management node, mNode, upgrade, 10, 11.0, 11.1, 11.3, 11.5, 11.7, 12.0, 12.2, 12.3, 12.3.1, 12.3.2, 12.3.x, 12.5, 12.7, 12.8 
+---
+= Aggiornare un nodo di gestione
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile aggiornare il nodo di gestione alla versione 12.5 o successiva dalla versione 12.3.x o successiva.
+
+Per aggiornare il software Element sul cluster di storage non è più necessario aggiornare il sistema operativo del nodo di gestione.  È sufficiente aggiornare i servizi di gestione alla versione più recente per eseguire gli aggiornamenti di Element utilizzando NetApp Hybrid Cloud Control.  Seguire la procedura di aggiornamento del nodo di gestione per il proprio scenario se si desidera aggiornare il sistema operativo del nodo di gestione per altri motivi, ad esempio per correggere problemi di sicurezza.
+
+
+NOTE: Se hai bisogno di informazioni sull'aggiornamento dei nodi di gestione 12.2 o precedenti, consulta https://docs.netapp.com/us-en/element-software-123/upgrade/task_hcc_upgrade_management_node.html["Documentazione sull'aggiornamento del nodo di gestione Element 12.3.x"^] .
+
+
+
+== Passaggio 1: aggiornare la versione hardware della VM su un nodo di gestione
+
+Se si esegue un aggiornamento sul posto di un nodo di gestione esistente a Element 12.8, prima di eseguire l'aggiornamento è necessario assicurarsi che la versione hardware della VM sul nodo di gestione sia compatibile con ESXi 6.7 (versione hardware della VM 14) o successiva, a seconda dell'ambiente.
+
+.Passi
+. Accedi a vSphere Web Client come amministratore vCenter.
+. Dal menu vSphere Client, seleziona *VM e modelli*.
+. Fare clic con il pulsante destro del mouse sulla macchina virtuale (VM) e selezionare *Spegnimento* > *Arresta il sistema operativo guest*.
++
+Attendere che la macchina virtuale sia spenta.
+
+. Fare clic con il pulsante destro del mouse sulla VM e selezionare *Compatibilità* > *Aggiorna compatibilità VM*.
+. Selezionare *Sì*.
+. Selezionare ESXi 6.7 o una versione successiva, a seconda della versione del proprio ambiente vSphere.
+. Selezionare *OK*.
+. Una volta completato l'aggiornamento, fare clic con il pulsante destro del mouse sulla VM e selezionare *Alimentazione* > *Accendi*.
+. Selezionare *vSphere Client Update* e verificare che la compatibilità della VM sia alla versione desiderata.
+
+
+
+
+== Passaggio 2: aggiornare un nodo di gestione a Element 12.5 o versione successiva
+
+Scegli una delle seguenti opzioni di aggiornamento:
+
+* <<Aggiornare un nodo di gestione alla versione 12.5 o successiva dalla versione 12.3.x o successiva>>
+* <<Riconfigurare l'autenticazione utilizzando l'API REST del nodo di gestione>>
++
+Seleziona questa opzione se hai aggiornato *sequenzialmente* (1) la versione dei servizi di gestione e (2) la versione di Element Storage e desideri *mantenere* il nodo di gestione esistente:
+
+
+
+
+NOTE: Se non si aggiornano in sequenza i servizi di gestione seguiti dall'archiviazione degli elementi, non sarà possibile riconfigurare la riautenticazione utilizzando questa procedura.  Seguire invece la procedura di aggiornamento appropriata.
+
+
+
+=== Aggiornare un nodo di gestione alla versione 12.5 o successiva dalla versione 12.3.x o successiva
+
+È possibile eseguire un aggiornamento sul posto del nodo di gestione dalla versione 12.3.x o successiva alla versione 12.5 o successiva senza dover predisporre una nuova VM del nodo di gestione.
+
+
+NOTE: Il nodo di gestione Element 12.5 o successivo è un aggiornamento facoltativo.  Non è necessario per le distribuzioni esistenti.
+
+.Prima di iniziare
+* La RAM della VM del nodo di gestione è di 24 GB.
+* Il nodo di gestione che intendi aggiornare è la versione 12.0 e utilizza la rete IPv4.  La versione 12.5 o successiva del nodo di gestione non supporta IPv6.
++
+
+TIP: Per verificare la versione del tuo nodo di gestione, accedi al tuo nodo di gestione e visualizza il numero di versione dell'elemento nel banner di accesso.
+
+* Hai aggiornato il tuo pacchetto di servizi di gestione all'ultima versione utilizzando NetApp Hybrid Cloud Control.  È possibile accedere a NetApp Hybrid Cloud Control dal seguente IP: `\https://<ManagementNodeIP>`
+* Se si sta aggiornando il nodo di gestione alla versione 12.5 o successiva, per procedere è necessario disporre dei servizi di gestione 2.21.61 o successivi.
+* Hai configurato un adattatore di rete aggiuntivo (se necessario) utilizzando le istruzioni perlink:../mnode/task_mnode_install_add_storage_NIC.html["configurazione di una scheda di rete di archiviazione aggiuntiva"] .
++
+
+NOTE: I volumi persistenti potrebbero richiedere una scheda di rete aggiuntiva se eth0 non può essere instradato verso SVIP.  Configurare una nuova scheda di rete sulla rete di archiviazione iSCSI per consentire la configurazione di volumi persistenti.
+
+* I nodi di archiviazione eseguono Element 12.3.x o versioni successive.
+
+
+.Passi
+. Accedere alla VM del nodo di gestione tramite SSH o accesso alla console.
+. Scarica il https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["nodo di gestione ISO"^] per il software Element dal sito di supporto NetApp alla VM del nodo di gestione.
++
+
+NOTE: Il nome dell'ISO è simile a `solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso`
+
+. Verificare l'integrità del download eseguendo md5sum sul file scaricato e confrontando l'output con quanto disponibile sul sito di supporto NetApp per il software Element, come nell'esempio seguente:
++
+`sudo md5sum -b <path to iso>/solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso`
+
+. Montare l'immagine ISO del nodo di gestione e copiare il contenuto nel file system utilizzando i seguenti comandi:
++
+[listing]
+----
+sudo mkdir -p /upgrade
+----
++
+[listing]
+----
+sudo mount <solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso> /mnt
+----
++
+[listing]
+----
+sudo cp -r /mnt/* /upgrade
+----
+. Passare alla directory home e smontare il file ISO da `/mnt` :
++
+[listing]
+----
+sudo umount /mnt
+----
+. Eliminare l'ISO per risparmiare spazio sul nodo di gestione:
++
+[listing]
+----
+sudo rm <path to iso>/solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso
+----
+. Sul nodo di gestione che stai aggiornando, esegui il seguente comando per aggiornare la versione del sistema operativo del nodo di gestione.  Dopo l'aggiornamento, lo script conserva tutti i file di configurazione necessari, come le impostazioni del proxy e del collettore Active IQ .
++
+[listing]
+----
+sudo /sf/rtfi/bin/sfrtfi_inplace file:///upgrade/casper/filesystem.squashfs sf_upgrade=1
+----
++
+Una volta completato il processo di aggiornamento, il nodo di gestione si riavvia con un nuovo sistema operativo.
+
++
+
+NOTE: Dopo aver eseguito il comando sudo descritto in questo passaggio, la sessione SSH viene terminata.  Per un monitoraggio continuo è necessario l'accesso alla console.  Se non è possibile accedere alla console durante l'aggiornamento, riprovare ad accedere tramite SSH e verificare la connettività dopo 15-30 minuti.  Una volta effettuato l'accesso, puoi confermare la nuova versione del sistema operativo nel banner SSH che indica che l'aggiornamento è riuscito.
+
+. Sul nodo di gestione, eseguire il comando `redeploy-mnode` script per conservare le impostazioni di configurazione dei servizi di gestione precedenti:
++
+
+NOTE: Lo script conserva la configurazione precedente dei servizi di gestione, inclusa la configurazione del servizio di raccolta Active IQ , dei controller (vCenter) o del proxy, a seconda delle impostazioni.
+
++
+[listing]
+----
+sudo /sf/packages/mnode/redeploy-mnode -mu <mnode user>
+----
+
+
+
+IMPORTANT: Se in precedenza hai disabilitato la funzionalità SSH sul nodo di gestione, devilink:../mnode/task_mnode_ssh_management.html["disabilitare nuovamente SSH"] sul nodo di gestione recuperato.  Capacità SSH che forniscelink:../mnode/task_mnode_enable_remote_support_connections.html["Accesso alla sessione del tunnel di supporto remoto (RST) del supporto NetApp"] è abilitato sul nodo di gestione per impostazione predefinita.
+
+
+
+=== Riconfigurare l'autenticazione utilizzando l'API REST del nodo di gestione
+
+È possibile mantenere il nodo di gestione esistente se sono stati aggiornati in sequenza (1) i servizi di gestione e (2) l'archiviazione degli elementi.  Se è stato seguito un ordine di aggiornamento diverso, consultare le procedure per gli aggiornamenti dei nodi di gestione in loco.
+
+.Prima di iniziare
+* Hai aggiornato i tuoi servizi di gestione alla versione 2.20.69 o successiva.
+* Il cluster di archiviazione esegue Element 12.3 o versione successiva.
+* Hai aggiornato in sequenza i tuoi servizi di gestione, quindi hai aggiornato il tuo spazio di archiviazione Element.  Non è possibile riconfigurare l'autenticazione utilizzando questa procedura a meno che non siano stati completati gli aggiornamenti nella sequenza descritta.
+
+
+.Passi
+. Aprire l'interfaccia utente dell'API REST del nodo di gestione sul nodo di gestione:
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+. Seleziona *Autorizza* e completa quanto segue:
++
+.. Immettere il nome utente e la password del cluster.
+.. Inserisci l'ID cliente come `mnode-client` se il valore non è già compilato.
+.. Selezionare *Autorizza* per iniziare una sessione.
+
+
+. Dall'interfaccia utente dell'API REST, selezionare *POST /services/reconfigure-auth*.
+. Seleziona *Provalo*.
+. Per il parametro *load_images*, seleziona `true` .
+. Selezionare *Esegui*.
++
+Il corpo della risposta indica che la riconfigurazione è riuscita.
+
+
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+

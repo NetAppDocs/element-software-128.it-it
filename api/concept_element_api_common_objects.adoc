@@ -1,0 +1,107 @@
+---
+permalink: api/concept_element_api_common_objects.html 
+sidebar: sidebar 
+keywords: common,objects 
+summary: 'L"API del software Element utilizza oggetti JSON per rappresentare concetti di dati organizzati.  Molti di questi metodi API utilizzano questi oggetti per l"input e l"output dei dati.  Questa sezione documenta gli oggetti comunemente utilizzati; gli oggetti utilizzati solo all"interno di un singolo metodo sono documentati con quel metodo anziché in questa sezione.' 
+---
+= Oggetti comuni
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'API del software Element utilizza oggetti JSON per rappresentare concetti di dati organizzati.  Molti di questi metodi API utilizzano questi oggetti per l'input e l'output dei dati.  Questa sezione documenta gli oggetti comunemente utilizzati; gli oggetti utilizzati solo all'interno di un singolo metodo sono documentati con quel metodo anziché in questa sezione.
+
+* xref:reference_element_api_account.adoc[account]
+* xref:reference_element_api_authsessioninfo.adoc[authSessionInfo]
+* xref:reference_element_api_bulkvolumejob.adoc[bulkVolumeJob]
+* xref:reference_element_api_binding_vvols.adoc[rilegatura (volumi virtuali)]
+* xref:reference_element_api_certificatedetails.adoc[certificatoDettagli]
+* xref:reference_element_api_cluster.adoc[grappolo]
+* xref:reference_element_api_clusteradmin.adoc[ClusterAdmin]
+* xref:reference_element_api_clustercapacity.adoc[capacità del cluster]
+* xref:reference_element_api_clusterconfig.adoc[clusterConfig]
+* xref:reference_element_api_clusterinfo.adoc[clusterInfo]
+* xref:reference_element_api_clusterpair.adoc[clusterPair]
+* xref:reference_element_api_clusterstats.adoc[clusterStats]
+* xref:reference_element_api_clusterstructure.adoc[clusterStructure]
+* xref:reference_element_api_drive.adoc[guidare]
+* xref:reference_element_api_drivestats.adoc[Statistiche di guida]
+* xref:reference_element_api_error.adoc[errore]
+* xref:reference_element_api_event.adoc[evento]
+* xref:reference_element_api_fault.adoc[colpa]
+* xref:reference_element_api_fibrechannelport.adoc[FibreChannelPort]
+* xref:reference_element_api_fipserrornodereport.adoc[fipsErrorNodeReport]
+* xref:reference_element_api_fipsnodereport.adoc[fipsNodeReport]
+* xref:reference_element_api_fipsreport.adoc[fipsReport]
+* xref:reference_element_api_groupsnapshot.adoc[groupSnapshot]
+* xref:reference_element_api_hardwareinfo.adoc[Informazioni hardware]
+* xref:reference_element_api_host.adoc[host (volumi virtuali)]
+* xref:reference_element_api_idpconfiginfo.adoc[idpConfigInfo]
+* xref:reference_element_api_initiator.adoc[iniziatore]
+* xref:reference_element_api_iscsiauthentication.adoc[Autenticazione ISCSI]
+* xref:reference_element_api_keyproviderkmip.adoc[keyProviderKmip]
+* xref:reference_element_api_keyserverkmip.adoc[keyServerKmip]
+* xref:reference_element_api_ldapconfiguration.adoc[Configurazione ldap]
+* xref:reference_element_api_loggingserver.adoc[Server di registrazione]
+* xref:reference_element_api_network_bonded_interfaces.adoc[rete (interfacce vincolate)]
+* xref:reference_element_api_network_all_interfaces.adoc[rete (tutte le interfacce)]
+* xref:reference_element_api_network_ethernet_interfaces.adoc[rete (interfacce Ethernet)]
+* xref:reference_element_api_network_local_interfaces.adoc[rete (interfacce locali)]
+* xref:reference_element_api_network_snmp.adoc[rete (SNMP)]
+* xref:reference_element_api_networkinterface.adoc[interfaccia di rete]
+* xref:reference_element_api_node.adoc[nodo]
+* xref:reference_element_api_nodeprotectiondomains.adoc[nodeProtectionDomains]
+* xref:reference_element_api_nodestats.adoc[nodeStats]
+* xref:reference_element_api_ontapversioninfo.adoc[ontapVersionInfo]
+* xref:reference_element_api_pendingactivenode.adoc[pendingActiveNode]
+* xref:reference_element_api_pendingnode.adoc[nodo in sospeso]
+* xref:reference_element_api_protectiondomain.adoc[protezioneDominio]
+* xref:reference_element_api_protectiondomainlevel.adoc[protezioneDomainLevel]
+* xref:reference_element_api_protectiondomainresiliency.adoc[protezioneDomainResiliency]
+* xref:reference_element_api_protectiondomaintolerance.adoc[protezioneDominioTolleranza]
+* xref:reference_element_api_protectionschemeresiliency.adoc[schema di protezioneResilienza]
+* xref:reference_element_api_protectionschemetolerance.adoc[schema di protezione Tolleranza]
+* xref:reference_element_api_protocolendpoint.adoc[protocolloEndpoint]
+* xref:reference_element_api_qos.adoc[Qualità del servizio]
+* xref:reference_element_api_qospolicy.adoc[Politica QoSP]
+* xref:reference_element_api_remoteclustersnapshotstatus.adoc[remoteClusterSnapshotStatus]
+* xref:reference_element_api_schedule.adoc[programma]
+* xref:reference_element_api_session_fibre_channel.adoc[sessione (Fibre Channel)]
+* xref:reference_element_api_session_iscsi.adoc[sessione (iSCSI)]
+* xref:reference_element_api_snapmirroraggregate.adoc[snapMirrorAggregate]
+* xref:reference_element_api_snapmirrorclusteridentity.adoc[snapMirrorClusterIdentity]
+* xref:reference_element_api_snapmirrorendpoint.adoc[snapMirrorEndpoint]
+* xref:reference_element_api_snapmirrorjobschedulecroninfo.adoc[snapMirrorJobScheduleCronInfo]
+* xref:reference_element_api_snapmirrorluninfo.adoc[snapMirrorLunInfo]
+* xref:reference_element_api_snapmirrornetworkinterface.adoc[snapMirrorNetworkInterface]
+* xref:reference_element_api_snapmirrornode.adoc[snapMirrorNode]
+* xref:reference_element_api_snapmirrorpolicy.adoc[snapMirrorPolicy]
+* xref:reference_element_api_snapmirrorpolicyrule.adoc[snapMirrorPolicyRule]
+* xref:reference_element_api_snapmirrorrelationship.adoc[snapMirrorRelationship]
+* xref:reference_element_api_snapmirrorvolume.adoc[snapMirrorVolume]
+* xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+* xref:reference_element_api_snapmirrorvserver.adoc[snapMirrorVserver]
+* xref:reference_element_api_snapmirrorvserveraggregateinfo.adoc[snapMirrorVserverAggregateInfo]
+* xref:reference_element_api_snapshot.adoc[istantanea]
+* xref:reference_element_api_snmptraprecipient.adoc[snmpTrapRecipient]
+* xref:reference_element_api_storagecontainer.adoc[contenitore di stoccaggio]
+* xref:reference_element_api_syncjob.adoc[sincronizzazioneJob]
+* xref:reference_element_api_task_virtual_volumes.adoc[attività (volumi virtuali)]
+* xref:reference_element_api_usmuser.adoc[usmUser]
+* xref:reference_element_api_virtualnetwork.adoc[rete virtuale]
+* xref:reference_element_api_virtualvolume.adoc[volume virtuale]
+* xref:reference_element_api_volume.adoc[volume]
+* xref:reference_element_api_volumeaccessgroup.adoc[volumeAccessGroup]
+* xref:reference_element_api_volumepair.adoc[volumePair]
+* xref:reference_element_api_volumestats.adoc[volumeStats]
+
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentazione per le versioni precedenti dei prodotti NetApp SolidFire ed Element"^]
+

@@ -1,0 +1,42 @@
+---
+permalink: mnode/reference_change_mnode_default_ssl_certificate.html 
+sidebar: sidebar 
+keywords: ssl certificate, SSL, private key, self-signed, cluster, nodes, user-defined certificate, API, change default certificate, certificate, Element API, mnode 
+summary: 'È possibile modificare il certificato SSL predefinito e la chiave privata del nodo di archiviazione nel cluster utilizzando l"API NetApp Element .' 
+---
+= Modificare il certificato SSL predefinito del nodo di gestione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile modificare il certificato SSL predefinito e la chiave privata del nodo di gestione utilizzando l'API NetApp Element .
+
+Quando si configura un nodo di gestione, viene creato un certificato Secure Sockets Layer (SSL) autofirmato univoco e una chiave privata che vengono utilizzati per tutte le comunicazioni HTTPS tramite l'interfaccia utente dell'elemento, l'interfaccia utente per nodo o le API.  Il software Element supporta sia i certificati autofirmati sia i certificati emessi e verificati da un'autorità di certificazione (CA) attendibile.
+
+È possibile utilizzare i seguenti metodi API per ottenere maggiori informazioni sul certificato SSL predefinito e apportare modifiche.
+
+* *GetNodeSSLCertificate*
++
+Puoi usare illink:../api/reference_element_api_getnodesslcertificate.html["Metodo GetNodeSSLCertificate"] per recuperare informazioni sul certificato SSL attualmente installato, compresi tutti i dettagli del certificato.
+
+* *SetNodeSSLCertificate*
++
+Puoi usare illink:../api/reference_element_api_setnodesslcertificate.html["Metodo SetNodeSSLCertificate"] per impostare i certificati SSL del cluster e per nodo sul certificato e sulla chiave privata forniti.  Il sistema convalida il certificato e la chiave privata per impedire che venga applicato un certificato non valido.
+
+* *RemoveNodeSSLCertificate*
++
+Questolink:../api/reference_element_api_removenodesslcertificate.html["Metodo RemoveNodeSSLCertificate"] rimuove il certificato SSL e la chiave privata attualmente installati.  Il cluster genera quindi un nuovo certificato autofirmato e una chiave privata.
+
+
+
+
+
+== Trova maggiori informazioni
+
+* link:../storage/reference_post_deploy_change_default_ssl_certificate.html["Cambia il certificato SSL predefinito del software Element"]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/What_are_the_requirements_around_setting_custom_SSL_certificates_in_Element_Software%3F["Quali sono i requisiti per l'impostazione di certificati SSL personalizzati in Element Software?"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+

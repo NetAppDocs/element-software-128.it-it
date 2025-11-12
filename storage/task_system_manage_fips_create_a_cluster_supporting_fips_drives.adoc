@@ -1,0 +1,24 @@
+---
+permalink: storage/task_system_manage_fips_create_a_cluster_supporting_fips_drives.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2, cluster, create 
+summary: 'La sicurezza sta diventando sempre più critica per l"implementazione di soluzioni in molti ambienti dei clienti.  Gli standard federali per l"elaborazione delle informazioni (FIPS) sono standard per la sicurezza informatica e l"interoperabilità.  La crittografia certificata FIPS 140-2 per i dati inattivi è un componente della soluzione di sicurezza complessiva.' 
+---
+= Prepara il cluster Element per la funzionalità delle unità FIPS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La sicurezza sta diventando sempre più critica per l'implementazione di soluzioni in molti ambienti dei clienti.  Gli standard federali per l'elaborazione delle informazioni (FIPS) sono standard per la sicurezza e l'interoperabilità informatica.  La crittografia certificata FIPS 140-2 per i dati inattivi è un componente della soluzione di sicurezza complessiva.
+
+Per preparare l'abilitazione della funzionalità delle unità FIPS, è opportuno evitare di mischiare nodi in cui alcuni sono compatibili con le unità FIPS e altri no.
+
+Un cluster è considerato conforme alle unità FIPS in base alle seguenti condizioni:
+
+* Tutte le unità sono certificate FIPS.
+* Tutti i nodi sono nodi unità FIPS.
+* La crittografia a riposo (EAR) è abilitata.
+* La funzionalità delle unità FIPS è abilitata.  Tutte le unità e i nodi devono essere compatibili con FIPS e la crittografia a riposo deve essere abilitata per abilitare la funzionalità unità FIPS.
+

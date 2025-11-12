@@ -1,0 +1,184 @@
+---
+permalink: api/reference_element_api_updatebulkvolumestatus.html 
+sidebar: sidebar 
+keywords: updatebulkvolumestatus,update,updating,bulk,volume,status,job 
+summary: È possibile utilizzare il metodo UpdateBulkVolumeStatus per aggiornare lo stato di un processo di elaborazione di volumi di massa avviato con i metodi StartBulkVolumeRead o StartBulkVolumeWrite. 
+---
+= AggiornaStatoVolumeMassuale
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `UpdateBulkVolumeStatus` metodo per aggiornare lo stato di un lavoro di volume di massa avviato con `StartBulkVolumeRead` O `StartBulkVolumeWrite` metodi.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+chiave
+ a| 
+La chiave assegnata durante l'inizializzazione di unxref:reference_element_api_startbulkvolumeread.adoc[StartBulkVolumeRead] Oxref:reference_element_api_startbulkvolumewrite.adoc[StartBulkVolumeWrite] sessione.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+stato
+ a| 
+Il sistema imposta lo stato del lavoro di volume in blocco specificato. Valori possibili:
+
+* in esecuzione: lavori ancora attivi.
+* completo: Lavori svolti.
+* falliti: lavori che non sono riusciti.
+
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+percentuale completata
+ a| 
+Percentuale di avanzamento del lavoro di grandi volumi completato.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+messaggio
+ a| 
+Restituisce lo stato del lavoro di volume in blocco una volta completato.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+attributi
+ a| 
+Attributi JSON; aggiorna il contenuto del lavoro di volume in blocco.
+ a| 
+Oggetto JSON
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+stato
+ a| 
+Stato della sessione richiesta.  Stato restituito:
+
+* preparazione
+* attivo
+* Fatto
+* fallito
+
+ a| 
+corda
+
+
+
+ a| 
+attributi
+ a| 
+Restituisce gli attributi specificati nella chiamata al metodo.  I valori vengono restituiti indipendentemente dal fatto che siano stati modificati o meno.
+ a| 
+corda
+
+
+
+ a| 
+URL
+ a| 
+URL per accedere al server web del nodo; fornito solo se la sessione è ancora attiva.
+ a| 
+corda
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "UpdateBulkVolumeStatus",
+   "params": {
+          "key": "0b2f532123225febda2625f55dcb0448",
+	      "status": "running"
+      },
+   "id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+   "id" : 1,
+   "result": {
+	  "status" : "running",
+	  "url" : "https://10.10.23.47:8443/"
+    }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6
+
+
+
+== Trova maggiori informazioni
+
+* xref:reference_element_api_startbulkvolumeread.adoc[StartBulkVolumeRead]
+* xref:reference_element_api_startbulkvolumewrite.adoc[StartBulkVolumeWrite]
+

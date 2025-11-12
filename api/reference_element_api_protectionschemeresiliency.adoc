@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_protectionschemeresiliency.html 
+sidebar: sidebar 
+keywords: object,objects,protectionSchemeResiliency 
+summary: 'L"oggetto protectionSchemeResiliency contiene informazioni sulla possibilità per un cluster di archiviazione, per uno schema di protezione specifico, di ripristinarsi automaticamente da uno o più errori all"interno del protectionDomainType associato.  Un cluster di storage è considerato ripristinato quando può continuare a leggere e scrivere dati nonostante il guasto di un singolo nodo di storage (uno stato noto come tolleranza del nodo).' 
+---
+= schema di protezioneResilienza
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto protectionSchemeResiliency contiene informazioni sulla possibilità per un cluster di archiviazione, per uno schema di protezione specifico, di ripristinarsi automaticamente da uno o più errori all'interno del protectionDomainType associato.  Un cluster di storage è considerato ripristinato quando può continuare a leggere e scrivere dati nonostante il guasto di un singolo nodo di storage (uno stato noto come tolleranza del nodo).
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+schema di protezione
+ a| 
+L'attuale schema di protezione di questo cluster di archiviazione.  L'unico valore possibile è doubleHelix.
+ a| 
+corda
+
+
+
+ a| 
+GuastisostenibiliPerBlocchiDati
+ a| 
+Numero previsto di guasti simultanei che possono verificarsi senza perdere la capacità di ripristinare automaticamente uno stato di tolleranza del nodo per i dati.
+ a| 
+intero
+
+
+
+ a| 
+GuastisostenibiliPerMetadati
+ a| 
+Numero previsto di guasti simultanei che possono verificarsi senza perdere la capacità di ripristinare automaticamente uno stato di tolleranza del nodo per i metadati.
+ a| 
+intero
+
+|===

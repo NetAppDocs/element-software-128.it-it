@@ -1,0 +1,112 @@
+---
+permalink: api/reference_element_api_deletevolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: volume,access,group,groups,delete,deleting,DeleteVolumeAccessGroup 
+summary: È possibile utilizzare DeleteVolumeAccessGroup per eliminare un gruppo di accesso al volume. 
+---
+= DeleteVolumeAccessGroup
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare `DeleteVolumeAccessGroup` per eliminare un gruppo di accesso al volume.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+volumeAccessGroupID
+ a| 
+ID del gruppo di accesso al volume da eliminare.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+deleteOrphanInitiators
+ a| 
+Specifica se eliminare o meno gli oggetti iniziatori. Valori possibili:
+
+* true: elimina gli oggetti iniziatori dopo che sono stati rimossi da un gruppo di accesso al volume.
+* false: non eliminare gli oggetti iniziatori dopo che sono stati rimossi da un gruppo di accesso al volume. Questa è l'impostazione predefinita.
+
+ a| 
+booleano
+ a| 
+falso
+ a| 
+NO
+
+
+
+ a| 
+forza
+ a| 
+L'aggiunta di questo flag forzerà l'eliminazione del gruppo di accesso al volume anche se dispone di un ID o tag di rete virtuale. Valori possibili:
+
+* vero: il gruppo di accesso al volume verrà eliminato.
+* falso: predefinito.  Non eliminare il gruppo di accesso al volume se ha un ID o un tag di rete virtuale.
+
+ a| 
+booleano
+ a| 
+falso
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo non ha valori di ritorno.
+
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "DeleteVolumeAccessGroup",
+   "params": {
+          "force": true,
+	  "volumeAccessGroupID"  : 3
+   },
+   "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+   "id" : 1,
+   "result": {}
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

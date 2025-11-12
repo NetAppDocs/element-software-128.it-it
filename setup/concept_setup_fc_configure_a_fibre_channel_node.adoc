@@ -1,0 +1,38 @@
+---
+permalink: setup/concept_setup_fc_configure_a_fibre_channel_node.html 
+sidebar: sidebar 
+keywords:  
+summary: 'I nodi Fibre Channel consentono di connettere il cluster a una struttura di rete Fibre Channel.  I nodi Fibre Channel vengono aggiunti a coppie e operano in modalità attivo-attivo (tutti i nodi elaborano attivamente il traffico per il cluster).  I cluster che eseguono il software Element versione 9.0 e successive supportano fino a quattro nodi; i cluster che eseguono versioni precedenti supportano un massimo di due nodi.' 
+---
+= Configurare un nodo Fibre Channel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I nodi Fibre Channel consentono di connettere il cluster a una struttura di rete Fibre Channel.  I nodi Fibre Channel vengono aggiunti a coppie e funzionano in modalità attivo-attivo (tutti i nodi elaborano attivamente il traffico per il cluster).  I cluster che eseguono il software Element versione 9.0 e successive supportano fino a quattro nodi; i cluster che eseguono versioni precedenti supportano un massimo di due nodi.
+
+Prima di configurare un nodo Fibre Channel, è necessario assicurarsi che siano soddisfatte le seguenti condizioni:
+
+* Almeno due nodi Fibre Channel sono collegati agli switch Fibre Channel.
+* Tutte le porte SolidFire Fibre Channel devono essere collegate alla struttura Fibre Channel.  Le quattro connessioni di rete SolidFire Bond10G devono essere collegate in un gruppo di bond LACP a livello di switch.  Ciò consentirà di ottenere le migliori prestazioni complessive dai sistemi Fibre Channel.
+* Esaminare e convalidare tutte le best practice per i cluster Fibre Channel incluse in questo articolo della Knowledge Base NetApp .
++
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/SolidFire_FC_cluster_best_practice["Buone pratiche per il cluster SolidFire FC"]
+
+
+
+I passaggi di configurazione della rete e del cluster sono gli stessi per i nodi Fibre Channel e per i nodi di storage.
+
+Quando si crea un nuovo cluster con nodi Fibre Channel e nodi di archiviazione SolidFire , gli indirizzi WWPN (Worldwide Port Name) per i nodi sono disponibili nell'interfaccia utente di Element.  È possibile utilizzare gli indirizzi WWPN per suddividere in zone lo switch Fibre Channel.
+
+I WWPN vengono registrati nel sistema quando si crea un nuovo cluster con nodi.  Nell'interfaccia utente Element, puoi trovare gli indirizzi WWPN nella colonna WWPN della scheda Porte FC, a cui puoi accedere dalla scheda Cluster.
+
+
+
+== Trova maggiori informazioni
+
+xref:task_setup_fc_add_fibre_channel_nodes_to_a_cluster.adoc[Aggiungere nodi Fibre Channel a un cluster]
+
+xref:task_setup_fc_create_a_new_cluster_with_fibre_channel_nodes.adoc[Crea un nuovo cluster con nodi Fibre Channel]

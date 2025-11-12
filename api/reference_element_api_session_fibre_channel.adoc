@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_session_fibre_channel.html 
+sidebar: sidebar 
+keywords: object,objects,session 
+summary: 'L"oggetto sessione contiene informazioni su ciascuna sessione Fibre Channel visibile al cluster e sulle porte di destinazione su cui è visibile.  È possibile recuperare queste informazioni con il metodo API ListFibreChannelSessions.' 
+---
+= sessione (Fibre Channel)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto sessione contiene informazioni su ciascuna sessione Fibre Channel visibile al cluster e sulle porte di destinazione su cui è visibile.  È possibile recuperare queste informazioni con il `ListFibreChannelSessions` Metodo API.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+iniziatoreWWPN
+ a| 
+Il nome della porta mondiale (WWPN) dell'iniziatore che ha effettuato l'accesso alla porta di destinazione.
+ a| 
+corda
+
+
+
+ a| 
+ID nodo
+ a| 
+Il nodo proprietario della sessione Fibre Channel.
+ a| 
+intero
+
+
+
+ a| 
+iniziatore
+ a| 
+Informazioni sull'iniziatore del server di questa sessione Fibre Channel.  Membri:
+
+* alias: il nome descrittivo assegnato all'iniziatore.
+* attributi: Gli attributi di questo iniziatore.
+* initiatorID: ID di questo iniziatore.
+* initiatorName: il nome di questo iniziatore.
+* volumeAccessGroups: elenco dei gruppi di accesso al volume associati a questo iniziatore.
+
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+ID servizio
+ a| 
+ID del servizio della porta di destinazione coinvolta in questa sessione.
+ a| 
+intero
+
+
+
+ a| 
+targetWWPN
+ a| 
+Il WWPN della porta di destinazione coinvolta in questa sessione.
+ a| 
+corda
+
+
+
+ a| 
+volumeAccessGroupID
+ a| 
+ID del gruppo di accesso al volume a cui appartiene l'initiatorWWPN.  Se non si trova in un gruppo di accesso al volume, questo valore è nullo.
+ a| 
+intero
+
+|===
+
+
+== Trova maggiori informazioni
+
+xref:reference_element_api_listfibrechannelsessions.adoc[ListFibreChannelSessions]

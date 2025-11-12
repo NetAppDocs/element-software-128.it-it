@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_fipsreport.html 
+sidebar: sidebar 
+keywords: object,objects,fipsReport,FIPS,140-2 
+summary: 'L"oggetto fipsReport contiene informazioni sul supporto FIPS 140-2 per tutti i nodi nel cluster di archiviazione.  È possibile recuperare queste informazioni utilizzando il metodo GetFipsReport.' 
+---
+= fipsReport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto fipsReport contiene informazioni sul supporto FIPS 140-2 per tutti i nodi nel cluster di archiviazione.  È possibile recuperare queste informazioni utilizzando il `GetFipsReport` metodo.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+nodi
+ a| 
+Un report sullo stato del supporto FIPS 140-2 per ciascun nodo nel cluster di storage.
+ a| 
+fipsNodeReport
+
+
+
+ a| 
+ErrorNodes
+ a| 
+Informazioni di errore per ciascun nodo che non ha risposto con lo stato di supporto FIPS 140-2.
+ a| 
+fipsErrorNodeReport
+
+|===

@@ -1,0 +1,133 @@
+---
+permalink: api/reference_element_api_getvolumeaccessgroupefficiency.html 
+sidebar: sidebar 
+keywords: volume,volumes,get,getting,access,group,efficiency,GetVolumeAccessGroupEfficiency 
+summary: 'È possibile utilizzare il metodo GetVolumeAccessGroupEfficiency per ottenere informazioni sull"efficienza di un gruppo di accesso al volume.  Per calcolare la capacità viene utilizzato solo il gruppo di accesso al volume fornito come parametro in questo metodo API.' 
+---
+= GetVolumeAccessGroupEfficiency
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `GetVolumeAccessGroupEfficiency` metodo per ottenere informazioni sull'efficienza di un gruppo di accesso al volume.  Per calcolare la capacità viene utilizzato solo il gruppo di accesso al volume fornito come parametro in questo metodo API.
+
+
+
+== Parametro
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+volumeAccessGroupID
+ a| 
+Specifica il gruppo di accesso al volume per il quale viene calcolata la capacità.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+SÌ
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+compressione
+ a| 
+Quantità di spazio risparmiata dalla compressione dei dati per tutti i volumi nel gruppo di accesso al volume.  Espresso come rapporto in cui il valore 1 indica che i dati sono stati archiviati senza compressione.
+ a| 
+galleggiante
+
+
+
+ a| 
+deduplicazione
+ a| 
+Quantità di spazio risparmiata evitando di duplicare i dati per tutti i volumi nel gruppo di accesso al volume.  Espresso come rapporto.
+ a| 
+galleggiante
+
+
+
+ a| 
+thinProvisioning
+ a| 
+Rapporto tra lo spazio utilizzato e la quantità di spazio allocato per l'archiviazione dei dati.  Espresso come rapporto.
+ a| 
+galleggiante
+
+
+
+ a| 
+marca temporale
+ a| 
+L'ultima volta che i dati sull'efficienza sono stati raccolti dopo la garbage collection.
+ a| 
+Stringa di dati ISO 8601
+
+
+
+ a| 
+volumi mancanti
+ a| 
+I volumi che non è stato possibile interrogare per i dati di efficienza.  I volumi mancanti possono essere causati da una recente garbage collection, da una temporanea perdita di rete o dal riavvio dei servizi dopo il ciclo di garbage collection.
+ a| 
+array di interi
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "GetVolumeAccessGroupEfficiency",
+   "params": {
+      "volumeAccessGroupID": 1
+   },
+   "id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+       "compression": 2.006012925331075,
+       "deduplication": 1,
+       "missingVolumes": [],
+       "thinProvisioning": 1.009861932938856,
+       "timestamp": "2014-03-10T17:05:27Z"
+   }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

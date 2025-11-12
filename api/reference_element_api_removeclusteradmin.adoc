@@ -1,0 +1,79 @@
+---
+permalink: api/reference_element_api_removeclusteradmin.html 
+sidebar: sidebar 
+keywords: cluster,admin,remove,removing,removeclusteradmin 
+summary: 'È possibile utilizzare il metodo RemoveClusterAdmin per rimuovere un amministratore del cluster, un amministratore del cluster LDAP o un amministratore del cluster di un provider di identità di terze parti \(IdP\).  Non è possibile rimuovere l"account Cluster Admin "admin".' 
+---
+= RimuoviClusterAdmin
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `RemoveClusterAdmin` metodo per rimuovere un amministratore di cluster, un amministratore di cluster LDAP o un amministratore di cluster di un provider di identità (IdP) di terze parti.  Non è possibile rimuovere l'account Cluster Admin "admin".
+
+
+
+== Parametro
+
+Quando viene rimosso un amministratore del cluster IdP che ha sessioni autenticate associate a un IdP di un provider di identità di terze parti, tali sessioni verranno disconnesse o potrebbero subire una perdita di diritti di accesso nella sessione corrente.  La perdita dei diritti di accesso dipenderà dal fatto che l'amministratore del cluster IdP rimosso corrisponda a uno dei numerosi amministratori del cluster IdP degli attributi SAML di un determinato utente.  Il set rimanente di amministratori del cluster IdP corrispondenti determina un set ridotto di diritti di accesso aggregati.  Gli altri tipi di utenti amministratori del cluster vengono disconnessi quando vengono rimossi i rispettivi amministratori del cluster.
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+ID amministratore cluster
+ a| 
+ClusterAdminID per l'amministratore del cluster da rimuovere.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+SÌ
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo non ha valori di ritorno.
+
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "RemoveClusterAdmin",
+   "params": {
+     "clusterAdminID"  : 2
+   },
+   "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+ "id" : 1
+ "result" : { }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_networkinterfacestats.html 
+sidebar: sidebar 
+keywords: object,objects,stats,statistics,networkInterfacestats 
+summary: 'L"oggetto networkInterfaceStats contiene statistiche di rete e informazioni sugli errori per singole interfacce di rete su un nodo di archiviazione.' 
+---
+= networkInterfaceStats
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto networkInterfaceStats contiene statistiche di rete, il numero totale di pacchetti trasmessi e ricevuti e informazioni sugli errori per singole interfacce di rete su un nodo di archiviazione.  Puoi usare il `ListNetworkInterfaceStats` Metodo API per elencare queste informazioni per le interfacce di rete su un nodo di archiviazione.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+| collisioni | Numero di collisioni rilevate. | intero 
+
+
+| nome | Nome dell'interfaccia di rete. | corda 
+
+
+| rxBytes | Numero totale di byte ricevuti. | intero 
+
+
+| Errori rxCrc | Numero di pacchetti ricevuti che presentavano un errore CRC. | intero 
+
+
+| rxDropped | Numero di pacchetti ricevuti che sono stati eliminati. | intero 
+
+
+| Errori rx | Numero di pacchetti errati o malformati ricevuti. | intero 
+
+
+| Errori rxFifo | Numero di errori di superamento FIFO nei dati ricevuti. | intero 
+
+
+| rxFrameErrors | Numero di pacchetti ricevuti con errori di allineamento dei frame. | intero 
+
+
+| Errori di lunghezza rx | Numero di pacchetti ricevuti con un errore di lunghezza. | intero 
+
+
+| rxMissedErrors | Numero di pacchetti persi dal ricevitore. | intero 
+
+
+| rxOverErrors | Numero di errori di overflow del buffer ad anello del ricevitore per questa interfaccia. | intero 
+
+
+| Pacchetti rx | Numero totale di pacchetti ricevuti. | intero 
+
+
+| txByte | Numero totale di byte trasmessi. | intero 
+
+
+| txCarrierErrors | Numero di errori di portante per il lato di trasmissione. | intero 
+
+
+| txErrors | Numero di errori nella trasmissione dei pacchetti. | intero 
+
+
+| txFifoErrors | Numero di errori di superamento FIFO sul lato trasmissione. | intero 
+
+
+| txPackets | Numero totale di pacchetti trasmessi. | intero 
+|===

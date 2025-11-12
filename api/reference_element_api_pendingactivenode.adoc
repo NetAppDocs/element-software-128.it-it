@@ -1,0 +1,140 @@
+---
+permalink: api/reference_element_api_pendingactivenode.html 
+sidebar: sidebar 
+keywords: object,objects,pendingActiveNode 
+summary: 'L"oggetto pendingActiveNode contiene informazioni su un nodo che si trova attualmente nello stato pendingActive, tra gli stati pending e active.  Si tratta di nodi che al momento vengono restituiti all"immagine software di fabbrica.  Utilizzare il metodo API ListPendingActiveNodes per restituire un elenco di queste informazioni per tutti i nodi pendingActive.' 
+---
+= pendingActiveNode
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto pendingActiveNode contiene informazioni su un nodo che si trova attualmente nello stato pendingActive, tra gli stati pending e active.  Si tratta di nodi che al momento vengono restituiti all'immagine software di fabbrica.  Utilizzare il `ListPendingActiveNodes` Metodo API per restituire un elenco di queste informazioni per tutti i nodi pendingActive.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+activeNodeKey
+ a| 
+Una chiave univoca che consente al nodo di unirsi automaticamente al cluster dopo l'installazione corretta del software.
+ a| 
+corda
+
+
+
+ a| 
+IDNodoassegnato
+ a| 
+L'ID nodo assegnato al nodo.
+ a| 
+corda
+
+
+
+ a| 
+asyncHandle
+ a| 
+L'handle del metodo asincrono che è possibile utilizzare per interrogare lo stato dell'operazione.
+ a| 
+intero
+
+
+
+ a| 
+cip
+ a| 
+L'indirizzo IP del cluster assegnato al nodo.
+ a| 
+corda
+
+
+
+ a| 
+mip
+ a| 
+L'indirizzo IP di gestione assegnato al nodo.
+ a| 
+corda
+
+
+
+ a| 
+NodoSlot
+ a| 
+Per le piattaforme HCI, la lettera corrispondente allo slot dello chassis in cui si trova questo nodo ("A", "B", "C" o "D").  Per le piattaforme di archiviazione, questo valore è nullo.
+ a| 
+corda
+
+
+
+ a| 
+pendingActiveNodeID
+ a| 
+ID del nodo in sospeso.
+ a| 
+intero
+
+
+
+ a| 
+informazioni sulla piattaforma
+ a| 
+Informazioni hardware per il nodo.  Membri:
+
+* chassisType: la piattaforma hardware del nodo.
+* cpuModel: modello di CPU della piattaforma hardware.
+* nodeMemoryGB: quantità di memoria installata nella piattaforma fisica in GB.
+* nodeType: il nome del modello del nodo.
+* platformConfigVersion: la versione del software configurata per questo hardware del nodo.
+
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+ruolo
+ a| 
+Il ruolo del nodo nel cluster. Valori possibili:
+
+* Gestione
+* Magazzinaggio
+* Calcolare
+* Testimone
+
+ a| 
+
+
+
+ a| 
+sorso
+ a| 
+L'indirizzo IP di archiviazione (iSCSI) assegnato al nodo.
+ a| 
+corda
+
+
+
+ a| 
+versione software
+ a| 
+La versione corrente del software Element in esecuzione sul nodo.
+ a| 
+corda
+
+|===
+
+
+== Trova maggiori informazioni
+
+xref:reference_element_api_listpendingactivenodes.adoc[Elenco nodi attivi in sospeso]

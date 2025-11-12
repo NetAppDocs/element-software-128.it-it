@@ -1,0 +1,91 @@
+---
+permalink: storage/reference_monitor_volume_performance_details.html 
+sidebar: sidebar 
+keywords: volume performance 
+summary: 'È possibile visualizzare le statistiche sulle prestazioni dei volumi dalla pagina Prestazioni volume della scheda Report nell"interfaccia utente dell"elemento.' 
+---
+= Dettagli sulle prestazioni del volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile visualizzare le statistiche sulle prestazioni dei volumi dalla pagina Prestazioni volume della scheda Report nell'interfaccia utente dell'elemento.
+
+L'elenco seguente descrive i dettagli a tua disposizione:
+
+* *ID*
++
+ID generato dal sistema per il volume.
+
+* *Nome*
++
+Nome dato al volume al momento della sua creazione.
+
+* *Account*
++
+Nome dell'account assegnato al volume.
+
+* *Gruppi di accesso*
++
+Nome del gruppo o dei gruppi di accesso al volume a cui appartiene il volume.
+
+* *Utilizzo del volume*
++
+Un valore percentuale che descrive quanto il client sta utilizzando il volume.
+
++
+Valori possibili:
+
++
+** 0 = Il client non sta utilizzando il volume
+** 100 = Il client sta utilizzando il massimo
+** >100 = Il client sta utilizzando il burst
+
+
+* *IOPS totali*
++
+Numero totale di IOPS (lettura e scrittura) attualmente eseguiti sul volume.
+
+* *Leggi IOPS*
++
+Numero totale di IOPS di lettura attualmente eseguiti sul volume.
+
+* *Scrivi IOPS*
++
+Numero totale di IOPS di scrittura attualmente eseguiti sul volume.
+
+* *Rendimento totale*
++
+Quantità totale di throughput (lettura e scrittura) attualmente in esecuzione sul volume.
+
+* *Velocità di lettura*
++
+Quantità totale di throughput di lettura attualmente in esecuzione sul volume.
+
+* *Capacità di scrittura*
++
+Quantità totale di velocità di scrittura attualmente eseguita sul volume.
+
+* *Latenza totale*
++
+Tempo medio, in microsecondi, impiegato per completare le operazioni di lettura e scrittura su un volume.
+
+* *Latenza di lettura*
++
+Tempo medio, in microsecondi, impiegato per completare le operazioni di lettura sul volume negli ultimi 500 millisecondi.
+
+* *Latenza di scrittura*
++
+Tempo medio, in microsecondi, impiegato per completare le operazioni di scrittura su un volume negli ultimi 500 millisecondi.
+
+* *Profondità della coda*
++
+Numero di operazioni di lettura e scrittura in sospeso sul volume.
+
+* *Dimensione media IO*
++
+Dimensione media in byte delle recenti operazioni di I/O sul volume negli ultimi 500 millisecondi.
+
+

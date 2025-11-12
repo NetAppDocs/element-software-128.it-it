@@ -1,0 +1,43 @@
+---
+permalink: storage/task_system_manage_cluster_volume_load_balancing.html 
+sidebar: sidebar 
+keywords: cluster, volume, volumes, load, balancing, actual, IOPS 
+summary: A partire da Element 12.8, è possibile abilitare Volume Load Balancing per bilanciare i volumi tra i nodi in base agli IOPS effettivi di ciascun volume anziché agli IOPS minimi configurati nella policy QoS. 
+---
+= Abilita e disabilita il bilanciamento del carico del volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partire da Element 12.8, è possibile utilizzare Volume Load Balancing per bilanciare i volumi tra i nodi in base agli IOPS effettivi di ciascun volume anziché agli IOPS minimi configurati nella policy QoS.  È possibile abilitare e disabilitare il bilanciamento del carico del volume, disabilitato per impostazione predefinita, tramite l'interfaccia utente o l'API di Element.
+
+.Passi
+. Selezionare *Cluster* > *Impostazioni*.
+. Nella sezione Cluster Specific, modifica lo stato per Volume Load Balancing:
++
+[role="tabbed-block"]
+====
+.Abilita il bilanciamento del carico del volume
+--
+Selezionare *Abilita bilanciamento del carico su IOPS effettivi* e confermare la selezione.
+
+--
+.Disabilita il bilanciamento del carico del volume:
+--
+Selezionare *Disabilita bilanciamento del carico su IOPS effettivi* e confermare la selezione.
+
+--
+====
+. Facoltativamente, selezionare *Reporting* > *Panoramica* per confermare la modifica dello stato per il saldo sugli IOPS effettivi.  Potrebbe essere necessario scorrere verso il basso le informazioni sullo stato del cluster per visualizzarne lo stato.
+
+
+
+
+== Trova maggiori informazioni
+
+* link:../api/reference_element_api_enablefeature.html["Abilita il bilanciamento del carico del volume tramite l'API"]
+* https://docs.netapp.com/us-en/element-software/api/reference_element_api_disablefeature.html["Disabilitare il bilanciamento del carico del volume tramite l'API"]
+* link:../hccstorage/task-hcc-qos-policies.html["Creare e gestire policy QoS del volume"]
+

@@ -1,0 +1,161 @@
+---
+permalink: api/reference_element_api_createkeyserverkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,creating,create 
+summary: 'È possibile utilizzare il metodo CreateKeyServerKmip per creare un server di chiavi Key Management Interoperability Protocol \(KMIP\) con gli attributi specificati.  Durante la creazione, il server non viene contattato; non è necessario che esista prima di poter utilizzare questo metodo.  Per le configurazioni di server chiave in cluster, è necessario fornire i nomi host o gli indirizzi IP di tutti i nodi del server nel parametro kmipKeyServerHostnames.  È possibile utilizzare il metodo TestKeyServerKmip per testare un server di chiavi.' 
+---
+= CreateKeyServerKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `CreateKeyServerKmip` metodo per creare un server di chiavi KMIP (Key Management Interoperability Protocol) con gli attributi specificati.  Durante la creazione, il server non viene contattato; non è necessario che esista prima di poter utilizzare questo metodo.  Per le configurazioni di server chiave in cluster, è necessario fornire i nomi host o gli indirizzi IP di tutti i nodi del server nel parametro kmipKeyServerHostnames.  Puoi usare il `TestKeyServerKmip` metodo per testare un server di chiavi.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+kmipCaCertificate
+ a| 
+Il certificato della chiave pubblica della CA radice del server delle chiavi esterno.  Verrà utilizzato per verificare il certificato presentato dal server delle chiavi esterno nella comunicazione TLS.  Per i cluster di server chiave in cui i singoli server utilizzano CA diverse, fornire una stringa concatenata contenente i certificati radice di tutte le CA.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+kmipClientCertificate
+ a| 
+Un certificato PKCS#10 X.509 codificato Base64 in formato PEM utilizzato dal client Solidfire KMIP.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+kmipKeyServerHostnames
+ a| 
+Matrice dei nomi host o degli indirizzi IP associati a questo server di chiavi KMIP.  È necessario fornire più nomi host o indirizzi IP solo se i server chiave sono in una configurazione cluster.
+ a| 
+matrice di stringhe
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+kmipKeyServerName
+ a| 
+Il nome del server delle chiavi KMIP.  Questo nome viene utilizzato solo a scopo di visualizzazione e non deve essere univoco.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+kmipKeyServerPort
+ a| 
+Il numero di porta associato a questo server di chiavi KMIP (in genere 5696).
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+kmipKeyServer
+ a| 
+Un oggetto contenente dettagli sul server delle chiavi appena creato.
+ a| 
+link:reference_element_api_keyserverkmip.html["KeyServerKmip"]
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "method": "CreateKeyServerKmip",
+  "params": {
+    "kmipCaCertificate": "MIICPDCCAaUCEDyRMcsf9tAbDpq40ES/E...",
+    "kmipClientCertificate": "dKkkirWmnWXbj9T/UWZYB2oK0z5...",
+    "kmipKeyServerHostnames" : ["server1.hostname.com", "server2.hostname.com"],
+    "kmipKeyServerName" : "keyserverName",
+    "kmipKeyServerPort" : 5696
+  },
+"id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {
+        "kmipKeyServer": {
+            "kmipCaCertificate":"MIICPDCCAaUCEDyRMcsf9tAbDpq40ES/E...",
+            "kmipKeyServerHostnames":[
+                "server1.hostname.com", "server2.hostname.com"
+            ],
+            "keyProviderID":1,
+            "kmipKeyServerName":"keyserverName",
+            "keyServerID":1
+            "kmipKeyServerPort":1,
+            "kmipClientCertificate":"dKkkirWmnWXbj9T/UWZYB2oK0z5...",
+            "kmipAssignedProviderIsActive":true
+        }
+    }
+}
+----
+
+
+== Nuovo dalla versione
+
+11,7

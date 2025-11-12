@@ -1,0 +1,14 @@
+---
+permalink: concepts/concept_solidfire_concepts_initiators.html 
+sidebar: sidebar 
+keywords: netapp, element, initiator, storage volume, element volume, access group 
+summary: 'Scopri di più sugli iniziatori e su come utilizzarli per consentire l"accesso allo storage nei gruppi di accesso al volume.' 
+---
+= Iniziatori
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Gli iniziatori consentono ai client esterni di accedere ai volumi in un cluster, fungendo da punto di ingresso per la comunicazione tra client e volumi.  È possibile utilizzare gli iniziatori per l'accesso basato su CHAP anziché su account ai volumi di archiviazione.  Un singolo iniziatore, se aggiunto a un gruppo di accesso al volume, consente ai membri del gruppo di accesso al volume di accedere a tutti i volumi di archiviazione aggiunti al gruppo senza richiedere l'autenticazione.  Un iniziatore può appartenere a un solo gruppo di accesso.

@@ -1,0 +1,56 @@
+---
+permalink: api/reference_element_api_protectiondomainlevel.html 
+sidebar: sidebar 
+keywords: object,objects,protectionDomainLevel 
+summary: 'L"oggetto protectionDomainLevel contiene informazioni sui livelli di tolleranza e resilienza correnti del cluster di archiviazione.  I livelli di tolleranza indicano la capacità del cluster di continuare a leggere e scrivere dati in caso di errore, mentre i livelli di resilienza indicano la capacità del cluster di ripristinarsi automaticamente da uno o più errori all"interno del tipo di dominio di protezione associato.' 
+---
+= protezioneDomainLevel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto protectionDomainLevel contiene informazioni sui livelli di tolleranza e resilienza correnti del cluster di archiviazione.  I livelli di tolleranza indicano la capacità del cluster di continuare a leggere e scrivere dati in caso di errore, mentre i livelli di resilienza indicano la capacità del cluster di ripristinarsi automaticamente da uno o più errori all'interno del tipo di dominio di protezione associato.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+protectionDomainType
+ a| 
+Il tipo di dominio di protezione a cui sono associate tolleranza e resilienza. Valori possibili:
+
+* nodo: qualsiasi nodo individuale.
+* chassis: qualsiasi singolo nodo o tutti i nodi di archiviazione in un singolo chassis.
+* personalizzato: tutti i nodi di archiviazione in un singolo dominio di protezione definito dal cliente.
+
+ a| 
+corda
+
+
+
+ a| 
+resilienza
+ a| 
+L'attuale resilienza di questo cluster dal punto di vista di questo tipo di dominio di protezione.
+ a| 
+xref:reference_element_api_protectiondomainresiliency.adoc[protezioneDomainResiliency]
+
+
+
+ a| 
+tolleranza
+ a| 
+L'attuale tolleranza di questo cluster dal punto di vista di questo tipo di dominio di protezione.
+ a| 
+xref:reference_element_api_protectiondomaintolerance.adoc[protezioneDominioTolleranza]
+
+|===

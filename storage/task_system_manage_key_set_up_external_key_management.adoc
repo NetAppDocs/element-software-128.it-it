@@ -1,0 +1,59 @@
+---
+permalink: storage/task_system_manage_key_set_up_external_key_management.html 
+sidebar: sidebar 
+keywords: sign request, certificate authority, software encryption at rest, ear, eks, csr 
+summary: È possibile seguire questi passaggi e utilizzare i metodi API Element elencati per configurare la funzionalità di gestione delle chiavi esterne. 
+---
+= Impostare la gestione delle chiavi esterne
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile seguire questi passaggi e utilizzare i metodi API Element elencati per configurare la funzionalità di gestione delle chiavi esterne.
+
+.Cosa ti servirà
+* Se si sta configurando la gestione delle chiavi esterne in combinazione con la crittografia software a riposo, è stata abilitata la crittografia software a riposo utilizzandolink:../api/reference_element_api_createcluster.html["Crea cluster"] metodo su un nuovo cluster che non contiene volumi.
+
+
+.Passi
+. Stabilire una relazione di fiducia con l'External Key Server (EKS).
++
+.. Creare una coppia di chiavi pubblica/privata per il cluster Element che verrà utilizzata per stabilire una relazione di trust con il server delle chiavi chiamando il seguente metodo API:link:../api/reference_element_api_createpublicprivatekeypair.html["Crea coppia di chiavi pubbliche e private"]
+.. Ottieni la richiesta di firma del certificato (CSR) che l'autorità di certificazione deve firmare.  Il CSR consente al server delle chiavi di verificare che il cluster Element che accederà alle chiavi sia autenticato come cluster Element.  Chiamare il seguente metodo API:link:../api/reference_element_api_getclientcertificatesignrequest.html["Ottieni richiesta di firma del certificato del client"]
+.. Utilizzare EKS/Autorità di certificazione per firmare il CSR recuperato.  Per ulteriori informazioni, consultare la documentazione di terze parti.
+
+
+. Creare un server e un provider sul cluster per comunicare con EKS.  Un fornitore di chiavi definisce dove ottenere una chiave, mentre un server definisce gli attributi specifici dell'EKS con cui verrà comunicata.
++
+.. Crea un fornitore di chiavi in cui risiederanno i dettagli del server delle chiavi chiamando il seguente metodo API:link:../api/reference_element_api_createkeyproviderkmip.html["CreateKeyProviderKmip"]
+.. Creare un server di chiavi che fornisca il certificato firmato e il certificato di chiave pubblica dell'Autorità di certificazione chiamando i seguenti metodi API:link:../api/reference_element_api_createkeyserverkmip.html["CreateKeyServerKmip"] link:../api/reference_element_api_testkeyserverkmip.html["TestKeyServerKmip"]
++
+Se il test fallisce, verifica la connettività e la configurazione del server.  Quindi ripetere il test.
+
+.. Aggiungere il server delle chiavi al contenitore del provider delle chiavi chiamando i seguenti metodi API:link:../api/reference_element_api_addkeyservertoproviderkmip.html["AggiungiKeyServerAlProviderKmip"] link:../api/reference_element_api_testkeyproviderkmip.html["TestKeyProviderKmip"]
++
+Se il test fallisce, verifica la connettività e la configurazione del server.  Quindi ripetere il test.
+
+
+
+. Come passaggio successivo per la crittografia a riposo, eseguire una delle seguenti operazioni:
++
+.. (Per la crittografia hardware a riposo) Abilitalink:../concepts/concept_solidfire_concepts_security.html["crittografia hardware a riposo"] fornendo l'ID del fornitore di chiavi che contiene il server di chiavi utilizzato per memorizzare le chiavi chiamando illink:../api/reference_element_api_enableencryptionatrest.html["Abilita crittografia a riposo"] Metodo API.
++
+
+NOTE: È necessario abilitare la crittografia a riposo tramitelink:../api/reference_element_api_enableencryptionatrest.html["API"] .  Abilitando la crittografia a riposo tramite il pulsante Element UI esistente, la funzionalità tornerà a utilizzare chiavi generate internamente.
+
+.. (Per la crittografia software a riposo) Perlink:../concepts/concept_solidfire_concepts_security.html["crittografia software a riposo"] per utilizzare il fornitore di chiavi appena creato, passare l'ID del fornitore di chiavi allink:../api/reference_element_api_rekeysoftwareencryptionatrestmasterkey.html["RekeySoftwareEncryptionAtRestMasterKey"] Metodo API.
+
+
+
+
+[discrete]
+== Trova maggiori informazioni
+
+* link:task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html["Abilitare e disabilitare la crittografia per un cluster"]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentazione per le versioni precedenti dei prodotti NetApp SolidFire ed Element"^]
+

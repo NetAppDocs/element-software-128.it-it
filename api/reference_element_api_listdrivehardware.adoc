@@ -1,0 +1,130 @@
+---
+permalink: api/reference_element_api_listdrivehardware.html 
+sidebar: sidebar 
+keywords: drive,hardware,list,listing,listdrivehardware,drives 
+summary: 'È possibile utilizzare il metodo ListDriveHardware per elencare tutte le unità connesse a un nodo.  Se utilizzato su nodi individuali, questo metodo restituisce informazioni sull"hardware dell"unità.  Se utilizzato sul nodo master del cluster MVIP, questo metodo restituisce informazioni per tutte le unità su tutti i nodi.' 
+---
+= ListDriveHardware
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `ListDriveHardware` metodo per elencare tutte le unità connesse a un nodo.  Se utilizzato su nodi individuali, questo metodo restituisce informazioni sull'hardware dell'unità.  Se utilizzato sul nodo master del cluster MVIP, questo metodo restituisce informazioni per tutte le unità su tutti i nodi.
+
+
+
+== Parametri
+
+
+NOTE: La riga "securitySupported": true della risposta del metodo non implica che le unità siano in grado di crittografare; implica solo che è possibile interrogare lo stato di sicurezza.  Se si dispone di un tipo di nodo con un numero di modello che termina con "-NE", i comandi per abilitare le funzionalità di sicurezza su queste unità non riusciranno.
+
+Questo metodo ha il seguente parametro:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+forza
+ a| 
+Impostare su true per eseguire questo metodo su tutti i nodi.
+ a| 
+booleano
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+driveHardware
+ a| 
+Restituite informazioni sull'hardware dell'unità per il nodo.
+ a| 
+Matrice di oggetti JSON
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+"method": "ListDriveHardware",
+"params": {},
+"id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "driveHardware": [
+      {
+        "canonicalName": "sda",
+        "connected": true,
+        "dev": 2048,
+        "devPath": "/dev/slot0",
+        "driveEncryptionCapability": "fips",
+        "driveType": "Slice",
+        "lifeRemainingPercent": 98,
+        "lifetimeReadBytes": 0,
+        "lifetimeWriteBytes": 14012129542144,
+        "name": "scsi-SATA_SAMSUNG_MZ7GE24S1M9NWAG501251",
+        "path": "/dev/sda",
+        "pathLink": "/dev/slot0",
+        "powerOnHours": 15489,
+        "product": "SAMSUNG MZ7GE240HMGR-00003",
+        "reallocatedSectors": 0,
+        "reserveCapacityPercent": 100,
+        "scsiCompatId": "scsi-SATA_SAMSUNG_MZ7GE24S1M9NWAG501251",
+        "scsiState": "Running",
+        "securityAtMaximum": false,
+        "securityEnabled": true,
+        "securityFrozen": false,
+        "securityLocked": false,
+        "securitySupported": true,
+        "serial": "S1M9NWAG501251",
+        "size": 240057409536,
+        "slot": 0,
+        "uncorrectableErrors": 0,
+        "uuid": "789aa05d-e49b-ff4f-f821-f60eed8e43bd",
+        "vendor": "Samsung",
+        "version": "EXT1303Q"
+      }
+   ]
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6
+
+
+
+== Trova maggiori informazioni
+
+xref:reference_element_api_enableencryptionatrest.adoc[Abilita crittografia a riposo]

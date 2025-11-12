@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_ontapversioninfo.html 
+sidebar: sidebar 
+keywords: object,objects,ontapVersionInfo 
+summary: 'L"oggetto ontapVersionInfo contiene informazioni sulla versione API del cluster ONTAP in una relazione SnapMirror .  L"interfaccia utente Web di Element utilizza il metodo API GetOntapVersionInfo per ottenere queste informazioni.' 
+---
+= ontapVersionInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto ontapVersionInfo contiene informazioni sulla versione API del cluster ONTAP in una relazione SnapMirror .  L'interfaccia utente web Element utilizza `GetOntapVersionInfo` Metodo API per ottenere queste informazioni.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+L'ID del sistema ONTAP di destinazione.
+ a| 
+intero
+
+
+
+ a| 
+clientAPIMajorVersion
+ a| 
+Versione principale dell'API ONTAP utilizzata dal client Element API.
+ a| 
+corda
+
+
+
+ a| 
+clientAPIMinorVesion
+ a| 
+Versione secondaria dell'API ONTAP utilizzata dal client Element API.
+ a| 
+corda
+
+
+
+ a| 
+ontapAPIMajorVersion
+ a| 
+L'attuale versione principale dell'API supportata dal sistema ONTAP .
+ a| 
+corda
+
+
+
+ a| 
+ontapAPIMinorVesion
+ a| 
+L'attuale versione secondaria dell'API supportata dal sistema ONTAP .
+ a| 
+corda
+
+
+
+ a| 
+ontapVersion
+ a| 
+Versione software corrente in esecuzione sul cluster ONTAP .
+ a| 
+corda
+
+|===

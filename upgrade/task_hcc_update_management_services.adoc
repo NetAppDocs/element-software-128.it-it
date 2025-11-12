@@ -1,0 +1,153 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_update_management_services.html 
+summary: Come parte di un aggiornamento del sistema di archiviazione NetApp SolidFire , è necessario aggiornare i servizi di gestione. 
+keywords: netapp, solidfire, cluster, management services, hcc, update management services 
+---
+= Servizi di gestione degli aggiornamenti
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile aggiornare i servizi di gestione all'ultima versione del bundle dopo aver installato il nodo di gestione 11.3 o versione successiva.
+
+A partire dalla versione Element 11.3 del nodo di gestione, la progettazione del nodo di gestione è stata modificata in base a una nuova architettura modulare che fornisce servizi individuali.  Questi servizi modulari forniscono funzionalità di gestione centralizzata ed estesa per un sistema di archiviazione all-flash SolidFire .  I servizi di gestione includono servizi di telemetria, registrazione e aggiornamento del sistema, il servizio QoSSIOC per Element Plug-in per vCenter Server, NetApp Hybrid Cloud Control e molto altro.
+
+.Informazioni su questo compito
+Il bundle dei servizi di gestione 2.27 include Element Plug-in per vCenter Server 5.5, compatibile solo con il nodo di gestione 12.8. Quando si esegue l'aggiornamento ai servizi di gestione 2.27, è necessario modificare la sequenza di aggiornamento e aggiornare il bundle dei servizi di gestione _dopo_ l'aggiornamento a Element 12.8 per garantire la compatibilità tra il nodo di gestione e i servizi di gestione.
+
+Se si esegue l'aggiornamento ai servizi di gestione dalla versione 2.21.61 alla versione 2.26.40, è necessario aggiornare il bundle dei servizi di gestione _prima_ di eseguire l'aggiornamento a Element 12.8.
+
+[NOTE]
+====
+* I servizi di gestione 2.22.7 includono il plug-in Element per vCenter Server 5.0, che contiene il plug-in remoto. Se si utilizza il plug-in Element, è necessario eseguire l'aggiornamento ai servizi di gestione 2.22.7 o versioni successive per conformarsi alla direttiva VMware che rimuove il supporto per i plug-in locali. https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-sdks-tools/8-0/developing-local-plug-ins-client-sdk/about-this-book-local/deprecation-of-local-plug-in-architecture.html["Saperne di più"^].
+* Per le note di rilascio più recenti sui servizi di gestione che descrivono i servizi principali, le nuove funzionalità, le correzioni di bug e le soluzioni alternative per ciascun pacchetto di servizi, vedere https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["le note di rilascio dei servizi di gestione"^]
+
+
+====
+.Cosa ti servirà
+A partire dalla versione 2.20.69 dei servizi di gestione, è necessario accettare e salvare il Contratto di licenza con l'utente finale (EULA) prima di utilizzare l'interfaccia utente o l'API NetApp Hybrid Cloud Control per aggiornare i servizi di gestione:
+
+. Aprire l'indirizzo IP del nodo di gestione in un browser web:
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. Accedi a NetApp Hybrid Cloud Control fornendo le credenziali di amministratore del cluster di storage.
+. Selezionare *Aggiorna* nella parte in alto a destra dell'interfaccia.
+. Viene visualizzato l'EULA.  Scorri verso il basso, seleziona *Accetto per gli aggiornamenti attuali e futuri* e seleziona *Salva*.
+
+
+.Opzioni di aggiornamento
+È possibile aggiornare i servizi di gestione utilizzando l'interfaccia utente di controllo NetApp Hybrid Cloud o l'API REST del nodo di gestione:
+
+* <<Aggiorna i servizi di gestione utilizzando Hybrid Cloud Control>>(Metodo consigliato)
+* <<Aggiorna i servizi di gestione utilizzando l'API del nodo di gestione>>
+
+
+
+
+== Aggiorna i servizi di gestione utilizzando Hybrid Cloud Control
+
+Puoi aggiornare i servizi di gestione NetApp utilizzando NetApp Hybrid Cloud Control.
+
+I pacchetti di servizi di gestione forniscono funzionalità avanzate e correzioni all'installazione al di fuori delle versioni principali.
+
+.Prima di iniziare
+* Stai eseguendo il nodo di gestione 11.3 o versione successiva.
+* Se si stanno aggiornando i servizi di gestione alla versione 2.16 o successiva e si sta eseguendo un nodo di gestione dalla versione 11.3 alla 11.8, sarà necessario aumentare la RAM della VM del nodo di gestione prima di aggiornare i servizi di gestione:
++
+.. Spegnere la VM del nodo di gestione.
+.. Modificare la RAM della VM del nodo di gestione da 12 GB a 24 GB di RAM.
+.. Accendere la VM del nodo di gestione.
+
+
+* La versione del cluster esegue il software NetApp Element 11.3 o versione successiva.
+* Hai aggiornato i tuoi servizi di gestione almeno alla versione 2.1.326.  Gli aggiornamenti di NetApp Hybrid Cloud Control non sono disponibili nei pacchetti di servizi precedenti.
+
+
+
+NOTE: Per un elenco dei servizi disponibili per ogni versione del pacchetto di servizi, vedere https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["Note sulla versione dei servizi di gestione"^] .
+
+.Passi
+. Aprire l'indirizzo IP del nodo di gestione in un browser web:
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. Accedi a NetApp Hybrid Cloud Control fornendo le credenziali di amministratore del cluster di storage.
+. Selezionare *Aggiorna* nella parte in alto a destra dell'interfaccia.
+. Nella pagina Aggiornamenti, seleziona la scheda *Servizi di gestione*.
+. Seguire le istruzioni sulla pagina per scaricare e salvare sul computer un pacchetto di aggiornamento dei servizi di gestione.
+. Seleziona *Sfoglia* per individuare il pacchetto salvato e caricarlo.
++
+Dopo aver caricato il pacchetto, l'aggiornamento si avvia automaticamente.
+
++
+Una volta avviato l'aggiornamento, potrai visualizzarne lo stato in questa pagina.  Durante l'aggiornamento, potresti perdere la connessione con NetApp Hybrid Cloud Control e dover effettuare nuovamente l'accesso per visualizzare i risultati dell'aggiornamento.
+
+
+
+
+
+== Aggiorna i servizi di gestione utilizzando l'API del nodo di gestione
+
+Gli utenti dovrebbero idealmente eseguire gli aggiornamenti dei servizi di gestione da NetApp Hybrid Cloud Control.  Tuttavia, è possibile caricare, estrarre e distribuire manualmente un aggiornamento del bundle di servizi per i servizi di gestione sul nodo di gestione utilizzando l'API REST.  È possibile eseguire ciascun comando dall'interfaccia utente dell'API REST per il nodo di gestione.
+
+.Prima di iniziare
+* Hai distribuito un nodo di gestione software NetApp Element 11.3 o versione successiva.
+* Se si stanno aggiornando i servizi di gestione alla versione 2.16 o successiva e si sta eseguendo un nodo di gestione dalla versione 11.3 alla 11.8, sarà necessario aumentare la RAM della VM del nodo di gestione prima di aggiornare i servizi di gestione:
++
+.. Spegnere la VM del nodo di gestione.
+.. Modificare la RAM della VM del nodo di gestione da 12 GB a 24 GB di RAM.
+.. Accendere la VM del nodo di gestione.
+
+
+* La versione del cluster esegue il software NetApp Element 11.3 o versione successiva.
+* Hai aggiornato i tuoi servizi di gestione almeno alla versione 2.1.326.  Gli aggiornamenti di NetApp Hybrid Cloud Control non sono disponibili nei pacchetti di servizi precedenti.
++
+
+NOTE: Per un elenco dei servizi disponibili per ogni versione del pacchetto di servizi, vedere https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["Note sulla versione dei servizi di gestione"^] .
+
+
+
+.Passi
+. Aprire l'interfaccia utente dell'API REST sul nodo di gestione: `https://<ManagementNodeIP>/mnode`
+. Seleziona *Autorizza* e completa quanto segue:
++
+.. Immettere il nome utente e la password del cluster.
+.. Inserisci l'ID cliente come `mnode-client` se il valore non è già compilato.
+.. Selezionare *Autorizza* per iniziare una sessione.
+.. Chiudi la finestra.
+
+
+. Carica ed estrai il bundle di servizi sul nodo di gestione utilizzando questo comando: `PUT /services/upload`
+. Distribuire i servizi di gestione sul nodo di gestione: `PUT /services/deploy`
+. Monitora lo stato dell'aggiornamento: `GET /services/update/status`
++
+Un aggiornamento riuscito restituisce un risultato simile al seguente esempio:
+
++
+[listing]
+----
+{
+"current_version": "2.10.29",
+"details": "Updated to version 2.17.52",
+"status": "success"
+}
+----
+
+
+[discrete]
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+

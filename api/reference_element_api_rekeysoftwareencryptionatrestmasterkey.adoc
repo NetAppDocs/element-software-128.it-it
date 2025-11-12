@@ -1,0 +1,86 @@
+---
+permalink: api/reference_element_api_rekeysoftwareencryptionatrestmasterkey.html 
+sidebar: sidebar 
+keywords: system, api, element, security, rekey, software encryption at rest 
+summary: 'È possibile utilizzare il metodo RekeySoftwareEncryptionAtRestMasterKey per rigenerare la chiave master di crittografia software a riposo utilizzata per crittografare le DEK (chiavi di crittografia dei dati).' 
+---
+= RekeySoftwareEncryptionAtRestMasterKey
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `RekeySoftwareEncryptionAtRestMasterKey` Metodo per ricodificare la chiave master di crittografia software a riposo utilizzata per crittografare le DEK (chiavi di crittografia dei dati).  Durante la creazione del cluster, la crittografia software a riposo viene configurata per utilizzare Internal Key Management (IKM).  Questo metodo di reimpostazione delle chiavi può essere utilizzato dopo la creazione del cluster per utilizzare IKM o External Key Management (EKM).
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input.  Se il `keyManagementType` Se il parametro non è specificato, l'operazione di reimpostazione delle chiavi viene eseguita utilizzando la configurazione di gestione delle chiavi esistente.  Se il `keyManagementType` è specificato e il fornitore della chiave è esterno, il `keyProviderID` deve essere utilizzato anche il parametro.
+
+[cols="4*"]
+|===
+| Parametro | Descrizione | Tipo | Opzionale 
+
+
+| Tipo di gestione delle chiavi | Tipo di gestione delle chiavi utilizzato per gestire la chiave principale.  I valori possibili sono:
+`Internal` : Reimpostare la chiave utilizzando la gestione delle chiavi interne.
+`External` : Reimpostare la chiave utilizzando la gestione delle chiavi esterne.  Se questo parametro non viene specificato, l'operazione di reimpostazione delle chiavi viene eseguita utilizzando la configurazione di gestione delle chiavi esistente. | corda | VERO 
+
+
+| ID fornitore di chiavi | L'ID del fornitore della chiave da utilizzare.  Questo è un valore univoco restituito come parte di uno dei `CreateKeyProvider` metodi.  L'ID è richiesto solo quando `keyManagementType` È `External` e non è altrimenti valido. | intero | VERO 
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+[cols="4*"]
+|===
+| Parametro | Descrizione | Tipo | Opzionale 
+
+
+| asyncHandle | Determinare lo stato dell'operazione di reimpostazione delle chiavi utilizzando questo `asyncHandle` valore con `GetAsyncResult` . `GetAsyncResult` l'output includerà un `newKey` campo che contiene informazioni sulla nuova chiave principale e un `keyToDecommission` campo che contiene informazioni sulla vecchia chiave. | intero | Falso 
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+ "method": "rekeysoftwareencryptionatrestmasterkey",
+ "params": {
+   "keyManagementType": "external",
+   "keyProviderID": "<ID number>"
+ }
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+    "asyncHandle": 1
+}
+----
+
+
+== Nuovo dalla versione
+
+12,3
+
+[discrete]
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentazione per le versioni precedenti dei prodotti NetApp SolidFire ed Element"^]
+

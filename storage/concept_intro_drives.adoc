@@ -1,0 +1,30 @@
+---
+permalink: storage/concept_intro_drives.html 
+sidebar: sidebar 
+keywords: drives, physical drives, cluster data, storage node, volume metadata, block drives, clusters 
+summary: 'Un nodo di archiviazione contiene una o più unità fisiche utilizzate per archiviare una parte dei dati per il cluster.  Il cluster utilizza la capacità e le prestazioni dell"unità dopo che questa è stata aggiunta correttamente a un cluster.' 
+---
+= Unità
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un nodo di archiviazione contiene una o più unità fisiche utilizzate per archiviare una parte dei dati per il cluster.  Il cluster utilizza la capacità e le prestazioni dell'unità dopo che questa è stata aggiunta correttamente a un cluster.
+
+Un nodo di archiviazione contiene due tipi di unità:
+
+* *Unità metadati di volume*
++
+Queste unità memorizzano informazioni compresse che definiscono ciascun volume, clone o snapshot all'interno di un cluster.  La capacità totale dell'unità metadati nel sistema determina la quantità massima di spazio di archiviazione che può essere fornita come volumi.  La quantità massima di storage che può essere fornita è indipendente dalla quantità di dati effettivamente archiviati sulle unità a blocchi del cluster.  Le unità di metadati del volume archiviano i dati in modo ridondante su un cluster utilizzando la protezione dei dati Double Helix.
+
++
+
+NOTE: Alcuni messaggi di errore e di registro eventi di sistema fanno riferimento alle unità di metadati del volume come unità slice.
+
+* *Blocca unità*
++
+Queste unità memorizzano i blocchi di dati compressi e deduplicati per i volumi delle applicazioni server.  Le unità a blocchi costituiscono la maggior parte della capacità di archiviazione del sistema.  La maggior parte delle richieste di lettura dei dati già archiviati nel cluster SolidFire , così come le richieste di scrittura dei dati, si verificano sulle unità a blocchi.  La capacità totale dell'unità a blocchi nel sistema determina la quantità massima di dati che possono essere archiviati, tenendo conto degli effetti della compressione, del thin provisioning e della deduplicazione.
+
+

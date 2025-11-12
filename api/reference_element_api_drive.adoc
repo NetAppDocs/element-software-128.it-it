@@ -1,0 +1,176 @@
+---
+permalink: api/reference_element_api_drive.html 
+sidebar: sidebar 
+keywords: objects,object,drive 
+summary: 'L"oggetto unità contiene informazioni sulle singole unità nei nodi attivi del cluster.  Questo oggetto contiene dettagli sulle unità aggiunte come metadati di volume o unità a blocchi, nonché sulle unità non ancora aggiunte e disponibili.  È possibile recuperare queste informazioni con il metodo API ListDrives.' 
+---
+= guidare
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto unità contiene informazioni sulle singole unità nei nodi attivi del cluster.  Questo oggetto contiene dettagli sulle unità aggiunte come metadati di volume o unità a blocchi, nonché sulle unità non ancora aggiunte e disponibili.  È possibile recuperare queste informazioni con il `ListDrives` Metodo API.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+attributi
+ a| 
+Elenco di coppie nome-valore nel formato oggetto JSON.  Questo oggetto è sempre nullo e non è modificabile.
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+capacità
+ a| 
+Capacità totale dell'unità, in byte.
+ a| 
+intero
+
+
+
+ a| 
+telaioSlot
+ a| 
+Per le piattaforme HCI, questo valore è la lettera del nodo e il numero dello slot nello chassis del server in cui si trova questa unità.  Per le piattaforme di archiviazione, il numero di slot è una rappresentazione stringa dell'intero "slot".
+ a| 
+corda
+
+
+
+ a| 
+driveFailureDetail
+ a| 
+Se lo stato di un'unità è "Non riuscito", questo campo fornisce maggiori dettagli sul motivo per cui l'unità è stata contrassegnata come non riuscita.
+ a| 
+corda
+
+
+
+ a| 
+ID unità
+ a| 
+L'ID di questa unità.
+ a| 
+intero
+
+
+
+ a| 
+driveSecurityFaultReason
+ a| 
+Se l'abilitazione o la disabilitazione della sicurezza dell'unità non è riuscita, indicarne il motivo.  Se il valore è "none", non si è verificato alcun errore.
+ a| 
+corda
+
+
+
+ a| 
+ID chiave
+ a| 
+KeyID utilizzato dal fornitore della chiave per acquisire la chiave di autenticazione per sbloccare questa unità.
+ a| 
+UUID
+
+
+
+ a| 
+ID fornitore di chiavi
+ a| 
+Identifica il fornitore della chiave di autenticazione per sbloccare questa unità.
+ a| 
+intero
+
+
+
+ a| 
+ID nodo
+ a| 
+L'ID del nodo che contiene questa unità.
+ a| 
+intero
+
+
+
+ a| 
+segmentFileSize
+ a| 
+Dimensione del file del segmento dell'unità, in byte.
+ a| 
+intero
+
+
+
+ a| 
+seriale
+ a| 
+Il numero di serie dell'unità.
+ a| 
+corda
+
+
+
+ a| 
+fessura
+ a| 
+Numero di slot nello chassis del server in cui si trova questa unità oppure -1 se per l'unità metadati interna viene utilizzato un dispositivo SATADimm.
+ a| 
+intero
+
+
+
+ a| 
+stato
+ a| 
+Lo stato dell'unità. Valori possibili:
+
+* disponibile: Un'unità disponibile.
+* attivo: Un'unità attiva.
+* cancellazione: un'unità è in fase di cancellazione sicura.  Tutti i dati presenti su quell'unità verranno rimossi definitivamente.
+* failed: Un'unità che ha subito un guasto.  Tutti i dati precedentemente presenti sull'unità sono stati migrati su altre unità del cluster.
+* rimozione: un'unità è in fase di rimozione.  Tutti i dati precedentemente presenti sull'unità vengono migrati su altre unità del cluster.
+
+ a| 
+corda
+
+
+
+ a| 
+tipo
+ a| 
+Il tipo di unità. Valori possibili:
+
+* volume: memorizza i metadati del volume.
+* blocco: memorizza i dati del blocco.
+* sconosciuto: il tipo di unità non è ancora attivo e deve ancora essere determinato.
+
+ a| 
+corda
+
+
+
+ a| 
+Capacità utilizzabile
+ a| 
+Capacità utilizzabile dell'unità, in byte.
+ a| 
+intero
+
+|===
+
+
+== Trova maggiori informazioni
+
+xref:reference_element_api_listdrives.adoc[ListDrives]

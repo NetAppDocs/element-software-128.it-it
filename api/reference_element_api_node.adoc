@@ -1,0 +1,232 @@
+---
+permalink: api/reference_element_api_node.html 
+sidebar: sidebar 
+keywords: object,objects,node 
+summary: 'L"oggetto nodo contiene informazioni su ciascun nodo nel cluster.  È possibile recuperare queste informazioni utilizzando i metodi ListActiveNodes e ListAllNodes.' 
+---
+= nodo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto nodo contiene informazioni su ciascun nodo nel cluster.  È possibile recuperare queste informazioni utilizzando il `ListActiveNodes` E `ListAllNodes` metodi.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+IDServizioAssociato
+ a| 
+ID del servizio Fibre Channel per il nodo.  "0" se il nodo non è un nodo Fibre Channel.
+ a| 
+intero
+
+
+
+ a| 
+IDServizioMasterassociato
+ a| 
+ID del servizio master per il nodo.
+ a| 
+intero
+
+
+
+ a| 
+attributi
+ a| 
+Elenco di coppie nome-valore nel formato oggetto JSON.
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+Nometelaio
+ a| 
+Identifica in modo univoco uno chassis; identico per tutti i nodi in un singolo chassis.
+ a| 
+corda
+
+
+
+ a| 
+cip
+ a| 
+L'indirizzo IP del cluster assegnato al nodo.
+ a| 
+corda
+
+
+
+ a| 
+cipi
+ a| 
+Interfaccia di rete utilizzata per la comunicazione del cluster.
+ a| 
+corda
+
+
+
+ a| 
+customProtectionDomainName
+ a| 
+Identifica in modo univoco un dominio di protezione personalizzato.  Questo nome è identico per tutti i nodi di archiviazione all'interno di tutti gli chassis in un dato dominio di protezione personalizzato.
+ a| 
+corda
+
+
+
+ a| 
+GruppoPortaTargetChannelFibre
+ a| 
+Il gruppo target associato a questo nodo.  "null" se il nodo non è un nodo Fibre Channel.
+ a| 
+intero
+
+
+
+ a| 
+Modalità di manutenzione
+ a| 
+Indica in quale modalità si trova un nodo per manutenzione.
+ a| 
+n / a
+
+
+
+ a| 
+mip
+ a| 
+L'indirizzo IP utilizzato per la gestione dei nodi.
+ a| 
+corda
+
+
+
+ a| 
+mipi
+ a| 
+Interfaccia di rete utilizzata per la gestione dei nodi.
+ a| 
+corda
+
+
+
+ a| 
+nome
+ a| 
+Nome host per il nodo.
+ a| 
+corda
+
+
+
+ a| 
+ID nodo
+ a| 
+NodeID per questo nodo.
+ a| 
+intero
+
+
+
+ a| 
+NodoSlot
+ a| 
+Per le piattaforme HCI, la lettera corrispondente allo slot dello chassis in cui si trova questo nodo ("A", "B", "C" o "D").  Per le piattaforme di archiviazione, questo valore è nullo.
+ a| 
+corda
+
+
+
+ a| 
+informazioni sulla piattaforma
+ a| 
+Informazioni hardware per il nodo.  Membri:
+
+* chassisType: la piattaforma hardware del nodo.
+* cpuModel: modello di CPU della piattaforma hardware.
+* nodeMemoryGB: quantità di memoria installata nella piattaforma fisica in GB.
+* nodeType: il nome del modello del nodo.
+* platformConfigVersion: la versione del software configurata per questo hardware del nodo.
+
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+ruolo
+ a| 
+Il ruolo del nodo nel cluster. Valori possibili:
+
+* Gestione
+* Magazzinaggio
+* Calcolare
+* Testimone
+
+ a| 
+
+
+
+ a| 
+sorso
+ a| 
+L'indirizzo IP di archiviazione assegnato al nodo.
+ a| 
+corda
+
+
+
+ a| 
+sipi
+ a| 
+Interfaccia di rete utilizzata per il traffico di archiviazione.
+ a| 
+corda
+
+
+
+ a| 
+versione software
+ a| 
+Restituisce la versione corrente del software Element in esecuzione sul nodo.
+ a| 
+corda
+
+
+
+ a| 
+uuid
+ a| 
+L'identificatore univoco universale associato a questo nodo.
+ a| 
+corda
+
+
+
+ a| 
+reti virtuali
+ a| 
+Oggetto contenente indirizzi IP e ID di reti virtuali.
+ a| 
+xref:reference_element_api_virtualnetwork.adoc[rete virtuale]vettore
+
+|===
+
+
+== Trova maggiori informazioni
+
+* xref:reference_element_api_listactivenodes.adoc[ListActiveNodes]
+* xref:reference_element_api_listallnodes.adoc[Elenca tutti i nodi]
+

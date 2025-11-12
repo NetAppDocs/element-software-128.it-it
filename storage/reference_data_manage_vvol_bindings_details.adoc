@@ -1,0 +1,46 @@
+---
+permalink: storage/reference_data_manage_vvol_bindings_details.html 
+sidebar: sidebar 
+keywords: bindings details, vvols, for each virtual volume, endpoints, 
+summary: La pagina Associazioni nella scheda VVols fornisce informazioni di associazione su ciascun volume virtuale. 
+---
+= Dettagli degli attacchi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La pagina Associazioni nella scheda VVols fornisce informazioni di associazione su ciascun volume virtuale.
+
+Vengono visualizzate le seguenti informazioni:
+
+* *ID host*
++
+L'UUID dell'host ESXi che ospita i volumi virtuali ed è noto al cluster.
+
+* *ID endpoint protocollo*
++
+ID endpoint del protocollo che corrispondono a ciascun nodo nel cluster SolidFire .
+
+* *Endpoint del protocollo nell'ID banda*
++
+ID del dispositivo SCSI NAA dell'endpoint del protocollo.
+
+* *Tipo di endpoint del protocollo*
++
+Il tipo di endpoint del protocollo.
+
+* *ID associazione VVol*
++
+L'UUID di associazione del volume virtuale.
+
+* *ID VVol*
++
+Identificatore univoco universale (UUID) del volume virtuale.
+
+* *ID secondario VVol*
++
+ID secondario del volume virtuale che è un ID LUN SCSI di secondo livello.
+
+

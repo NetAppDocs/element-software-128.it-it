@@ -1,0 +1,100 @@
+---
+permalink: api/reference_element_api_deleteinitiators.html 
+sidebar: sidebar 
+keywords: delete,deleting,initiator,initiators,DeleteInitiators 
+summary: 'È possibile utilizzare DeleteInitiators per eliminare uno o più iniziatori dal sistema (e da tutti i volumi o gruppi di accesso al volume associati).' 
+---
+= EliminaIniziatori
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare `DeleteInitiators` per eliminare uno o più iniziatori dal sistema (e da tutti i volumi o gruppi di accesso al volume associati).
+
+Se `DeleteInitiators` non riesce a eliminare uno degli iniziatori forniti nel parametro, il sistema restituisce un errore e non elimina alcun iniziatore (non è possibile alcun completamento parziale).
+
+
+
+== Parametro
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+iniziatori
+ a| 
+Un array di ID di iniziatori da eliminare.
+ a| 
+array di interi
+ a| 
+Nessuno
+ a| 
+SÌ
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo non ha valori di ritorno.
+
+
+
+== Errore
+
+Questo metodo può restituire il seguente errore:
+
+|===
+
+
+| Nome | Descrizione 
+
+
+ a| 
+xInitiatorDoesNotExist
+ a| 
+Restituito se il nome dell'iniziatore scelto non esiste.
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "id": 5101,
+  "method": "DeleteInitiators",
+  "params": {
+    "initiators": [
+      145,
+      147
+    ]
+  }
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id": 5101,
+  "result": {}
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

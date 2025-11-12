@@ -1,0 +1,96 @@
+---
+permalink: api/reference_element_api_keyserverkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,keys 
+summary: 'L"oggetto keyServerKmip descrive un server di chiavi del protocollo KMIP (Key Management Interoperability Protocol), ovvero una posizione per il recupero delle chiavi di autenticazione da utilizzare con funzionalità del cluster quali la crittografia a riposo.' 
+---
+= keyServerKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto keyServerKmip descrive un server di chiavi KMIP (Key Management Interoperability Protocol), ovvero una posizione per il recupero delle chiavi di autenticazione da utilizzare con funzionalità del cluster come la crittografia a riposo.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+ID fornitore di chiavi
+ a| 
+Se questo server di chiavi KMIP è assegnato a un provider, questo membro contiene l'ID del provider di chiavi KMIP a cui è assegnato.  Altrimenti questo membro è nullo.
+ a| 
+intero
+
+
+
+ a| 
+ID del server chiave
+ a| 
+L'ID del server delle chiavi KMIP.  Si tratta di un valore univoco assegnato dal cluster durante la creazione del server chiave.  Questo valore non può essere modificato.
+ a| 
+intero
+
+
+
+ a| 
+kmipAssignedProviderIsActive
+ a| 
+Se questo server di chiavi KMIP è assegnato a un provider (keyProviderID non è nullo), questo membro indica se il provider è attivo (fornendo chiavi attualmente in uso).  Altrimenti, questo membro è nullo.
+ a| 
+booleano
+
+
+
+ a| 
+kmipCaCertificate
+ a| 
+Il certificato della chiave pubblica della CA radice del server delle chiavi esterno.  Viene utilizzato per verificare il certificato presentato dal server delle chiavi esterno nella comunicazione TLS.  Per i cluster di server chiave in cui i singoli server utilizzano CA diverse, questo membro contiene una stringa concatenata dei certificati radice di tutte le CA.
+ a| 
+corda
+
+
+
+ a| 
+kmipClientCertificate
+ a| 
+Un certificato PKCS#10 X.509 codificato Base64 in formato PEM utilizzato dal client KMIP di Element Storage.
+ a| 
+corda
+
+
+
+ a| 
+kmipKeyServerHostnames
+ a| 
+I nomi host o gli indirizzi IP associati a questo server di chiavi KMIP.
+ a| 
+matrice di stringhe
+
+
+
+ a| 
+kmipKeyServerName
+ a| 
+Il nome del server delle chiavi KMIP.  Questo nome viene utilizzato solo a scopo di visualizzazione e non deve essere univoco.
+ a| 
+corda
+
+
+
+ a| 
+kmipKeyServerPort
+ a| 
+Il numero di porta associato a questo server di chiavi KMIP (in genere 5696).
+ a| 
+intero
+
+|===

@@ -1,0 +1,23 @@
+---
+permalink: storage/task_monitor_node_performance_activity.html 
+sidebar: sidebar 
+keywords: performance activity, nodes, view 
+summary: 'È possibile visualizzare l"attività prestazionale di ciascun nodo in formato grafico.  Queste informazioni forniscono statistiche in tempo reale per la CPU e le operazioni di I/O di lettura/scrittura al secondo \(IOPS\) per ogni unità del nodo.  Il grafico di utilizzo viene aggiornato ogni cinque secondi, mentre il grafico delle statistiche dell"unità viene aggiornato ogni dieci secondi.' 
+---
+= Visualizza l'attività delle prestazioni del nodo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile visualizzare l'attività prestazionale di ciascun nodo in formato grafico.  Queste informazioni forniscono statistiche in tempo reale sulla CPU e sulle operazioni di I/O di lettura/scrittura al secondo (IOPS) per ogni unità del nodo.  Il grafico di utilizzo viene aggiornato ogni cinque secondi, mentre il grafico delle statistiche dell'unità viene aggiornato ogni dieci secondi.
+
+. Fare clic su *Cluster* > *Nodi*.
+. Fare clic su *Azioni* per il nodo che si desidera visualizzare.
+. Fare clic su *Visualizza dettagli*.
++
+
+NOTE: È possibile visualizzare punti specifici nel tempo sui grafici a linee e a barre posizionando il cursore sulla linea o sulla barra.
+
+

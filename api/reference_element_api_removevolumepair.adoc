@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_removevolumepair.html 
+sidebar: sidebar 
+keywords: volume,pair,volumes,remove,removing,removevolumepair 
+summary: 'È possibile utilizzare il metodo RemoveVolumePair per rimuovere l"associazione remota tra due volumi.  Utilizzare questo metodo sia sui volumi di origine che su quelli di destinazione abbinati.  Quando si rimuovono le informazioni di associazione del volume, i dati non vengono più replicati da o verso il volume.' 
+---
+= RemoveVolumePair
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `RemoveVolumePair` metodo per rimuovere l'associazione remota tra due volumi.  Utilizzare questo metodo sia sui volumi di origine che su quelli di destinazione abbinati.  Quando si rimuovono le informazioni di associazione del volume, i dati non vengono più replicati da o verso il volume.
+
+
+
+== Parametro
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+ID volume
+ a| 
+ID del volume su cui arrestare il processo di replica.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+SÌ
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo non ha valore di ritorno.
+
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "RemoveVolumePair",
+   "params": {
+      "volumeID": 5
+   "id" : 1
+   }
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+   }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

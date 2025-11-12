@@ -1,0 +1,67 @@
+---
+permalink: storage/task_per_node_run_system_tests.html 
+sidebar: sidebar 
+keywords: storage nodes, running system tests,s ystem tests, network settings, testing changes 
+summary: È possibile testare le modifiche alle impostazioni di rete dopo averle inserite nella configurazione di rete.  È possibile eseguire i test per verificare che il nodo di archiviazione sia stabile e possa essere messo online senza problemi. 
+---
+= Eseguire test di sistema utilizzando l'interfaccia utente per nodo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile testare le modifiche alle impostazioni di rete dopo averle inserite nella configurazione di rete.  È possibile eseguire i test per verificare che il nodo di archiviazione sia stabile e possa essere messo online senza problemi.
+
+Hai effettuato l'accesso all'interfaccia utente per nodo del nodo di archiviazione.
+
+. Fare clic su *Test di sistema*.
+. Fare clic su *Esegui test* accanto al test che si desidera eseguire oppure selezionare *Esegui tutti i test*.
++
+
+NOTE: L'esecuzione di tutte le operazioni di test può richiedere molto tempo e dovrebbe essere effettuata solo su indicazione del supporto NetApp .
+
++
+** *Test Ensemble Connesso*
++
+Testa e verifica la connettività a un insieme di database.  Per impostazione predefinita, il test utilizza l'ensemble per il cluster a cui è associato il nodo.  In alternativa, è possibile fornire un insieme diverso per testare la connettività.
+
+** *Test di connessione Mvip*
++
+Esegue il ping dell'indirizzo IP virtuale di gestione (MVIP) specificato e quindi esegue una semplice chiamata API all'MVIP per verificare la connettività.  Per impostazione predefinita, il test utilizza l'MVIP per il cluster a cui è associato il nodo.
+
+** *Test Connect Svip*
++
+Esegue il ping dell'indirizzo IP virtuale di archiviazione specificato (SVIP) utilizzando pacchetti ICMP (Internet Control Message Protocol) che corrispondono alla dimensione MTU (Maximum Transmission Unit) impostata sulla scheda di rete.  Si connette quindi allo SVIP come iniziatore iSCSI.  Per impostazione predefinita, il test utilizza l'SVIP per il cluster a cui è associato il nodo.
+
+** *Test della configurazione hardware*
++
+Verifica che tutte le configurazioni hardware siano corrette, convalida che le versioni del firmware siano corrette e conferma che tutte le unità siano installate e funzionino correttamente.  Si tratta dello stesso test di fabbrica.
+
++
+
+NOTE: Questo test richiede molte risorse e deve essere eseguito solo se richiesto dal supporto NetApp .
+
+** *Test di connettività locale*
++
+Verifica la connettività con tutti gli altri nodi del cluster eseguendo il ping dell'IP del cluster (CIP) su ciascun nodo.  Questo test verrà visualizzato su un nodo solo se il nodo fa parte di un cluster attivo.
+
+** *Test Localizza Cluster*
++
+Convalida che il nodo possa individuare il cluster specificato nella configurazione del cluster.
+
+** *Configurazione di rete di prova*
++
+Verifica che le impostazioni di rete configurate corrispondano alle impostazioni di rete utilizzate sul sistema.  Questo test non è destinato a rilevare guasti hardware quando un nodo partecipa attivamente a un cluster.
+
+** *Ping di prova*
++
+Esegue il ping di un elenco specificato di host oppure, se non ne viene specificato nessuno, crea dinamicamente un elenco di tutti i nodi registrati nel cluster ed esegue il ping di ciascuno per una semplice connettività.
+
+** *Test di connettività remota*
++
+Verifica la connettività a tutti i nodi nei cluster accoppiati in remoto eseguendo il ping dell'IP del cluster (CIP) su ciascun nodo.  Questo test verrà visualizzato su un nodo solo se il nodo fa parte di un cluster attivo.
+
+
+
+

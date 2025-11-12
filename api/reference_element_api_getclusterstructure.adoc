@@ -1,0 +1,71 @@
+---
+permalink: api/reference_element_api_getclusterstructure.html 
+sidebar: sidebar 
+keywords: storage,cluster,structure,config,configuration,info,get,getting,getclusterstructure 
+summary: È possibile utilizzare il metodo GetClusterStructure per eseguire il backup delle informazioni di configurazione del cluster di archiviazione corrente.  Se la configurazione del cluster di archiviazione viene modificata mentre questo metodo è in esecuzione, il contenuto del backup della configurazione sarà imprevedibile.  È possibile salvare questi dati in un file di testo e ripristinarli su altri cluster o sullo stesso cluster in caso di disastro. 
+---
+= OttieniStrutturaCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `GetClusterStructure` metodo per eseguire il backup delle informazioni di configurazione del cluster di archiviazione corrente.  Se la configurazione del cluster di archiviazione viene modificata mentre questo metodo è in esecuzione, il contenuto del backup della configurazione sarà imprevedibile.  È possibile salvare questi dati in un file di testo e ripristinarli su altri cluster o sullo stesso cluster in caso di disastro.
+
+
+
+== Parametro
+
+Questo metodo non ha parametri di input.
+
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+risultato
+ a| 
+Un oggetto JSON contenente le informazioni di configurazione correnti del cluster di archiviazione.
+ a| 
+xref:reference_element_api_clusterstructure.adoc[clusterStructure]
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "method": "GetClusterStructure",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+	"id": 1,
+	"result" : <clusterStructure object containing configuration information>
+	}
+----
+
+
+== Nuovo dalla versione
+
+10,3

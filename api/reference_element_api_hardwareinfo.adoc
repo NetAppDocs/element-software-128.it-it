@@ -1,0 +1,200 @@
+---
+permalink: api/reference_element_api_hardwareinfo.html 
+sidebar: sidebar 
+keywords: object,objects,hardwareInfo 
+summary: 'L"oggetto hardwareInfo contiene informazioni dettagliate sull"hardware e sullo stato di ciascun nodo nel cluster.  È possibile recuperare queste informazioni con il metodo API GetHardwareInfo.' 
+---
+= Informazioni hardware
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto hardwareInfo contiene informazioni dettagliate sull'hardware e sullo stato di ciascun nodo nel cluster.  È possibile recuperare queste informazioni con il `GetHardwareInfo` Metodo API.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+boardSerial
+ a| 
+Numero di serie della scheda DMI.
+ a| 
+corda
+
+
+
+ a| 
+autobus
+ a| 
+Informazioni sul bus multimediale della scheda madre.
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+telaioSeriale
+ a| 
+Il numero di serie del telaio.
+ a| 
+corda
+
+
+
+ a| 
+driveHardware
+ a| 
+Un elenco di informazioni per ciascuna unità nel nodo.
+ a| 
+Matrice di oggetti JSON
+
+
+
+ a| 
+FibreChannelPorts
+ a| 
+Un elenco delle porte Fibre Channel sul nodo.
+ a| 
+array di interi
+
+
+
+ a| 
+configurazione hardware
+ a| 
+Informazioni sulla configurazione delle periferiche della scheda madre.
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+kernelCrashDumpState
+ a| 
+Configurazione del crash dump del kernel del sistema operativo.
+ a| 
+corda
+
+
+
+ a| 
+memoria
+ a| 
+Informazioni sul firmware e sull'hardware della memoria di sistema.
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+rete
+ a| 
+Descrizioni dell'hardware di ciascuna interfaccia di rete del nodo.
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+interfacce di rete
+ a| 
+Lo stato delle interfacce di rete del nodo.
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+NodoSlot
+ a| 
+Per le piattaforme HCI, la lettera corrispondente allo slot dello chassis in cui si trova questo nodo ("A", "B", "C" o "D").  Per le piattaforme di archiviazione, questo valore è nullo.
+ a| 
+corda
+
+
+
+ a| 
+nvram
+ a| 
+Statistiche NVRAM per il nodo.
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+origine
+ a| 
+Il fornitore della scheda madre.
+ a| 
+corda
+
+
+
+ a| 
+piattaforma
+ a| 
+Descrizione della piattaforma del telaio.
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+seriale
+ a| 
+Il numero di serie del prodotto.
+ a| 
+corda
+
+
+
+ a| 
+magazzinaggio
+ a| 
+Informazioni sul controller di archiviazione.
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+Memoria di sistema
+ a| 
+Informazioni sull'utilizzo della memoria e sulle prestazioni del sistema operativo.
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+sistema
+ a| 
+Il tipo di chassis del nodo.
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+uuid
+ a| 
+L'ID univoco del nodo.
+ a| 
+UUID
+
+|===
+
+
+== Trova maggiori informazioni
+
+xref:reference_element_api_gethardwareinfo.adoc[Ottieni informazioni sull'hardware]

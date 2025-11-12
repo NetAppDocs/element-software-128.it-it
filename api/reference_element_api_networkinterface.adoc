@@ -1,0 +1,125 @@
+---
+permalink: api/reference_element_api_networkinterface.html 
+sidebar: sidebar 
+keywords: object,objects,networkInterface 
+summary: 'L"oggetto networkInterface contiene informazioni di configurazione per singole interfacce di rete su un nodo di archiviazione.' 
+---
+= interfaccia di rete
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto networkInterface contiene informazioni di configurazione per singole interfacce di rete su un nodo di archiviazione.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+indirizzo
+ a| 
+L'indirizzo di gestione IPv4 dell'interfaccia.
+ a| 
+corda
+
+
+
+ a| 
+addressV6
+ a| 
+Indirizzo di gestione IPv6 dell'interfaccia.
+ a| 
+corda
+
+
+
+ a| 
+trasmissione
+ a| 
+L'indirizzo di broadcast dell'interfaccia.
+ a| 
+corda
+
+
+
+ a| 
+indirizzo MAC
+ a| 
+L'indirizzo MAC dell'interfaccia.
+ a| 
+corda
+
+
+
+ a| 
+MTU
+ a| 
+Unità di trasferimento massima, in byte, dell'interfaccia.
+ a| 
+intero
+
+
+
+ a| 
+nome
+ a| 
+Il nome dell'interfaccia.
+ a| 
+corda
+
+
+
+ a| 
+spazio dei nomi
+ a| 
+Se a questa interfaccia è assegnato o meno uno spazio dei nomi di rete virtuale.
+ a| 
+booleano
+
+
+
+ a| 
+maschera di rete
+ a| 
+La maschera di sottorete dell'interfaccia.
+ a| 
+corda
+
+
+
+ a| 
+stato
+ a| 
+Lo stato operativo dell'interfaccia.
+ a| 
+corda
+
+
+
+ a| 
+tipo
+ a| 
+Il tipo di interfaccia (bond master, bond slave, ecc.).
+ a| 
+corda
+
+
+
+ a| 
+virtualNetworkTag
+ a| 
+ID VLAN assegnato all'interfaccia sulla rete virtuale.
+ a| 
+intero
+
+|===

@@ -1,0 +1,208 @@
+---
+permalink: api/reference_element_api_nodestats.html 
+sidebar: sidebar 
+keywords: object,objects,nodestats 
+summary: 'L"oggetto nodeStats contiene misurazioni di attività di alto livello per un nodo.  È possibile utilizzare i metodi API GetNodeStats e ListNodeStats per ottenere alcuni o tutti gli oggetti nodeStats.' 
+---
+= nodeStats
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto nodeStats contiene misurazioni di attività di alto livello per un nodo.  Puoi usare il `GetNodeStats` E `ListNodeStats` Metodi API per ottenere alcuni o tutti gli oggetti nodeStats.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+contare
+ a| 
+Numero totale di campioni nell'oggetto nodeStats.
+ a| 
+intero
+
+
+
+ a| 
+processore
+ a| 
+Utilizzo della CPU, in %.
+ a| 
+intero
+
+
+
+ a| 
+CPU totale
+ a| 
+Valore di utilizzo della CPU in aumento monotono.
+ a| 
+intero
+
+
+
+ a| 
+cBytesIn
+ a| 
+Byte nell'interfaccia del cluster.
+ a| 
+intero
+
+
+
+ a| 
+cBytesOut
+ a| 
+Byte in uscita sull'interfaccia del cluster.
+ a| 
+intero
+
+
+
+ a| 
+sBytesIn
+ a| 
+Byte nell'interfaccia di archiviazione.
+ a| 
+intero
+
+
+
+ a| 
+sBytesOut
+ a| 
+Byte in uscita sull'interfaccia di archiviazione.
+ a| 
+intero
+
+
+
+ a| 
+mBytesIn
+ a| 
+Byte nell'interfaccia di gestione.
+ a| 
+intero
+
+
+
+ a| 
+mBytesOut
+ a| 
+Byte in uscita sull'interfaccia di gestione.
+ a| 
+intero
+
+
+
+ a| 
+cluster di utilizzo della rete
+ a| 
+Utilizzo dell'interfaccia di rete (in %) per l'interfaccia di rete del cluster.
+ a| 
+intero
+
+
+
+ a| 
+Utilizzo della rete Archiviazione
+ a| 
+Utilizzo dell'interfaccia di rete (in %) per l'interfaccia di rete di archiviazione.
+ a| 
+intero
+
+
+
+ a| 
+nodoCalore
+ a| 
+Informazioni sull'utilizzo dei nodi.  Disponibile a partire da Element 12.8.  Membri:
+
+* primaryTotalHeat: IOPS totali del nodo primario / IOPS configurati del nodo calcolati in media su 24 ore
+* recentPrimaryTotalHeat: IOPS totali del nodo primario / IOPS configurati dal nodo calcolati in media in un'ora
+* recentTotalHeat: IOPS totali del nodo / IOPS configurati dal nodo calcolati in media in un'ora
+* totalHeat: IOPS totali del nodo / IOPS configurati del nodo calcolati in media su 24 ore
+
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+readLatencyUSecTotal
+ a| 
+Valore monotono crescente del tempo totale impiegato per eseguire operazioni di lettura sul nodo.
+ a| 
+intero
+
+
+
+ a| 
+readOps
+ a| 
+Valore monotono crescente delle operazioni di lettura totali su un nodo.
+ a| 
+intero
+
+
+
+ a| 
+ssLoadHistogram
+ a| 
+Dati dell'istogramma che illustrano il carico del servizio slice nel tempo.
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+marca temporale
+ a| 
+L'ora corrente nel formato UTC+0.
+ a| 
+Stringa di data ISO 8601
+
+
+
+ a| 
+Memoria usata
+ a| 
+Utilizzo totale della memoria in byte.
+ a| 
+intero
+
+
+
+ a| 
+writeLatencyUSecTotal
+ a| 
+Valore monotono crescente del tempo totale impiegato per eseguire operazioni di scrittura sul nodo.
+ a| 
+intero
+
+
+
+ a| 
+writeOps
+ a| 
+Valore monotono crescente del totale delle operazioni di scrittura su un nodo.
+ a| 
+intero
+
+|===
+
+
+== Trova maggiori informazioni
+
+* xref:reference_element_api_getnodestats.adoc[Ottieni statistiche nodo]
+* xref:reference_element_api_listnodestats.adoc[ListNodeStats]
+

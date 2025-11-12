@@ -1,0 +1,351 @@
+---
+permalink: api/reference_element_api_modifyschedule.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapshot,schedule,scheduled,delete,pause,modifyschedule 
+summary: È possibile utilizzare ModifySchedule per modificare gli intervalli in cui si verifica uno snapshot pianificato.  Utilizzando questo metodo è anche possibile eliminare o mettere in pausa una pianificazione. 
+---
+= Modifica pianificazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare `ModifySchedule` per modificare gli intervalli in cui si verifica uno snapshot pianificato.  Utilizzando questo metodo è anche possibile eliminare o mettere in pausa una pianificazione.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+attributi
+ a| 
+Utilizzare per modificare la frequenza di occorrenza dello snapshot. Valori possibili:
+
+* `Days of Week`
+* `Days of Month`
+* `Time Interval`
+
+ a| 
+Oggetto JSON
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+ore
+ a| 
+Numero di ore tra gli snapshot oppure ora in cui verrà eseguito lo snapshot in modalità Giorni della settimana o Giorni del mese. I valori validi sono compresi tra 0 e 24.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+nome
+ a| 
+Il nome dell'istantanea.  Se non viene immesso alcun nome, vengono utilizzate la data e l'ora in cui è stato acquisito lo snapshot del gruppo.  La lunghezza massima consentita per il nome è di 244 caratteri.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+minuti
+ a| 
+Numero di minuti tra gli snapshot o minuto in cui verrà eseguito lo snapshot in modalità Giorni della settimana o Giorni del mese. I valori validi sono compresi tra 0 e 59.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+| ultimoStatoEsecuzione | Il risultato o lo stato dell'ultima creazione pianificata dello snapshot. | corda | Nessuno | NO 
+
+
+ a| 
+in pausa
+ a| 
+Indica se la pianificazione deve essere sospesa o meno.  Valori validi:
+
+* `true`
+* `false`
+
+ a| 
+booleano
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+ricorrente
+ a| 
+Indica se la pianificazione sarà ricorrente o meno.  I valori validi sono:
+
+* `true`
+* `false`
+
+ a| 
+booleano
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+runNextInterval
+ a| 
+Utilizzare per scegliere se eseguire o meno lo snapshot la prossima volta che lo scheduler è attivo.  Valori validi:
+
+* `true`
+* `false`
+
+
+Se impostato su true, lo snapshot pianificato viene eseguito la volta successiva che lo scheduler è attivo, per poi tornare a false.
+ a| 
+booleano
+ a| 
+falso
+ a| 
+NO
+
+
+
+ a| 
+IDprogramma
+ a| 
+ID univoco della pianificazione.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+Nome programma
+ a| 
+Nome univoco per la pianificazione.  La lunghezza massima consentita per il nome della pianificazione è di 244 caratteri.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+tipo di programma
+ a| 
+Indica il tipo di pianificazione da creare.  L'unico valore supportato è `snapshot` .
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+`scheduleInfo`
+ a| 
+Il nome univoco assegnato alla pianificazione, il periodo di conservazione per lo snapshot creato e l'ID del volume da cui è stato creato lo snapshot.  Valori validi:
+
+* `enableRemoteReplication`: Indica se lo snapshot deve essere incluso nella replica remota.  (booleano)
+* `ensureSerialCreation`: specifica se è consentita la creazione di un nuovo snapshot se è in corso una replica di snapshot precedente.  (booleano)
+* `name`: Nome dello snapshot da utilizzare.  (corda)
+* `retention`: La quantità di tempo per cui viene conservato lo snapshot.  A seconda dell'ora, viene visualizzato in uno dei seguenti formati:
++
+** `fifo`: Lo snapshot viene conservato secondo il principio FIFO (First-In-First-Out).  Se vuoto, lo snapshot viene conservato per sempre.  (corda)
+** HH:mm:ss
+
+
+* `volumeID`: ID del volume da includere nello snapshot.  (numero intero)
+* `volumes`: Elenco degli ID volume da includere nello snapshot del gruppo.  (array di interi)
+
+ a| 
+link:reference_element_api_schedule.html["programma"^]
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+snapMirrorLabel
+ a| 
+Etichetta utilizzata dal software SnapMirror per specificare la politica di conservazione degli snapshot su un endpoint SnapMirror .
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+da eliminare
+ a| 
+Indica se la pianificazione è contrassegnata per l'eliminazione.  Valori validi:
+
+* `true`
+* `false`
+
+ a| 
+booleano
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+data di inizio
+ a| 
+Indica la data in cui è iniziata o inizierà la prima volta la programmazione.
+ a| 
+Stringa di data ISO 8601
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+giorni del mese
+ a| 
+I giorni del mese in cui verrà scattata una foto. I valori validi sono compresi tra 1 e 31.
+ a| 
+array di interi
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+giorni feriali
+ a| 
+Giorno della settimana in cui verrà creato lo snapshot.  Il giorno della settimana inizia con domenica con il valore 0 e uno scostamento di 1.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+programma
+ a| 
+Un oggetto contenente gli attributi della pianificazione modificata.
+ a| 
+xref:reference_element_api_schedule.adoc[programma]
+
+|===
+
+
+== Richiedi esempio
+
+[listing]
+----
+{
+  "method": "ModifySchedule",
+  "params": {
+    "scheduleName" : "Chicago",
+    "scheduleID" : 3
+    },
+  "id": 1
+}
+----
+
+
+== Esempio di risposta
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Week"
+            },
+      "hasError": false,
+      "hours": 5,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 0,
+      "monthdays": [],
+      "paused": false,
+      "recurring": true,
+      "runNextInterval": false,
+      "scheduleID": 3,
+      "scheduleInfo": {
+        "volumeID": "2"
+            },
+      "scheduleName": "Chicago",
+      "scheduleType": "Snapshot",
+      "startingDate": null,
+      "toBeDeleted": false,
+      "weekdays": [
+        {
+          "day": 2,
+          "offset": 1
+      }
+      ]
+    }
+  }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

@@ -1,0 +1,31 @@
+---
+permalink: storage/task_data_manage_volumes_work_with_volumes_task.html 
+sidebar: sidebar 
+keywords: volumes, work, storage, iscsi, fc, cluster data management, overview of functions 
+summary: 'Il sistema SolidFire fornisce spazio di archiviazione tramite volumi.  I volumi sono dispositivi a blocchi a cui accedono tramite la rete i client iSCSI o Fibre Channel.  Dalla pagina Volumi nella scheda Gestione, è possibile creare, modificare, clonare ed eliminare volumi su un nodo.  È anche possibile visualizzare statistiche sulla larghezza di banda del volume e sull"utilizzo di I/O.' 
+---
+= Lavorare con i volumi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il sistema SolidFire fornisce spazio di archiviazione tramite volumi.  I volumi sono dispositivi a blocchi a cui accedono tramite la rete i client iSCSI o Fibre Channel.  Dalla pagina Volumi nella scheda Gestione, è possibile creare, modificare, clonare ed eliminare volumi su un nodo.  È anche possibile visualizzare statistiche sulla larghezza di banda del volume e sull'utilizzo di I/O.
+
+
+
+== Trova maggiori informazioni
+
+* link:concept_data_manage_volumes_quality_of_service_policies.html["Gestire le politiche di qualità del servizio"]
+* link:task_data_manage_volumes.html#create-a-volume["Crea un volume"]
+* link:task_data_manage_volumes.html#view-volume-details["Visualizza i dettagli delle prestazioni dei singoli volumi"]
+* link:task_data_manage_volumes.html#edit-active-volumes["Modifica volumi attivi"]
+* link:task_data_manage_volumes.html#delete-a-volume["Elimina un volume"]
+* link:task_data_manage_volumes.html#restore-a-deleted-volume["Ripristina un volume eliminato"]
+* link:task_data_manage_volumes.html#purge-a-volume["Svuota un volume"]
+* link:task_data_manage_volumes.html#clone-a-volume["Clonare un volume"]
+* link:task_data_manage_volumes_assign_luns_to_fibre_channel_volumes.html["Assegnare LUN ai volumi Fibre Channel"]
+* link:task_data_manage_volumes_apply_a_qos_policy.html["Applicare una policy QoS ai volumi"]
+* link:task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.html["Rimuovere l'associazione della policy QoS di un volume"]
+

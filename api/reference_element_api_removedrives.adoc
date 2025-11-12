@@ -1,0 +1,105 @@
+---
+permalink: api/reference_element_api_removedrives.html 
+sidebar: sidebar 
+keywords: cluster,drive,drives,remove,removing,removedrives 
+summary: 'È possibile utilizzare il metodo RemoveDrives per rimuovere in modo proattivo le unità che fanno parte del cluster.  È possibile utilizzare questo metodo quando si riduce la capacità del cluster o ci si prepara a sostituire unità prossime alla fine del loro ciclo di vita.  Tutti i dati presenti sulle unità vengono rimossi e migrati su altre unità nel cluster prima che l"unità venga rimossa dal cluster.' 
+---
+= Rimuovi unità
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `RemoveDrives` metodo per rimuovere in modo proattivo le unità che fanno parte del cluster.  È possibile utilizzare questo metodo quando si riduce la capacità del cluster o ci si prepara a sostituire unità prossime alla fine del loro ciclo di vita. `RemoveDrives` crea una terza copia dei dati del blocco sugli altri nodi del cluster e attende il completamento della sincronizzazione prima di spostare le unità nell'elenco "Disponibili".  Le unità presenti nell'elenco "Disponibili" vengono completamente rimosse dal sistema e non hanno servizi in esecuzione o dati attivi.
+
+`RemoveDrives`è un metodo asincrono.  A seconda della capacità totale delle unità rimosse, potrebbero essere necessari diversi minuti per migrare tutti i dati.
+
+Quando si rimuovono più unità, utilizzare una singola `RemoveDrives` chiamata di metodo anziché più metodi individuali con una singola unità ciascuno.  Ciò riduce la quantità di bilanciamento dei dati che deve essere eseguito per stabilizzare in modo uniforme il carico di archiviazione sul cluster.
+
+È anche possibile rimuovere le unità con stato "fallito" utilizzando `RemoveDrives` .  Quando si rimuove un'unità con stato "fallito", l'unità non torna allo stato "disponibile" o "attivo".  L'unità non è disponibile per l'uso nel cluster.
+
+
+
+== Parametro
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+unità
+ a| 
+Elenco di driveID da rimuovere dal cluster.
+ a| 
+array di interi
+ a| 
+Nessuno
+ a| 
+SÌ
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+asyncHandle
+ a| 
+Valore handle utilizzato per ottenere il risultato dell'operazione.
+ a| 
+intero
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "RemoveDrives",
+   "params": {
+      "drives"  : [3, 4, 5]
+   },
+   "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+   "id": 1,
+   "result" : {
+     "asyncHandle": 1
+   }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6
+
+
+
+== Trova maggiori informazioni
+
+* xref:reference_element_api_getasyncresult.adoc[Ottieni risultato asincrono]
+* xref:reference_element_api_listdrives.adoc[ListDrives]
+

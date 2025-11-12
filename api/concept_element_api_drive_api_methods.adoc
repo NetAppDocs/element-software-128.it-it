@@ -1,0 +1,31 @@
+---
+permalink: api/concept_element_api_drive_api_methods.html 
+sidebar: sidebar 
+keywords: drive,API,methods,method 
+summary: È possibile utilizzare i metodi API delle unità per aggiungere e gestire le unità disponibili per un cluster di archiviazione.  Quando si aggiunge un nodo di archiviazione al cluster di archiviazione o si installano nuove unità in un nodo di archiviazione esistente, le unità sono disponibili per essere aggiunte al cluster di archiviazione. 
+---
+= Metodi API Drive
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare i metodi API delle unità per aggiungere e gestire le unità disponibili per un cluster di archiviazione.  Quando si aggiunge un nodo di archiviazione al cluster di archiviazione o si installano nuove unità in un nodo di archiviazione esistente, le unità sono disponibili per essere aggiunte al cluster di archiviazione.
+
+* xref:reference_element_api_adddrives.adoc[Aggiungi unità]
+* xref:reference_element_api_getdrivehardwareinfo.adoc[Ottieni informazioni sull'hardware dell'unità]
+* xref:reference_element_api_getdrivestats.adoc[Ottieni statistiche di guida]
+* xref:reference_element_api_listdrives.adoc[ListDrives]
+* xref:reference_element_api_listdrivestats.adoc[ListDriveStats]
+* xref:reference_element_api_removedrives.adoc[Rimuovi unità]
+* xref:reference_element_api_secureerasedrives.adoc[SecureEraseDrives]
+
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentazione per le versioni precedenti dei prodotti NetApp SolidFire ed Element"^]
+

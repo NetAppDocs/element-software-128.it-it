@@ -1,0 +1,206 @@
+---
+permalink: api/reference_element_api_clonemultiplevolumes.html 
+sidebar: sidebar 
+keywords: volume,volumes,clone,cloning,multiple,CloneMultipleVolumes 
+summary: È possibile utilizzare il metodo CloneMultipleVolumes per creare un clone di un gruppo di volumi specificati.  È possibile assegnare un set coerente di caratteristiche a un gruppo di più volumi quando vengono clonati insieme. 
+---
+= Clona più volumi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `CloneMultipleVolumes` metodo per creare un clone di un gruppo di volumi specificati.  È possibile assegnare un set coerente di caratteristiche a un gruppo di più volumi quando vengono clonati insieme.
+
+Prima di utilizzare il parametro groupSnapshotID per clonare i volumi in uno snapshot di gruppo, è necessario innanzitutto creare lo snapshot di gruppo utilizzandoxref:reference_element_api_creategroupsnapshot.adoc[Crea istantanea di gruppo] Metodo API o interfaccia utente web.  L'utilizzo di groupSnapshotID è facoltativo quando si clonano più volumi.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+accesso
+ a| 
+Nuovo metodo di accesso predefinito per i nuovi volumi se non sovrascritto dalle informazioni passate nell'array del volume.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+enableSnapMirrorReplication
+ a| 
+Determina se il volume può essere utilizzato per la replica con endpoint SnapMirror . Valori possibili:
+
+* VERO
+* falso
+
+ a| 
+booleano
+ a| 
+falso
+ a| 
+NO
+
+
+
+ a| 
+ID istantanea gruppo
+ a| 
+ID dello snapshot del gruppo da utilizzare come base per il clone.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+nuovoIDAccount
+ a| 
+Nuovo ID account per i volumi se non sovrascritto dalle informazioni passate nella matrice dei volumi.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+volumi
+ a| 
+Raccolta di membri specificati per i nuovi volumi.  Membri:
+
+* volumeID: (obbligatorio)
+* accesso: (facoltativo) può essere readOnly, readWrite, locked o replicationTarget.
+* attributi: (facoltativo) elenco di coppie nome-valore in formato oggetto JSON.
+* nome: (facoltativo) Nuovo nome per il clone.
+* newAccountID: (facoltativo) ID account per i nuovi volumi.
+* newSize: (facoltativo) Dimensione totale del volume, in byte.  La dimensione è arrotondata al megabyte più vicino.
+
+
+Se non vengono specificati membri facoltativi, i valori vengono ereditati dai volumi di origine.
+ a| 
+Matrice di oggetti JSON
+ a| 
+Nessuno
+ a| 
+Sì (volumeID)
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+asyncHandle
+ a| 
+Valore restituito da una chiamata di metodo asincrona.
+ a| 
+intero
+
+
+
+ a| 
+groupCloneID
+ a| 
+ID univoco del nuovo clone del gruppo.
+ a| 
+intero
+
+
+
+ a| 
+membri
+ a| 
+Elenco di volumeID per le coppie di volumi di origine e destinazione.
+ a| 
+Matrice di oggetti JSON
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "CloneMultipleVolumes",
+   "params": {
+       "volumes": [
+           {
+              "volumeID": 5
+              "name":"foxhill",
+              "access":"readOnly"
+              },
+           {
+              "volumeID": 18
+              },
+           {
+             "volumeID": 20
+              }
+     ]
+   },
+   "id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "asyncHandle": 12,
+    "groupCloneID": 4,
+    "members": [
+     {
+      "srcVolumeID": 5,
+      "volumeID": 29
+     },
+     {
+      "srcVolumeID": 18,
+      "volumeID": 30
+     },
+     {
+      "srcVolumeID": 20,
+      "volumeID": 31
+      }
+    ]
+  }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

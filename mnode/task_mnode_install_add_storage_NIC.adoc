@@ -1,0 +1,125 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_install_add_storage_NIC.html 
+summary: 'Se si utilizza una scheda di rete aggiuntiva per l"archiviazione, è necessario configurare un"interfaccia di rete con o senza tag.' 
+keywords: netapp, element, management node, mnode, network, nic, storage nic 
+---
+= Configurare un controller di interfaccia di rete (NIC) di archiviazione
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si utilizza una scheda di rete aggiuntiva per l'archiviazione, è possibile accedere tramite SSH al nodo di gestione oppure utilizzare la console vCenter ed eseguire un comando curl per configurare un'interfaccia di rete con o senza tag.
+
+.Prima di iniziare
+* Conosci il tuo indirizzo IP eth0.
+* La versione del cluster esegue il software NetApp Element 11.3 o versione successiva.
+* Hai distribuito un nodo di gestione 11.3 o versione successiva.
+
+
+.Opzioni di configurazione
+Scegli l'opzione più adatta al tuo ambiente:
+
+* <<Configurare un controller di interfaccia di rete (NIC) di archiviazione per un'interfaccia di rete senza tag>>
+* <<Configurare un controller di interfaccia di rete (NIC) di archiviazione per un'interfaccia di rete con tag>>
+
+
+
+
+== Configurare un controller di interfaccia di rete (NIC) di archiviazione per un'interfaccia di rete senza tag
+
+.Passi
+. Aprire una console SSH o vCenter.
+. Sostituisci i valori nel seguente modello di comando ed esegui il comando:
++
+
+NOTE: I valori sono rappresentati da `$` per ciascuno dei parametri richiesti per la nuova interfaccia di rete di archiviazione.  IL `cluster` L'oggetto nel modello seguente è obbligatorio e può essere utilizzato per la ridenominazione del nome host del nodo di gestione. `--insecure` O `-k` le opzioni non devono essere utilizzate negli ambienti di produzione.
+
++
+[listing]
+----
+curl -u $mnode_user_name:$mnode_password --insecure -X POST \
+https://$mnode_IP:442/json-rpc/10.0 \
+-H 'Content-Type: application/json' \
+-H 'cache-control: no-cache' \
+-d ' {
+     "params": {
+               "network": {
+                          "$eth1": {
+                                   "#default" : false,
+                                   "address" : "$storage_IP",
+                                   "auto" : true,
+                                   "family" : "inet",
+                                   "method" : "static",
+                                   "mtu" : "9000",
+                                   "netmask" : "$subnet_mask",
+                                   "status" : "Up"
+                                   }
+                          },
+               "cluster": {
+                         "name": "$mnode_host_name"
+                         }
+             },
+    "method": "SetConfig"
+}
+'
+----
+
+
+
+
+== Configurare un controller di interfaccia di rete (NIC) di archiviazione per un'interfaccia di rete con tag
+
+.Passi
+. Aprire una console SSH o vCenter.
+. Sostituisci i valori nel seguente modello di comando ed esegui il comando:
++
+
+NOTE: I valori sono rappresentati da `$` per ciascuno dei parametri richiesti per la nuova interfaccia di rete di archiviazione.  IL `cluster` L'oggetto nel modello seguente è obbligatorio e può essere utilizzato per la ridenominazione del nome host del nodo di gestione. `--insecure` O `-k` le opzioni non devono essere utilizzate negli ambienti di produzione.
+
++
+[listing]
+----
+curl -u $mnode_user_name:$mnode_password --insecure -X POST \
+https://$mnode_IP:442/json-rpc/10.0 \
+-H 'Content-Type: application/json' \
+-H 'cache-control: no-cache' \
+-d ' {
+     "params": {
+               "network": {
+                          "$eth1": {
+                                   "#default" : false,
+                                   "address" : "$storage_IP",
+                                   "auto" : true,
+                                   "family" : "inet",
+                                   "method" : "static",
+                                   "mtu" : "9000",
+                                   "netmask" : "$subnet_mask",
+                                   "status" : "Up",
+                                   "virtualNetworkTag" : "$vlan_id"
+                                   }
+                          },
+               "cluster": {
+                         "name": "$mnode_host_name",
+                         "cipi": "$eth1.$vlan_id",
+                         "sipi": "$eth1.$vlan_id"
+                         }
+             },
+    "method": "SetConfig"
+}
+'
+----
+
+
+[discrete]
+== Trova maggiori informazioni
+
+* link:task_mnode_add_assets.html["Aggiungere una risorsa controller al nodo di gestione"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+

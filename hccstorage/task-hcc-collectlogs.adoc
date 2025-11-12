@@ -1,0 +1,168 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-collectlogs.html 
+summary: 'Puoi utilizzare NetApp Hybrid Cloud Control per raccogliere i log dall"installazione di Element per facilitare la risoluzione dei problemi.' 
+keywords: netapp, element, logs, collection, troubleshooting, monitor 
+---
+= Raccogliere i registri per la risoluzione dei problemi
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+In caso di problemi con l'installazione dell'archiviazione all-flash SolidFire , è possibile raccogliere i log da inviare al supporto NetApp per agevolare la diagnosi.  Per raccogliere i log su un sistema Element è possibile utilizzare NetApp Hybrid Cloud Control o l'API REST.
+
+.Cosa ti servirà
+* Assicurati che la versione del cluster di storage esegua il software NetApp Element 11.3 o versione successiva.
+* Assicurarsi di aver distribuito un nodo di gestione che esegue la versione 11.3 o successiva.
+
+
+.Opzioni di raccolta dei log
+Scegli una delle seguenti opzioni:
+
+* <<Utilizzare NetApp Hybrid Cloud Control per raccogliere i log>>
+* <<Utilizzare l'API REST per raccogliere i log>>
+
+
+
+
+== Utilizzare NetApp Hybrid Cloud Control per raccogliere i log
+
+È possibile accedere all'area di raccolta dei log dalla dashboard di controllo del cloud ibrido NetApp .
+
+.Passi
+. Aprire l'indirizzo IP del nodo di gestione in un browser web. Per esempio:
++
+[listing]
+----
+https://[management node IP address]
+----
+. Accedi a NetApp Hybrid Cloud Control fornendo le credenziali di amministratore del cluster di storage Element.
+. Dalla Dashboard, seleziona il menu in alto a destra.
+. Seleziona *Raccogli registri*.
++
+Se hai già raccolto i log in precedenza, puoi scaricare il pacchetto di log esistente oppure iniziare una nuova raccolta di log.
+
+. Selezionare un intervallo di date nel menu a discesa *Intervallo di date* per specificare quali date devono essere incluse nei registri.
++
+Se si specifica una data di inizio personalizzata, è possibile selezionare la data di inizio dell'intervallo di date.  I registri saranno raccolti da quella data fino al momento attuale.
+
+. Nella sezione *Raccolta log*, seleziona i tipi di file di log che il pacchetto di log deve includere.
++
+Per i registri di archiviazione, è possibile espandere l'elenco dei nodi di archiviazione e selezionare singoli nodi da cui raccogliere i registri (o tutti i nodi nell'elenco).
+
+. Selezionare *Raccogli registri* per avviare la raccolta dei registri.
++
+La raccolta dei registri viene eseguita in background e la pagina ne mostra l'avanzamento.
+
++
+
+NOTE: A seconda dei registri raccolti, la barra di avanzamento potrebbe rimanere a una certa percentuale per diversi minuti oppure avanzare molto lentamente in alcuni punti.
+
+. Selezionare *Scarica registri* per scaricare il pacchetto di registri.
++
+Il pacchetto di log è in un formato di file UNIX compresso .tgz.
+
+
+
+
+
+== Utilizzare l'API REST per raccogliere i log
+
+È possibile utilizzare l'API REST per raccogliere i log degli elementi.
+
+.Passi
+. Individuare l'ID del cluster di archiviazione:
++
+.. Aprire l'interfaccia utente dell'API REST del nodo di gestione sul nodo di gestione:
++
+[listing]
+----
+https://[management node IP]/logs/1/
+----
+.. Seleziona *Autorizza* e completa quanto segue:
++
+... Immettere il nome utente e la password del cluster.
+... Inserisci l'ID cliente come `mnode-client` se il valore non è già compilato.
+... Selezionare *Autorizza* per iniziare una sessione.
+
+
+
+
+. Raccogli i log da Element:
++
+.. Selezionare *POST /bundle*.
+.. Seleziona *Provalo*.
+.. Modificare i valori dei seguenti parametri nel campo *Corpo della richiesta* a seconda del tipo di log che si desidera raccogliere e per quale intervallo di tempo:
++
+|===
+| Parametro | Tipo | Descrizione 
+
+
+| `modifiedSince` | Stringa di data | Includi solo i log modificati dopo questa data e ora.  Ad esempio, il valore "2020-07-14T20:19:00.000Z" definisce la data di inizio del 14 luglio 2020 alle 20:19 UTC. 
+
+
+| `mnodeLogs` | Booleano | Imposta questo parametro su `true` per includere i log dei nodi di gestione. 
+
+
+| `storageCrashDumps` | Booleano | Imposta questo parametro su `true` per includere i log di debug degli arresti anomali del nodo di archiviazione. 
+
+
+| `storageLogs` | Booleano | Imposta questo parametro su `true` per includere i log dei nodi di archiviazione. 
+
+
+| `storageNodeIds` | matrice UUID | Se `storageLogs` è impostato su `true` , popolare questo parametro con gli ID dei nodi del cluster di archiviazione per limitare la raccolta dei log a quei nodi di archiviazione specifici.  Utilizzare il `GET https://[management node IP]/logs/1/bundle/options` endpoint per visualizzare tutti i possibili ID nodo che puoi utilizzare. 
+|===
+.. Selezionare *Esegui* per iniziare la raccolta dei registri.  La risposta dovrebbe restituire una risposta simile alla seguente:
++
+[listing]
+----
+{
+  "_links": {
+    "self": "https://10.1.1.5/logs/1/bundle"
+  },
+  "taskId": "4157881b-z889-45ce-adb4-92b1843c53ee",
+  "taskLink": "https://10.1.1.5/logs/1/bundle"
+}
+----
+
+
+. Controlla lo stato dell'attività di raccolta dei log:
++
+.. Selezionare *GET /bundle*.
+.. Seleziona *Provalo*.
+.. Selezionare *Esegui* per restituire lo stato dell'attività di raccolta.
+.. Scorrere fino alla fine del corpo della risposta.
++
+Dovresti vedere un `percentComplete` attributo che descrive in dettaglio l'avanzamento della raccolta.  Se la raccolta è completa, il `downloadLink` L'attributo contiene il link completo per il download, incluso il nome del file del pacchetto di log.
+
+.. Copia il nome del file alla fine del `downloadLink` attributo.
+
+
+. Scarica il pacchetto di log raccolti:
++
+.. Selezionare *GET /bundle/{filename}*.
+.. Seleziona *Provalo*.
+.. Incolla il nome del file copiato in precedenza nel `filename` campo di testo del parametro.
+.. Selezionare *Esegui*.
++
+Dopo l'esecuzione, nell'area del corpo della risposta viene visualizzato un collegamento per il download.
+
+.. Seleziona *Scarica file* e salva il file risultante sul tuo computer.
++
+Il pacchetto di log è in un formato di file UNIX compresso .tgz.
+
+
+
+
+
+[discrete]
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+

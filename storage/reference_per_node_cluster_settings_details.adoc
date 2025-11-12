@@ -1,0 +1,74 @@
+---
+permalink: storage/reference_per_node_cluster_settings_details.html 
+sidebar: sidebar 
+keywords: nodes, changing cluster settings, per-node UI 
+summary: È possibile verificare le impostazioni del cluster per un nodo di archiviazione dopo la configurazione del cluster e modificare il nome host del nodo. 
+---
+= Dettagli delle impostazioni del cluster dall'interfaccia utente per nodo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile verificare le impostazioni del cluster per un nodo di archiviazione dopo la configurazione del cluster e modificare il nome host del nodo.
+
+L'elenco seguente descrive le impostazioni del cluster per un nodo di archiviazione indicato dalla pagina *Impostazioni cluster* dell'interfaccia utente per nodo (`https://<node_IP>:442/hcc/node/cluster-settings`).
+
+* *Ruolo*
++
+Ruolo del nodo nel cluster. Valori possibili:
+
++
+** Archiviazione: nodo di archiviazione o Fibre Channel.
+** Gestione: il nodo è un nodo di gestione.
+
+
+* *Nome host*
++
+Nome del nodo.
+
+* *Grappolo*
++
+Nome del cluster.
+
+* *Appartenenza al Cluster*
++
+Stato del nodo. Valori possibili:
+
++
+** Disponibile: il nodo non ha alcun nome di cluster associato e non fa ancora parte di un cluster.
+** In attesa: il nodo è configurato e può essere aggiunto a un cluster designato.  Per accedere al nodo non è richiesta l'autenticazione.
+** PendingActive: il sistema sta installando un software compatibile sul nodo.  Una volta completato, il nodo passerà allo stato Attivo.
+** Attivo: il nodo partecipa a un cluster.  Per modificare il nodo è richiesta l'autenticazione.
+
+
+* *Versione*
++
+Versione del software Element in esecuzione sul nodo.
+
+* *Insieme*
++
+Nodi che fanno parte dell'insieme del database.
+
+* *ID nodo*
++
+ID assegnato quando un nodo viene aggiunto al cluster.
+
+* *Interfaccia cluster*
++
+Interfaccia di rete utilizzata per la comunicazione del cluster.
+
+* *Interfaccia di gestione*
++
+Interfaccia di rete di gestione.  L'impostazione predefinita è Bond1G, ma è possibile utilizzare anche Bond10G.
+
+* *Interfaccia di archiviazione*
++
+Interfaccia di rete di archiviazione tramite Bond10G.
+
+* *Capacità di crittografia*
++
+Indica se il nodo supporta o meno la crittografia dell'unità.
+
+

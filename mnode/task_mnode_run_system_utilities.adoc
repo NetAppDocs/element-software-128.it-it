@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_run_system_utilities.html 
+summary: È possibile creare o eliminare bundle di supporto cluster, reimpostare le impostazioni di configurazione dei nodi o riavviare la rete. 
+keywords: netapp, Element, management node ui, mnode ui, system utilities 
+---
+= Eseguire le utilità di sistema dal nodo di gestione
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare l'interfaccia utente per nodo del nodo di gestione per creare o eliminare bundle di supporto cluster, reimpostare le impostazioni di configurazione del nodo o riavviare la rete.
+
+.Passi
+. Aprire l'interfaccia utente del nodo di gestione per nodo utilizzando le credenziali di amministratore del nodo di gestione.
+. Selezionare *Utilità di sistema*.
+. Selezionare il pulsante relativo all'utilità che si desidera eseguire:
++
+.. *Controllo alimentazione*: riavvia, spegne e riaccende il nodo o lo spegne.  Specificare una delle seguenti opzioni.
++
+
+IMPORTANT: Questa operazione provoca una perdita temporanea della connettività di rete.
+
++
+*** *Azione*: Le opzioni includono `Restart` E `Halt` (spegnimento).
+*** *Ritardo di riattivazione*: qualsiasi tempo aggiuntivo prima che il nodo torni online.
+
+
+.. *Crea bundle di supporto cluster*: crea il bundle di supporto cluster per assistere il supporto NetApp nelle valutazioni diagnostiche di uno o più nodi in un cluster.  Specificare le seguenti opzioni:
++
+*** *Nome pacchetto*: Nome univoco per ogni pacchetto di supporto creato.  Se non viene specificato alcun nome, come nome del file vengono utilizzati "supportbundle" e il nome del nodo.
+*** *Mvip*: MVIP del cluster.  I bundle vengono raccolti da tutti i nodi del cluster.  Questo parametro è obbligatorio se il parametro Nodi non è specificato.
+*** *Nodi*: gli indirizzi IP dei nodi da cui raccogliere i bundle.  Utilizzare Nodes o Mvip, ma non entrambi, per specificare i nodi da cui raccogliere i bundle.  Questo parametro è obbligatorio se Mvip non è specificato.
+*** *Nome utente*: Nome utente dell'amministratore del cluster.
+*** *Password*: la password dell'amministratore del cluster.
+*** *Consenti incompleto*: consente allo script di continuare l'esecuzione se non è possibile raccogliere i bundle da uno o più nodi.
+*** *Argomenti aggiuntivi*: questo parametro viene fornito al `sf_make_support_bundle` sceneggiatura.  Questo parametro deve essere utilizzato solo su richiesta del supporto NetApp .
+
+
+.. *Elimina tutti i pacchetti di supporto*: elimina tutti i pacchetti di supporto correnti sul nodo di gestione.
+.. *Reimposta nodo*: reimposta il nodo di gestione su una nuova immagine di installazione.  In questo modo vengono ripristinate tutte le impostazioni predefinite, ad eccezione della configurazione di rete.  Specificare le seguenti opzioni:
++
+*** *Build*: URL di un'immagine software Element remota su cui verrà ripristinato il nodo.
+*** *Opzioni*: Specifiche per l'esecuzione delle operazioni di reset.  Se necessario, i dettagli saranno forniti dal supporto NetApp .
++
+
+IMPORTANT: Questa operazione provoca una perdita temporanea della connettività di rete.
+
+
+
+.. *Riavvia rete*: riavvia tutti i servizi di rete sul nodo di gestione.
++
+
+IMPORTANT: Questa operazione provoca una perdita temporanea della connettività di rete.
+
+
+
+
+
+[discrete]
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+

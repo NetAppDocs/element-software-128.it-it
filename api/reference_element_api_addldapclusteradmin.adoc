@@ -1,0 +1,125 @@
+---
+permalink: api/reference_element_api_addldapclusteradmin.html 
+sidebar: sidebar 
+keywords: LDAP,cluster,admin,add,adding,addldapclusteradmin 
+summary: 'È possibile utilizzare AddLdapClusterAdmin per aggiungere un nuovo utente amministratore del cluster LDAP.  Un amministratore del cluster LDAP può gestire il cluster utilizzando l"API e gli strumenti di gestione.  Gli account di amministrazione del cluster LDAP sono completamente separati e non correlati agli account tenant standard.' 
+---
+= AggiungiLdapClusterAdmin
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `AddLdapClusterAdmin` per aggiungere un nuovo utente amministratore del cluster LDAP.  Un amministratore del cluster LDAP può gestire il cluster utilizzando l'API e gli strumenti di gestione.  Gli account di amministrazione del cluster LDAP sono completamente separati e non correlati agli account tenant standard.
+
+
+
+== Parametri
+
+È possibile utilizzare questo metodo anche per aggiungere un gruppo LDAP definito in Active Directory®.  Il livello di accesso concesso al gruppo viene trasmesso ai singoli utenti del gruppo LDAP.
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+accesso
+ a| 
+Controlla quali metodi può utilizzare questo amministratore del cluster.
+ a| 
+matrice di stringhe
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+accettareEula
+ a| 
+Accettare il Contratto di licenza con l'utente finale.  Impostare su true per aggiungere un account amministratore del cluster al sistema.  Se omesso o impostato su false, la chiamata al metodo fallisce.
+ a| 
+booleano
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+attributi
+ a| 
+Elenco di coppie nome-valore nel formato oggetto JSON.
+ a| 
+Oggetto JSON
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+nome utente
+ a| 
+Nome utente distinto per il nuovo amministratore del cluster LDAP.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo non ha valori di ritorno.
+
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "method": "AddLdapClusterAdmin",
+  "params": {"username":"cn=mike jones,ou=ptusers,dc=prodtest,dc=solidfire,dc=net",
+    "access": ["administrator", "read"
+    ]
+  },
+"id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+ "id": 1,
+ "result": {}
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6
+
+
+
+== Trova maggiori informazioni
+
+xref:reference_element_api_app_b_access_control.adoc[Controllo degli accessi]

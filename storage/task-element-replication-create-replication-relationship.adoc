@@ -1,0 +1,86 @@
+---
+permalink: storage/task-element-replication-create-replication-relationship.html 
+sidebar: sidebar 
+keywords: ontap, cli, create, relationship, element, source, destination 
+summary: È possibile utilizzare SnapMirror per replicare copie snapshot di un volume Element su un sistema di destinazione ONTAP .  In caso di disastro presso il sito Element, è possibile fornire dati ai client dal sistema ONTAP , quindi riattivare il volume sorgente Element quando il servizio viene ripristinato. 
+---
+= Crea una relazione da una sorgente Element a una destinazione ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La relazione tra il volume di origine nell'archiviazione primaria e il volume di destinazione nell'archiviazione secondaria è chiamata _relazione di protezione dei dati_.  Puoi usare il `snapmirror create` comando per creare una relazione di protezione dei dati da una sorgente Element a una destinazione ONTAP , o da una sorgente ONTAP a una destinazione Element.
+
+È possibile utilizzare SnapMirror per replicare copie snapshot di un volume Element su un sistema di destinazione ONTAP .  In caso di disastro presso il sito Element, è possibile fornire dati ai client dal sistema ONTAP , quindi riattivare il volume sorgente Element quando il servizio viene ripristinato.
+
+.Prima di iniziare
+* Il nodo Element contenente il volume da replicare deve essere reso accessibile a ONTAP.
+* Il volume Element deve essere stato abilitato per la replica SnapMirror .
+* Se si utilizza il tipo di criterio "`mirror-vault`", è necessario che sia stata configurata un'etichetta SnapMirror per le copie snapshot dell'elemento da replicare.
++
+[NOTE]
+====
+Puoi eseguire questa attività solo inlink:concept_snapmirror_labels.html["Interfaccia utente web del software Element"] o utilizzando illink:../api/concept_element_api_snapshots_overview.html["Metodi API"] .
+
+====
+
+
+.Informazioni su questo compito
+È necessario specificare il percorso sorgente dell'elemento nel modulo `<hostip:>/lun/<name>` , dove "`lun`" è la stringa effettiva "`lun`" e `name` è il nome del volume Element.
+
+Un volume Element è più o meno equivalente a un LUN ONTAP .  SnapMirror crea un LUN con il nome del volume Element quando viene inizializzata una relazione di protezione dei dati tra il software Element e ONTAP .  SnapMirror replica i dati su una LUN esistente se la LUN soddisfa i requisiti per la replica dal software Element a ONTAP.
+
+Le regole di replicazione sono le seguenti:
+
+* Un volume ONTAP può contenere dati provenienti da un solo volume Element.
+* Non è possibile replicare i dati da un volume ONTAP a più volumi Element.
+
+
+In ONTAP 9.3 e versioni precedenti, un volume di destinazione può contenere fino a 251 copie snapshot.  In ONTAP 9.4 e versioni successive, un volume di destinazione può contenere fino a 1019 copie snapshot.
+
+.Fare un passo
+. Dal cluster di destinazione, creare una relazione di replica da un'origine Element a una destinazione ONTAP :
++
+`snapmirror create -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume> -type XDP -schedule schedule -policy <policy>`
+
++
+Per la sintassi completa dei comandi, vedere la pagina man.
+
++
+L'esempio seguente crea una relazione SnapMirror DR utilizzando l'impostazione predefinita `MirrorLatest` politica:
+
++
+[listing]
+----
+cluster_dst::> snapmirror create -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst -type XDP -schedule my_daily -policy MirrorLatest
+----
++
+L'esempio seguente crea una relazione di replica unificata utilizzando l'impostazione predefinita `MirrorAndVault` politica:
+
++
+[listing]
+----
+cluster_dst:> snapmirror create -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst -type XDP -schedule my_daily -policy MirrorAndVault
+----
++
+L'esempio seguente crea una relazione di replica unificata utilizzando `Unified7year` politica:
+
++
+[listing]
+----
+cluster_dst::> snapmirror create -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst -type XDP -schedule my_daily -policy Unified7year
+----
++
+L'esempio seguente crea una relazione di replica unificata utilizzando il metodo personalizzato `my_unified` politica:
+
++
+[listing]
+----
+cluster_dst::> snapmirror create -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst -type XDP -schedule my_daily -policy my_unified
+----
+
+
+.Dopo aver finito
+Utilizzare il `snapmirror show` comando per verificare che la relazione SnapMirror sia stata creata.  Per la sintassi completa dei comandi, vedere la pagina man.

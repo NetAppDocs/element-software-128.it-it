@@ -1,0 +1,140 @@
+---
+permalink: api/reference_element_api_createstoragecontainer.html 
+sidebar: sidebar 
+keywords: create,creating,storage,container,virtual,volume,volumes,vvol,vvols,CreateStorageContainer 
+summary: 'È possibile utilizzare il metodo CreateStorageContainer per creare un contenitore di archiviazione Virtual Volume \(VVol\).  È possibile utilizzare contenitori di archiviazione per la creazione di report e l"allocazione delle risorse.  Per utilizzare la funzionalità Volumi virtuali è necessario creare almeno un contenitore di archiviazione.' 
+---
+= Crea contenitore di archiviazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `CreateStorageContainer` metodo per creare un contenitore di archiviazione Virtual Volume (VVol).  È possibile utilizzare contenitori di archiviazione per la creazione di report e l'allocazione delle risorse.  Per utilizzare la funzionalità Volumi virtuali è necessario creare almeno un contenitore di archiviazione.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+nome
+ a| 
+Nome del contenitore di stoccaggio.  Segue le restrizioni sulla denominazione degli account del software Element.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+ID account
+ a| 
+Account contenitore non di archiviazione che diventerà un contenitore di archiviazione.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+iniziatoreSegreto
+ a| 
+Il segreto per l'autenticazione CHAP per l'iniziatore.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+targetSecret
+ a| 
+Il segreto per l'autenticazione CHAP per la destinazione.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+contenitore di stoccaggio
+ a| 
+Oggetto contenente informazioni sul contenitore di archiviazione appena creato.
+ a| 
+xref:reference_element_api_storagecontainer.adoc[contenitore di stoccaggio]
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "method": "CreateStorageContainer",
+    "params": {
+        "name" : "example"
+    },
+    "id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "storageContainer": {
+      "accountID": 8,
+      "initiatorSecret": "rVTOi25^H.d;cP}l",
+      "name": "example",
+      "protocolEndpointType": "SCSI",
+      "status": "active",
+      "storageContainerID": "a9ec1138-e386-4a44-90d7-b9acbbc05176",
+      "targetSecret": "6?AEIxWpvo6,!boM"
+    }
+  }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

@@ -1,0 +1,118 @@
+---
+permalink: api/reference_element_api_setconfig.html 
+sidebar: sidebar 
+keywords: config,configuration,set,setting,node,setconfig,network,cluster 
+summary: È possibile utilizzare il metodo SetConfig per impostare le informazioni di rete e cluster per il nodo.  Questo metodo include le stesse impostazioni in un singolo metodo API disponibili utilizzando sia i metodi SetClusterConfig che SetNetworkConfig.  Con questo metodo è necessario includere solo i campi che si desidera modificare. 
+---
+= ImpostaConfig
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `SetConfig` metodo per impostare le informazioni di rete e cluster per il nodo.  Questo metodo include le stesse impostazioni in un singolo metodo API che sono disponibili utilizzando entrambi `SetClusterConfig` E `SetNetworkConfig` metodi.  Con questo metodo è necessario includere solo i campi che si desidera modificare.
+
+
+
+== Parametro
+
+ATTENZIONE:
+
+La modifica della modalità di legame su un nodo può causare una perdita temporanea della connettività di rete.
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+grappolo
+ a| 
+Informazioni sul cluster che identificano il modo in cui il nodo di archiviazione comunica con il cluster di archiviazione a cui è associato.
+ a| 
+xref:reference_element_api_cluster.adoc[grappolo]
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+rete
+ a| 
+Tipi di connessione di rete e impostazioni correnti per ciascuna interfaccia di rete del nodo.
+ a| 
+xref:reference_element_api_network_all_interfaces.adoc[rete (tutte le interfacce)]
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+configurazione
+ a| 
+La nuova e attuale configurazione del nodo.  Questo oggetto contiene:
+
+* xref:reference_element_api_cluster.adoc[grappolo]: Informazioni sul cluster che identificano il modo in cui il nodo di archiviazione comunica con il cluster di archiviazione a cui è associato.
+* xref:reference_element_api_network_all_interfaces.adoc[rete (tutte le interfacce)]: Tipi di connessione di rete e impostazioni correnti per ciascuna interfaccia di rete del nodo.
+
+ a| 
+Oggetto JSON
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+	"method": "SetConfig",
+	"params": {
+		"cluster": {
+			"name": "MyHostname"
+		},
+		"network": {
+			"Bond10G": {
+				"bond-mode": "ALB"
+			}
+		}
+	}
+}
+----
+
+
+== Esempio di risposta
+
+La risposta di questo metodo è la stessa del metodo GetConfig.  Quando si utilizza SetConfig, vengono visualizzati tutti i campi per la visualizzazione dell'oggetto e i valori aggiornati.
+
+
+
+== Nuovo dalla versione
+
+9,6
+
+
+
+== Trova maggiori informazioni
+
+* xref:reference_element_api_setclusterconfig.adoc[ImpostaClusterConfig]
+* xref:reference_element_api_setnetworkconfig.adoc[ImpostaConfigurazione di Rete]
+* xref:reference_element_api_response_example_getconfig.adoc[OttieniConfig]
+

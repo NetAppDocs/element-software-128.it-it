@@ -1,0 +1,71 @@
+---
+permalink: hardware/task_sfseries_psurepl.html 
+sidebar: sidebar 
+keywords: solidfire chassis, power supply replacement, sf-series nodes 
+summary: Ogni chassis SolidFire include due alimentatori per la ridondanza di alimentazione.  Se un alimentatore si guasta, è necessario sostituirlo il prima possibile per garantire che il telaio disponga di una fonte di alimentazione ridondante. 
+---
+= Sostituire un alimentatore
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ogni chassis SolidFire include due alimentatori per la ridondanza di alimentazione.  Se un alimentatore si guasta, è necessario sostituirlo il prima possibile per garantire che il telaio disponga di una fonte di alimentazione ridondante.
+
+.Cosa ti servirà
+* Hai stabilito che è necessario sostituire l'alimentatore.
+* Hai un alimentatore sostitutivo.
+* Hai verificato che il secondo alimentatore sia funzionante.
+* Hai un braccialetto antistatico (ESD) o hai preso altre precauzioni antistatiche.
+
+
+.Informazioni su questo compito
+Le istruzioni sono valide se si dispone di uno chassis con un'unità rack (1U) con uno qualsiasi dei seguenti nodi:
+
+* SF2405
+* SF4805
+* SF9605
+* SF9608
+* SF19210
+* SF38410
+* SF-FCN-01
+* FC0025
+
+
+[NOTE]
+====
+A seconda della versione del software Element, i seguenti nodi non sono supportati:
+
+* A partire dai nodi di archiviazione Element 12.8, SF4805, SF9605, SF19210 e SF38410.
+* A partire dall'elemento 12.7, nodi di archiviazione SF2405 e SF9608 e nodi FC FC0025 e SF-FCN-01.
+* A partire dai nodi di archiviazione Element 12.0, SF3010, SF6010 e SF9010.
+
+
+====
+.Passi
+. Scollegare il cavo di alimentazione dall'alimentatore che si desidera sostituire.
+. Premere il pulsante di rilascio per far scorrere l'alimentatore fuori dallo chassis.
++
+
+IMPORTANT: Assicurarsi di utilizzare entrambe le mani per sostenere il peso dell'alimentatore.
+
+. Utilizzando entrambe le mani, allineare i bordi dell'alimentatore sostitutivo con l'apertura nello chassis e spingere delicatamente l'unità nello chassis.
++
+
+IMPORTANT: Non esercitare una forza eccessiva quando si fa scorrere l'alimentatore nello chassis per evitare di danneggiare l'hardware.
+
+. Collegare il cavo di alimentazione.
+. Restituisci l'unità guasta a NetApp seguendo le istruzioni contenute nella scatola che ti è stata spedita.
++
+Per ricevere assistenza sulla procedura di sostituzione, è possibile contattare l'assistenza NetApp .
+
+
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentazione per le versioni precedenti dei prodotti NetApp SolidFire ed Element"^]
+

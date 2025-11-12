@@ -1,0 +1,154 @@
+---
+permalink: api/reference_element_api_setsnmpinfo.html 
+sidebar: sidebar 
+keywords: snmp,info,setting,set,setsnmpinfo 
+summary: È possibile utilizzare il metodo SetSnmpInfo per configurare SNMP versione 2 e versione 3 sui nodi del cluster.  I valori impostati con questa interfaccia si applicano a tutti i nodi del cluster e i valori passati sostituiscono tutti i valori impostati in qualsiasi precedente chiamata a SetSnmpInfo. 
+---
+= ImpostaSnmpInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `SetSnmpInfo` metodo per configurare SNMP versione 2 e versione 3 sui nodi del cluster.  I valori impostati con questa interfaccia si applicano a tutti i nodi del cluster e i valori passati sostituiscono tutti i valori impostati in qualsiasi chiamata precedente a `SetSnmpInfo` .
+
+
+
+== Parametri
+
+
+NOTE: SetSnmpInfo è obsoleto per le versioni Element 6.0 e successive.  Utilizzare ilxref:reference_element_api_enablesnmp.adoc[AbilitaSnmp] Exref:reference_element_api_setsnmpacl.adoc[SetSnmpACL] metodi invece.
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+reti
+ a| 
+Elenco delle reti e tipo di accesso che hanno ai server SNMP in esecuzione sui nodi del cluster.  Vedi SNMPxref:reference_element_api_network_snmp.adoc[rete] oggetto per valori possibili.  Questo parametro è obbligatorio solo per SNMP v2.
+ a| 
+xref:reference_element_api_network_snmp.adoc[rete]vettore
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+abilitato
+ a| 
+Se impostato su true, SNMP è abilitato su ciascun nodo del cluster.
+ a| 
+booleano
+ a| 
+falso
+ a| 
+NO
+
+
+
+ a| 
+snmpV3Enabled
+ a| 
+Se impostato su true, SNMP v3 è abilitato su ciascun nodo del cluster.
+ a| 
+booleano
+ a| 
+falso
+ a| 
+NO
+
+
+
+ a| 
+Utenti usm
+ a| 
+Se SNMP v3 è abilitato, questo valore deve essere passato al posto del parametro networks.  Questo parametro è obbligatorio solo per SNMP v3.
+ a| 
+xref:reference_element_api_usmuser.adoc[usmUser]
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo non ha valori di ritorno.
+
+
+
+== Esempio di richiesta con SNMP v3 abilitato
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+"method":"SetSnmpInfo",
+"params":{
+    "enabled":true,
+    "snmpV3Enabled":true,
+    "usmUsers":[
+      {
+        "name":"user1",
+        "access":"rouser",
+        "secLevel":"auth",
+        "password":"namex1",
+        "passphrase":"yourpassphrase"
+      }
+    ]
+  },
+ "id":1
+}
+----
+
+
+== Esempio di richiesta con SNMP v2 abilitato
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+"method":"SetSnmpInfo",
+"params":{
+    "enabled":true,
+    "snmpV3Enabled":false,
+    "networks":[
+      {
+        "community":"public",
+        "access":"ro",
+        "network":"localhost",
+      }
+    ]
+  },
+  "id":1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id" : 1
+  "result" :{
+  }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

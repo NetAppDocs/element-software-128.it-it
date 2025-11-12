@@ -1,0 +1,202 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-manage-storage-clusters.html 
+summary: 'È possibile aggiungere, rimuovere, modificare, abilitare e disabilitare la modalità di manutenzione per i cluster di storage utilizzando l"interfaccia utente NetApp Hybrid Control.' 
+keywords: netapp, element, storage cluster, hybrid cloud control, hcc, maintenance mode, enable, disable 
+---
+= Aggiungi e gestisci cluster di storage utilizzando NetApp Hybrid Cloud Control
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile aggiungere cluster di storage all'inventario delle risorse del nodo di gestione in modo che possano essere gestiti tramite NetApp Hybrid Cloud Control (HCC).  Il primo cluster di archiviazione aggiunto durante la configurazione del sistema è quello predefinitolink:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["cluster di archiviazione autorevole"] , ma è possibile aggiungere cluster aggiuntivi utilizzando l'interfaccia utente HCC.
+
+Dopo aver aggiunto un cluster di archiviazione, è possibile monitorarne le prestazioni, modificare le credenziali del cluster di archiviazione per la risorsa gestita o rimuovere un cluster di archiviazione dall'inventario delle risorse del nodo di gestione se non è più necessario gestirlo tramite HCC.
+
+.Cosa ti servirà
+* *Autorizzazioni di amministratore del cluster*: hai le autorizzazioni come amministratore sullink:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["cluster di archiviazione autorevole"] .  Il cluster autorevole è il primo cluster aggiunto all'inventario dei nodi di gestione durante la configurazione del sistema.
+* *Software Element*: la versione del cluster di storage esegue il software NetApp Element 11.3 o versione successiva.
+* *Nodo di gestione*: hai distribuito un nodo di gestione che esegue la versione 11.3 o successiva.
+* *Servizi di gestione*: Hai aggiornato il tuo pacchetto di servizi di gestione alla versione 2.17 o successiva.
+
+
+.Opzioni
+* <<Aggiungere un cluster di archiviazione>>
+* <<Conferma lo stato del cluster di archiviazione>>
+* <<Modifica le credenziali del cluster di archiviazione>>
+* <<Rimuovere un cluster di archiviazione>>
+* <<Abilita e disabilita la modalità di manutenzione>>
+
+
+
+
+== Aggiungere un cluster di archiviazione
+
+È possibile aggiungere un cluster di storage all'inventario delle risorse del nodo di gestione utilizzando NetApp Hybrid Cloud Control.  Ciò consente di gestire e monitorare il cluster tramite l'interfaccia utente HCC.
+
+.Passi
+. Accedi a NetApp Hybrid Cloud Control fornendo le credenziali di amministratore autorevole del cluster di storage.
+. Dalla Dashboard, seleziona il menu delle opzioni in alto a destra e seleziona *Configura*.
+. Nel riquadro *Cluster di archiviazione*, selezionare *Dettagli cluster di archiviazione*.
+. Selezionare *Aggiungi cluster di archiviazione*.
+. Inserisci le seguenti informazioni:
++
+** Indirizzo IP virtuale di gestione del cluster di archiviazione
++
+
+NOTE: È possibile aggiungere solo cluster di archiviazione remoti che non sono attualmente gestiti da un nodo di gestione.
+
+** Nome utente e password del cluster di archiviazione
+
+
+. Selezionare *Aggiungi*.
++
+
+NOTE: Dopo aver aggiunto il cluster di archiviazione, l'inventario del cluster potrebbe impiegare fino a 2 minuti per aggiornarsi e visualizzare la nuova aggiunta.  Potrebbe essere necessario aggiornare la pagina nel browser per visualizzare le modifiche.
+
+
+
+
+
+== Conferma lo stato del cluster di archiviazione
+
+È possibile monitorare lo stato di connessione delle risorse dei cluster di storage tramite l'interfaccia utente di controllo NetApp Hybrid Cloud.
+
+.Passi
+. Accedi a NetApp Hybrid Cloud Control fornendo le credenziali di amministratore autorevole del cluster di storage.
+. Dalla Dashboard, seleziona il menu delle opzioni in alto a destra e seleziona *Configura*.
+. Esaminare lo stato dei cluster di archiviazione nell'inventario.
+. Dal riquadro *Cluster di archiviazione*, selezionare *Dettagli cluster di archiviazione* per ulteriori dettagli.
+
+
+
+
+== Modifica le credenziali del cluster di archiviazione
+
+È possibile modificare il nome utente e la password dell'amministratore del cluster di storage tramite l'interfaccia utente di controllo NetApp Hybrid Cloud.
+
+.Passi
+. Accedi a NetApp Hybrid Cloud Control fornendo le credenziali di amministratore autorevole del cluster di storage.
+. Dalla Dashboard, seleziona il menu delle opzioni in alto a destra e seleziona *Configura*.
+. Nel riquadro *Cluster di archiviazione*, selezionare *Dettagli cluster di archiviazione*.
+. Selezionare il menu *Azioni* per il cluster e selezionare *Modifica credenziali cluster*.
+. Aggiornare il nome utente e la password del cluster di archiviazione.
+. Seleziona *Salva*.
+
+
+
+
+== Rimuovere un cluster di archiviazione
+
+La rimozione di un cluster di storage da NetApp Hybrid Cloud Control comporta la rimozione del cluster dall'inventario dei nodi di gestione.  Dopo aver rimosso un cluster di archiviazione, il cluster non può più essere gestito da HCC ed è possibile accedervi solo navigando direttamente al suo indirizzo IP di gestione.
+
+
+IMPORTANT: Non è possibile rimuovere il cluster autorevole dall'inventario.  Per determinare il cluster autorevole, vai su *Gestione utenti > Utenti*.  Il cluster autorevole è elencato accanto all'intestazione *Utenti*.
+
+.Passi
+. Accedi a NetApp Hybrid Cloud Control fornendo le credenziali di amministratore autorevole del cluster di storage.
+. Dalla Dashboard, seleziona il menu delle opzioni in alto a destra e seleziona *Configura*.
+. Nel riquadro *Cluster di archiviazione*, selezionare *Dettagli cluster di archiviazione*.
+. Selezionare il menu *Azioni* per il cluster e selezionare *Rimuovi cluster di archiviazione*.
++
+
+CAUTION: Selezionando *Sì* il cluster verrà rimosso dall'installazione.
+
+. Selezionare *Sì*.
+
+
+
+
+== Abilita e disabilita la modalità di manutenzione
+
+Se è necessario portare offline un nodo di archiviazione per interventi di manutenzione, ad esempio aggiornamenti software o riparazioni dell'host, è possibile ridurre al minimo l'impatto di I/O sul resto del cluster di archiviazione<<enable_main_mode,abilitazione>> modalità di manutenzione per quel nodo.  Quando tu<<disable_main_mode,disabilitare>> modalità di manutenzione, il nodo viene monitorato per garantire che determinati criteri siano soddisfatti prima che il nodo possa uscire dalla modalità di manutenzione.
+
+.Cosa ti servirà
+* *Software Element*: la versione del cluster di storage esegue il software NetApp Element 12.2 o versione successiva.
+* *Nodo di gestione*: hai distribuito un nodo di gestione che esegue la versione 12.2 o successiva.
+* *Servizi di gestione*: Hai aggiornato il tuo pacchetto di servizi di gestione alla versione 2.19 o successiva.
+* Puoi effettuare l'accesso a livello di amministratore.
+
+
+
+
+=== [[enable_main_mode]]Abilita la modalità di manutenzione
+
+È possibile utilizzare la seguente procedura per abilitare la modalità di manutenzione per un nodo del cluster di archiviazione.
+
+
+NOTE: Solo un nodo alla volta può essere in modalità manutenzione.
+
+.Passi
+. Aprire l'indirizzo IP del nodo di gestione in un browser web. Per esempio:
++
+[listing]
+----
+https://[management node IP address]
+----
+. Accedi a NetApp Hybrid Cloud Control fornendo le credenziali di amministratore del cluster di storage all-flash SolidFire .
++
+
+NOTE: Le opzioni della funzionalità modalità manutenzione sono disabilitate a livello di sola lettura.
+
+. Nella casella di navigazione blu a sinistra, seleziona l'installazione all-flash SolidFire .
+. Nel riquadro di navigazione a sinistra, seleziona *Nodi*.
+. Per visualizzare le informazioni sull'inventario di archiviazione, selezionare *Archiviazione*.
+. Abilita la modalità di manutenzione su un nodo di archiviazione:
++
+[NOTE]
+====
+La tabella dei nodi di archiviazione viene aggiornata automaticamente ogni due minuti per le azioni non avviate dall'utente.  Prima di un'azione, per assicurarti di avere lo stato più aggiornato, puoi aggiornare la tabella dei nodi utilizzando l'icona di aggiornamento situata nella parte superiore destra della tabella dei nodi.
+
+image:hcc_enable_maintenance_mode.PNG["Abilita la modalità di manutenzione"]
+
+====
++
+.. In *Azioni*, seleziona *Abilita modalità di manutenzione*.
++
+Mentre la *Modalità di manutenzione* è abilitata, le azioni della modalità di manutenzione non sono disponibili per il nodo selezionato e per tutti gli altri nodi sullo stesso cluster.
+
++
+Una volta completata l'*abilitazione della modalità di manutenzione*, nella colonna *Stato nodo* viene visualizzata un'icona a forma di chiave inglese e il testo "*Modalità di manutenzione*" per il nodo in modalità di manutenzione.
+
+
+
+
+
+
+
+=== [[disable_main_mode]]Disabilita la modalità di manutenzione
+
+Dopo che un nodo è stato messo correttamente in modalità di manutenzione, per quel nodo è disponibile l'azione *Disabilita modalità di manutenzione*.  Le azioni sugli altri nodi non saranno disponibili finché la modalità di manutenzione non verrà disabilitata correttamente sul nodo sottoposto a manutenzione.
+
+.Passi
+. Per il nodo in modalità di manutenzione, in *Azioni*, selezionare *Disabilita modalità di manutenzione*.
++
+Quando la *Modalità di manutenzione* è disabilitata, le azioni della modalità di manutenzione non sono disponibili per il nodo selezionato e per tutti gli altri nodi sullo stesso cluster.
+
++
+Dopo aver completato la *Disattivazione della modalità di manutenzione*, la colonna *Stato nodo* visualizza *Attivo*.
+
++
+
+NOTE: Quando un nodo è in modalità di manutenzione, non accetta nuovi dati.  Di conseguenza, la disattivazione della modalità di manutenzione potrebbe richiedere più tempo, perché il nodo deve sincronizzare nuovamente i propri dati prima di poter uscire dalla modalità di manutenzione.  Quanto più a lungo si rimane in modalità manutenzione, tanto più tempo sarà necessario per disattivarla.
+
+
+
+
+
+=== Risoluzione dei problemi
+
+Se si verificano errori durante l'abilitazione o la disabilitazione della modalità di manutenzione, viene visualizzato un banner di errore nella parte superiore della tabella dei nodi.  Per maggiori informazioni sull'errore, puoi selezionare il link *Mostra dettagli* presente nel banner per visualizzare i risultati restituiti dall'API.
+
+[discrete]
+== Trova maggiori informazioni
+
+* link:../mnode/task_mnode_manage_storage_cluster_assets.html["Creare e gestire risorse di cluster di archiviazione"]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+

@@ -1,0 +1,133 @@
+---
+permalink: api/reference_element_api_getstoragecontainerefficiency.html 
+sidebar: sidebar 
+keywords: volume,virtual,container,volumes,get,getting,efficiency,vvol,GetStorageContainerEfficiency 
+summary: 'È possibile utilizzare il metodo GetStorageContainerEfficiency per recuperare informazioni sull"efficienza di un contenitore di archiviazione di volumi virtuali.' 
+---
+= Ottieni efficienza del contenitore di archiviazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `GetStorageContainerEfficiency` metodo per recuperare informazioni sull'efficienza di un contenitore di archiviazione di volumi virtuali.
+
+
+
+== Parametri
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+storageContainerID
+ a| 
+ID del contenitore di archiviazione per il quale recuperare informazioni sull'efficienza.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+SÌ
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+compressione
+ a| 
+Quantità di spazio risparmiata dalla compressione dei dati per tutti i volumi virtuali nel contenitore di archiviazione.  Espresso come rapporto in cui il valore 1 indica che i dati sono stati memorizzati senza compressione.
+ a| 
+galleggiante
+
+
+
+ a| 
+deduplicazione
+ a| 
+Quantità di spazio risparmiata evitando di duplicare i dati per tutti i volumi virtuali nel contenitore di archiviazione.  Espresso come rapporto.
+ a| 
+galleggiante
+
+
+
+ a| 
+volumi mancanti
+ a| 
+I volumi virtuali su cui non è stato possibile interrogare i dati di efficienza.  I volumi mancanti possono essere causati dal fatto che il ciclo di Garbage Collection (GC) è stato eseguito meno di un'ora prima, da una perdita temporanea della connettività di rete o da servizi riavviati dopo il ciclo GC.
+ a| 
+array di interi
+
+
+
+ a| 
+thinProvisioning
+ a| 
+Rapporto tra lo spazio utilizzato e la quantità di spazio allocato per l'archiviazione dei dati.  Espresso come rapporto.
+ a| 
+galleggiante
+
+
+
+ a| 
+marca temporale
+ a| 
+L'ultima volta che sono stati raccolti dati sull'efficienza dopo GC.
+ a| 
+Stringa di dati ISO 8601
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "method": "GetStorageContainerEfficiency",
+  "params": {
+    "storageContainerID" : "6c95e24f-9f0b-4793-affb-5a4bc6c3d7e1"
+  },
+  "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "compression": 1,
+    "deduplication": 1,
+    "missingVolumes": [],
+    "thinProvisioning": 1,
+    "timestamp": "2016-04-12T15:39:49Z"
+  }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

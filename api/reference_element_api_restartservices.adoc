@@ -1,0 +1,141 @@
+---
+permalink: api/reference_element_api_restartservices.html 
+sidebar: sidebar 
+keywords: restart,service,services,restartservices,restarting,node 
+summary: È possibile utilizzare il metodo RestartServices per riavviare i servizi su un nodo. 
+---
+= Riavvia i servizi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `RestartServices` metodo per riavviare i servizi su un nodo.
+
+
+
+== Parametri
+
+ATTENZIONE:
+
+Questo metodo provoca l'interruzione temporanea dei servizi del nodo.
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+forza
+ a| 
+Impostare su true per riavviare i servizi su un nodo.
+ a| 
+booleano
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+servizio
+ a| 
+Nome del servizio da riavviare.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+azione
+ a| 
+Azione da eseguire sul servizio (avvio, arresto, riavvio).
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+dettagli
+ a| 
+L'output della procedura di riavvio del servizio, inclusi gli errori (se presenti).
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+durata
+ a| 
+Tempo, in secondi, impiegato per riavviare i servizi sul nodo.
+ a| 
+corda
+
+
+
+ a| 
+risultato
+ a| 
+Risultati della ripartenza.
+ a| 
+corda
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "RestartServices",
+   "params": {
+              "force" : true
+              "action" : restart,
+             }
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "details": "solidfire stop/waiting\nsolidfire start/running, process 7284\n",
+    "duration": "00:00:02.541594",
+    "result": "Passed"
+  }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

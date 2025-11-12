@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-volumes.html 
+summary: È possibile monitorare i volumi nel sistema utilizzando la pagina Volumi di controllo cloud ibrido. 
+keywords: netapp, element, volumes, storage, access groups, initiators, capacity, data protection, QoS 
+---
+= Monitora i volumi sul tuo cluster di archiviazione
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il sistema SolidFire fornisce spazio di archiviazione tramite volumi.  I volumi sono dispositivi a blocchi a cui accedono tramite la rete i client iSCSI o Fibre Channel.  È possibile monitorare i dettagli sui gruppi di accesso, gli account, gli iniziatori, la capacità utilizzata, lo stato di protezione dei dati Snapshot, il numero di sessioni iSCSI e la policy di qualità del servizio (QoS) associata al volume.
+
+È anche possibile visualizzare i dettagli sui volumi attivi ed eliminati.
+
+Con questa vista, potresti voler monitorare prima la colonna Capacità utilizzata.
+
+È possibile accedere a queste informazioni solo se si dispone dei privilegi amministrativi NetApp Hybrid Cloud Control.
+
+.Passi
+. Aprire l'indirizzo IP del nodo di gestione in un browser web. Per esempio:
++
+[listing]
+----
+https://[management node IP address]
+----
+. Accedi a NetApp Hybrid Cloud Control fornendo le credenziali di amministratore del cluster di storage all-flash SolidFire .
+. Nella casella di navigazione blu a sinistra, seleziona l'installazione dell'archiviazione all-flash SolidFire .
+. Nella barra di navigazione a sinistra, seleziona il cluster e seleziona *Archiviazione* > *Volumi*.
++
+image::hcc_volumes_overview_active.png[Pagina Volumi HCC > Immagine della scheda Panoramica]
+
+. Nella pagina Volumi, utilizzare le seguenti opzioni:
++
+image::hcc_volumes_icons.png[Icone della pagina Volumi HCC]
+
++
+.. Filtra i risultati selezionando l'icona *Filtro*.
+.. Nascondi o mostra le colonne selezionando l'icona *Nascondi/Mostra*.
+.. Aggiorna i dati selezionando l'icona *Aggiorna*.
+.. Scarica un file CSV selezionando l'icona *Download*.
+
+
+. Monitorare la colonna Capacità utilizzata.  Se vengono raggiunte le soglie di Avviso, Errore o Critico, il colore rappresenta lo stato della capacità utilizzata:
++
+.. Attenzione - Giallo
+.. Errore - Arancione
+.. Critico - Rosso
+
+
+. Dalla vista Volumi, seleziona le schede per visualizzare ulteriori dettagli sui volumi:
++
+.. *Gruppi di accesso*: è possibile visualizzare i gruppi di accesso al volume mappati dagli iniziatori a una raccolta di volumi per l'accesso protetto.
++
+Vedi informazioni su link:../concepts/concept_solidfire_concepts_volume_access_groups.html["gruppi di accesso al volume"].
+
+.. *Account*: puoi visualizzare gli account utente che consentono ai client di connettersi ai volumi su un nodo.  Quando si crea un volume, questo viene assegnato a un account utente specifico.
++
+Vedi informazioni su link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html#user-accounts["Account utente del sistema di archiviazione all-flash SolidFire"].
+
+.. *Iniziatori*: è possibile visualizzare l'IQN dell'iniziatore iSCSI o i WWPN Fibre Channel per il volume.  Ogni IQN aggiunto a un gruppo di accesso può accedere a ciascun volume nel gruppo senza richiedere l'autenticazione CHAP.  Ogni WWPN aggiunto a un gruppo di accesso consente l'accesso alla rete Fibre Channel ai volumi nel gruppo di accesso.
+.. *Criteri QoS*: è possibile visualizzare i criteri QoS applicati al volume.  Una policy QoS applica impostazioni standardizzate per IOPS minimi, IOPS massimi e IOPS burst a più volumi.
++
+Vedi informazioni su link:../concepts/concept_data_manage_volumes_solidfire_quality_of_service.html#qos-performance["politiche di prestazioni e QoS"].
+
+
+
+
+
+[discrete]
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione SolidFire ed Element"^]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+

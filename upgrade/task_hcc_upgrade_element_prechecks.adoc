@@ -1,0 +1,251 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_upgrade_element_prechecks.html 
+summary: Come parte di un aggiornamento del sistema di archiviazione NetApp SolidFire , è necessario eseguire controlli di integrità per il software NetApp Element . 
+keywords: netapp, storage prechecks, element upgrade, sfupgradecheck 
+---
+= Eseguire controlli di integrità dell'archiviazione Element prima di aggiornare l'archiviazione
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario eseguire controlli di integrità prima di aggiornare Element Storage per garantire che tutti i nodi di archiviazione nel cluster siano pronti per il successivo aggiornamento di Element Storage.
+
+.Cosa ti servirà
+* *Servizi di gestione*: Hai effettuato l'aggiornamento all'ultimo pacchetto di servizi di gestione (2.10.27 o successivo).
++
+
+IMPORTANT: Prima di aggiornare il software Element, è necessario effettuare l'aggiornamento al pacchetto di servizi di gestione più recente.
+
+* *Nodo di gestione*: Stai eseguendo il nodo di gestione 11.3 o versione successiva.
+* *Software Element*: la versione del cluster esegue il software NetApp Element 11.3 o versione successiva.
+* *Contratto di licenza con l'utente finale (EULA)*: a partire dalla versione 2.20.69 dei servizi di gestione, è necessario accettare e salvare l'EULA prima di utilizzare l'interfaccia utente o l'API NetApp Hybrid Cloud Control per eseguire i controlli di integrità dello storage Element:
++
+.. Aprire l'indirizzo IP del nodo di gestione in un browser web:
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+.. Accedi a NetApp Hybrid Cloud Control fornendo le credenziali di amministratore del cluster di storage.
+.. Selezionare *Aggiorna* nella parte in alto a destra dell'interfaccia.
+.. Viene visualizzato l'EULA.  Scorri verso il basso, seleziona *Accetto per gli aggiornamenti attuali e futuri* e seleziona *Salva*.
+
+
+
+
+.Opzioni di controllo sanitario
+È possibile eseguire controlli di integrità utilizzando l'interfaccia utente NetApp Hybrid Cloud Control o l'API di NetApp Hybrid Cloud Control:
+
+* <<Utilizzare NetApp Hybrid Cloud Control per eseguire controlli sullo stato di integrità dello storage Element prima di aggiornarlo>>(Metodo preferito)
+
+
+Puoi anche scoprire di più sui controlli di integrità dell'archiviazione eseguiti dal servizio:
+
+* <<Controlli di integrità dell'archiviazione effettuati dal servizio>>
+
+
+
+
+== Utilizzare NetApp Hybrid Cloud Control per eseguire controlli sullo stato di integrità dello storage Element prima di aggiornarlo
+
+Utilizzando NetApp Hybrid Cloud Control, è possibile verificare che un cluster di storage sia pronto per essere aggiornato.
+
+.Passi
+. Aprire l'indirizzo IP del nodo di gestione in un browser web:
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. Accedi a NetApp Hybrid Cloud Control fornendo le credenziali di amministratore del cluster di storage.
+. Selezionare *Aggiorna* nella parte in alto a destra dell'interfaccia.
+. Nella pagina *Aggiornamenti*, seleziona la scheda *Archiviazione*.
+. Seleziona il controllo sanitarioimage:hcc_healthcheck_icon.png["icona"] per il cluster di cui si desidera verificare la disponibilità all'aggiornamento.
+. Nella pagina *Controllo integrità storage*, seleziona *Esegui controllo integrità*.
+. In caso di problemi, procedere come segue:
++
+.. Andare all'articolo specifico della Knowledge Base elencato per ciascun problema oppure eseguire la soluzione specificata.
+.. Se viene specificata una KB, completare la procedura descritta nell'articolo della KB pertinente.
+.. Dopo aver risolto i problemi del cluster, seleziona *Riesegui controllo integrità*.
+
+
+
+
+Una volta completato il controllo dello stato senza errori, il cluster di archiviazione è pronto per l'aggiornamento.  Vedi aggiornamento del nodo di archiviazionelink:task_hcc_upgrade_element_software.html["istruzioni"] per procedere.
+
+
+
+== Utilizzare l'API per eseguire controlli sullo stato di integrità dell'archiviazione Element prima di aggiornare l'archiviazione
+
+È possibile utilizzare l'API REST per verificare che un cluster di archiviazione sia pronto per essere aggiornato.  Il controllo dello stato di salute verifica che non vi siano ostacoli all'aggiornamento, come nodi in sospeso, problemi di spazio su disco ed errori del cluster.
+
+.Passi
+. Individuare l'ID del cluster di archiviazione:
++
+.. Aprire l'interfaccia utente dell'API REST del nodo di gestione sul nodo di gestione:
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. Seleziona *Autorizza* e completa quanto segue:
++
+... Immettere il nome utente e la password del cluster.
+... Inserisci l'ID cliente come `mnode-client` se il valore non è già compilato.
+... Selezionare *Autorizza* per iniziare una sessione.
+... Chiudere la finestra di autorizzazione.
+
+
+.. Dall'interfaccia utente dell'API REST, seleziona `GET /assets` .
+.. Seleziona *Provalo*.
+.. Selezionare *Esegui*.
+.. Dalla risposta, copia il `"id"` dal `"storage"` sezione del cluster di cui si intende verificare la disponibilità all'aggiornamento.
++
+
+NOTE: Non usare il `"parent"` valore in questa sezione perché questo è l'ID del nodo di gestione, non l'ID del cluster di archiviazione.
+
++
+[listing, subs="+quotes"]
+----
+"config": {},
+"credentialid": "12bbb2b2-f1be-123b-1234-12c3d4bc123e",
+"host_name": "SF_DEMO",
+*"id": "12cc3a45-e6e7-8d91-a2bb-0bdb3456b789",*
+"ip": "10.123.12.12",
+"parent": "d123ec42-456e-8912-ad3e-4bd56f4a789a",
+"sshcredentialid": null,
+"ssl_certificate": null
+----
+
+
+. Eseguire controlli di integrità sul cluster di archiviazione:
++
+.. Aprire l'interfaccia utente dell'API REST di archiviazione sul nodo di gestione:
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+.. Seleziona *Autorizza* e completa quanto segue:
++
+... Immettere il nome utente e la password del cluster.
+... Inserisci l'ID cliente come `mnode-client` se il valore non è già compilato.
+... Selezionare *Autorizza* per iniziare una sessione.
+... Chiudere la finestra di autorizzazione.
+
+
+.. Selezionare *POST /health-checks*.
+.. Seleziona *Provalo*.
+.. Nel campo dei parametri, immettere l'ID del cluster di archiviazione ottenuto nel passaggio 1.
++
+[listing]
+----
+{
+  "config": {},
+  "storageId": "123a45b6-1a2b-12a3-1234-1a2b34c567d8"
+}
+----
+.. Selezionare *Esegui* per eseguire un controllo dello stato di integrità sul cluster di archiviazione specificato.
++
+La risposta dovrebbe indicare lo stato come `initializing` :
+
++
+[listing]
+----
+{
+  "_links": {
+    "collection": "https://10.117.149.231/storage/1/health-checks",
+    "log": "https://10.117.149.231/storage/1/health-checks/358f073f-896e-4751-ab7b-ccbb5f61f9fc/log",
+    "self": "https://10.117.149.231/storage/1/health-checks/358f073f-896e-4751-ab7b-ccbb5f61f9fc"
+  },
+  "config": {},
+  "dateCompleted": null,
+  "dateCreated": "2020-02-21T22:11:15.476937+00:00",
+  "healthCheckId": "358f073f-896e-4751-ab7b-ccbb5f61f9fc",
+  "state": "initializing",
+  "status": null,
+  "storageId": "c6d124b2-396a-4417-8a47-df10d647f4ab",
+  "taskId": "73f4df64-bda5-42c1-9074-b4e7843dbb77"
+}
+----
+.. Copia il `healthCheckID` questo fa parte della risposta.
+
+
+. Verificare i risultati dei controlli sanitari:
++
+.. Selezionare *GET ​/health-checks​/{healthCheckId}*.
+.. Seleziona *Provalo*.
+.. Immettere l'ID del controllo sanitario nel campo del parametro.
+.. Selezionare *Esegui*.
+.. Scorrere fino alla fine del corpo della risposta.
++
+Se tutti i controlli di integrità hanno esito positivo, il risultato sarà simile al seguente esempio:
+
++
+[listing]
+----
+"message": "All checks completed successfully.",
+"percent": 100,
+"timestamp": "2020-03-06T00:03:16.321621Z"
+----
+
+
+. Se il `message` il ritorno indica che si sono verificati problemi riguardanti l'integrità del cluster, procedere come segue:
++
+.. Seleziona *GET ​/health-checks​/{healthCheckId}/log*
+.. Seleziona *Provalo*.
+.. Immettere l'ID del controllo sanitario nel campo del parametro.
+.. Selezionare *Esegui*.
+.. Esamina eventuali errori specifici e ottieni i link agli articoli della Knowledge Base associati.
+.. Andare all'articolo specifico della Knowledge Base elencato per ciascun problema oppure eseguire la soluzione specificata.
+.. Se viene specificata una KB, completare la procedura descritta nell'articolo della KB pertinente.
+.. Dopo aver risolto i problemi del cluster, eseguire nuovamente *GET ​/health-checks​/{healthCheckId}/log*.
+
+
+
+
+
+
+== Controlli di integrità dell'archiviazione effettuati dal servizio
+
+I controlli sullo stato di integrità dell'archiviazione eseguono i seguenti controlli per cluster.
+
+|===
+| Controlla il nome | Nodo/Cluster | Descrizione 
+
+
+| controlla_risultati_asincroni | Grappolo | Verifica che il numero di risultati asincroni nel database sia inferiore a una soglia. 
+
+
+| controlla_errori_del_cluster | Grappolo | Verifica che non vi siano errori del cluster che bloccano l'aggiornamento (come definito nella sorgente dell'elemento). 
+
+
+| controlla_velocità_di_caricamento | Nodo | Misura la velocità di caricamento tra il nodo di archiviazione e il nodo di gestione. 
+
+
+| controllo_velocità_di_connessione | Nodo | Verifica che i nodi siano connessi al nodo di gestione che fornisce i pacchetti di aggiornamento e stima la velocità di connessione. 
+
+
+| controlla_nuclei | Nodo | Controlla i dump di crash del kernel e i file core sul nodo.  Il controllo non riesce per eventuali arresti anomali verificatisi in un periodo di tempo recente (soglia 7 giorni). 
+
+
+| controlla_spazio_disco_radice | Nodo | Verifica che il file system radice abbia spazio libero sufficiente per eseguire un aggiornamento. 
+
+
+| check_var_log_disk_space | Nodo | Verifica che `/var/log` lo spazio libero soddisfa una certa soglia percentuale di spazio libero.  In caso contrario, il controllo ruoterà ed eliminerà i registri più vecchi per rientrare nella soglia.  Il controllo fallisce se non riesce a creare spazio libero sufficiente. 
+
+
+| controlla_nodi_in_attesa | Grappolo | Verifica che non vi siano nodi in sospeso nel cluster. 
+|===
+[discrete]
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+

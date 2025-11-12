@@ -1,0 +1,20 @@
+---
+permalink: storage/task_data_protection_delete_a_snapshot_schedule.html 
+sidebar: sidebar 
+keywords: snapshot schedule, delete 
+summary: È possibile eliminare una pianificazione snapshot.  Dopo aver eliminato la pianificazione, non verranno eseguiti più snapshot pianificati.  Tutti gli snapshot creati dalla pianificazione rimangono nel sistema di archiviazione. 
+---
+= Elimina una pianificazione snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile eliminare una pianificazione snapshot.  Dopo aver eliminato la pianificazione, non verranno eseguiti più snapshot pianificati.  Tutti gli snapshot creati dalla pianificazione rimangono nel sistema di archiviazione.
+
+. Fare clic su *Protezione dati* > *Pianificazioni*.
+. Fare clic sull'icona *Azioni* relativa alla pianificazione che si desidera eliminare.
+. Nel menu che si apre, fare clic su *Elimina*.
+. Conferma l'azione.
+

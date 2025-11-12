@@ -1,0 +1,28 @@
+---
+permalink: api/reference_element_api_getrawstats.html 
+sidebar: sidebar 
+keywords:  
+summary: 'L"ingegneria NetApp utilizza il metodo API GetRawStats per testare le nuove funzionalità.  I dati restituiti da GetRawStats non sono documentati, cambiano frequentemente e non se ne garantisce l"accuratezza.  Non utilizzare GetRawStats per raccogliere dati sulle prestazioni o per qualsiasi altra integrazione di gestione con un cluster di archiviazione che esegue il software Element.' 
+---
+= Ottieni statistiche grezze
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'ingegneria NetApp utilizza il `GetRawStats` Metodo API per testare nuove funzionalità.  I dati restituiti da `GetRawStats` non è documentato, cambia frequentemente e non se ne garantisce l'accuratezza.  Non dovresti usare `GetRawStats` per la raccolta di dati sulle prestazioni o qualsiasi altra integrazione di gestione con un cluster di storage che esegue il software Element.
+
+Utilizzare i seguenti metodi API supportati per recuperare informazioni statistiche:
+
+* xref:reference_element_api_getvolumestats.adoc[Ottieni statistiche sul volume]
+* xref:reference_element_api_getclusterstats.adoc[Ottieni statistiche cluster]
+* xref:reference_element_api_getnodestats.adoc[Ottieni statistiche nodo]
+* xref:reference_element_api_getdrivestats.adoc[Ottieni statistiche di guida]
+
+
+
+
+== Nuovo dalla versione
+
+9,6

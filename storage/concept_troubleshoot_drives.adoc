@@ -1,0 +1,44 @@
+---
+permalink: storage/concept_troubleshoot_drives.html 
+sidebar: sidebar 
+keywords: troubleshoot, drives, ssd, swappable, solid-state drives 
+summary: 'È possibile sostituire un"unità a stato solido (SSD) guasta con un"unità sostitutiva.  Gli SSD per i nodi di archiviazione SolidFire sono sostituibili a caldo.  Se sospetti che un SSD sia guasto, contatta l"assistenza NetApp per verificare il guasto e ricevere istruzioni sulla procedura di risoluzione corretta.  Il supporto NetApp collabora anche con te per ottenere un"unità sostitutiva in base al tuo contratto di servizio.' 
+---
+= Risoluzione dei problemi delle unità
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile sostituire un'unità a stato solido (SSD) guasta con un'unità sostitutiva.  Gli SSD per i nodi di archiviazione SolidFire sono sostituibili a caldo.  Se sospetti che un SSD sia guasto, contatta l'assistenza NetApp per verificare il guasto e ricevere istruzioni sulla procedura di risoluzione corretta.  Il supporto NetApp collabora anche con te per ottenere un'unità sostitutiva in base al tuo contratto di servizio.
+
+In questo caso, "How-swappable" significa che è possibile rimuovere un'unità guasta da un nodo attivo e sostituirla con una nuova unità SSD di NetApp.  Si sconsiglia di rimuovere unità non guaste da un cluster attivo.
+
+È consigliabile tenere a disposizione in loco i pezzi di ricambio suggeriti dal supporto NetApp per consentire la sostituzione immediata dell'unità in caso di guasto.
+
+
+NOTE: A scopo di test, se si simula un guasto dell'unità estraendo un'unità da un nodo, è necessario attendere 30 secondi prima di reinserire l'unità nello slot.
+
+In caso di guasto di un'unità, Double Helix ridistribuisce i dati sull'unità tra i nodi rimanenti del cluster.  I guasti di più unità sullo stesso nodo non rappresentano un problema, poiché il software Element protegge da due copie di dati residenti sullo stesso nodo.  Un'unità guasta provoca i seguenti eventi:
+
+* I dati vengono trasferiti dall'unità.
+* La capacità complessiva del cluster è ridotta dalla capacità dell'unità.
+* La protezione dei dati Double Helix garantisce che siano presenti due copie valide dei dati.
+
+
+
+IMPORTANT: I sistemi di archiviazione SolidFire non supportano la rimozione di un'unità se ciò comporta una quantità di spazio di archiviazione insufficiente per la migrazione dei dati.
+
+
+
+== Per maggiori informazioni
+
+* xref:task_troubleshoot_remove_failed_drives.adoc[Rimuovere le unità non riuscite dal cluster]
+* xref:concept_troubleshoot_basic_mdss_drive_troubleshooting.adoc[Risoluzione dei problemi di base dell'unità MDSS]
+* xref:task_troubleshoot_remove_mdss_drives.adoc[Rimuovere le unità MDSS]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2844771["Sostituzione delle unità per i nodi di archiviazione SolidFire"]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2846859["Sostituzione delle unità per i nodi di archiviazione della serie H600S"]
+* link:../hardware/task_h410s_h610s_install.html["Informazioni hardware H410S e H610S"]
+* link:../hardware/task_sfseries_chassisrepl.html["Informazioni sull'hardware della serie SF"]
+

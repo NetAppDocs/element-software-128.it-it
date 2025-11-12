@@ -1,0 +1,25 @@
+---
+permalink: storage/reference_copyright.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= Copyright
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+Copyright © 2021 NetApp, Inc. Tutti i diritti riservati.  Stampato negli Stati Uniti
+
+Nessuna parte di questo documento coperta da copyright può essere riprodotta in alcuna forma o con alcun mezzo (grafico, elettronico o meccanico, inclusa la fotocopia, la registrazione, la registrazione su nastro o l'archiviazione in un sistema di recupero elettronico) senza la previa autorizzazione scritta del titolare del copyright.
+
+Il software derivato da materiale NetApp protetto da copyright è soggetto alla seguente licenza e dichiarazione di esclusione di responsabilità:
+
+QUESTO SOFTWARE VIENE FORNITO DA NETAPP "COSÌ COM'È" E SENZA ALCUNA GARANZIA ESPLICITA O IMPLICITA, COMPRESE, A TITOLO ESEMPLIFICATIVO MA NON ESAUSTIVO, LE GARANZIE IMPLICITE DI COMMERCIABILITÀ E IDONEITÀ PER UNO SCOPO PARTICOLARE, CHE CON LA PRESENTE SONO ESCLUSE.  IN NESSUN CASO NETAPP SARÀ RITENUTA RESPONSABILE PER DANNI DIRETTI, INDIRETTI, ACCIDENTALI, SPECIALI, ESEMPLARI O CONSEQUENZIALI (INCLUSI, A TITOLO ESEMPLIFICATIVO MA NON ESAUSTIVO, L'APPROVVIGIONAMENTO DI BENI O SERVIZI SOSTITUTIVI; LA PERDITA DI UTILIZZO, DATI O PROFITTI; O L'INTERRUZIONE DELL'ATTIVITÀ) COMUNQUE CAUSATI E IN BASE A QUALSIASI TEORIA DI RESPONSABILITÀ, SIA CONTRATTUALE, CHE OGGETTIVA O ILLECITO CIVILE (INCLUSA NEGLIGENZA O ALTRO) DERIVANTI IN QUALSIASI MODO DALL'UTILIZZO DI QUESTO SOFTWARE, ANCHE SE INFORMATI DELLA POSSIBILITÀ DI TALE DANNO.
+
+NetApp si riserva il diritto di modificare in qualsiasi momento e senza preavviso qualsiasi prodotto qui descritto.  NetApp non si assume alcuna responsabilità derivante dall'uso dei prodotti qui descritti, salvo quanto espressamente concordato per iscritto da NetApp.  L'uso o l'acquisto di questo prodotto non conferisce alcuna licenza in base ad alcun diritto di brevetto, diritto di marchio o altro diritto di proprietà intellettuale di NetApp.
+
+Il prodotto descritto nel presente manuale potrebbe essere protetto da uno o più brevetti statunitensi, brevetti esteri o domande in corso.
+
+I dati qui contenuti riguardano un articolo commerciale (come definito in FAR 2.101) e sono di proprietà di NetApp, Inc. Il governo degli Stati Uniti ha una licenza non esclusiva, non trasferibile, non sublicenziabile, mondiale, limitata e irrevocabile per utilizzare i dati solo in relazione e a supporto del contratto del governo degli Stati Uniti in base al quale i dati sono stati forniti.  Salvo quanto previsto nel presente documento, i Dati non possono essere utilizzati, divulgati, riprodotti, modificati, eseguiti o visualizzati senza la previa approvazione scritta di NetApp, Inc. I diritti di licenza del Governo degli Stati Uniti per il Dipartimento della Difesa sono limitati ai diritti identificati nella clausola 252.227-7015(b) del DFARS.

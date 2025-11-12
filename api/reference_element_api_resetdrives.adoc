@@ -1,0 +1,116 @@
+---
+permalink: api/reference_element_api_resetdrives.html 
+sidebar: sidebar 
+keywords: drive,drives,remove,removing,data,reset,resetting,resetdrives,erase 
+summary: 'È possibile utilizzare il metodo ResetDrives per inizializzare in modo proattivo le unità e rimuovere tutti i dati attualmente presenti su un"unità.  L"unità può quindi essere riutilizzata in un nodo esistente o utilizzata in un nodo aggiornato.' 
+---
+= ResetDrives
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `ResetDrives` metodo per inizializzare in modo proattivo le unità e rimuovere tutti i dati attualmente presenti su un'unità.  L'unità può quindi essere riutilizzata in un nodo esistente o utilizzata in un nodo aggiornato.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+unità
+ a| 
+Elenco dei nomi dei dispositivi (non driveID) da reimpostare.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+forza
+ a| 
+Impostare su true per reimpostare l'unità.
+ a| 
+booleano
+ a| 
+Nessuno
+ a| 
+SÌ
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+dettagli
+ a| 
+Dettagli delle unità che vengono ripristinate.
+ a| 
+Matrice di oggetti JSON
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "ResetDrives",
+   "params": {
+      "drives" : "slot3",
+      "force" : true
+   },
+   "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+   "details": {
+    "drives": [
+    {
+      "drive": "slot3",
+      "returnCode": 0,
+      "stderr": " * Unlocking /dev/slot9 .[ ok ]\ * Setting master password /dev/slot9 .[ ok ]\ * Secure erasing /dev/slot9 (hdparm) [tries=0/1] ...........................[ ok ]",
+      "stdout": ""
+    }
+   ]
+  },
+  "duration": "00:00:28.501269",
+  "result": "Passed"
+  }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_nodeprotectiondomains.html 
+sidebar: sidebar 
+keywords: object,objects,node,protection domains 
+summary: 'L"oggetto nodeProtectionDomains contiene informazioni sull"identità di un nodo e sui domini di protezione associati a tale nodo.' 
+---
+= nodeProtectionDomains
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto nodeProtectionDomains contiene informazioni sull'identità di un nodo e sui domini di protezione associati a tale nodo.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+ID nodo
+ a| 
+Identificatore univoco per il nodo.
+ a| 
+intero
+
+
+
+ a| 
+protezioneDomini
+ a| 
+Elenco dei domini di protezione di cui il nodo è membro.
+ a| 
+link:reference_element_api_protectiondomain.html["protezioneDominio"]
+
+|===

@@ -1,0 +1,107 @@
+---
+permalink: hardware/task_rtfi_options_menu.html 
+sidebar: sidebar 
+keywords: rtfi, return, factory, image, menu, options, upload, logs 
+summary: Scopri di più sulle opzioni del menu RTFI se il processo RTFI non riesce o se scegli di non procedere alla richiesta iniziale del processo RTFI. 
+---
+= Menu delle opzioni RTFI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il seguente menu di opzioni viene visualizzato se il processo RTFI non riesce o se si sceglie di non procedere alla richiesta iniziale del processo RTFI.
+
+image::../media/rtfi_menu_options.PNG[Opzioni del menu SolidFire RTFI]
+
+
+NOTE: Contattare l'assistenza NetApp prima di utilizzare una qualsiasi delle seguenti opzioni di comando.
+
+[cols="25,75"]
+|===
+| Opzione | Descrizione 
+
+
+| Riavviare | Esce dal processo RTFI e riavvia il nodo nel suo stato attuale.  Non viene eseguita alcuna pulizia. 
+
+
+| Spegnimento | Spegne correttamente il nodo nel suo stato attuale.  Non viene eseguita alcuna pulizia. 
+
+
+| Uscita | Esce dal processo RTFI e apre un prompt dei comandi. 
+
+
+| Caricare i registri | Raccoglie tutti i log del sistema e carica un singolo archivio di log consolidato su un URL specificato. 
+|===
+
+
+== Carica i registri
+
+Raccogli tutti i registri del sistema e caricali su un URL specificato secondo la seguente procedura.
+
+.Passi
+. Al prompt del menu delle opzioni RTFI, immettere *UploadLogs*.
+. Inserisci le informazioni della directory remota:
++
+.. Digitare un URL che includa il protocollo. Per esempio: `\ftp://,scp://,http://,orhttps://` .
+.. (Facoltativo) Aggiungi un nome utente e una password incorporati. Per esempio: `scp://user:password@URLaddress.com` .
++
+
+NOTE: Per una gamma completa di opzioni di sintassi, vedere https://curl.se/docs/manpage.html["arricciare"^] manuale utente.
+
++
+Il file di registro viene caricato e salvato nella directory specificata come `.tbz2` archivio.
+
+
+
+
+
+
+
+== Utilizzare il tunnel di supporto
+
+Se hai bisogno di supporto tecnico per il tuo sistema NetApp HCI o per il tuo sistema di storage all-flash SolidFire , il supporto NetApp può connettersi in remoto al tuo sistema.  Per avviare una sessione e ottenere l'accesso remoto, il supporto NetApp può aprire una connessione SSH (Reverse Secure Shell) al tuo ambiente.
+
+È possibile aprire una porta TCP per una connessione tunnel inversa SSH con il supporto NetApp .  Questa connessione consente al supporto NetApp di accedere al nodo di gestione.
+
+.Prima di iniziare
+* Per i servizi di gestione 2.18 e versioni successive, la funzionalità di accesso remoto è disabilitata per impostazione predefinita sul nodo di gestione.  Per abilitare la funzionalità di accesso remoto, vedere https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["Gestire la funzionalità SSH sul nodo di gestione"] .
+* Se il nodo di gestione si trova dietro un server proxy, nel file sshd.config sono richieste le seguenti porte TCP:
++
+[cols="15,25,60"]
+|===
+| porta TCP | Descrizione | Direzione di connessione 
+
+
+| 443 | Chiamate API/HTTPS per l'inoltro inverso delle porte tramite tunnel di supporto aperto all'interfaccia utente Web | Nodo di gestione per nodi di archiviazione 
+
+
+| 22 | Accesso di accesso SSH | Da nodo di gestione a nodi di archiviazione o da nodi di archiviazione a nodo di gestione 
+|===
+
+
+.Passi
+* Accedi al tuo nodo di gestione e apri una sessione terminale.
+* Al prompt, immettere quanto segue:
++
+`rst -r  sfsupport.solidfire.com -u element -p <port_number>`
+
+* Per chiudere il tunnel di supporto remoto, immettere quanto segue:
++
+`rst --killall`
+
+* (Facoltativo) Disabilita https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["funzionalità di accesso remoto"] Ancora.
++
+
+NOTE: Se non lo si disabilita, SSH rimane abilitato sul nodo di gestione.  La configurazione abilitata per SSH persiste sul nodo di gestione attraverso aggiornamenti e upgrade finché non viene disabilitata manualmente.
+
+
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentazione per le versioni precedenti dei prodotti NetApp SolidFire ed Element"^]
+

@@ -1,0 +1,212 @@
+---
+permalink: api/reference_element_api_modifyvirtualnetwork.html 
+sidebar: sidebar 
+keywords: virtual,network,modify,modifying,change,changing,edit,editing,modifyvirtualnetwork 
+summary: È possibile utilizzare il metodo ModifyVirtualNetwork per modificare gli attributi di una rete virtuale esistente. 
+---
+= Modificare la rete virtuale
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `ModifyVirtualNetwork` metodo per modificare gli attributi di una rete virtuale esistente.
+
+Questo metodo consente di aggiungere o rimuovere blocchi di indirizzi, modificare la netmask o modificare il nome o la descrizione della rete virtuale.  È possibile utilizzarlo anche per abilitare o disabilitare gli spazi dei nomi, nonché per aggiungere o rimuovere un gateway se gli spazi dei nomi sono abilitati sulla rete virtuale.
+
+
+NOTE: Questo metodo richiede come parametro il virtualNetworkID o il virtualNetworkTag, ma non entrambi.
+
+ATTENZIONE:
+
+L'abilitazione o la disabilitazione della funzionalità VLAN di archiviazione instradabile per una rete virtuale esistente modificando il parametro namespace interrompe tutto il traffico gestito dalla rete virtuale.  È consigliabile modificare il parametro namespace durante una finestra di manutenzione programmata.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+
+
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+ID di rete virtuale
+ a| 
+Identificatore univoco della rete virtuale da modificare.  Questo è l'ID della rete virtuale assegnato dal cluster.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+virtualNetworkTag
+ a| 
+Il tag di rete che identifica la rete virtuale da modificare.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+blocchi di indirizzi
+ a| 
+Il nuovo blocco di indirizzi da impostare per questa rete virtuale.  Ciò potrebbe includere nuovi blocchi di indirizzi da aggiungere all'oggetto esistente oppure omettere blocchi di indirizzi non utilizzati che devono essere rimossi.  In alternativa, è possibile estendere o ridurre le dimensioni dei blocchi di indirizzi esistenti.  È possibile aumentare solo la dimensione dei blocchi di indirizzi iniziali per un oggetto Rete virtuale; non è possibile diminuirla.  Membri richiesti per questo oggetto:
+
+* inizio: l'inizio dell'intervallo di indirizzi IP.  (corda)
+* dimensione: numero di indirizzi IP da includere nel blocco.  (numero intero)
+
+ a| 
+Oggetto JSON
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+porta d'accesso
+ a| 
+L'indirizzo IP di un gateway della rete virtuale.  Questo parametro è valido solo se il parametro namespace è impostato su true.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+attributi
+ a| 
+Elenco di coppie nome-valore nel formato oggetto JSON.
+ a| 
+Oggetto JSON
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+nome
+ a| 
+Il nuovo nome per la rete virtuale.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+spazio dei nomi
+ a| 
+Se impostato su true, abilita la funzionalità VLAN di archiviazione instradabile ricreando la rete virtuale e configurando uno spazio dei nomi che la contenga.  Se impostato su falso, disabilita la funzionalità VRF per la rete virtuale.  La modifica di questo valore interrompe il traffico che attraversa questa rete virtuale.
+ a| 
+booleano
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+maschera di rete
+ a| 
+Nuova maschera di rete per questa rete virtuale.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+svip
+ a| 
+L'indirizzo IP virtuale di archiviazione per questa rete virtuale.  L'SVIP per una rete virtuale non può essere modificato.  È necessario creare una nuova rete virtuale per utilizzare un indirizzo SVIP diverso.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo non ha valori di ritorno.
+
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "method": "ModifyVirtualNetwork",
+  "params": {
+    "virtualNetworkID": 2,
+    "name": "ESX-VLAN-3112",
+    "addressBlocks": [
+     {
+      "start": "10.1.112.1",
+      "size": 20
+     },
+     {
+      "start": "10.1.112.100",
+      "size": 20
+     }
+   ],
+    "netmask": "255.255.255.0",
+    "gateway": "10.0.1.254",
+    "svip": "10.1.112.200",
+    "attributes": {}
+  },
+  "id":1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+  }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

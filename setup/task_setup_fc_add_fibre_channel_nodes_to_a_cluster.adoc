@@ -1,0 +1,43 @@
+---
+permalink: setup/task_setup_fc_add_fibre_channel_nodes_to_a_cluster.html 
+sidebar: sidebar 
+keywords:  
+summary: 'È possibile aggiungere nodi Fibre Channel a un cluster quando è necessario più spazio di archiviazione o durante la creazione del cluster.  I nodi Fibre Channel richiedono una configurazione iniziale quando vengono accesi per la prima volta.  Dopo aver configurato il nodo, questo viene visualizzato nell"elenco dei nodi in sospeso ed è possibile aggiungerlo a un cluster.' 
+---
+= Aggiungere nodi Fibre Channel a un cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile aggiungere nodi Fibre Channel a un cluster quando è necessario più spazio di archiviazione o durante la creazione del cluster.  I nodi Fibre Channel richiedono una configurazione iniziale quando vengono accesi per la prima volta.  Dopo aver configurato il nodo, questo viene visualizzato nell'elenco dei nodi in sospeso ed è possibile aggiungerlo a un cluster.
+
+La versione software su ciascun nodo Fibre Channel in un cluster deve essere compatibile.  Quando si aggiunge un nodo Fibre Channel a un cluster, il cluster installa la versione cluster di Element sul nuovo nodo, secondo necessità.
+
+.Passi
+. Selezionare *Cluster* > *Nodi*.
+. Fare clic su *In attesa* per visualizzare l'elenco dei nodi in attesa.
+. Eseguire una delle seguenti operazioni:
++
+** Per aggiungere singoli nodi, fare clic sull'icona *Azioni* relativa al nodo che si desidera aggiungere.
+** Per aggiungere più nodi, seleziona la casella di controllo dei nodi da aggiungere, quindi *Azioni in blocco*.
++
+
+NOTE: Se il nodo che stai aggiungendo ha una versione di Element diversa da quella in esecuzione sul cluster, il cluster aggiorna in modo asincrono il nodo alla versione di Element in esecuzione sul master del cluster.  Dopo l'aggiornamento, il nodo si aggiunge automaticamente al cluster.  Durante questo processo asincrono, il nodo sarà nello stato pendingActive.
+
+
+
+. Fare clic su *Aggiungi*.
++
+Il nodo appare nell'elenco dei nodi attivi.
+
+
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+

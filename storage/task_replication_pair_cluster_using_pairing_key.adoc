@@ -1,0 +1,46 @@
+---
+permalink: storage/task_replication_pair_cluster_using_pairing_key.html 
+sidebar: sidebar 
+keywords: remote replication, pairing key, pairing clusters 
+summary: 'Se si dispone dell"accesso come amministratore del cluster a un cluster locale ma non a quello remoto, è possibile associare i cluster utilizzando una chiave di associazione.  Una chiave di associazione viene generata su un cluster locale e quindi inviata in modo sicuro a un amministratore del cluster in un sito remoto per stabilire una connessione e completare l"associazione del cluster per la replica in tempo reale.' 
+---
+= Accoppia i cluster utilizzando una chiave di associazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si dispone dell'accesso come amministratore del cluster a un cluster locale ma non a quello remoto, è possibile associare i cluster utilizzando una chiave di associazione.  Una chiave di associazione viene generata su un cluster locale e quindi inviata in modo sicuro a un amministratore del cluster in un sito remoto per stabilire una connessione e completare l'associazione del cluster per la replica in tempo reale.
+
+. Nel cluster locale, selezionare *Protezione dati* > *Coppie cluster*.
+. Fare clic su *Cluster di coppie*.
+. Fare clic su *Avvia associazione* e poi su *No* per indicare che non si ha accesso al cluster remoto.
+. Fare clic su *Genera chiave*.
++
+
+NOTE: Questa azione genera una chiave di testo per l'associazione e crea una coppia di cluster non configurata sul cluster locale.  Se non si completa la procedura, sarà necessario eliminare manualmente la coppia di cluster.
+
+. Copia la chiave di associazione del cluster negli appunti.
+. Rendere la chiave di associazione accessibile all'amministratore del cluster nel sito remoto del cluster.
++
+
+NOTE: La chiave di associazione del cluster contiene una versione dell'MVIP, del nome utente, della password e delle informazioni del database per consentire le connessioni del volume per la replica remota.  Questa chiave deve essere trattata in modo sicuro e non conservata in un modo che possa consentire l'accesso accidentale o non protetto al nome utente o alla password.
+
++
+
+IMPORTANT: Non modificare nessuno dei caratteri nella chiave di associazione.  La chiave diventa non valida se viene modificata.
+
+. Nel cluster remoto, selezionare *Protezione dati* > *Coppie cluster*.
+. Fare clic su *Cluster di coppie*.
+. Fare clic su *Completa associazione* e immettere la chiave di associazione nel campo *Chiave di associazione* (il metodo consigliato è incollare).
+. Fare clic su *Completa associazione*.
+
+
+
+
+== Trova maggiori informazioni
+
+* xref:task_replication_pair_cluster_using_mvip.adoc[Cluster di coppie tramite MVIP]
+* https://www.youtube.com/watch?v=1ljHAd1byC8&feature=youtu.be["Associazione di cluster tramite una chiave di associazione cluster (video)"]
+

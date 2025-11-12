@@ -1,0 +1,129 @@
+---
+permalink: api/reference_element_api_testldapauthentication.html 
+sidebar: sidebar 
+keywords: ldap,auth,authentication,test,testing,testldapauthentication 
+summary: 'È possibile utilizzare il metodo TestLdapAuthentication per convalidare le impostazioni di autenticazione LDAP attualmente abilitate.  Se la configurazione è corretta, la chiamata API restituisce l"appartenenza al gruppo dell"utente testato.' 
+---
+= TestLdapAuthentication
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `TestLdapAuthentication` metodo per convalidare le impostazioni di autenticazione LDAP attualmente abilitate.  Se la configurazione è corretta, la chiamata API restituisce l'appartenenza al gruppo dell'utente testato.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+nome utente
+ a| 
+Il nome utente da testare.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+password
+ a| 
+La password per il nome utente da testare.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+Configurazione ldap
+ a| 
+Un oggetto ldapConfiguration da testare.  Se si fornisce questo parametro, il sistema verifica la configurazione fornita anche se l'autenticazione LDAP è attualmente disabilitata.
+ a| 
+xref:reference_element_api_ldapconfiguration.adoc[Configurazione ldap]
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+gruppi
+ a| 
+Elenco dei gruppi LDAP che includono l'utente testato come membro.
+ a| 
+vettore
+
+
+
+ a| 
+nomeutente
+ a| 
+Nome distinto LDAP completo dell'utente testato.
+ a| 
+corda
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+"method": "TestLdapAuthentication",
+"params": {"username":"admin1",
+           "password":"admin1PASS"
+      },
+  "id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+ "id": 1,
+ "result": {
+    "groups": [
+        "CN=StorageMgmt,OU=PTUsers,DC=prodtest,DC=solidfire,DC=net"
+      ],
+        "userDN": "CN=Admin1 Jones,OU=PTUsers,DC=prodtest,DC=solidfire,DC=net"
+  }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

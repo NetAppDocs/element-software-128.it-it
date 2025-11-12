@@ -1,0 +1,56 @@
+---
+permalink: storage/reference_replication_volume_pairing_warnings.html 
+sidebar: sidebar 
+keywords: volume warnings, messages, replication, data protection 
+summary: 'La pagina Coppie di volumi nella scheda Protezione dati fornisce questi messaggi dopo aver associato i volumi.  Questi messaggi possono essere visualizzati sia sull"estremità di origine che su quella di destinazione della coppia (salvo diversa indicazione) nella vista elenco dei volumi di replica.' 
+---
+= Avvisi di associazione del volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La pagina Coppie di volumi nella scheda Protezione dati fornisce questi messaggi dopo aver associato i volumi.  Questi messaggi possono essere visualizzati sia sull'estremità di origine che su quella di destinazione della coppia (salvo diversa indicazione) nella vista elenco dei volumi di replica.
+
+* *PausedClusterFull*
++
+Poiché il cluster di destinazione è pieno, la replicazione di origine e il trasferimento di dati in blocco non possono procedere.  Il messaggio viene visualizzato solo sul lato sorgente della coppia.
+
+* *PausedExceededMaxSnapshotCount*
++
+Il volume di destinazione ha già il numero massimo di snapshot e non può replicare snapshot aggiuntivi.
+
+* *PausaManuale*
++
+Il volume locale è stato messo in pausa manualmente.  È necessario riattivarla prima che la replicazione riprenda.
+
+* *PausedManualRemote*
++
+Il volume remoto è in modalità di pausa manuale.  È necessario un intervento manuale per riattivare il volume remoto prima che la replica riprenda.
+
+* *PausaNon configurato correttamente*
++
+In attesa di una sorgente e di una destinazione attive.  Per riprendere la replicazione è necessario un intervento manuale.
+
+* *QoS in pausa*
++
+La QoS di destinazione non è riuscita a sostenere l'I/O in entrata.  La replicazione riprende automaticamente.  Il messaggio viene visualizzato solo sul lato sorgente della coppia.
+
+* *PausedSlowLink*
++
+È stato rilevato un collegamento lento e la replica è stata interrotta.  La replicazione riprende automaticamente.  Il messaggio viene visualizzato solo sul lato sorgente della coppia.
+
+* *PausedVolumeSizeMismatch*
++
+Il volume di destinazione non ha le stesse dimensioni del volume di origine.
+
+* *PausedXCopy*
++
+Un comando SCSI XCOPY viene inviato a un volume sorgente.  Il comando deve essere completato prima che la replicazione possa riprendere.  Il messaggio viene visualizzato solo sul lato sorgente della coppia.
+
+* *ArrestatoNon configurato correttamente*
++
+È stato rilevato un errore di configurazione permanente.  Il volume remoto è stato eliminato o disaccoppiato.  Non è possibile alcuna azione correttiva; è necessario stabilire un nuovo abbinamento.
+
+

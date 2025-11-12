@@ -1,0 +1,107 @@
+---
+permalink: api/reference_element_api_clusterpair.html 
+sidebar: sidebar 
+keywords: objects,object,clusterPair 
+summary: 'L"oggetto clusterPair contiene informazioni sui cluster associati al cluster locale.  È possibile recuperare un elenco di oggetti clusterPair per il cluster locale con il metodo ListClusterPairs.' 
+---
+= clusterPair
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto clusterPair contiene informazioni sui cluster associati al cluster locale.  È possibile recuperare un elenco di oggetti clusterPair per il cluster locale con il metodo ListClusterPairs.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+Nome cluster
+ a| 
+Il nome dell'altro cluster nella coppia.
+ a| 
+corda
+
+
+
+ a| 
+clusterPairID
+ a| 
+Un ID univoco assegnato a ciascun cluster nella coppia.
+ a| 
+intero
+
+
+
+ a| 
+clusterPairUUID
+ a| 
+Identificatore univoco universale per la coppia di cluster.
+ a| 
+corda
+
+
+
+ a| 
+UUID
+ a| 
+Identificatore univoco per il cluster remoto nella coppia di cluster.
+ a| 
+intero
+
+
+
+ a| 
+latenza
+ a| 
+La latenza, in millisecondi, tra i cluster.
+ a| 
+intero
+
+
+
+ a| 
+mvip
+ a| 
+L'indirizzo IP della connessione di gestione per i cluster accoppiati.
+ a| 
+corda
+
+
+
+ a| 
+stato
+ a| 
+Lo stato della connessione tra i cluster accoppiati. Valori possibili:
+
+* Non configurato
+* Collegato
+* Non configurato correttamente
+* Disconnesso
+
+ a| 
+corda
+
+
+
+ a| 
+versione
+ a| 
+La versione Element dell'altro cluster nella coppia.
+ a| 
+corda
+
+|===
+
+
+== Trova maggiori informazioni
+
+xref:reference_element_api_listclusterpairs.adoc[ListClusterPairs]

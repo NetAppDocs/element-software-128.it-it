@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_getsnmptrapinfo.html 
+sidebar: sidebar 
+keywords: snmp,trap,get,getting,info,getsnmptrapinfo 
+summary: È possibile utilizzare il metodo GetSnmpTrapInfo per ottenere informazioni sulla configurazione attuale della trap SNMP. 
+---
+= OttieniSnmpTrapInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `GetSnmpTrapInfo` metodo per ottenere le informazioni di configurazione attuali della trap SNMP.
+
+
+
+== Parametri
+
+Questo metodo non ha parametri di input.
+
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+trapRecipients
+ a| 
+Elenco degli host che devono ricevere le trap generate dal cluster.
+ a| 
+xref:reference_element_api_snmptraprecipient.adoc[snmpTrapRecipient]vettore
+
+
+
+ a| 
+clusterFaultTrapsEnabled
+ a| 
+Il valore true indica che è configurato un solidFireClusterFaultNotification per essere inviato all'elenco dei destinatari delle trap quando viene registrato un errore del cluster.
+ a| 
+booleano
+
+
+
+ a| 
+clusterFaultResolvedTrapsEnabled
+ a| 
+Il valore true indica che è configurato un solidFireClusterFaultResolvedNotification per essere inviato all'elenco dei destinatari della trap quando viene risolto un errore del cluster.
+ a| 
+booleano
+
+
+
+ a| 
+clusterEventTrapsEnabled
+ a| 
+Il valore true indica che un solidFireClusterEventNotification è configurato per essere inviato all'elenco dei destinatari trap quando viene registrato un evento cluster.
+ a| 
+booleano
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method":"GetSnmpTrapInfo"
+   "params":{},
+   "id":1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "clusterEventTrapsEnabled": true,
+    "clusterFaultResolvedTrapsEnabled": true,
+    "clusterFaultTrapsEnabled": true,
+    "trapRecipients": [
+     {
+      "community": "public",
+      "host": "192.168.151.60",
+      "port": 162
+     },
+     {
+      "community": "solidfireAlerts",
+      "host": "NetworkMonitor",
+      "port": 162
+     },
+     {
+      "community": "wakeup",
+      "host": "PhoneHomeAlerter",
+      "port": 1008
+     }
+   ]
+ }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

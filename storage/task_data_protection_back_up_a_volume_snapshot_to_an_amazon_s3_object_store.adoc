@@ -1,0 +1,32 @@
+---
+permalink: storage/task_data_protection_back_up_a_volume_snapshot_to_an_amazon_s3_object_store.html 
+sidebar: sidebar 
+keywords: volume snapshot, backup, amazon S3 object store 
+summary: È possibile eseguire il backup degli snapshot SolidFire su archivi di oggetti esterni compatibili con Amazon S3. 
+---
+= Eseguire il backup di uno snapshot del volume in un archivio oggetti Amazon S3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile eseguire il backup degli snapshot SolidFire su archivi di oggetti esterni compatibili con Amazon S3.
+
+. Fare clic su **Protezione dati** > *Snapshot*.
+. Fare clic sull'icona *Azioni* relativa allo snapshot di cui si desidera eseguire il backup.
+. Nel menu visualizzato, fare clic su *Backup su*.
+. Nella finestra di dialogo *Backup integrato*, in *Backup su*, selezionare *S3*.
+. Selezionare un'opzione in *Formato dati*:
++
+** *Nativo*: formato compresso leggibile solo dai sistemi di archiviazione SolidFire .
+** *Non compresso*: formato non compresso compatibile con altri sistemi.
+
+
+. Immettere un nome host da utilizzare per accedere all'archivio oggetti nel campo *Nome host*.
+. Immettere un ID chiave di accesso per l'account nel campo *ID chiave di accesso*.
+. Inserisci la chiave di accesso segreta per l'account nel campo *Chiave di accesso segreta*.
+. Immettere il bucket S3 in cui archiviare il backup nel campo *Bucket S3*.
+. *Facoltativo*: inserisci un'etichetta da aggiungere al prefisso nel campo *Etichetta*.
+. Fare clic su *Inizia a leggere*.
+

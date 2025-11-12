@@ -1,0 +1,122 @@
+---
+permalink: hardware/task_hseries_driverepl.html 
+sidebar: sidebar 
+keywords: drives, replace drives, SSDs, replacement, h610s, h410s, maintenance 
+summary: 'Se un"unità è difettosa o se il suo livello di usura scende al di sotto di una determinata soglia, è necessario sostituirla.  Gli allarmi nell"interfaccia utente del software Element ti avvisano quando un"unità si è guastata o sta per guastarsi.  È possibile sostituire a caldo un"unità guasta.' 
+---
+= Sostituire le unità
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se un'unità è difettosa o se il suo livello di usura scende al di sotto di una determinata soglia, è necessario sostituirla.  Gli allarmi nell'interfaccia utente del software Element ti avvisano quando un'unità si è guastata o sta per guastarsi.  È possibile sostituire a caldo un'unità guasta.
+
+.Informazioni su questo compito
+Questa procedura serve per sostituire le unità nei nodi di archiviazione H410S e H610S.  La rimozione di un'unità comporta la disconnessione dell'unità stessa.  Tutti i dati presenti sull'unità vengono rimossi e migrati su altre unità del cluster.  La migrazione dei dati su altre unità attive nel sistema può richiedere da alcuni minuti a un'ora, a seconda dell'utilizzo della capacità e dell'I/O attivo sul cluster.  Per la gestione delle unità durante la rimozione e la sostituzione, è opportuno seguire queste buone pratiche:
+
+* Conservare l'unità nella custodia ESD finché non si è pronti a installarla.
+* Aprire il sacchetto ESD manualmente o tagliare la parte superiore con un paio di forbici.
+* Indossare sempre un braccialetto antistatico collegato a una superficie non verniciata del telaio.
+* Utilizzare sempre entrambe le mani quando si rimuove, si installa o si trasporta un'unità.
+* Non forzare mai un'unità nello chassis.
+* Per la spedizione delle unità utilizzare sempre imballaggi approvati.
+* Non impilare le unità una sopra l'altra.
+
+
+
+
+== Procedure consigliate per l'aggiunta e la rimozione di unità
+
+* Aggiungere tutte le unità a blocchi e assicurarsi che la sincronizzazione dei blocchi sia completa prima di aggiungere le unità slice.
+* Per Element Software 10.x e versioni successive, aggiungere tutte le unità a blocchi contemporaneamente.  Assicuratevi di non eseguire questa operazione su più di tre nodi contemporaneamente.
+* Per il software Element 9.x e versioni precedenti, aggiungere tre unità contemporaneamente, consentendo loro di sincronizzarsi completamente prima di aggiungere il gruppo successivo di tre.
+* Rimuovere l'unità slice e assicurarsi che la sincronizzazione delle slice sia completa prima di rimuovere le unità block.
+* Rimuovere contemporaneamente tutte le unità a blocchi da un singolo nodo.  Assicurati che la sincronizzazione di tutti i blocchi sia completa prima di passare al nodo successivo.
+
+
+.Passi
+. Rimuovere l'unità dal cluster utilizzando l'interfaccia utente del software NetApp Element :
++
+.. Dall'interfaccia utente di Element, selezionare *Cluster > Unità*.
+.. Selezionare *Non riuscito* per visualizzare l'elenco delle unità non riuscite.
+.. Prendi nota del numero di slot dell'unità guasta.  Queste informazioni sono necessarie per individuare l'unità guasta nello chassis.
+.. Selezionare *Azioni* per l'unità che si desidera rimuovere.
+.. Seleziona *Rimuovi*.
++
+
+NOTE: Se non c'è abbastanza capacità per rimuovere le unità attive prima di rimuovere un nodo, viene visualizzato un messaggio di errore quando si conferma la rimozione dell'unità.  Dopo aver risolto l'errore, è possibile rimuovere fisicamente l'unità dallo chassis.
+
+
+
+. Sostituire l'unità dallo chassis:
++
+.. Disimballare l'unità sostitutiva e posizionarla su una superficie piana e priva di elettricità statica, vicino al rack.  Conservare il materiale di imballaggio per quando si restituirà l'unità guasta a NetApp.  Ecco la vista frontale dei nodi di archiviazione H610S e H410S con le unità:
++
+image::h610s_h410s.png[Mostra la vista frontale dei nodi di archiviazione H610S e H410S.]
+
+.. (*Solo H410S*) Eseguire i seguenti passaggi:
++
+... Identifica il nodo confrontando il numero di serie (tag di servizio) con il numero annotato nell'interfaccia utente di Element.  Il numero di serie si trova su un adesivo sul retro di ogni nodo.  Dopo aver identificato il nodo, è possibile utilizzare le informazioni sullo slot per identificare lo slot in cui si trova l'unità guasta. Le unità sono ordinate alfabeticamente dalla A alla D e dallo 0 al 5.
+... Rimuovere la lunetta.
+... Premere il pulsante di rilascio sull'unità guasta:
++
+image::h410s_drive.png[Mostra il pulsante di rilascio sull'unità per i nodi di archiviazione H410S.]
+
++
+Quando si preme il pulsante di rilascio, la maniglia a camma sulla trasmissione si apre parzialmente e la trasmissione si stacca dal piano centrale.
+
+... Aprire la maniglia della camma e far scorrere con cautela l'unità fuori usando entrambe le mani.
+... Posizionare l'unità su una superficie piana e antistatica.
+... Inserire l'unità sostitutiva nello slot fino in fondo nel telaio, utilizzando entrambe le mani.
+... Premere la maniglia della camma verso il basso finché non scatta.
+... Reinstallare la lunetta.
+... Informare il supporto NetApp della sostituzione dell'unità.  Il supporto NetApp fornirà istruzioni per la restituzione dell'unità guasta.
+
+
+.. (*Solo H610S*) Eseguire i seguenti passaggi:
++
+... Abbinare il numero di slot dell'unità guasta dall'interfaccia utente di Element con il numero sullo chassis.  Il LED sull'unità guasta è illuminato in ambra.
+... Rimuovere la lunetta.
+... Premere il pulsante di rilascio e rimuovere l'unità guasta come mostrato nella seguente illustrazione:
++
+image::h610s_driveremove.png[Mostra l'unità rimossa dal nodo H610S.]
+
++
+
+NOTE: Prima di provare a far scorrere l'unità fuori dallo chassis, assicurarsi che la maniglia del vassoio sia completamente aperta.
+
+... Estrarre l'unità e posizionarla su una superficie piana e priva di elettricità statica.
+... Premere il pulsante di rilascio sull'unità sostitutiva prima di inserirla nell'alloggiamento.  La maniglia del vassoio dell'unità si apre a scatto.
++
+image::H600S_driveinstall.png[Mostra l'unità installata nel nodo H610S.]
+
+... Inserire l'unità sostitutiva senza esercitare una forza eccessiva.  Quando l'unità è completamente inserita, si sente un clic.
+... Chiudere con cautela la maniglia del vassoio dell'unità.
+... Reinstallare la lunetta.
+... Informare il supporto NetApp della sostituzione dell'unità.  Il supporto NetApp fornirà istruzioni per la restituzione dell'unità guasta.
+
+
+
+
+. Aggiungere nuovamente l'unità al cluster utilizzando l'interfaccia utente di Element.
++
+
+NOTE: Quando si installa una nuova unità in un nodo esistente, l'unità viene automaticamente registrata come *Disponibile* nell'interfaccia utente di Element.  È necessario aggiungere l'unità al cluster prima che possa partecipare al cluster.
+
++
+.. Dall'interfaccia utente di Element, selezionare *Cluster > Unità*.
+.. Selezionare *Disponibile* per visualizzare l'elenco delle unità disponibili.
+.. Selezionare l'icona Azioni per l'unità che si desidera aggiungere e selezionare *Aggiungi*.
+
+
+
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentazione per le versioni precedenti dei prodotti NetApp SolidFire ed Element"^]
+

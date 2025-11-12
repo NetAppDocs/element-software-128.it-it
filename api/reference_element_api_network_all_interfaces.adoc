@@ -1,0 +1,69 @@
+---
+permalink: api/reference_element_api_network_all_interfaces.html 
+sidebar: sidebar 
+keywords: object,objects,network 
+summary: 'L"oggetto rete \(tutte le interfacce\) raccoglie informazioni sulla configurazione dell"interfaccia di rete per un nodo di archiviazione.  È possibile utilizzare i metodi GetConfig e GetNetworkConfig per ottenere queste informazioni per un nodo di archiviazione.' 
+---
+= rete (tutte le interfacce)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto rete (tutte le interfacce) raccoglie informazioni sulla configurazione dell'interfaccia di rete per un nodo di archiviazione.  Puoi usare il `GetConfig` E `GetNetworkConfig` metodi per ottenere queste informazioni per un nodo di archiviazione.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+Bond10G
+ a| 
+Informazioni di configurazione per l'interfaccia bonded Bond10G.
+ a| 
+xref:reference_element_api_network_bonded_interfaces.adoc[rete (interfacce vincolate)]
+
+
+
+ a| 
+Bond1G
+ a| 
+Informazioni di configurazione per l'interfaccia bonded Bond1G.
+ a| 
+xref:reference_element_api_network_bonded_interfaces.adoc[rete (interfacce vincolate)]
+
+
+
+ a| 
+eth0-5
+ a| 
+Un oggetto per ogni interfaccia Ethernet nel nodo di archiviazione, che descrive le informazioni di configurazione per l'interfaccia.  Questi oggetti sono numerati da 0 a 5 per corrispondere al nome dell'interfaccia.
+ a| 
+xref:reference_element_api_network_ethernet_interfaces.adoc[rete (interfacce Ethernet)]
+
+
+
+ a| 
+lo
+ a| 
+Informazioni di configurazione per l'interfaccia loopback.
+ a| 
+xref:reference_element_api_network_local_interfaces.adoc[rete (interfacce locali)]
+
+|===
+
+
+== Trova maggiori informazioni
+
+* xref:reference_element_api_getconfig.adoc[OttieniConfig]
+* xref:reference_element_api_getnetworkconfig.adoc[OttieniConfigurazione di rete]
+

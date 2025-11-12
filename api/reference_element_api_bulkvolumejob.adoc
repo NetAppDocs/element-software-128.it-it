@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_bulkvolumejob.html 
+sidebar: sidebar 
+keywords: bulkVolumeJob,object,objects,read,write,clones,snapshots,clone,snapshot 
+summary: 'L"oggetto bulkVolumeJob contiene informazioni sulle operazioni di lettura o scrittura di volumi in blocco, come la clonazione o la creazione di snapshot.' 
+---
+= bulkVolumeJob
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+IL `bulkVolumeJob` L'oggetto contiene informazioni sulle operazioni di lettura o scrittura di volumi in blocco, come la clonazione o la creazione di snapshot.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+`attributes`
+ a| 
+Attributo JSON del lavoro di volume in blocco.
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+`bulkVolumeID`
+ a| 
+ID del processo di volume di massa interno.
+ a| 
+intero
+
+
+
+ a| 
+`createTime`
+ a| 
+Timestamp creato per il lavoro di volume in blocco nel formato UTC+0.
+ a| 
+Stringa di data ISO 8601
+
+
+
+ a| 
+`elapsedTime`
+ a| 
+Numero di secondi trascorsi dall'inizio del processo.
+ a| 
+corda
+
+
+
+ a| 
+`format`
+ a| 
+Formato dell'operazione di volume in blocco. Valori possibili:
+
+* nativo
+* non compresso
+
+ a| 
+corda
+
+
+
+ a| 
+`key`
+ a| 
+Chiave univoca creata dalla sessione di volume in blocco.
+ a| 
+corda
+
+
+
+ a| 
+`percentComplete`
+ a| 
+La percentuale completata riportata dall'operazione.
+ a| 
+intero
+
+
+
+ a| 
+`remainingTime`
+ a| 
+Tempo rimanente stimato in secondi.
+ a| 
+intero
+
+
+
+ a| 
+`srcVolumeID`
+ a| 
+ID del volume di origine.
+ a| 
+intero
+
+
+
+ a| 
+`status`
+ a| 
+Lo stato dell'operazione. Valori possibili:
+
+* preparazione
+* corsa
+* completare
+* fallito
+
+ a| 
+corda
+
+
+
+ a| 
+`script`
+ a| 
+Il nome dello script, se ne è stato fornito uno.
+ a| 
+corda
+
+
+
+ a| 
+`snapshotID`
+ a| 
+ID dello snapshot se uno snapshot è presente nell'origine del processo di volume in blocco.
+ a| 
+intero
+
+
+
+ a| 
+`type`
+ a| 
+Il tipo di operazione in blocco. Valori possibili:
+
+* Leggere
+* scrivere
+
+ a| 
+corda
+
+|===

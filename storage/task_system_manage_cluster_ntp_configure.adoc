@@ -1,0 +1,45 @@
+---
+permalink: storage/task_system_manage_cluster_ntp_configure.html 
+sidebar: sidebar 
+keywords: ntp, cluster, query, fqdn, dns server 
+summary: 'È possibile istruire ciascun nodo di un cluster a interrogare un server Network Time Protocol (NTP) per gli aggiornamenti.  Il cluster contatta solo i server configurati e richiede loro informazioni NTP.' 
+---
+= Configurare i server Network Time Protocol affinché il cluster esegua le query
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile istruire ciascun nodo di un cluster a interrogare un server NTP (Network Time Protocol) per gli aggiornamenti.  Il cluster contatta solo i server configurati e richiede loro informazioni NTP.
+
+L'NTP viene utilizzato per sincronizzare gli orologi su una rete.  La connessione a un server NTP interno o esterno dovrebbe essere parte della configurazione iniziale del cluster.
+
+Configurare NTP sul cluster in modo che punti a un server NTP locale.  È possibile utilizzare l'indirizzo IP o il nome host FQDN.  Il server NTP predefinito al momento della creazione del cluster è impostato su us.pool.ntp.org; tuttavia, a seconda della posizione fisica del cluster SolidFire , non è sempre possibile stabilire una connessione a questo sito.
+
+L'utilizzo dell'FQDN dipende dal fatto che le impostazioni DNS del singolo nodo di archiviazione siano corrette e operative.  Per farlo, configura i server DNS su ogni nodo di archiviazione e assicurati che le porte siano aperte consultando la pagina Requisiti delle porte di rete.
+
+È possibile inserire fino a cinque server NTP diversi.
+
+
+NOTE: È possibile utilizzare sia indirizzi IPv4 che IPv6.
+
+.Cosa ti servirà
+Per configurare questa impostazione è necessario disporre dei privilegi di amministratore del cluster.
+
+.Passi
+. Configurare un elenco di IP e/o FQDN nelle impostazioni del server.
+. Assicurarsi che il DNS sia impostato correttamente sui nodi.
+. Fare clic su *Cluster* > *Impostazioni*.
+. In Impostazioni Network Time Protocol, seleziona *No*, che utilizza la configurazione NTP standard.
+. Fare clic su *Salva modifiche*.
+
+
+
+
+== Trova maggiori informazioni
+
+* link:../storage/task_system_manage_cluster_ntp_configure_to_listen_for_ntp_broadcasts.html["Configurare il cluster per ascoltare le trasmissioni NTP"]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+

@@ -1,0 +1,40 @@
+---
+permalink: storage/task_snapmirror_perform_failback_when_source_volume_exists.html 
+sidebar: sidebar 
+keywords: element, ui, failback, perform, source volume, snapmirror 
+summary: 'È possibile risincronizzare il volume di origine originale ed eseguire il failback utilizzando l"interfaccia utente NetApp Element .  Questa procedura si applica agli scenari in cui il volume sorgente originale esiste ancora.' 
+---
+= Eseguire un failback quando il volume di origine esiste ancora
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile risincronizzare il volume di origine originale ed eseguire il failback utilizzando l'interfaccia utente NetApp Element .  Questa procedura si applica agli scenari in cui il volume sorgente originale esiste ancora.
+
+. Nell'interfaccia utente dell'elemento, individua la relazione che hai interrotto per eseguire il failover.
+. Fare clic sull'icona Azioni e quindi su *Risincronizzazione inversa*.
+. Conferma l'azione.
++
+
+NOTE: L'operazione di risincronizzazione inversa crea una nuova relazione in cui i ruoli dei volumi di origine e di destinazione originali vengono invertiti (ciò determina due relazioni poiché la relazione originale persiste).  Tutti i nuovi dati dal volume di destinazione originale vengono trasferiti al volume di origine originale come parte dell'operazione di risincronizzazione inversa.  È possibile continuare ad accedere e scrivere dati sul volume attivo sul lato di destinazione, ma sarà necessario disconnettere tutti gli host dal volume di origine ed eseguire un aggiornamento SnapMirror prima di reindirizzare al volume primario originale.
+
+. Fare clic sull'icona Azioni della relazione inversa appena creata e fare clic su *Aggiorna*.
++
+Ora che hai completato la risincronizzazione inversa e verificato che non ci sono sessioni attive connesse al volume sul lato di destinazione e che i dati più recenti si trovano sul volume primario originale, puoi eseguire i seguenti passaggi per completare il failback e riattivare il volume primario originale:
+
+. Fare clic sull'icona Azioni della relazione inversa e fare clic su *Interrompi*.
+. Fare clic sull'icona Azioni della relazione originale e fare clic su *Risincronizza*.
++
+
+NOTE: Ora è possibile montare il volume primario originale per riprendere i carichi di lavoro di produzione sul volume primario originale.  La replica SnapMirror originale riprende in base ai criteri e alla pianificazione configurati per la relazione.
+
+. Dopo aver confermato che lo stato della relazione originale è "`snapmirrored`", fare clic sull'icona Azioni della relazione inversa e fare clic su *Elimina*.
+
+
+
+
+== Trova maggiori informazioni
+
+xref:concept_snapmirror_failback_scenarios.adoc[Scenari di failback SnapMirror]

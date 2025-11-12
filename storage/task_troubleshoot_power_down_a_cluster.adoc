@@ -1,0 +1,44 @@
+---
+permalink: storage/task_troubleshoot_power_down_a_cluster.html 
+sidebar: sidebar 
+keywords: cluster, power down, mvip 
+summary: 'È possibile spegnere un intero cluster dopo aver contattato l"assistenza NetApp e completato i passaggi preliminari.' 
+---
+= Spegnere un cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per spegnere un intero cluster, eseguire la seguente procedura.
+
+.Passi
+. (Facoltativo) Contattare l'assistenza NetApp per ricevere assistenza nel completamento dei passaggi preliminari.
+. Verificare che tutti gli I/O siano stati arrestati.
+. Disconnettere tutte le sessioni iSCSI:
++
+.. Passare all'indirizzo IP virtuale di gestione (MVIP) sul cluster per aprire l'interfaccia utente di Element.
+.. Notare i nodi elencati nell'elenco Nodi.
+.. Eseguire il metodo API Shutdown con l'opzione halt specificata su ciascun ID nodo nel cluster.
+
+
+
+
+[NOTE]
+====
+Quando si riavvia il cluster, è necessario seguire alcuni passaggi per verificare che tutti i nodi siano online:
+
+. Verificare che tutti i livelli di gravità critica e `volumesOffline` gli errori del cluster sono stati risolti.
+. Attendere dai 10 ai 15 minuti affinché il cluster si depositi.
+. Iniziare a richiamare gli host per accedere ai dati.
+
+
+Se si desidera concedere più tempo per accendere i nodi e verificare che siano integri dopo la manutenzione, contattare l'assistenza tecnica per ricevere assistenza su come ritardare la sincronizzazione dei dati ed evitare una sincronizzazione bin non necessaria.
+
+====
+
+
+== Trova maggiori informazioni
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/How_to_gracefully_shut_down_and_power_on_a_NetApp_Solidfire_HCI_storage_cluster["Come arrestare e riaccendere correttamente un cluster di storage NetApp Solidfire/HCI"^]

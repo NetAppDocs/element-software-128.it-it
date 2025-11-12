@@ -1,0 +1,202 @@
+---
+permalink: api/reference_element_api_rollbacktosnapshot.html 
+sidebar: sidebar 
+keywords: rollbacktosnapshot,snapshot,creating,create,roll,back,rollback,roll back,existing 
+summary: 'È possibile utilizzare il metodo RollbackToSnapshot per creare uno snapshot esistente dell"immagine del volume attivo.  Questo metodo crea un nuovo snapshot da uno snapshot esistente.' 
+---
+= RollbackToSnapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `RollbackToSnapshot` metodo per creare uno snapshot esistente dell'immagine del volume attivo.  Questo metodo crea un nuovo snapshot da uno snapshot esistente.
+
+Il nuovo snapshot diventa attivo e quello esistente viene conservato finché non viene eliminato manualmente.  Lo snapshot precedentemente attivo viene eliminato a meno che non si imposti il parametro saveCurrentState su true.
+
+*PIENEZZA_CLUSTER*
+
+[NOTE]
+====
+* È possibile creare snapshot se il cluster è al livello 1, 2 o 3.  Non è possibile creare snapshot quando il cluster è pieno al livello 4 o 5.
+* Il rollback di un volume a uno snapshot potrebbe non riuscire quando è in corso la sincronizzazione delle sezioni.  Riprova `RollbackToSnapshot` al termine della sincronizzazione.
+
+
+====
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+ID volume
+ a| 
+VolumeID per il volume.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+attributi
+ a| 
+Elenco di coppie nome-valore nel formato oggetto JSON.
+ a| 
+Attributi JSON
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+nome
+ a| 
+Nome per l'istantanea.  Se non viene specificato alcun nome, viene utilizzato il nome dello snapshot di cui si sta eseguendo il rollback, aggiungendo "-copy" alla fine del nome.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+ID istantanea
+ a| 
+ID di uno snapshot creato in precedenza sul volume specificato.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+salvaStatoAttuale
+ a| 
+Specifica se salvare o meno l'immagine del volume attivo precedente.  Valori validi:
+
+* true: viene mantenuta l'immagine del volume attivo precedente.
+* false: l'immagine del volume attivo precedente viene eliminata.
+
+ a| 
+booleano
+ a| 
+falso
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+somma di controllo
+ a| 
+Una piccola rappresentazione in forma di stringa dei dati nello snapshot memorizzato.
+ a| 
+corda
+
+
+
+ a| 
+ID istantanea
+ a| 
+Se saveCurrentState è stato impostato su false, questo valore è nullo.
+
+Se saveCurrentState è stato impostato su true, l'ID univoco dello snapshot appena creato.
+ a| 
+intero
+
+
+
+ a| 
+istantanea
+ a| 
+Se saveCurrentState è stato impostato su false, questo valore è nullo.
+
+Se saveCurrentState è impostato su true, viene visualizzato un oggetto contenente informazioni sullo snapshot appena creato.
+ a| 
+xref:reference_element_api_snapshot.adoc[istantanea]
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+ "method": "RollbackToSnapshot",
+ "params": {
+    "volumeID": 1,
+    "snapshotID": 3114,
+    "saveCurrentState": true
+  },
+  "id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "checksum": "0x0",
+    "snapshot": {
+      "attributes": {},
+      "checksum": "0x0",
+      "createTime": "2016-04-04T17:27:32Z",
+      "enableRemoteReplication": false,
+      "expirationReason": "None",
+      "expirationTime": null,
+      "groupID": 0,
+      "groupSnapshotUUID": "00000000-0000-0000-0000-000000000000",
+      "name": "test1-copy",
+      "snapshotID": 1,
+      "snapshotUUID": "30d7e3fe-0570-4d94-a8d5-3cc8097a6bfb",
+      "status": "done",
+      "totalSize": 5000658944,
+      "virtualVolumeID": null,
+      "volumeID": 1
+    },
+    "snapshotID": 1
+  }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

@@ -1,0 +1,20 @@
+---
+permalink: storage/task_replication_delete_volume_relationship_after_replication.html 
+sidebar: sidebar 
+keywords: volume pair, delete, replication 
+summary: Una volta completata la replica e non più necessaria la relazione tra coppie di volumi, è possibile eliminare la relazione tra volumi. 
+---
+= Elimina una relazione di volume dopo la replica
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una volta completata la replica e non più necessaria la relazione tra coppie di volumi, è possibile eliminare la relazione tra volumi.
+
+. Selezionare *Protezione dati* > *Coppie di volumi*.
+. Fare clic sull'icona *Azioni* relativa alla coppia di volumi che si desidera eliminare.
+. Fare clic su *Elimina*.
+. Conferma il messaggio.
+

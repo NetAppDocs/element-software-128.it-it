@@ -1,0 +1,25 @@
+---
+permalink: storage/task_replication_pause_replication.html 
+sidebar: sidebar 
+keywords: replication, pause, volume pairs 
+summary: 'È possibile sospendere manualmente la replicazione se è necessario interrompere l"elaborazione I/O per un breve periodo.  Potrebbe essere necessario sospendere la replicazione in caso di aumento dell"elaborazione I/O e se si desidera ridurre il carico di elaborazione.' 
+---
+= Sospendi la replicazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile sospendere manualmente la replicazione se è necessario interrompere l'elaborazione I/O per un breve periodo.  Potrebbe essere necessario sospendere la replicazione in caso di aumento dell'elaborazione I/O e se si desidera ridurre il carico di elaborazione.
+
+. Selezionare *Protezione dati* > *Coppie di volumi*.
+. Fare clic sull'icona Azioni per la coppia di volumi.
+. Fare clic su *Modifica*.
+. Nel riquadro *Modifica coppia di volumi*, sospendere manualmente il processo di replica.
++
+
+IMPORTANT: La sospensione o la ripresa manuale della replicazione del volume determina l'interruzione o la ripresa della trasmissione dei dati.  Assicuratevi di aver coordinato queste modifiche in entrambi i siti.
+
+. Fare clic su *Salva modifiche*.
+

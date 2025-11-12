@@ -1,0 +1,18 @@
+---
+permalink: storage/concept_snapmirror_labels.html 
+sidebar: sidebar 
+keywords: labels, snapmirror, retention rules 
+summary: 'Un"etichetta SnapMirror funge da marcatore per il trasferimento di uno snapshot specificato in base alle regole di conservazione della relazione.' 
+---
+= Etichette SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un'etichetta SnapMirror funge da marcatore per il trasferimento di uno snapshot specificato in base alle regole di conservazione della relazione.
+
+L'applicazione di un'etichetta a uno snapshot lo contrassegna come destinazione per la replica SnapMirror .  Il ruolo della relazione è quello di far rispettare le regole durante il trasferimento dei dati selezionando lo snapshot etichettato corrispondente, copiandolo nel volume di destinazione e assicurando che venga conservato il numero corretto di copie.  Si riferisce alla politica per determinare il conteggio dei dati da conservare e il periodo di conservazione.  La policy può avere un numero qualsiasi di regole e ogni regola ha un'etichetta univoca.  Questa etichetta funge da collegamento tra lo snapshot e la regola di conservazione.
+
+È l'etichetta SnapMirror che indica quale regola viene applicata allo snapshot, allo snapshot di gruppo o alla pianificazione selezionati.

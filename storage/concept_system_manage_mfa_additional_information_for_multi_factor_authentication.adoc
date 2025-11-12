@@ -1,0 +1,32 @@
+---
+permalink: storage/concept_system_manage_mfa_additional_information_for_multi_factor_authentication.html 
+sidebar: sidebar 
+keywords: mfa, idp, certificates, api method 
+summary: 'È opportuno tenere presente le seguenti avvertenze in relazione all"autenticazione a più fattori.' 
+---
+= Informazioni aggiuntive per l'autenticazione a più fattori
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È opportuno tenere presente le seguenti avvertenze in relazione all'autenticazione a più fattori.
+
+* Per aggiornare i certificati IdP non più validi, è necessario utilizzare un utente non amministratore IdP per chiamare il seguente metodo API: `UpdateIdpConfiguration`
+* L'MFA non è compatibile con i certificati di lunghezza inferiore a 2048 bit.  Per impostazione predefinita, sul cluster viene creato un certificato SSL a 2048 bit.  Dovresti evitare di impostare un certificato di dimensioni inferiori quando chiami il metodo API: `SetSSLCertificate`
++
+
+NOTE: Se il cluster utilizza un certificato inferiore a 2048 bit prima dell'aggiornamento, il certificato del cluster deve essere aggiornato con un certificato da 2048 bit o superiore dopo l'aggiornamento a Element 12.0 o versione successiva.
+
+* Gli utenti amministratori IdP non possono essere utilizzati per effettuare chiamate API direttamente (ad esempio, tramite SDK o Postman) o per altre integrazioni (ad esempio, OpenStack Cinder o vCenter Plug-in).  Se è necessario creare utenti dotati di queste capacità, aggiungere utenti amministratori del cluster LDAP o utenti amministratori del cluster locale.
+
+
+
+
+== Trova maggiori informazioni
+
+* link:../api/concept_element_api_about_the_api.html["Gestione dello storage con l'API Element"]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+

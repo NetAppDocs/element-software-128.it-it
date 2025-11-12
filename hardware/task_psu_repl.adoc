@@ -1,0 +1,116 @@
+---
+permalink: hardware/task_psu_repl.html 
+sidebar: sidebar 
+keywords: power supply, replacement, h610s, h410s, maintenance, psu, chassis 
+summary: Ogni telaio include due alimentatori per la ridondanza di potenza.  Se un alimentatore è difettoso, è necessario sostituirlo il prima possibile per garantire che il telaio disponga di una fonte di alimentazione ridondante. 
+---
+= Sostituire un alimentatore
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ogni telaio include due alimentatori per la ridondanza di potenza.  Se un alimentatore è difettoso, è necessario sostituirlo il prima possibile per garantire che il telaio disponga di una fonte di alimentazione ridondante.
+
+.Cosa ti servirà
+* Hai stabilito che l'alimentatore è difettoso.
+* Hai un alimentatore sostitutivo.
+* Hai verificato che il secondo alimentatore sia funzionante.
+* Hai un braccialetto antistatico (ESD) o hai preso altre precauzioni antistatiche.
+
+
+.Informazioni su questo compito
+La procedura di sostituzione si applica ai seguenti modelli di nodo:
+
+* Chassis NetApp HCI a due unità rack (2U) e quattro nodi
+* Un telaio di archiviazione H610S con unità rack (1U)
++
+
+NOTE: Nel caso di H610S, i termini "nodo" e "chassis" vengono utilizzati in modo intercambiabile perché nodo e chassis non sono componenti separati, a differenza del caso dello chassis 2U a quattro nodi.
+
+
+
+Gli allarmi nell'interfaccia utente Element forniscono informazioni sull'unità di alimentazione guasta, facendo riferimento ad essa come PS1 o PS2.  In uno chassis NetApp HCI 2U a quattro nodi, PS1 si riferisce all'unità nella fila superiore dello chassis e PS2 si riferisce all'unità nella fila inferiore dello chassis.  È possibile sostituire l'alimentatore difettoso mentre il telaio è acceso e funzionante, a condizione che l'alimentatore ridondante sia funzionante.
+
+
+NOTE: Se si sostituiscono entrambi gli alimentatori in un nodo, è necessario che abbiano lo stesso codice articolo e la stessa potenza.  Gli alimentatori non abbinati potrebbero danneggiare il sistema.
+
+.Passi
+. Individuare l'alimentatore difettoso nello chassis.  Il LED sull'unità difettosa è di colore ambra.
++
+
+NOTE: Le unità di alimentazione sono posizionate in modo diverso a seconda del tipo di telaio.
+
++
+Per individuare la posizione degli alimentatori, vedere le immagini sottostanti:
+
++
+[cols="2*"]
+|===
+| Modello | Ubicazione delle unità di alimentazione 
+
+
+| Chassis di storage NetApp HCI a quattro nodi, 2U  a| 
+image::storage_chassis_psu.png[Mostra le unità di alimentazione in un 2U]
+
+
+NOTE: I nodi nel tuo chassis potrebbero apparire diversi a seconda del tipo di nodi (di storage o di elaborazione) di cui disponi.
+
+
+
+| Telaio H610S  a| 
+image::h610s_psu.png[Mostra le unità di alimentazione in uno chassis H610S.]
+
+|===
+. Identificare il nodo corretto utilizzando l'etichetta estraibile blu o il numero di serie.  L'etichetta blu estraibile riporta il numero di serie (S/N) e il layout dell'unità.  Confermare il numero di serie del nodo da sottoporre a manutenzione.
++
+** Se si sostituiscono entrambi gli alimentatori, procedere al passaggio 3.
+** Se si sostituisce solo un alimentatore, passare al passaggio 4.
+
+
+. Verificare che il nodo sia stato spento o sia pronto per essere spento per l'assistenza. Notare quanto segue:
++
+** Un nodo che è stato spento non visualizza alcun LED di alimentazione blu sulle unità o sul pulsante di accensione.
+** Un nodo che non è ancora stato spento mostra LED blu sulle unità e sul pulsante di accensione.
+** Un nodo che è stato spento ed è pronto per il servizio visualizza un LED PSU lampeggiante che lampeggia (verde) e spento (nessun colore).
+** Un nodo che non è ancora stato spento mostra LED verdi fissi sugli alimentatori.
+
+
+. Scollegare il cavo di alimentazione dall'alimentatore o entrambi i cavi di alimentazione, se si sostituiscono entrambe le unità.
+. Sollevare la maniglia della camma e premere il fermo blu per far scorrere fuori l'alimentatore.
++
+image::psu-remove.gif[Mostra la maniglia della camma che viene sollevata e l'alimentatore che viene estratto dal telaio.]
+
++
+
+NOTE: L'illustrazione è un esempio.  La posizione dell'alimentatore nello chassis e il colore del pulsante di rilascio variano a seconda del tipo di chassis in uso.
+
++
+
+IMPORTANT: Assicurarsi di utilizzare entrambe le mani per sostenere il peso dell'alimentatore.
+
++
+Ripetere i passaggi 3, 4 e 5 se si sostituisce un secondo alimentatore.
+
+. Individuare l'etichetta sull'alimentatore rimosso dallo chassis.  L'etichetta contiene i dettagli del produttore e la potenza in uscita.
++
+
+NOTE: Non sostituire l'alimentatore se la potenza in watt dell'alimentatore fornito tramite RMA non corrisponde a quella dell'alimentatore rimosso.  Per i passaggi successivi, contattare l'assistenza NetApp .
+
+. Utilizzando entrambe le mani, allineare i bordi dell'alimentatore con l'apertura nello chassis, spingere delicatamente l'unità nello chassis utilizzando la maniglia a camma finché non si blocca in posizione e riportare la maniglia a camma in posizione verticale.
++
+image::psu-install.gif[Mostra l'unità di alimentazione installata nello chassis.]
+
+. Collegare uno o entrambi i cavi di alimentazione.
+. Se hai sostituito entrambi gli alimentatori, vai nella parte anteriore del nodo e premi il pulsante di accensione per accendere i nodi.  Dopo l'accensione, il LED del pulsante di accensione si illumina di blu fisso.  I LED blu delle unità e il pulsante di identificazione inizieranno a lampeggiare.
+. Restituisci l'unità difettosa a NetApp seguendo le istruzioni contenute nella scatola che ti è stata spedita.
+
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentazione per le versioni precedenti dei prodotti NetApp SolidFire ed Element"^]
+

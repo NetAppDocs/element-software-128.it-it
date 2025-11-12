@@ -1,0 +1,175 @@
+---
+permalink: api/reference_element_api_network_local_interfaces.html 
+sidebar: sidebar 
+keywords: object,objects,network 
+summary: 'L"oggetto rete \(interfacce locali\) contiene informazioni di configurazione per le interfacce di rete locali, come l"interfaccia loopback, su un nodo di archiviazione.  È possibile utilizzare i metodi GetConfig e GetNetworkConfig per ottenere queste informazioni per un nodo di archiviazione.' 
+---
+= rete (interfacce locali)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto rete (interfacce locali) contiene informazioni di configurazione per le interfacce di rete locali, come l'interfaccia loopback, su un nodo di archiviazione.  Puoi usare il `GetConfig` E `GetNetworkConfig` metodi per ottenere queste informazioni per un nodo di archiviazione.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+famiglia
+ a| 
+Famiglia di indirizzi per cui l'interfaccia è configurata.  Attualmente è supportato "inet" per IPv4.
+ a| 
+corda
+
+
+
+ a| 
+indirizzo MAC
+ a| 
+L'indirizzo MAC effettivo assegnato all'interfaccia e osservato dalla rete.
+ a| 
+corda
+
+
+
+ a| 
+macAddressPermanent
+ a| 
+L'indirizzo MAC immutabile assegnato dal produttore all'interfaccia.
+ a| 
+corda
+
+
+
+ a| 
+metodo
+ a| 
+Metodo utilizzato per configurare l'interfaccia. Valori possibili:
+
+* loopback: utilizzato per definire l'interfaccia loopback IPv4.
+* manuale: utilizzato per definire le interfacce che non vengono configurate automaticamente.
+* dhcp: può essere utilizzato per ottenere un indirizzo IP tramite DHCP.
+* statico: utilizzato per definire interfacce Ethernet con indirizzi IPv4 assegnati staticamente.
+
+ a| 
+corda
+
+
+
+ a| 
+stato
+ a| 
+Lo stato dell'interfaccia. Valori possibili:
+
+* Giù: l'interfaccia è inattiva.
+* Su: L'interfaccia è pronta, ma non ha alcun collegamento.
+* UpAndRunning: l'interfaccia è pronta e il collegamento è stato stabilito.
+
+ a| 
+corda
+
+
+
+ a| 
+attivo e funzionante
+ a| 
+Indica se l'interfaccia è pronta e ha un collegamento.
+ a| 
+booleano
+
+|===
+
+
+== Modificabilità dei membri e stati dei nodi
+
+Questa tabella indica se i parametri dell'oggetto possono essere modificati in ogni possibile stato del nodo.
+
+|===
+
+
+| Nome del parametro | Stato disponibile | Stato in sospeso | Stato attivo 
+
+
+ a| 
+famiglia
+ a| 
+NO
+ a| 
+NO
+ a| 
+NO
+
+
+
+ a| 
+indirizzo MAC
+ a| 
+Configurato dal sistema
+ a| 
+N / A
+ a| 
+N / A
+
+
+
+ a| 
+macAddressPermanent
+ a| 
+Configurato dal sistema
+ a| 
+N / A
+ a| 
+N / A
+
+
+
+ a| 
+metodo
+ a| 
+NO
+ a| 
+NO
+ a| 
+NO
+
+
+
+ a| 
+stato
+ a| 
+SÌ
+ a| 
+SÌ
+ a| 
+SÌ
+
+
+
+ a| 
+attivo e funzionante
+ a| 
+Configurato dal sistema
+ a| 
+N / A
+ a| 
+N / A
+
+|===
+
+
+== Trova maggiori informazioni
+
+* xref:reference_element_api_getconfig.adoc[OttieniConfig]
+* xref:reference_element_api_getnetworkconfig.adoc[OttieniConfigurazione di rete]
+

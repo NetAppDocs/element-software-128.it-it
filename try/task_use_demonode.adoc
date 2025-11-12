@@ -1,0 +1,136 @@
+---
+permalink: try/task_use_demonode.html 
+sidebar: sidebar 
+keywords: element demo node, virtual machine, element software, element api, vmware deployment 
+summary: Element Demo Node è una versione del software Element per macchine virtuali VMware, che offre un modo semplice per dimostrare molte delle principali funzionalità di storage dei prodotti NetApp HCI e SolidFire . 
+---
+= Prova le funzionalità di archiviazione utilizzando Element Demo Node
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+https://mysupport.netapp.com/site/tools/tool-eula/element-demonode/download["Nodo demo elemento"^]è una versione VMware per macchina virtuale (VM) del software Element, che offre un modo semplice per dimostrare molte delle principali funzionalità di storage dei prodotti NetApp HCI e SolidFire .  Il nodo demo consente agli sviluppatori di programmare in base all'API Element senza bisogno di hardware fisico.  È confezionato come file OVA per una facile distribuzione VMware.
+
+
+
+== Funzionalità supportate:
+
+Element Demo Node è concepito esclusivamente per essere utilizzato come strumento di dimostrazione e sviluppo.  Prima di utilizzare il nodo demo, tenere presente le seguenti limitazioni funzionali:
+
+* Element Demo Node non supporta il clustering.  Funziona solo come cluster a nodo singolo.
+* Non supporta gli aggiornamenti Element.  Per provare una versione più recente di Element, dovresti installare una nuova VM del nodo demo.
+* Non ha lo scopo di dimostrare le prestazioni di archiviazione.  Le prestazioni osservate sul nodo demo non sono in alcun modo indicative delle prestazioni sui cluster fisici.
+* Non è possibile aggiungere nodi demo ai cluster NetApp HCI o SolidFire .
+* Le VLAN VRF non sono supportate (sono supportate le VLAN con tag standard).
+* Il servizio Multi-Drive Slice (MDSS) non è supportato.
+* Element Demo Node è supportato solo con datastore VMFS.  I VVol non sono supportati.
+* La funzionalità di configurazione e monitoraggio basata sull'hardware non funziona con il nodo demo.
+* Supporta un massimo di 10 snapshot per volume.
+* Supporta un massimo di 20 account per nodo/cluster.
+* Supporta un massimo di 100 volumi per account.
+* Supporta un massimo di 200 vVols per account.
+* Supporta una dimensione massima del volume di 100 GiB.
+* Supporta un limite di cluster sostenuto di 3000 IOPS.
+
+
+
+NOTE: Si applicano tutte le altre limitazioni del software Element.  Per maggiori dettagli, consultare le ultime Note di rilascio del software Element.
+
+
+
+== Requisiti VM
+
+* Capacità totale di 240 GB (non è possibile modificare le dimensioni e il numero di dischi virtuali per la VM.  Qualsiasi spazio di archiviazione aggiuntivo presentato tramite l'hypervisor viene ignorato dal sistema operativo guest.)
+* Disco di root da 60 GB
+* Thick provisioned/eager zeroed (un'unità metadati da 30 GB o tre unità a blocchi da 50 GB) o thin provisioned/eager zeroed (*consigliato*) (un'unità metadati da 30 GB o tre unità a blocchi da 50 GB)
+* Due vCPU (completamente riservate)
+* 16 GB di RAM (completamente riservati)
+* HBA singolo per tutti i dischi, LSI Logic parallelo
+* Due vNIC, entrambe vmxnet3 (una di gestione, una di archiviazione)
+
+
+
+
+== Requisiti dell'host
+
+* ESXI 6.0 o 6.5 per Element Demo Node 11.7 VM
+* ESXi 6.5 per Element Demo Node 12.0 e 12.2 VM
+* ESXi 6.7 e 7.0 per le VM Element Demo Node 12.3 e 12.5
+* Architettura Intel® multi-core a 64 bit
+
+
+
+
+== Scarica il nodo demo dell'elemento
+
+Il software Element Demo Node è un set di file VMware impacchettati in un file .ova.
+
+
+
+== Installa Element Demo Node su VMware ESXi
+
+L'installazione di Element Demo Node su VMware ESXi prevede le seguenti attività:
+
+* <<Configurare le interfacce di rete>>
+* <<Registra il nodo demo su un server ESXi>>
+* <<Avvia il nodo demo su un server ESXi>>
+
+
+
+
+=== Configurare le interfacce di rete
+
+Element Demo Node richiede due reti di macchine virtuali separate.  Uno è per il traffico di archiviazione e l'altro è per il traffico di gestione.  È necessario configurare la rete di archiviazione in modo che supporti i jumbo frame.
+
+
+
+=== Registra il nodo demo su un server ESXi
+
+Per registrare Element Demo Node su un server ESXi, è necessario distribuire il file .ova del nodo demo utilizzando vSphere Client.
+
+.Passi
+. Accedi a vSphere Client e seleziona l'host ESXi dal pannello dell'inventario.
+. Selezionare *File* > *Distribuisci modello OVF*.
++
+Viene avviata la procedura guidata Distribuisci modello OVF.
+
+. Nella pagina *Seleziona modello*, vai al file OVA scaricato e seleziona *Apri*.
+. Selezionare *Avanti*.
+. Nella pagina *Nome e posizione*, specificare un nome e una posizione per il modello distribuito, quindi selezionare *Avanti*.
+. Nella pagina *Seleziona una risorsa*, vai alla posizione in cui desideri eseguire il modello e seleziona *Avanti*.
+. Verificare i dettagli e selezionare *Avanti*.
+. Nella pagina Seleziona archiviazione, seleziona dove desideri archiviare i file della macchina virtuale, quindi seleziona *Avanti*.
+. Nella pagina *Seleziona reti*, mappa la rete utilizzata nel file OVA alle due reti distinte delle macchine virtuali nel tuo inventario e seleziona *Avanti*.
+. Nella pagina *Pronto per il completamento*, verifica i dettagli sulla macchina virtuale che stai creando, quindi seleziona *Fine*.
+
+
+
+NOTE: Il completamento della distribuzione del nodo demo potrebbe richiedere alcuni minuti.
+
+
+
+=== Avvia il nodo demo su un server ESXi
+
+È necessario avviare la VM del nodo demo per accedere a Element tramite la console VMware ESXi.
+
+.Passi
+. Nel vSphere Client, seleziona la VM del nodo demo che hai creato.
+. Selezionare la scheda *Riepilogo* per visualizzare i dettagli su questa VM.
+. Selezionare *Accensione* per avviare la VM.
+. Selezionare *Avvia Web Console*.
+. Utilizzare l'interfaccia utente guidata per configurare il nodo demo. Per maggiori informazioni, vedere link:../setup/concept_setup_configure_a_storage_node.html["Configurare un nodo di archiviazione"^].
+
+
+
+
+== Come ottenere supporto
+
+Element Demo Node è disponibile su base volontaria con il massimo impegno.  Per supporto, invia le tue domande a https://community.netapp.com/t5/Simulator-Discussions/bd-p/simulator-discussions["Forum del nodo dimostrativo dell'elemento"^] .
+
+
+
+== Trova maggiori informazioni
+
+https://mysupport.netapp.com/site/tools/tool-eula/element-demonode/download["Pagina di download del nodo demo Element (è richiesto l'accesso)"^]

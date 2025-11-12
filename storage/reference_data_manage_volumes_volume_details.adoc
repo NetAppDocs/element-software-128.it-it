@@ -1,0 +1,88 @@
+---
+permalink: storage/reference_data_manage_volumes_volume_details.html 
+sidebar: sidebar 
+keywords: volume, size of volume 
+summary: La pagina Volumi nella scheda Gestione fornisce informazioni sui volumi attivi, ad esempio nome, account, gruppi di accesso associati al volume e dimensioni del volume. 
+---
+= Dettagli del volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La pagina Volumi nella scheda Gestione fornisce informazioni sui volumi attivi, ad esempio nome, account, gruppi di accesso associati al volume e dimensioni del volume.
+
+* *ID*
++
+ID generato dal sistema per il volume.
+
+* *Nome*
++
+Nome dato al volume al momento della sua creazione.
+
+* *Account*
++
+Nome dell'account assegnato al volume.
+
+* *Gruppi di accesso*
++
+Nome del gruppo o dei gruppi di accesso al volume a cui appartiene il volume.
+
+* *Accesso*
++
+Tipo di accesso assegnato al volume al momento della sua creazione. Valori possibili:
+
++
+** Lettura/Scrittura: sono accettate tutte le letture e le scritture.
+** Sola lettura: sono consentite tutte le attività di lettura; non sono consentite le attività di scrittura.
+** Bloccato: è consentito solo l'accesso dell'amministratore.
+** ReplicationTarget: designato come volume di destinazione in una coppia di volumi replicati.
+
+
+* *Usato*
++
+Percentuale di spazio utilizzato nel volume.
+
+* *Misurare*
++
+La dimensione totale (in GB) del volume.
+
+* *Istantanee*
++
+Numero di snapshot creati per il volume.
+
+* *Politica QoS*
++
+Nome e collegamento alla policy QoS definita dall'utente.
+
+* *IOPS minimi*
++
+Numero minimo di IOPS garantiti per il volume.
+
+* *IOPS massimi*
++
+Numero massimo di IOPS consentito per il volume.
+
+* *IOPS a raffica*
++
+Numero massimo di IOPS consentiti in un breve periodo di tempo per il volume.  Predefinito = 15.000.
+
+* *Attributi*
++
+Attributi che sono stati assegnati al volume come coppia chiave/valore tramite un metodo API.
+
+* *512e*
++
+Indica se 512e è abilitato su un volume. Valori possibili:
+
++
+** SÌ
+** NO
+
+
+* *Creato il*
++
+Data e ora in cui è stato creato il volume.
+
+

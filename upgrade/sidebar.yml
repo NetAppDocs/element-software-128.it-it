@@ -1,0 +1,24 @@
+---
+section: upgrade
+title: Aggiorna il tuo sistema di archiviazione all-flash NetApp SolidFire
+entries:
+- title: Panoramica della sequenza di aggiornamento
+  url: "/upgrade/concept_element_upgrade_overview.html"
+- title: Procedure di aggiornamento del sistema
+  entries:
+  - title: Eseguire controlli di integrità dell'archiviazione Element prima di aggiornare
+      l'archiviazione
+    url: "/upgrade/task_hcc_upgrade_element_prechecks.html"
+  - title: Aggiornare un nodo di gestione
+    url: "/upgrade/task_hcc_upgrade_management_node.html"
+  - title: Servizi di gestione degli aggiornamenti
+    url: "/upgrade/task_hcc_update_management_services.html"
+  - title: Aggiorna il software Element
+    url: "/upgrade/task_hcc_upgrade_element_software.html"
+  - title: Aggiorna il firmware di archiviazione
+    url: "/upgrade/task_hcc_upgrade_storage_firmware.html"
+  - title: Aggiorna il plug-in Element per vCenter Server
+    url: "/upgrade/task_vcp_upgrade_plugin.html"
+- title: Aggiorna i tuoi componenti vSphere per un sistema di storage NetApp SolidFire
+    con Element Plug-in per vCenter Server
+  url: "/upgrade/task_sf_upgrade_all_vsphere.html"

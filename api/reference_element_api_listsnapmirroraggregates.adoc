@@ -1,0 +1,62 @@
+---
+permalink: api/reference_element_api_listsnapmirroraggregates.html 
+sidebar: sidebar 
+keywords: snapmirror,aggregate,aggregates,list,listing,listsnapmirroraggregates 
+summary: 'L"interfaccia utente Web del software Element utilizza il metodo ListSnapMirrorAggregates per elencare tutti gli aggregati SnapMirror disponibili sul sistema ONTAP remoto.  Un aggregato descrive un insieme di risorse di archiviazione fisica.' 
+---
+= ListSnapMirrorAggregates
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'interfaccia utente Web del software Element utilizza `ListSnapMirrorAggregates` metodo per elencare tutti gli aggregati SnapMirror disponibili sul sistema ONTAP remoto.  Un aggregato descrive un insieme di risorse di archiviazione fisica.
+
+
+
+== Parametro
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Restituisce solo gli aggregati associati all'ID endpoint specificato.  Se non viene fornito alcun ID endpoint, il sistema elenca gli aggregati di tutti gli endpoint SnapMirror noti.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+snapMirrorAggregates
+ a| 
+Elenco degli aggregati disponibili sul sistema di stoccaggio ONTAP .
+ a| 
+xref:reference_element_api_snapmirroraggregate.adoc[snapMirrorAggregate]vettore
+
+|===
+
+
+== Nuovo dalla versione
+
+10,1

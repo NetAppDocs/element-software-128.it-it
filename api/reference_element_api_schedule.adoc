@@ -1,0 +1,233 @@
+---
+permalink: api/reference_element_api_schedule.html 
+sidebar: sidebar 
+keywords: object,objects,schedule 
+summary: 'L"oggetto pianificazione contiene informazioni su una pianificazione creata per creare autonomamente uno snapshot di un volume.  È possibile recuperare le informazioni sulla pianificazione per tutte le pianificazioni con il metodo API ListSchedules.' 
+---
+= programma
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto pianificazione contiene informazioni su una pianificazione creata per creare autonomamente uno snapshot di un volume.  È possibile recuperare le informazioni sulla pianificazione per tutte le pianificazioni con `ListSchedules` Metodo API.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+attributi
+ a| 
+Indica la frequenza con cui si verifica la pianificazione. Valori possibili:
+
+* Giorno della settimana
+* Giorno del mese
+* Intervallo di tempo
+
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+ha un errore
+ a| 
+Indica se la pianificazione presenta errori. Valori possibili:
+
+* VERO
+* falso
+
+ a| 
+booleano
+
+
+
+ a| 
+ore
+ a| 
+Mostra le ore che trascorreranno prima che venga creato lo snapshot successivo.  I valori possibili sono compresi tra 0 e 24.
+ a| 
+intero
+
+
+
+ a| 
+ultimoStatoEsecuzione
+ a| 
+Indica lo stato dell'ultimo snapshot pianificato. Valori possibili:
+
+* Successo
+* Fallito
+
+ a| 
+corda
+
+
+
+ a| 
+lastRunTimeStart
+ a| 
+Indica l'ultima volta in cui è iniziata la pianificazione.
+ a| 
+Stringa di data ISO 8601
+
+
+
+ a| 
+minuti
+ a| 
+Mostra i minuti che trascorreranno prima che venga creato lo snapshot successivo.  I valori possibili sono compresi tra 0 e 59.
+ a| 
+intero
+
+
+
+ a| 
+giorni del mese
+ a| 
+Indica i giorni del mese in cui verrà effettuato uno snapshot.
+ a| 
+vettore
+
+
+
+ a| 
+in pausa
+ a| 
+Indica se la pianificazione è in pausa o meno. Valori possibili:
+
+* VERO
+* falso
+
+ a| 
+booleano
+
+
+
+ a| 
+ricorrente
+ a| 
+Indica se la pianificazione è ricorrente o meno. Valori possibili:
+
+* VERO
+* falso
+
+ a| 
+booleano
+
+
+
+ a| 
+runNextInterval
+ a| 
+Indica se la pianificazione verrà eseguita o meno la prossima volta che lo scheduler sarà attivo.  Se impostato su true, la pianificazione verrà eseguita la volta successiva che lo scheduler sarà attivo, dopodiché questo valore verrà reimpostato su false. Valori possibili:
+
+* VERO
+* falso
+
+ a| 
+booleano
+
+
+
+ a| 
+IDprogramma
+ a| 
+L'ID univoco della pianificazione.
+ a| 
+intero
+
+
+
+ a| 
+informazioni sulla pianificazione
+ a| 
+Include il nome univoco assegnato alla pianificazione, il periodo di conservazione per lo snapshot creato e l'ID del volume da cui è stato creato lo snapshot.  Valori validi:
+
+* `enableRemoteReplication`: Indica se lo snapshot deve essere incluso nella replica remota.  (booleano)
+* `ensureSerialCreation`: specifica se è consentita la creazione di un nuovo snapshot se è in corso una replica di snapshot precedente.  (booleano)
+* `name`: Nome dello snapshot da utilizzare.  (corda)
+* `retention`: La quantità di tempo per cui viene conservato lo snapshot.  A seconda dell'ora, viene visualizzato in uno dei seguenti formati:
++
+** `fifo`: Lo snapshot viene conservato secondo il principio FIFO (First-In-First-Out).  Se vuoto, lo snapshot viene conservato per sempre.  (corda)
+** HH:mm:ss
+
+
+* `volumeID`: ID del volume da includere nello snapshot.  (numero intero)
+* `volumes`: Elenco degli ID volume da includere nello snapshot del gruppo.  (array di interi)
+
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+Nome programma
+ a| 
+Il nome univoco assegnato alla pianificazione.
+ a| 
+corda
+
+
+
+ a| 
+tipo di programma
+ a| 
+Al momento sono supportati solo i tipi di snapshot pianificati.
+ a| 
+corda
+
+
+
+ a| 
+snapMirrorLabel
+ a| 
+snapMirrorLabel da applicare allo Snapshot o allo Snapshot di gruppo creato, contenuto in scheduleInfo.  Se non impostato, questo valore è nullo.
+ a| 
+corda
+
+
+
+ a| 
+data di inizio
+ a| 
+Indica la data in cui è iniziata o inizierà la prima volta la programmazione; formattata in ora UTC.
+ a| 
+Stringa di data ISO 8601
+
+
+
+ a| 
+da eliminare
+ a| 
+Indica se la pianificazione è contrassegnata per l'eliminazione. Valori possibili:
+
+* VERO
+* falso
+
+ a| 
+booleano
+
+
+
+ a| 
+giorni feriali
+ a| 
+Indica i giorni della settimana in cui verrà effettuato uno snapshot.
+ a| 
+vettore
+
+|===
+
+
+== Trova maggiori informazioni
+
+xref:reference_element_api_listschedules.adoc[ListSchedules]

@@ -1,0 +1,989 @@
+= 
+:allow-uri-read: 
+
+
+* *errore di servizio di autenticazione*
++
+Il servizio di autenticazione su uno o più nodi del cluster non funziona come previsto.
+
++
+Per ricevere assistenza, contattare il supporto NetApp .
+
+* *disponibileIndirizzi IP di rete virtualeBasso*
++
+Il numero di indirizzi di rete virtuali nel blocco di indirizzi IP è basso.
+
++
+Per risolvere questo errore, aggiungere altri indirizzi IP al blocco di indirizzi di rete virtuali.
+
+* *blockClusterFull*
++
+Non c'è abbastanza spazio di archiviazione a blocchi libero per supportare la perdita di un singolo nodo.  Per informazioni dettagliate sui livelli di riempimento del cluster, vedere il metodo API GetClusterFullThreshold.  Questo errore del cluster indica una delle seguenti condizioni:
+
++
+** stage3Low (Avviso): è stata superata la soglia definita dall'utente.  Regola le impostazioni del Cluster completo o aggiungi altri nodi.
+** stage4Critical (Errore): non c'è abbastanza spazio per il ripristino da un errore di 1 nodo.  Non è consentita la creazione di volumi, snapshot e cloni.
+** stage5CompletelyConsumed (Critical)1; Non sono consentite scritture o nuove connessioni iSCSI.  Le attuali connessioni iSCSI saranno mantenute.  Le scritture non riusciranno finché non verrà aggiunta ulteriore capacità al cluster.
+
+
++
+Per risolvere questo errore, eliminare o ripulire i volumi oppure aggiungere un altro nodo di archiviazione al cluster di archiviazione.
+
+* *blocchiDegradato*
++
+I dati del blocco non vengono più replicati completamente a causa di un errore.
+
++
+|===
+
+
+| Gravità | Descrizione 
+
+
+ a| 
+Avvertimento
+ a| 
+Sono accessibili solo due copie complete dei dati del blocco.
+
+
+
+ a| 
+Errore
+ a| 
+È accessibile solo una singola copia completa dei dati del blocco.
+
+
+
+ a| 
+Critico
+ a| 
+Non sono accessibili copie complete dei dati del blocco.
+
+|===
++
+*Nota:* lo stato di avviso può verificarsi solo su un sistema Triple Helix.
+
++
+Per risolvere questo errore, ripristinare tutti i nodi offline o bloccare i servizi oppure contattare il supporto NetApp per ricevere assistenza.
+
+* *blockServiceTooFull*
++
+Un servizio di blocco sta utilizzando troppo spazio.
+
++
+Per risolvere questo errore, aggiungere ulteriore capacità fornita.
+
+* *blockServiceNon integro*
++
+È stato rilevato un servizio di blocco non funzionante:
+
++
+** Gravità = Avvertenza: non viene intrapresa alcuna azione.  Questo periodo di avviso scadrà tra cTimeUntilBSIsKilledMSec=330000 millisecondi.
+** Gravità = Errore: il sistema sta automaticamente dismettendo i dati e replicandoli nuovamente su altre unità funzionanti.
+** Gravità = Critica: sono presenti servizi di blocco non riusciti su diversi nodi, superiori o uguali al conteggio delle repliche (2 per la doppia elica).  I dati non sono disponibili e la sincronizzazione del cestino non verrà completata.
++
+Verificare la presenza di problemi di connettività di rete ed errori hardware.  Si verificheranno altri guasti se specifici componenti hardware non funzionano.  L'errore verrà risolto quando il servizio di blocco sarà accessibile o quando il servizio sarà stato dismesso.
+
+
+
+* *BmcSelfTestFailed*
++
+Il Baseboard Management Controller (BMC) non ha superato l'autotest.
+
++
+Per ricevere assistenza, contattare l'assistenza NetApp .
+
++
+Durante un aggiornamento a Element 12.5 o versione successiva, il `BmcSelfTestFailed` l'errore non viene generato per un nodo che ha un BMC preesistente non riuscito o quando il BMC di un nodo non funziona durante l'aggiornamento.  I BMC che non superano gli autotest durante l'aggiornamento emetteranno un `BmcSelfTestFailed` avviso di errore dopo che l'intero cluster ha completato l'aggiornamento.
+
+* *clockSkewExceedsFaultThreshold*
++
+Lo sfasamento temporale tra il master del cluster e il nodo che presenta un token supera la soglia consigliata.  Il cluster di archiviazione non è in grado di correggere automaticamente lo sfasamento temporale tra i nodi.
+
++
+Per risolvere questo errore, utilizzare i server NTP interni alla rete anziché quelli predefiniti di installazione.  Se si utilizza un server NTP interno, contattare il supporto NetApp per ricevere assistenza.
+
+* *clusterNonPuòSincronizzarsi*
++
+Si è verificata una condizione di spazio insufficiente e i dati sulle unità di archiviazione a blocchi offline non possono essere sincronizzati con le unità ancora attive.
+
++
+Per risolvere questo problema, aggiungere altro spazio di archiviazione.
+
+* *clusterFull*
++
+Non c'è più spazio di archiviazione libero nel cluster di archiviazione.
+
++
+Per risolvere questo problema, aggiungere altro spazio di archiviazione.
+
+* *clusterIOPSAreOverProvisioned*
++
+Gli IOPS del cluster sono sovradimensionati.  La somma di tutti gli IOPS QoS minimi è maggiore degli IOPS previsti del cluster.  Non è possibile mantenere la QoS minima per tutti i volumi contemporaneamente.
+
++
+Per risolvere questo problema, ridurre le impostazioni minime QoS IOPS per i volumi.
+
+* *SogliaEventoTermicoCpu*
++
+Il numero di eventi termici della CPU su una o più CPU supera la soglia configurata.
+
++
+Se non vengono rilevati nuovi eventi termici della CPU entro dieci minuti, l'avviso si risolverà automaticamente.
+
+* *disableDriveSecurityFailed*
++
+Il cluster non è configurato per abilitare la sicurezza dell'unità (crittografia a riposo), ma almeno un'unità ha la sicurezza abilitata, il che significa che la disabilitazione della sicurezza dell'unità su tali unità non è riuscita.  Questo errore viene registrato con gravità "`Warning`".
+
++
+Per risolvere questo errore, controllare i dettagli dell'errore per scoprire il motivo per cui non è stato possibile disattivare la sicurezza dell'unità.  Le possibili ragioni sono:
+
++
+** Non è stato possibile acquisire la chiave di crittografia. Verificare il problema con l'accesso alla chiave o al server delle chiavi esterno.
+** L'operazione di disattivazione sull'unità non è riuscita. Verificare se è possibile che sia stata acquisita la chiave sbagliata.
+
+
++
+Se nessuna di queste cause è la causa del guasto, potrebbe essere necessario sostituire l'unità.
+
++
+È possibile tentare di ripristinare un'unità che non disattiva correttamente la sicurezza anche quando viene fornita la chiave di autenticazione corretta.  Per eseguire questa operazione, rimuovere l'unità/le unità dal sistema spostandola su Disponibile, eseguire una cancellazione sicura sull'unità e spostarla nuovamente su Attiva.
+
+* *ClusterPair disconnesso*
++
+Una coppia di cluster è disconnessa o configurata in modo errato.
+
++
+Controllare la connettività di rete tra i cluster.
+
+* *nodoremoto disconnesso*
++
+Un nodo remoto è disconnesso o configurato in modo errato.
+
++
+Controllare la connettività di rete tra i nodi.
+
+* *disconnectedSnapMirrorEndpoint*
++
+Un endpoint remoto SnapMirror è disconnesso o configurato in modo errato.
+
++
+Verificare la connettività di rete tra il cluster e lo SnapMirrorEndpoint remoto.
+
+* *unità disponibile*
++
+Nel cluster sono disponibili una o più unità.  In generale, tutti i cluster dovrebbero avere tutte le unità aggiunte e nessuna nello stato disponibile.  Se questo errore si verifica inaspettatamente, contattare l'assistenza NetApp .
+
++
+Per risolvere questo errore, aggiungere tutte le unità disponibili al cluster di archiviazione.
+
+* *driveFailed*
++
+Il cluster restituisce questo errore quando una o più unità si guastano, indicando una delle seguenti condizioni:
+
++
+** Il gestore dell'unità non riesce ad accedere all'unità.
+** Il servizio slice o block ha avuto esito negativo troppe volte, presumibilmente a causa di errori di lettura o scrittura dell'unità, e non può essere riavviato.
+** L'unità è mancante.
+** Il servizio master per il nodo non è accessibile (tutte le unità nel nodo sono considerate mancanti/guaste).
+** L'unità è bloccata e non è possibile acquisire la chiave di autenticazione per l'unità.
+** L'unità è bloccata e l'operazione di sblocco non riesce.
++
+Per risolvere questo problema:
+
+** Controllare la connettività di rete per il nodo.
+** Sostituire l'unità.
+** Assicurarsi che la chiave di autenticazione sia disponibile.
+
+
+* *driveHealthFault*
++
+Un'unità non ha superato il controllo di integrità SMART e, di conseguenza, le sue funzionalità risultano ridotte.  Per questo errore esiste un livello di gravità critico:
+
++
+** L'unità con numero di serie: <numero di serie> nello slot: <slot nodo><slot unità> non ha superato il controllo di integrità generale SMART.
+
+
++
+Per risolvere questo errore, sostituire l'unità.
+
+* *driveWearFault*
++
+La durata residua di un'unità è scesa al di sotto delle soglie, ma l'unità continua a funzionare. Esistono due possibili livelli di gravità per questo errore: Critico e Avvertenza:
+
++
+** L'unità con numero di serie: <numero di serie> nello slot: <slot nodo><slot unità> presenta livelli di usura critici.
+** L'unità con numero di serie: <numero di serie> nello slot: <slot nodo><slot unità> ha basse riserve di usura.
++
+Per risolvere questo problema, sostituire l'unità al più presto.
+
+
+
+* *duplicateClusterMasterCandidates*
++
+È stato rilevato più di un candidato master del cluster di archiviazione.
+
++
+Per ricevere assistenza, contattare il supporto NetApp .
+
+* *enableDriveSecurityFailed*
++
+Il cluster è configurato per richiedere la sicurezza dell'unità (crittografia a riposo), ma la sicurezza dell'unità non può essere abilitata su almeno un'unità.  Questo errore viene registrato con gravità "`Warning`".
+
++
+Per risolvere questo errore, controllare i dettagli dell'errore per scoprire il motivo per cui non è stato possibile abilitare la sicurezza dell'unità.  Le possibili ragioni sono:
+
++
+** Non è stato possibile acquisire la chiave di crittografia. Verificare il problema con l'accesso alla chiave o al server delle chiavi esterno.
+** L'operazione di abilitazione sull'unità non è riuscita. Verificare se è possibile che sia stata acquisita la chiave sbagliata.  Se nessuna di queste cause è la causa del guasto, potrebbe essere necessario sostituire l'unità.
+
+
++
+È possibile tentare di ripristinare un'unità che non abilita correttamente la sicurezza anche quando viene fornita la chiave di autenticazione corretta.  Per eseguire questa operazione, rimuovere l'unità/le unità dal sistema spostandola su Disponibile, eseguire una cancellazione sicura sull'unità e spostarla nuovamente su Attiva.
+
+* *ensembleDegraded*
++
+Si è verificata un'interruzione della connettività di rete o dell'alimentazione su uno o più nodi dell'ensemble.
+
++
+Per risolvere questo errore, ripristinare la connettività di rete o l'alimentazione.
+
+* *eccezione*
++
+Un guasto segnalato che non è un guasto di routine.  Questi errori non vengono cancellati automaticamente dalla coda degli errori.
+
++
+Per ricevere assistenza, contattare il supporto NetApp .
+
+* *SpazioTroppoPienofallito*
++
+Un servizio a blocchi non risponde alle richieste di scrittura dei dati.  Ciò fa sì che il servizio slice esaurisca lo spazio per archiviare le scritture non riuscite.
+
++
+Per risolvere questo errore, ripristinare la funzionalità dei servizi a blocchi per consentire alle scritture di continuare normalmente e allo spazio non riuscito di essere svuotato dal servizio slice.
+
+* *sensore ventola*
++
+Un sensore della ventola è guasto o mancante.
+
++
+Per risolvere questo errore, sostituire l'hardware guasto.
+
+* *fibreChannelAccessDegraded*
++
+Un nodo Fibre Channel non risponde agli altri nodi nel cluster di storage tramite il proprio IP di storage per un certo periodo di tempo.  In questo stato, il nodo verrà considerato non reattivo e genererà un errore del cluster.
+
++
+Controllare la connettività di rete.
+
+* *fibreChannelAccessUnavailable*
++
+Tutti i nodi Fibre Channel non rispondono.  Vengono visualizzati gli ID dei nodi.
+
++
+Controllare la connettività di rete.
+
+* *fibreChannelActiveIxL*
++
+Il conteggio di IxL Nexus si sta avvicinando al limite supportato di 8000 sessioni attive per nodo Fibre Channel.
+
++
+** Il limite ottimale è 5500.
+** Il limite di attenzione è 7500.
+** Il limite massimo (non applicato) è 8192.
+
+
++
+Per risolvere questo errore, ridurre il conteggio IxL Nexus al di sotto del limite ottimale di 5500.
+
+* *fibreChannelConfig*
++
+Questo errore del cluster indica una delle seguenti condizioni:
+
++
+** C'è una porta Fibre Channel inaspettata su uno slot PCI.
+** Esiste un modello HBA Fibre Channel inaspettato.
+** Si è verificato un problema con il firmware di un HBA Fibre Channel.
+** Una porta Fibre Channel non è online.
+** Si verifica un problema persistente durante la configurazione del passthrough Fibre Channel.
+
+
++
+Per ricevere assistenza, contattare il supporto NetApp .
+
+* *fibreChannelIOPS*
++
+Il conteggio totale degli IOPS si sta avvicinando al limite degli IOPS per i nodi Fibre Channel nel cluster.  I limiti sono:
+
++
+** FC0025: limite di 450K IOPS con dimensione del blocco di 4K per nodo Fibre Channel.
+** FCN001: limite OPS di 625K con dimensione del blocco di 4K per nodo Fibre Channel.
+
+
++
+Per risolvere questo errore, bilanciare il carico su tutti i nodi Fibre Channel disponibili.
+
+* *fibreChannelStaticIxL*
++
+Il conteggio IxL Nexus si sta avvicinando al limite supportato di 16.000 sessioni statiche per nodo Fibre Channel.
+
++
+** Il limite ottimale è 11000.
+** Il limite di attenzione è 15000.
+** Il limite massimo (applicato) è 16384.
+
+
++
+Per risolvere questo errore, ridurre il conteggio IxL Nexus al di sotto del limite ottimale di 11000.
+
+* *fileSystemCapacityLow*
++
+Lo spazio su uno dei file system non è sufficiente.
+
++
+Per risolvere questo errore, aggiungere più capacità al file system.
+
+* *fileSystemIsReadOnly*
++
+Un file system è passato alla modalità di sola lettura.
+
++
+Per ricevere assistenza, contattare il supporto NetApp .
+
+* *fipsDrivesMismatch*
++
+Un'unità non FIPS è stata fisicamente inserita in un nodo di archiviazione compatibile con FIPS oppure un'unità FIPS è stata fisicamente inserita in un nodo di archiviazione non FIPS.  Viene generato un singolo errore per nodo e vengono elencate tutte le unità interessate.
+
++
+Per risolvere questo errore, rimuovere o sostituire l'unità o le unità non corrispondenti in questione.
+
+* *fipsDrivesOutOfCompliance*
++
+Il sistema ha rilevato che la crittografia a riposo è stata disabilitata dopo l'abilitazione della funzionalità Unità FIPS.  Questo errore viene generato anche quando la funzionalità Unità FIPS è abilitata e nel cluster di archiviazione è presente un'unità o un nodo non FIPS.
+
++
+Per risolvere questo errore, abilitare la crittografia a riposo o rimuovere l'hardware non FIPS dal cluster di archiviazione.
+
+* *fipsSelfTestFailure*
++
+Il sottosistema FIPS ha rilevato un errore durante l'autotest.
+
++
+Per ricevere assistenza, contattare il supporto NetApp .
+
+* *hardwareConfigMismatch*
++
+Questo errore del cluster indica una delle seguenti condizioni:
+
++
+** La configurazione non corrisponde alla definizione del nodo.
+** La dimensione dell'unità per questo tipo di nodo non è corretta.
+** È stata rilevata un'unità non supportata.  Un possibile motivo è che la versione Element installata non riconosce questa unità.  Si consiglia di aggiornare il software Element su questo nodo.
+** C'è una mancata corrispondenza del firmware dell'unità.
+** Lo stato di capacità di crittografia dell'unità non corrisponde al nodo.
+
+
++
+Per ricevere assistenza, contattare il supporto NetApp .
+
+* *idPCertificateExpiration*
++
+Il certificato SSL del fornitore di servizi del cluster per l'utilizzo con un fornitore di identità (IdP) di terze parti sta per scadere o è già scaduto.  Questo errore utilizza i seguenti livelli di gravità in base all'urgenza:
+
++
+|===
+
+
+| Gravità | Descrizione 
+
+
+ a| 
+Avvertimento
+ a| 
+Il certificato scade entro 30 giorni.
+
+
+
+ a| 
+Errore
+ a| 
+Il certificato scade entro 7 giorni.
+
+
+
+ a| 
+Critico
+ a| 
+Il certificato scade entro 3 giorni o è già scaduto.
+
+|===
++
+Per risolvere questo errore, aggiorna il certificato SSL prima che scada.  Utilizzare il metodo API UpdateIdpConfiguration con `refreshCertificateExpirationTime=true` per fornire il certificato SSL aggiornato.
+
+* *inconsistentBondModes*
++
+Mancano le modalità di legame sul dispositivo VLAN.  Questo errore visualizzerà la modalità di legame prevista e la modalità di legame attualmente in uso.
+
+
+
+* *incoerenteMtus*
++
+Questo errore del cluster indica una delle seguenti condizioni:
+
++
+** Mancata corrispondenza Bond1G: sono state rilevate MTU incoerenti sulle interfacce Bond1G.
+** Mancata corrispondenza Bond10G: sono stati rilevati MTU incoerenti sulle interfacce Bond10G.
+
+
++
+Questo errore visualizza il nodo o i nodi in questione insieme al valore MTU associato.
+
+* *inconsistentRoutingRules*
++
+Le regole di routing per questa interfaccia non sono coerenti.
+
+* *SubnetMasks incoerenti*
++
+La maschera di rete sul dispositivo VLAN non corrisponde alla maschera di rete registrata internamente per la VLAN.  Questo errore visualizza la maschera di rete prevista e la maschera di rete attualmente in uso.
+
+* *incorrectBondPortCount*
++
+Il numero di porte di collegamento non è corretto.
+
+* *invalidConfiguredFibreChannelNodeCount*
++
+Una delle due connessioni previste del nodo Fibre Channel è degradata.  Questo errore si verifica quando è connesso un solo nodo Fibre Channel.
+
++
+Per risolvere questo errore, controllare la connettività di rete del cluster e il cablaggio di rete, nonché verificare la presenza di servizi non funzionanti.  Se non ci sono problemi di rete o di servizio, contattare l'assistenza NetApp per la sostituzione del nodo Fibre Channel.
+
+* *irqBalanceFailed*
++
+Si è verificata un'eccezione durante il tentativo di bilanciare gli interrupt.
+
++
+Per ricevere assistenza, contattare il supporto NetApp .
+
+* *kmipCertificateFault*
++
+** Il certificato della Root Certification Authority (CA) sta per scadere.
++
+Per risolvere questo errore, acquisire un nuovo certificato dalla CA radice con data di scadenza di almeno 30 giorni e utilizzare ModifyKeyServerKmip per fornire il certificato CA radice aggiornato.
+
+** Il certificato client sta per scadere.
++
+Per risolvere questo errore, creare un nuovo CSR utilizzando GetClientCertificateSigningRequest, farlo firmare assicurandosi che la nuova data di scadenza sia di almeno 30 giorni e utilizzare ModifyKeyServerKmip per sostituire il certificato client KMIP in scadenza con il nuovo certificato.
+
+** Il certificato dell'autorità di certificazione radice (CA) è scaduto.
++
+Per risolvere questo errore, acquisire un nuovo certificato dalla CA radice con data di scadenza di almeno 30 giorni e utilizzare ModifyKeyServerKmip per fornire il certificato CA radice aggiornato.
+
+** Il certificato client è scaduto.
++
+Per risolvere questo errore, creare un nuovo CSR utilizzando GetClientCertificateSigningRequest, farlo firmare assicurandosi che la nuova data di scadenza sia di almeno 30 giorni e utilizzare ModifyKeyServerKmip per sostituire il certificato client KMIP scaduto con il nuovo certificato.
+
+** Errore del certificato dell'autorità di certificazione radice (CA).
++
+Per risolvere questo errore, verificare che sia stato fornito il certificato corretto e, se necessario, riacquisire il certificato dalla CA radice.  Utilizzare ModifyKeyServerKmip per installare il certificato client KMIP corretto.
+
+** Errore del certificato client.
++
+Per risolvere questo errore, verificare che sia installato il certificato client KMIP corretto.  La CA radice del certificato client deve essere installata sull'EKS.  Utilizzare ModifyKeyServerKmip per installare il certificato client KMIP corretto.
+
+
+
+* *kmipServerFault*
++
+** Errore di connessione
++
+Per risolvere questo errore, verificare che il server delle chiavi esterne sia attivo e raggiungibile tramite la rete.  Utilizza TestKeyServerKimp e TestKeyProviderKmip per testare la tua connessione.
+
+** Errore di autenticazione
++
+Per risolvere questo errore, verificare che vengano utilizzati i certificati client KMIP e CA radice corretti e che la chiave privata e il certificato client KMIP corrispondano.
+
+** Errore del server
++
+Per risolvere questo errore, controlla i dettagli dell'errore.  Potrebbe essere necessario risolvere il problema sul server chiavi esterno in base all'errore restituito.
+
+
+
+* *sogliaEccMemoria*
++
+Sono stati rilevati numerosi errori ECC correggibili o non correggibili.  Questo errore utilizza i seguenti livelli di gravità in base all'urgenza:
+
++
+|===
+
+
+| Evento | Gravità | Descrizione 
+
+
+ a| 
+Un singolo DIMM cErrorCount raggiunge cDimmCorrectableErrWarnThreshold.
+ a| 
+Avvertimento
+ a| 
+Errori di memoria ECC correggibili oltre la soglia su DIMM: <Processore> <Slot DIMM>
+
+
+
+ a| 
+Un singolo DIMM cErrorCount rimane al di sopra di cDimmCorrectableErrWarnThreshold finché non scade cErrorFaultTimer per il DIMM.
+ a| 
+Errore
+ a| 
+Errori di memoria ECC correggibili oltre la soglia su DIMM: <Processore> <DIMM>
+
+
+
+ a| 
+Un controller di memoria segnala cErrorCount al di sopra di cMemCtlrCorrectableErrWarnThreshold e viene specificato cMemCtlrCorrectableErrWarnDuration.
+ a| 
+Avvertimento
+ a| 
+Errori di memoria ECC correggibili oltre la soglia sul controller di memoria: <Processore> <Controller di memoria>
+
+
+
+ a| 
+Un controller di memoria segnala cErrorCount al di sopra di cMemCtlrCorrectableErrWarnThreshold finché non scade cErrorFaultTimer per il controller di memoria.
+ a| 
+Errore
+ a| 
+Errori di memoria ECC correggibili oltre la soglia su DIMM: <Processore> <DIMM>
+
+
+
+ a| 
+Un singolo DIMM segnala un uErrorCount superiore a zero, ma inferiore a cDimmUncorrectableErrFaultThreshold.
+ a| 
+Avvertimento
+ a| 
+Errore/i di memoria ECC non correggibile rilevato/i su DIMM: <Processore> <Slot DIMM>
+
+
+
+ a| 
+Un singolo DIMM segnala un uErrorCount di almeno cDimmUncorrectableErrFaultThreshold.
+ a| 
+Errore
+ a| 
+Errore/i di memoria ECC non correggibile rilevato/i su DIMM: <Processore> <Slot DIMM>
+
+
+
+ a| 
+Un controller di memoria segnala un uErrorCount superiore a zero, ma inferiore a cMemCtlrUncorrectableErrFaultThreshold.
+ a| 
+Avvertimento
+ a| 
+Errore/i di memoria ECC non correggibile/i rilevato/i sul controller di memoria: <Processore> <Controller di memoria>
+
+
+
+ a| 
+Un controller di memoria segnala un uErrorCount di almeno cMemCtlrUncorrectableErrFaultThreshold.
+ a| 
+Errore
+ a| 
+Errore/i di memoria ECC non correggibile/i rilevato/i sul controller di memoria: <Processore> <Controller di memoria>
+
+|===
++
+Per risolvere questo errore, contattare il supporto NetApp per ricevere assistenza.
+
+* *soglia di utilizzo della memoria*
++
+L'utilizzo della memoria è superiore alla norma.  Questo errore utilizza i seguenti livelli di gravità in base all'urgenza:
+
++
+
+NOTE: Per informazioni più dettagliate sul tipo di errore, consultare la sezione *Dettagli* nell'errore.
+
++
+|===
+
+
+| Gravità | Descrizione 
+
+
+ a| 
+Avvertimento
+ a| 
+La memoria di sistema è insufficiente.
+
+
+
+ a| 
+Errore
+ a| 
+La memoria di sistema è molto bassa.
+
+
+
+ a| 
+Critico
+ a| 
+La memoria di sistema è completamente consumata.
+
+|===
++
+Per risolvere questo errore, contattare il supporto NetApp per ricevere assistenza.
+
+* *metadataClusterFull*
++
+Non c'è abbastanza spazio libero per l'archiviazione dei metadati per supportare la perdita di un singolo nodo.  Per informazioni dettagliate sui livelli di riempimento del cluster, vedere il metodo API GetClusterFullThreshold.  Questo errore del cluster indica una delle seguenti condizioni:
+
++
+** stage3Low (Avviso): è stata superata la soglia definita dall'utente.  Regola le impostazioni del Cluster completo o aggiungi altri nodi.
+** stage4Critical (Errore): non c'è abbastanza spazio per il ripristino da un errore di 1 nodo.  Non è consentita la creazione di volumi, snapshot e cloni.
+** stage5CompletelyConsumed (Critical)1; Non sono consentite scritture o nuove connessioni iSCSI.  Le attuali connessioni iSCSI saranno mantenute.  Le scritture non riusciranno finché non verrà aggiunta ulteriore capacità al cluster.  Elimina o ripulisci i dati oppure aggiungi altri nodi.
+
+
++
+Per risolvere questo errore, eliminare o ripulire i volumi oppure aggiungere un altro nodo di archiviazione al cluster di archiviazione.
+
+* *mtuCheckFailure*
++
+Un dispositivo di rete non è configurato per la dimensione MTU corretta.
+
++
+Per risolvere questo errore, assicurarsi che tutte le interfacce di rete e le porte dello switch siano configurate per frame jumbo (MTU fino a 9000 byte di dimensione).
+
+* *Configurazione di rete*
++
+Questo errore del cluster indica una delle seguenti condizioni:
+
++
+** Non è presente un'interfaccia prevista.
+** È presente un'interfaccia duplicata.
+** Un'interfaccia configurata non è attiva.
+** È necessario riavviare la rete.
+
+
++
+Per ricevere assistenza, contattare il supporto NetApp .
+
+* *nessunIndirizzoIPdiReteVirtualeDisponibile*
++
+Non ci sono indirizzi di rete virtuali disponibili nel blocco di indirizzi IP.
+
++
+** virtualNetworkID # TAG(\###) non ha indirizzi IP di archiviazione disponibili.  Non è possibile aggiungere nodi aggiuntivi al cluster.
+
+
++
+Per risolvere questo errore, aggiungere altri indirizzi IP al blocco di indirizzi di rete virtuali.
+
+* *nodeHardwareFault (l'interfaccia di rete <nome> è inattiva o il cavo è scollegato)*
++
+Un'interfaccia di rete è inattiva oppure il cavo è scollegato.
+
++
+Per risolvere questo errore, verificare la connettività di rete del nodo o dei nodi.
+
+* *nodeHardwareFault (Lo stato di capacità di crittografia dell'unità non corrisponde allo stato di capacità di crittografia del nodo per l'unità nello slot <slot del nodo><slot dell'unità>)*
++
+Un'unità non corrisponde alle capacità di crittografia del nodo di archiviazione in cui è installata.
+
+* *nodeHardwareFault (<tipo di unità> dimensione dell'unità <dimensione effettiva> errata per l'unità nello slot <slot del nodo><slot dell'unità> per questo tipo di nodo - prevista <dimensione prevista>)*
++
+Un nodo di archiviazione contiene un'unità di dimensioni errate per questo nodo.
+
+* *nodeHardwareFault (Unità non supportata rilevata nello slot <slot nodo><slot unità>; le statistiche dell'unità e le informazioni sullo stato non saranno disponibili)*
++
+Un nodo di archiviazione contiene un'unità che non supporta.
+
+* *nodeHardwareFault (L'unità nello slot <slot nodo><slot unità> dovrebbe utilizzare la versione firmware <versione prevista>, ma utilizza la versione non supportata <versione effettiva>)*
++
+Un nodo di archiviazione contiene un'unità che esegue una versione del firmware non supportata.
+
+* *nodeMaintenanceMode*
++
+Un nodo è stato messo in modalità manutenzione.  Questo errore utilizza i seguenti livelli di gravità in base all'urgenza:
+
++
+|===
+
+
+| Gravità | Descrizione 
+
+
+ a| 
+Avvertimento
+ a| 
+Indica che il nodo è ancora in modalità di manutenzione.
+
+
+
+ a| 
+Errore
+ a| 
+Indica che la modalità di manutenzione non è riuscita a essere disattivata, molto probabilmente a causa di standby attivi o non riusciti.
+
+|===
++
+Per risolvere questo errore, disattivare la modalità di manutenzione una volta completata la manutenzione.  Se l'errore persiste, contattare il supporto NetApp per ricevere assistenza.
+
+* *nodoOffline*
++
+Il software Element non riesce a comunicare con il nodo specificato.  Controllare la connettività di rete.
+
+* *notUsingLACPBondMode*
++
+La modalità di bonding LACP non è configurata.
+
++
+Per risolvere questo errore, utilizzare il bonding LACP durante la distribuzione dei nodi di archiviazione; i client potrebbero riscontrare problemi di prestazioni se LACP non è abilitato e configurato correttamente.
+
+* *ntpServerUnreachable*
++
+Il cluster di archiviazione non riesce a comunicare con il server o i server NTP specificati.
+
++
+Per risolvere questo errore, controllare la configurazione del server NTP, della rete e del firewall.
+
+* *ntpTimeNotInSync*
++
+La differenza tra l'ora del cluster di archiviazione e l'ora specificata del server NTP è troppo grande.  Il cluster di archiviazione non può correggere automaticamente la differenza.
+
++
+Per risolvere questo errore, utilizzare i server NTP interni alla rete anziché quelli predefiniti di installazione.  Se si utilizzano server NTP interni e il problema persiste, contattare il supporto NetApp per ricevere assistenza.
+
+* *nvramDeviceStatus*
++
+Un dispositivo NVRAM presenta un errore, è in errore o è guasto.  Questo guasto ha le seguenti gravità:
+
++
+|===
+
+
+| Gravità | Descrizione 
+
+
+ a| 
+Avvertimento
+ a| 
+È stato rilevato un avviso dall'hardware.  Questa condizione può essere transitoria, come ad esempio un avviso di temperatura.
+
+** Errore di durata nvm
+** Stato di durata nvm
+** Stato della fonte energetica a vita
+** Stato della temperatura della fonte energetica
+** warningThresholdExceeded
+
+
+
+
+ a| 
+Errore
+ a| 
+L'hardware ha rilevato uno stato di errore o critico.  Il master del cluster tenta di rimuovere l'unità slice dal funzionamento (ciò genera un evento di rimozione dell'unità).  Se i servizi di slice secondari non sono disponibili, l'unità non verrà rimossa.  Errori restituiti oltre agli errori di livello Avviso:
+
+** Il punto di montaggio del dispositivo NVRAM non esiste.
+** La partizione del dispositivo NVRAM non esiste.
+** La partizione del dispositivo NVRAM esiste, ma non è montata.
+
+
+
+
+ a| 
+Critico
+ a| 
+L'hardware ha rilevato uno stato di errore o critico.  Il master del cluster tenta di rimuovere l'unità slice dal funzionamento (ciò genera un evento di rimozione dell'unità).  Se i servizi di slice secondari non sono disponibili, l'unità non verrà rimossa.
+
+** persistenzapersa
+** armStatusSaveNArmed
+** csaveStatusError
+
+
+|===
++
+Sostituire qualsiasi componente hardware guasto nel nodo.  Se il problema persiste, contattare l'assistenza NetApp per ricevere assistenza.
+
+* *ErroreAlimentazione*
++
+Questo errore del cluster indica una delle seguenti condizioni:
+
++
+** Non è presente un alimentatore.
+** Si è verificato un guasto all'alimentatore.
+** Un ingresso di alimentazione è mancante o fuori portata.
+
+
++
+Per risolvere questo errore, verificare che a tutti i nodi venga fornita alimentazione ridondante.  Per ricevere assistenza, contattare il supporto NetApp .
+
+* *Spaziotroppopieno*
++
+La capacità complessiva fornita dal cluster è troppo piena.
+
++
+Per risolvere questo errore, aggiungere altro spazio fornito oppure eliminare e ripulire i volumi.
+
+* *remoteRepAsyncDelayExceeded*
++
+È stato superato il ritardo asincrono configurato per la replica.  Controllare la connettività di rete tra i cluster.
+
+* *remoteRepClusterFull*
++
+I volumi hanno sospeso la replica remota perché il cluster di archiviazione di destinazione è troppo pieno.
+
++
+Per risolvere questo errore, liberare spazio sul cluster di archiviazione di destinazione.
+
+* *remoteRepSnapshotClusterFull*
++
+I volumi hanno sospeso la replica remota degli snapshot perché il cluster di archiviazione di destinazione è troppo pieno.
+
++
+Per risolvere questo errore, liberare spazio sul cluster di archiviazione di destinazione.
+
+* *remoteRepSnapshotsExceededLimit*
++
+I volumi hanno sospeso la replica remota degli snapshot perché il volume del cluster di archiviazione di destinazione ha superato il limite di snapshot.
+
++
+Per risolvere questo errore, aumentare il limite degli snapshot sul cluster di archiviazione di destinazione.
+
+* *scheduleActionError*
++
+Una o più attività programmate sono state eseguite, ma non sono riuscite.
+
++
+L'errore viene cancellato se l'attività pianificata viene eseguita nuovamente e ha esito positivo, se l'attività pianificata viene eliminata o se l'attività viene sospesa e ripresa.
+
+* *sensorReadingFailed*
++
+Un sensore non è riuscito a comunicare con il Baseboard Management Controller (BMC).
+
++
+Per ricevere assistenza, contattare il supporto NetApp .
+
+* *servizioNonInEsecuzione*
++
+Un servizio richiesto non è in esecuzione.
+
++
+Per ricevere assistenza, contattare il supporto NetApp .
+
+* *sliceServiceTooFull*
++
+A un servizio slice è assegnata una capacità provisionata troppo bassa.
+
++
+Per risolvere questo errore, aggiungere ulteriore capacità fornita.
+
+* *sliceServiceNon sano*
++
+Il sistema ha rilevato che un servizio slice non è integro e lo sta disattivando automaticamente.
+
++
+** Gravità = Avvertenza: non viene intrapresa alcuna azione.  Questo periodo di preavviso scadrà tra 6 minuti.
+** Gravità = Errore: il sistema sta automaticamente dismettendo i dati e replicandoli nuovamente su altre unità funzionanti.
+
+
++
+Verificare la presenza di problemi di connettività di rete ed errori hardware.  Si verificheranno altri guasti se specifici componenti hardware non funzionano.  L'errore verrà risolto quando il servizio slice sarà accessibile o quando il servizio sarà stato dismesso.
+
+* *sshAbilitato*
++
+Il servizio SSH è abilitato su uno o più nodi nel cluster di archiviazione.
+
++
+Per risolvere questo errore, disabilitare il servizio SSH sul nodo o sui nodi appropriati oppure contattare il supporto NetApp per ricevere assistenza.
+
+* *ScadenzaCertificatoSsl*
++
+Il certificato SSL associato a questo nodo è prossimo alla scadenza o è scaduto.  Questo errore utilizza i seguenti livelli di gravità in base all'urgenza:
+
++
+|===
+
+
+| Gravità | Descrizione 
+
+
+ a| 
+Avvertimento
+ a| 
+Il certificato scade entro 30 giorni.
+
+
+
+ a| 
+Errore
+ a| 
+Il certificato scade entro 7 giorni.
+
+
+
+ a| 
+Critico
+ a| 
+Il certificato scade entro 3 giorni o è già scaduto.
+
+|===
++
+Per risolvere questo errore, rinnovare il certificato SSL.  Se necessario, contattare il supporto NetApp per ricevere assistenza.
+
+* *capacità bloccata*
++
+Un singolo nodo rappresenta più della metà della capacità del cluster di archiviazione.
+
++
+Per mantenere la ridondanza dei dati, il sistema riduce la capacità del nodo più grande, in modo che parte della sua capacità di blocco rimanga bloccata (non utilizzata).
+
++
+Per risolvere questo errore, aggiungere più unità ai nodi di archiviazione esistenti oppure aggiungere nodi di archiviazione al cluster.
+
+* *Sensore di temperatura*
++
+Un sensore di temperatura segnala temperature più alte del normale.  Questo errore può essere attivato insieme agli errori powerSupplyError o fanSensor.
+
++
+Per risolvere questo problema, verificare che non vi siano ostruzioni al flusso d'aria in prossimità del cluster di archiviazione.  Se necessario, contattare il supporto NetApp per ricevere assistenza.
+
+* *aggiornamento*
++
+È in corso un aggiornamento da più di 24 ore.
+
++
+Per risolvere questo errore, riprendere l'aggiornamento o contattare il supporto NetApp per ricevere assistenza.
+
+* *Servizio non responsivo*
++
+Un servizio non risponde più.
+
++
+Per ricevere assistenza, contattare il supporto NetApp .
+
+* *virtualNetworkConfig*
++
+Questo errore del cluster indica una delle seguenti condizioni:
+
++
+** Non è presente alcuna interfaccia.
+** C'è uno spazio dei nomi errato su un'interfaccia.
+** La netmask è errata.
+** L'indirizzo IP è errato.
+** Un'interfaccia non è attiva e funzionante.
+** C'è un'interfaccia superflua su un nodo.
+
+
++
+Per ricevere assistenza, contattare il supporto NetApp .
+
+* *volumiDegradati*
++
+I volumi secondari non hanno terminato la replicazione e la sincronizzazione.  Il messaggio scompare al termine della sincronizzazione.
+
+* *volumiOffline*
++
+Uno o più volumi nel cluster di archiviazione sono offline.  Sarà presente anche l'errore *volumeDegraded*.
+
++
+Per ricevere assistenza, contattare il supporto NetApp .
+
+

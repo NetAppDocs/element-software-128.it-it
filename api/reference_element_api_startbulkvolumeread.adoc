@@ -1,0 +1,191 @@
+---
+permalink: api/reference_element_api_startbulkvolumeread.html 
+sidebar: sidebar 
+keywords: volume,read,session,start,starting,bulk,startbulkvolumeread 
+summary: È possibile utilizzare il metodo StartBulkVolumeRead per avviare una sessione di lettura di massa su un volume specificato. 
+---
+= StartBulkVolumeRead
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `StartBulkVolumeRead` metodo per avviare una sessione di lettura di massa su un volume specificato.
+
+Su un volume possono essere eseguiti contemporaneamente solo due processi di volume di massa.  Quando si inizializza la sessione, i dati vengono letti da un volume di archiviazione SolidFire per essere archiviati su una fonte di backup esterna.  L'accesso ai dati esterni avviene tramite un server web in esecuzione su un nodo di archiviazione Element.  Le informazioni sull'interazione con il server per l'accesso ai dati esterni vengono trasmesse tramite uno script in esecuzione sul sistema di archiviazione.
+
+All'inizio di un'operazione di lettura di un volume in blocco, viene creato uno snapshot del volume, che viene eliminato al termine della lettura.  È anche possibile leggere uno snapshot del volume immettendo l'ID dello snapshot come parametro.  Quando si legge uno snapshot precedente, il sistema non crea un nuovo snapshot del volume, né elimina lo snapshot precedente al termine della lettura.
+
+
+NOTE: Questo processo crea un nuovo snapshot se non viene fornito l'ID di uno snapshot esistente.  È possibile creare snapshot se il livello di riempimento del cluster è pari a 2 o 3.  Gli snapshot non vengono creati quando il livello di riempimento del cluster è pari a 4 o 5.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+formato
+ a| 
+Il formato dei dati del volume.  Può essere:
+
+* `uncompressed`: Ogni byte del volume viene restituito senza alcuna compressione.
+* `native`: Vengono restituiti dati opachi, più piccoli e più efficienti da archiviare e scrivere in una successiva scrittura di volume di massa.
+
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+ID volume
+ a| 
+L'ID del volume da leggere.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+ID istantanea
+ a| 
+ID di uno snapshot creato in precedenza, utilizzato per letture di volumi in blocco.  Se non viene immesso alcun ID, viene creato uno snapshot dell'immagine del volume attivo corrente.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+sceneggiatura
+ a| 
+Il nome di uno script eseguibile.  Se non viene specificato alcun nome di script, la chiave e l'URL sono necessari per accedere ai nodi di archiviazione Element.  Lo script viene eseguito sul nodo primario e la chiave e l'URL vengono restituiti allo script in modo che sia possibile contattare il server Web locale.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+Parametri di script
+ a| 
+Parametri JSON da passare allo script.
+ a| 
+Oggetto JSON
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+attributi
+ a| 
+Elenco di coppie nome-valore nel formato oggetto JSON. link:reference_element_api_attributes.html["Saperne di più"].
+ a| 
+Oggetto JSON
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+asyncHandle
+ a| 
+ID del processo asincrono da verificare per verificarne il completamento.
+ a| 
+intero
+
+
+
+ a| 
+chiave
+ a| 
+Chiave opaca che identifica in modo univoco la sessione.
+ a| 
+corda
+
+
+
+ a| 
+URL
+ a| 
+URL per accedere al server web del nodo.
+ a| 
+corda
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "StartBulkVolumeRead",
+   "params": {
+      "volumeID" : 5,
+      "format"  : "native",
+      "snapshotID" : 2
+   },
+   "id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+      "id" : 1,
+   "result" : {
+      "asyncHandle" : 1,
+      "key" : "11eed8f086539205beeaadd981aad130",
+      "url" : "https://127.0.0.1:44000/"
+   }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

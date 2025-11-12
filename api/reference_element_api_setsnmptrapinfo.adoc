@@ -1,0 +1,109 @@
+---
+permalink: api/reference_element_api_setsnmptrapinfo.html 
+sidebar: sidebar 
+keywords: snmp,trap,information,info,setting,set,setsnmptrapinfo 
+summary: 'È possibile utilizzare il metodo SetSnmpTrapInfo per abilitare e disabilitare la generazione di notifiche SNMP del cluster \(trap\) e per specificare il set di host che ricevono le notifiche.  I valori passati con ogni chiamata al metodo SetSnmpTrapInfo sostituiscono tutti i valori impostati in qualsiasi chiamata precedente.' 
+---
+= ImpostaSnmpTrapInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `SetSnmpTrapInfo` metodo per abilitare e disabilitare la generazione di notifiche SNMP del cluster (trap) e per specificare il set di host che ricevono le notifiche.  I valori che passi con ciascuno `SetSnmpTrapInfo` la chiamata al metodo sostituisce tutti i valori impostati in qualsiasi chiamata precedente.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+trapRecipients
+ a| 
+Elenco degli host che devono ricevere le trap generate dal cluster di archiviazione.  Se è abilitato uno qualsiasi dei tipi di trappola, è richiesto almeno un oggetto.  Questo parametro è obbligatorio solo se uno qualsiasi dei parametri booleani è impostato su true.  (Nessun valore predefinito.  (Non richiesto.)
+ a| 
+xref:reference_element_api_snmptraprecipient.adoc[snmpTrapRecipient]vettore
+
+
+
+ a| 
+clusterFaultTrapsEnabled
+ a| 
+Se impostato su true, una notifica di errore del cluster corrispondente viene inviata all'elenco configurato dei destinatari delle trap quando viene registrato un errore del cluster.  (Valore predefinito: falso.  (Non richiesto.)
+ a| 
+booleano
+
+
+
+ a| 
+clusterFaultResolvedTrapsEnabled
+ a| 
+Se impostato su true, una notifica di risoluzione dell'errore del cluster corrispondente viene inviata all'elenco configurato dei destinatari delle trap quando un errore del cluster viene risolto.  (Valore predefinito: falso.  (Non richiesto.)
+ a| 
+booleano
+
+
+
+ a| 
+clusterEventTrapsEnabled
+ a| 
+Se impostato su true, una notifica di evento del cluster corrispondente viene inviata all'elenco configurato dei destinatari trap quando viene registrato un evento del cluster.  (Valore predefinito: falso.  (Non richiesto.)
+ a| 
+booleano
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo non ha valori di ritorno.
+
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+"method":"SetSnmpTrapInfo",
+"params":{
+    "clusterFaultTrapsEnabled":true,
+    "clusterFaultResolvedTrapsEnabled":true,
+    "clusterEventTrapsEnabled":true,
+    "trapRecipients":[
+    {
+      "host":"192.30.0.10",
+      "port":162,
+      "community":"public"
+    }
+   ]
+  },
+  "id":1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+    "id" : 1,
+    "result" : {}
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

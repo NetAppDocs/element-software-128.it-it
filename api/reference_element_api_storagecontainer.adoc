@@ -1,0 +1,105 @@
+---
+permalink: api/reference_element_api_storagecontainer.html 
+sidebar: sidebar 
+keywords: object,objects,storagecontainer 
+summary: 'L"oggetto storageContainer contiene gli attributi di un contenitore di archiviazione di volumi virtuali.  È possibile recuperare queste informazioni per ogni contenitore di archiviazione nel cluster utilizzando il metodo API ListStorageContainers.' 
+---
+= contenitore di stoccaggio
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto storageContainer contiene gli attributi di un contenitore di archiviazione di volumi virtuali.  È possibile recuperare queste informazioni per ogni contenitore di archiviazione nel cluster utilizzando `ListStorageContainers` Metodo API.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+ID account
+ a| 
+ID dell'account del sistema di archiviazione associato al contenitore di archiviazione.
+ a| 
+intero
+
+
+
+ a| 
+iniziatoreSegreto
+ a| 
+Il segreto di autenticazione CHAP per l'iniziatore associato al contenitore di archiviazione.
+ a| 
+corda
+
+
+
+ a| 
+nome
+ a| 
+Il nome del contenitore di stoccaggio.
+ a| 
+corda
+
+
+
+ a| 
+protocolloEndpointType
+ a| 
+Tipo di endpoint del protocollo del contenitore di archiviazione.  SCSI è l'unico valore valido.
+ a| 
+corda
+
+
+
+ a| 
+stato
+ a| 
+Lo stato del contenitore di stoccaggio. Valori possibili:
+
+* Attivo: il contenitore di stoccaggio è in uso.
+* Bloccato: il contenitore di stoccaggio è bloccato.
+
+ a| 
+corda
+
+
+
+ a| 
+storageContainerID
+ a| 
+ID univoco del contenitore di archiviazione.
+ a| 
+UUID
+
+
+
+ a| 
+targetSecret
+ a| 
+Il segreto di autenticazione CHAP per la destinazione associata al contenitore di archiviazione.
+ a| 
+corda
+
+
+
+ a| 
+volumi virtuali
+ a| 
+Un elenco di ID dei volumi virtuali associati al contenitore di archiviazione.
+ a| 
+matrice UUID
+
+|===
+
+
+== Trova maggiori informazioni
+
+xref:reference_element_api_liststoragecontainers.adoc[ListStorageContainers]

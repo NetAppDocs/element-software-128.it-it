@@ -1,0 +1,106 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_add_assets.html 
+summary: 'È possibile aggiungere una risorsa controller alla configurazione del nodo di gestione utilizzando l"interfaccia utente dell"API REST.' 
+keywords: netapp, mnode, management node, rest api, Element 
+---
+= Aggiungere una risorsa controller al nodo di gestione
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile aggiungere una risorsa controller alla configurazione del nodo di gestione utilizzando l'interfaccia utente dell'API REST.
+
+Potrebbe essere necessario aggiungere una risorsa se di recente hai ridimensionato l'installazione e le nuove risorse non sono state aggiunte automaticamente alla configurazione.  Utilizza queste API per aggiungere risorse aggiunte di recente alla tua installazione.
+
+.Cosa ti servirà
+* La versione del cluster esegue il software NetApp Element 11.3 o versione successiva.
+* Hai distribuito un nodo di gestione che esegue la versione 11.3 o successiva.
+* Hai creato un nuovo ruolo NetApp HCC in vCenter per limitare la visualizzazione dei servizi del nodo di gestione alle sole risorse NetApp.  Vederelink:task_mnode_create_netapp_hcc_role_vcenter.html["Creare un ruolo NetApp HCC in vCenter"]
+
+
+.Passi
+. Ottieni l'ID risorsa di base per l'installazione:
++
+.. Aprire l'interfaccia utente dell'API REST del servizio di inventario sul nodo di gestione:
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. Seleziona *Autorizza* e completa quanto segue:
++
+... Immettere il nome utente e la password del cluster.
+... Inserisci l'ID cliente come `mnode-client` .
+... Selezionare *Autorizza* per iniziare una sessione.
+... Chiudi la finestra.
+
+
+.. Dall'interfaccia utente dell'API REST, seleziona *GET ​/installations*.
+.. Seleziona *Provalo*.
+.. Selezionare *Esegui*.
+.. Dal corpo della risposta del codice 200, copiare il `id` per l'installazione.
++
+[listing, subs="+quotes"]
+----
+{
+  "installations": [
+    {
+      "_links": {
+        "collection": "https://10.111.211.111/inventory/1/installations",
+        "self": "https://10.111.217.111/inventory/1/installations/abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x"
+      },
+      *"id": "abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x",*
+----
++
+
+NOTE: L'installazione presenta una configurazione di risorse di base creata durante l'installazione o l'aggiornamento.
+
+.. Dall'interfaccia utente dell'API REST, seleziona *GET /installations/{id}*.
+.. Seleziona *Provalo*.
+.. Incolla l'ID della risorsa di installazione nel campo *id*.
+.. Selezionare *Esegui*.
+.. Dalla risposta, copia e salva l'ID del controller del cluster(`"controllerId"` ) per utilizzarlo in una fase successiva.
+
+
+. Per aggiungere una sotto-risorsa del controller a una risorsa di base esistente, selezionare:
++
+[listing]
+----
+POST /assets/{asset_id}/controllers
+----
++
+.. Aprire l'interfaccia utente dell'API REST del servizio mNode sul nodo di gestione:
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. Seleziona *Autorizza* e completa quanto segue:
++
+... Immettere il nome utente e la password del cluster.
+... Inserisci l'ID cliente come `mnode-client` .
+... Selezionare *Autorizza* per iniziare una sessione.
+... Chiudi la finestra.
+
+
+.. Selezionare *POST /assets/{asset_id}/controllers*.
+.. Seleziona *Provalo*.
+.. Immettere l'ID della risorsa di base padre nel campo *asset_id*.
+.. Aggiungere i valori richiesti al payload.
+.. Selezionare *Esegui*.
+
+
+
+
+[discrete]
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+

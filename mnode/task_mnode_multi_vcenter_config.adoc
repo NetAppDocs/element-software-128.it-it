@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_multi_vcenter_config.html 
+summary: 'È possibile configurare NetApp Hybrid Cloud Control per utilizzare più vCenter tramite l"interfaccia utente dell"API REST.' 
+keywords: netapp, mnode, management node, multi-vcenter, Element 
+---
+= Configurare NetApp Hybrid Cloud Control per più vCenter
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile configurare NetApp Hybrid Cloud Control per gestire le risorse da due o più vCenter che non utilizzano la modalità collegata.
+
+Dovresti utilizzare questo processo dopo l'installazione iniziale quando devi aggiungere risorse per un'installazione ridimensionata di recente o quando nuove risorse non sono state aggiunte automaticamente alla configurazione.  Utilizza queste API per aggiungere risorse aggiunte di recente alla tua installazione.
+
+.Cosa ti servirà
+* La versione del cluster esegue il software NetApp Element 11.3 o versione successiva.
+* Hai distribuito un nodo di gestione che esegue la versione 11.3 o successiva.
+
+
+.Passi
+. link:task_mnode_add_assets.html["Aggiungere nuovi vCenter come risorse del controller"]alla configurazione del nodo di gestione.
+. Aggiorna l'API del servizio di inventario sul nodo di gestione:
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
++
+
+NOTE: In alternativa, puoi attendere 2 minuti affinché l'inventario venga aggiornato nell'interfaccia utente NetApp Hybrid Cloud Control.
+
++
+.. Seleziona *Autorizza* e completa quanto segue:
++
+... Immettere il nome utente e la password del cluster.
+... Inserisci l'ID cliente come `mnode-client` .
+... Selezionare *Autorizza* per iniziare una sessione.
+... Chiudi la finestra.
+
+
+.. Dall'interfaccia utente dell'API REST, seleziona *GET ​/installations*.
+.. Seleziona *Provalo*.
+.. Selezionare *Esegui*.
+.. Dalla risposta, copia l'ID della risorsa di installazione(`"id"` ).
+.. Dall'interfaccia utente dell'API REST, seleziona *GET /installations/{id}*.
+.. Seleziona *Provalo*.
+.. Imposta l'aggiornamento su `True` .
+.. Incolla l'ID della risorsa di installazione nel campo *id*.
+.. Selezionare *Esegui*.
+
+
+. Aggiorna il browser NetApp Hybrid Cloud Control per visualizzare le modifiche.
+
+
+[discrete]
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+

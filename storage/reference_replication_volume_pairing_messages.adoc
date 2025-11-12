@@ -1,0 +1,44 @@
+---
+permalink: storage/reference_replication_volume_pairing_messages.html 
+sidebar: sidebar 
+keywords: volume pairing, messages, replication, data protection 
+summary: 'È possibile visualizzare i messaggi di associazione del volume durante il processo di associazione iniziale dalla pagina Coppie di volumi nella scheda Protezione dati.  Questi messaggi possono essere visualizzati sia sull"estremità di origine che su quella di destinazione della coppia nella vista elenco dei volumi di replica.' 
+---
+= Messaggi di associazione del volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile visualizzare i messaggi di associazione del volume durante il processo di associazione iniziale dalla pagina Coppie di volumi nella scheda Protezione dati.  Questi messaggi possono essere visualizzati sia sull'estremità di origine che su quella di destinazione della coppia nella vista elenco dei volumi di replica.
+
+* *PausaDisconnesso*
++
+Timeout della replica di origine o delle RPC di sincronizzazione.  La connessione al cluster remoto è stata persa.  Controllare le connessioni di rete al cluster.
+
+* *Ripresa della connessione*
++
+La sincronizzazione della replica remota è ora attiva.  Avvio del processo di sincronizzazione e attesa dei dati.
+
+* *Ripresa di RRSync*
++
+Viene creata una singola copia elicoidale dei metadati del volume nel cluster associato.
+
+* *Ripresa della sincronizzazione locale*
++
+Viene eseguita una copia a doppia elica dei metadati del volume nel cluster associato.
+
+* *Ripresa del trasferimento dati*
++
+Il trasferimento dei dati è ripreso.
+
+* *Attivo*
++
+I volumi vengono accoppiati e i dati vengono inviati dal volume di origine a quello di destinazione, sincronizzandoli.
+
+* *Oziare*
++
+Non si verifica alcuna attività di replicazione.
+
+

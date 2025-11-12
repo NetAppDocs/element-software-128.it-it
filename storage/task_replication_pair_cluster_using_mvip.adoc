@@ -1,0 +1,36 @@
+---
+permalink: storage/task_replication_pair_cluster_using_mvip.html 
+sidebar: sidebar 
+keywords: pair clusters, mvip, connection 
+summary: 'È possibile associare due cluster per la replica in tempo reale utilizzando l"MVIP di un cluster per stabilire una connessione con l"altro cluster.  Per utilizzare questo metodo è necessario l"accesso come amministratore del cluster su entrambi i cluster.  Il nome utente e la password dell"amministratore del cluster vengono utilizzati per autenticare l"accesso al cluster prima che i cluster possano essere associati.' 
+---
+= Cluster di coppie tramite MVIP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile associare due cluster per la replica in tempo reale utilizzando l'MVIP di un cluster per stabilire una connessione con l'altro cluster.  Per utilizzare questo metodo è necessario l'accesso come amministratore del cluster su entrambi i cluster.  Il nome utente e la password dell'amministratore del cluster vengono utilizzati per autenticare l'accesso al cluster prima che i cluster possano essere associati.
+
+. Nel cluster locale, selezionare *Protezione dati* > *Coppie cluster*.
+. Fare clic su *Cluster di coppie*.
+. Fare clic su *Avvia associazione* e quindi su *Sì* per indicare che si ha accesso al cluster remoto.
+. Immettere l'indirizzo MVIP del cluster remoto.
+. Fare clic su *Completa associazione sul cluster remoto*.
++
+Nella finestra *Autenticazione richiesta*, immettere il nome utente e la password dell'amministratore del cluster remoto.
+
+. Nel cluster remoto, selezionare *Protezione dati* > *Coppie cluster*.
+. Fare clic su *Cluster di coppie*.
+. Fare clic su *Completa associazione*.
+. Fare clic sul pulsante *Completa associazione*.
+
+
+
+
+== Trova maggiori informazioni
+
+* xref:task_replication_pair_cluster_using_pairing_key.adoc[Accoppia i cluster utilizzando una chiave di associazione]
+* https://www.youtube.com/watch?v=HbKxPZnNvn4&feature=youtu.be["Accoppiamento di cluster tramite MVIP (video)"]
+

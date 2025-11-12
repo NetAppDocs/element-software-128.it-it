@@ -1,0 +1,47 @@
+---
+permalink: storage/task_system_manage_fips_identify_nodes_ready_for_fips_drives.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2 
+summary: È necessario verificare se tutti i nodi nel cluster di storage sono pronti a supportare le unità FIPS utilizzando il metodo API GetFipsReport del software NetApp Element . 
+---
+= Identificare se i nodi sono pronti per la funzionalità delle unità FIPS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario verificare se tutti i nodi nel cluster di storage sono pronti a supportare le unità FIPS utilizzando il metodo API GetFipsReport del software NetApp Element .
+
+Il report risultante mostra uno dei seguenti stati:
+
+* Nessuno: il nodo non è in grado di supportare la funzionalità delle unità FIPS.
+* Parziale: il nodo supporta FIPS, ma non tutte le unità sono FIPS.
+* Pronto: il nodo è compatibile con FIPS e tutte le unità sono unità FIPS oppure non è presente alcuna unità.
+
+
+.Passi
+. Utilizzando l'API Element, verificare se i nodi e le unità nel cluster di archiviazione sono compatibili con le unità FIPS immettendo:
++
+`GetFipsReport`
+
+. Esaminare i risultati, annotando tutti i nodi che non visualizzano lo stato Pronto.
+. Per tutti i nodi che non visualizzano lo stato Pronto, verificare se l'unità è in grado di supportare la funzionalità delle unità FIPS:
++
+** Utilizzando l'API Element, immettere: `GetHardwareList`
+** Prendere nota del valore di *DriveEncryptionCapabilityType*.  Se è "fips", l'hardware può supportare la funzionalità delle unità FIPS.
++
+Vedi i dettagli su `GetFipsReport` O `ListDriveHardware` nel link:../api/concept_element_api_about_the_api.html["Riferimento API dell'elemento"].
+
+
+
+. Se l'unità non supporta la funzionalità unità FIPS, sostituire l'hardware con hardware FIPS (nodo o unità).
+
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+

@@ -1,0 +1,34 @@
+---
+permalink: storage/task_system_manage_fips_troubleshoot_the_fips_drive_feature.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2 
+summary: 'Utilizzando l"interfaccia utente del software NetApp Element , è possibile visualizzare avvisi per informazioni su guasti o errori del cluster nel sistema correlati alla funzionalità delle unità FIPS.' 
+---
+= Risolvere i problemi della funzionalità dell'unità FIPS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilizzando l'interfaccia utente del software NetApp Element , è possibile visualizzare avvisi per informazioni su guasti o errori del cluster nel sistema correlati alla funzionalità delle unità FIPS.
+
+. Utilizzando l'interfaccia utente di Element, seleziona *Reporting* > *Avvisi*.
+. Cercare guasti del cluster, tra cui:
++
+** Unità FIPS non corrispondenti
+** FIPS non rispetta la conformità
+
+
+. Per suggerimenti sulla risoluzione, vedere le informazioni sul codice di errore del cluster.
+
+
+
+
+== Trova maggiori informazioni
+
+* xref:reference_monitor_cluster_fault_codes.adoc[Codici di errore del cluster]
+* link:../api/concept_element_api_about_the_api.html["Gestisci l'archiviazione con l'API Element"]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+

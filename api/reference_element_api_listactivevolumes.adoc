@@ -1,0 +1,111 @@
+---
+permalink: api/reference_element_api_listactivevolumes.html 
+sidebar: sidebar 
+keywords: active,volume,volumes,list,listing,listactivevolumes,cluster 
+summary: 'È possibile utilizzare il metodo ListActiveVolumes per ottenere l"elenco dei volumi attivi attualmente presenti nel sistema.  L"elenco dei volumi è ordinato in base all"ID del volume e può essere restituito in più parti \(pagine\).' 
+---
+= ListActiveVolumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `ListActiveVolumes` metodo per ottenere l'elenco dei volumi attivi attualmente presenti nel sistema.  L'elenco dei volumi è ordinato in base all'ID del volume e può essere restituito in più parti (pagine).
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+includeVirtualVolumes
+ a| 
+Per impostazione predefinita, i volumi virtuali sono inclusi nella risposta.  Per escludere i volumi virtuali, impostare su false.
+ a| 
+booleano
+ a| 
+VERO
+ a| 
+NO
+
+
+
+ a| 
+startVolumeID
+ a| 
+Avvio di VolumeID da restituire.  Se non esiste alcun volume con questo VolumeID, come inizio dell'elenco viene utilizzato il volume successivo in base all'ordine di VolumeID.  Per scorrere l'elenco, passare il VolumeID dell'ultimo volume nella risposta precedente + 1.
+ a| 
+intero
+ a| 
+0
+ a| 
+NO
+
+
+
+ a| 
+limite
+ a| 
+Numero massimo di oggetti di informazioni sul volume da restituire.  0 (zero) restituisce tutti i volumi (illimitati).
+ a| 
+intero
+ a| 
+(illimitato)
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+volumi
+ a| 
+Elenco dei volumi attivi.
+ a| 
+xref:reference_element_api_volume.adoc[volume]vettore
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "ListActiveVolumes",
+   "params": {
+      "startVolumeID"  : 0,
+      "limit" : 1000
+   },
+   "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Data la lunghezza di questo esempio di risposta, esso è documentato in un argomento supplementare.
+
+
+
+== Nuovo dalla versione
+
+9,6

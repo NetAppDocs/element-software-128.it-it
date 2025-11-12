@@ -1,0 +1,19 @@
+---
+permalink: storage/reference_monitor_status_of_running_tasks.html 
+sidebar: sidebar 
+keywords: running tasks, view progress of 
+summary: 'È possibile visualizzare nell"interfaccia utente Web lo stato di avanzamento e di completamento delle attività in esecuzione segnalate dai metodi API ListSyncJobs e ListBulkVolumeJobs.  È possibile accedere alla pagina Attività in esecuzione dalla scheda Report dell"interfaccia utente dell"elemento.' 
+---
+= Visualizza lo stato delle attività in esecuzione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile visualizzare nell'interfaccia utente Web lo stato di avanzamento e di completamento delle attività in esecuzione segnalate dai metodi API ListSyncJobs e ListBulkVolumeJobs.  È possibile accedere alla pagina Attività in esecuzione dalla scheda Report dell'interfaccia utente dell'elemento.
+
+Se il numero di attività è elevato, il sistema potrebbe metterle in coda ed eseguirle in batch.  Nella pagina Attività in esecuzione vengono visualizzati i servizi attualmente sincronizzati.  Una volta completata, un'attività viene sostituita dalla successiva attività di sincronizzazione in coda.  Le attività di sincronizzazione potrebbero continuare ad apparire nella pagina Attività in esecuzione finché non ci saranno più attività da completare.
+
+
+NOTE: È possibile visualizzare i dati di sincronizzazione della replica per i volumi sottoposti a replica nella pagina Attività in esecuzione del cluster contenente il volume di destinazione.

@@ -1,0 +1,120 @@
+---
+permalink: storage/concept_data_manage_vvol_manage_storage_containers.html 
+sidebar: sidebar 
+keywords: storage container, storage containers, about storage containers, cluster, vvols, create, view details, chap, edit, delete 
+summary: Un contenitore di archiviazione è una rappresentazione del datastore vSphere creata su un cluster che esegue il software Element. 
+---
+= Gestire i contenitori di stoccaggio
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un contenitore di archiviazione è una rappresentazione del datastore vSphere creata su un cluster che esegue il software Element.
+
+I contenitori di archiviazione vengono creati e associati agli account NetApp Element .  Un contenitore di archiviazione creato su Element Storage viene visualizzato come un datastore vSphere in vCenter ed ESXi.  I contenitori di archiviazione non allocano alcuno spazio nell'archiviazione Element.  Vengono semplicemente utilizzati per associare logicamente volumi virtuali.
+
+Sono supportati al massimo quattro contenitori di archiviazione per cluster.  Per abilitare la funzionalità VVols è necessario almeno un contenitore di archiviazione.
+
+
+
+== Creare un contenitore di archiviazione
+
+È possibile creare contenitori di archiviazione nell'interfaccia utente di Element e individuarli in vCenter.  È necessario creare almeno un contenitore di archiviazione per iniziare il provisioning delle macchine virtuali supportate da VVol.
+
+Prima di iniziare, abilitare la funzionalità VVols nell'interfaccia utente di Element per il cluster.
+
+.Passi
+. Selezionare *VVols* > *Contenitori di archiviazione*.
+. Fare clic sul pulsante *Crea contenitori di archiviazione*.
+. Immettere le informazioni sul contenitore di archiviazione nella finestra di dialogo *Crea un nuovo contenitore di archiviazione*:
++
+.. Immettere un nome per il contenitore di archiviazione.
+.. Configurare i segreti dell'iniziatore e della destinazione per CHAP.
++
+
+TIP: Lasciare vuoti i campi Impostazioni CHAP per generare automaticamente i segreti.
+
+.. Fare clic sul pulsante *Crea contenitore di archiviazione*.
+
+
+. Verificare che il nuovo contenitore di archiviazione appaia nell'elenco nella sotto-scheda *Contenitori di archiviazione*.
++
+
+NOTE: Poiché un ID account NetApp Element viene creato automaticamente e assegnato al contenitore di archiviazione, non è necessario creare manualmente un account.
+
+
+
+
+
+== Visualizza i dettagli del contenitore di stoccaggio
+
+Nella pagina Contenitori di archiviazione della scheda VVols, è possibile visualizzare le informazioni relative a tutti i contenitori di archiviazione attivi nel cluster.
+
+* *ID account*: ID dell'account NetApp Element associato al contenitore di archiviazione.
+* *Nome*: Nome del contenitore di archiviazione.
+* *Stato*: Stato del contenitore di archiviazione. Valori possibili:
++
+** Attivo: il contenitore di stoccaggio è in uso.
+** Bloccato: il contenitore di stoccaggio è bloccato.
+
+
+* *Tipo PE*: tipo di endpoint del protocollo (SCSI è l'unico protocollo disponibile per il software Element).
+* *ID contenitore di archiviazione*: UUID del contenitore di archiviazione del volume virtuale.
+* *Volumi virtuali attivi*: numero di volumi virtuali attivi associati al contenitore di archiviazione.
+
+
+
+
+== Visualizza i dettagli dei singoli contenitori di stoccaggio
+
+È possibile visualizzare le informazioni relative a un singolo contenitore di archiviazione selezionandolo dalla pagina Contenitori di archiviazione nella scheda VVols.
+
+* *ID account*: ID dell'account NetApp Element associato al contenitore di archiviazione.
+* *Nome*: Nome del contenitore di archiviazione.
+* *Stato*: Stato del contenitore di archiviazione. Valori possibili:
++
+** Attivo: il contenitore di stoccaggio è in uso.
+** Bloccato: il contenitore di stoccaggio è bloccato.
+
+
+* *Segreto dell'iniziatore CHAP*: Il segreto CHAP esclusivo dell'iniziatore.
+* *Segreto del bersaglio CHAP*: Il segreto CHAP univoco per il bersaglio.
+* *ID contenitore di archiviazione*: UUID del contenitore di archiviazione del volume virtuale.
+* *Tipo di endpoint del protocollo*: indica il tipo di endpoint del protocollo (SCSI è l'unico protocollo disponibile).
+
+
+
+
+== Modifica un contenitore di archiviazione
+
+È possibile modificare l'autenticazione CHAP del contenitore di archiviazione nell'interfaccia utente dell'elemento.
+
+. Selezionare *VVols* > *Contenitori di archiviazione*.
+. Fare clic sull'icona *Azioni* relativa al contenitore di archiviazione che si desidera modificare.
+. Nel menu che si apre, seleziona *Modifica*.
+. In Impostazioni CHAP, modifica le credenziali Segreto iniziatore e Segreto destinazione utilizzate per l'autenticazione.
++
+
+TIP: Se non modifichi le credenziali delle impostazioni CHAP, queste rimarranno invariate.  Se si lasciano vuoti i campi delle credenziali, il sistema genera automaticamente nuovi segreti.
+
+. Fare clic su *Salva modifiche*.
+
+
+
+
+== Elimina un contenitore di archiviazione
+
+È possibile eliminare i contenitori di archiviazione dall'interfaccia utente dell'elemento.
+
+.Cosa ti servirà
+Assicurarsi che tutte le macchine virtuali siano state rimosse dal datastore VVol.
+
+.Passi
+. Selezionare *VVols* > *Contenitori di archiviazione*.
+. Fare clic sull'icona *Azioni* relativa al contenitore di archiviazione che si desidera eliminare.
+. Nel menu che appare, seleziona *Elimina*.
+. Conferma l'azione.
+. Aggiornare l'elenco dei contenitori di archiviazione nella sotto-scheda *Contenitori di archiviazione* per confermare che il contenitore di archiviazione è stato rimosso.
+

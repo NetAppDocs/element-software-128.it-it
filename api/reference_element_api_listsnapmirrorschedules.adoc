@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_listsnapmirrorschedules.html 
+sidebar: sidebar 
+keywords: snapmirror,schedule,schedules,list,listing,listsnapmirrorschedules,ontap 
+summary: 'L"interfaccia utente Web del software Element utilizza il metodo ListSnapMirrorSchedules per ottenere un elenco delle pianificazioni disponibili su un cluster ONTAP remoto.' 
+---
+= ListSnapMirrorSchedules
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'interfaccia utente Web del software Element utilizza `ListSnapMirrorSchedules` metodo per ottenere un elenco di pianificazioni disponibili su un cluster ONTAP remoto.
+
+
+
+== Parametro
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Se specificato, il sistema elenca le pianificazioni dell'endpoint con l'ID endpoint SnapMirror specificato.  Se non specificato, il sistema elenca le pianificazioni di tutti gli endpoint SnapMirror noti.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+snapMirrorSchedules
+ a| 
+Un elenco delle pianificazioni SnapMirror sul cluster ONTAP remoto.
+ a| 
+xref:reference_element_api_snapmirrorjobschedulecroninfo.adoc[snapMirrorJobScheduleCronInfo]vettore
+
+|===
+
+
+== Nuovo dalla versione
+
+10,1

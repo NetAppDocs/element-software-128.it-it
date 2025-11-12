@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_snmptraprecipient.html 
+sidebar: sidebar 
+keywords: object,objects,snmptraprecipient 
+summary: 'L"oggetto snmpTrapRecipient contiene informazioni su un host configurato per ricevere trap SNMP generate dal cluster di archiviazione.  È possibile utilizzare il metodo API GetSnmpTrapInfo per ottenere un elenco di host configurati per ricevere trap SNMP.' 
+---
+= snmpTrapRecipient
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto snmpTrapRecipient contiene informazioni su un host configurato per ricevere trap SNMP generate dal cluster di archiviazione.  Puoi usare il `GetSnmpTrapInfo` Metodo API per ottenere un elenco di host configurati per ricevere trap SNMP.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+ospite
+ a| 
+L'indirizzo IP o il nome host dell'host di destinazione.
+ a| 
+corda
+
+
+
+ a| 
+porta
+ a| 
+Numero di porta UDP sull'host a cui deve essere inviata la trap.  L'intervallo valido è compreso tra 1 e 65535.  0 (zero) non è un numero di porta valido. La porta predefinita è 162.
+ a| 
+intero
+
+
+
+ a| 
+comunità
+ a| 
+Stringa di comunità SNMP.
+ a| 
+corda
+
+|===

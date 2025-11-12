@@ -1,0 +1,84 @@
+---
+permalink: api/reference_element_api_listnetworkinterfacestats.html 
+sidebar: sidebar 
+keywords: network,interface,stats,statistics,interfaces,list,listing,listnetworkinterfacestats 
+summary: 'È possibile utilizzare il metodo ListNetworkInterfaceStats per elencare le statistiche relative a ciascuna interfaccia di rete su un nodo.  Questo metodo API è pensato per essere utilizzato su singoli nodi; per accedere ai singoli nodi è richiesta l"autenticazione tramite ID utente e password.  Tuttavia, è possibile utilizzare questo metodo sul cluster se al parametro force viene assegnato il valore true nella chiamata al metodo.  Quando il parametro viene utilizzato sul cluster, vengono elencate tutte le interfacce.' 
+---
+= ListNetworkInterfaceStats
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `ListNetworkInterfaceStats` Metodo per elencare statistiche quali il numero di pacchetti eliminati e vari tipi di errori per ciascuna interfaccia di rete su un nodo.  Questo metodo API è pensato per essere utilizzato su singoli nodi; per accedere ai singoli nodi è richiesta l'autenticazione tramite ID utente e password.  Tuttavia, è possibile utilizzare questo metodo sul cluster se al parametro force viene assegnato il valore true nella chiamata al metodo.  Quando il parametro viene utilizzato sul cluster, vengono elencate le statistiche di rete per tutte le interfacce.
+
+
+
+== Parametro
+
+Questo metodo non ha parametri di input.
+
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+| networkInterfaceStats | Un elenco di informazioni statistiche di rete, come il numero di pacchetti eliminati e vari tipi di errori di rete, per ciascuna interfaccia di rete di un nodo di archiviazione. | xref:reference_element_api_networkinterfacestats.adoc[networkInterfaceStats]vettore 
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+"method": "ListNetworkInterfaceStats",
+"params": {},
+"id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+    "networkInterfaceStats": [
+        {
+            "rxErrors": 1,
+            "rxPackets": 1,
+            "txErrors": 1,
+            "rxDropped": 1,
+            "txCarrierErrors": 1,
+            "rxOverErrors": 1,
+            "rxMissedErrors": 1,
+            "txPackets": 1,
+            "name": "if_name",
+            "rxLengthErrors": 1,
+            "collisions": 1,
+            "rxFifoErrors": 1,
+            "txBytes": 1,
+            "rxBytes": 1,
+            "rxFrameErrors": 1,
+            "rxCrcErrors": 1,
+            "txFifoErrors": 1
+        }
+    ]
+}
+----
+
+
+== Nuovo dalla versione
+
+12,3

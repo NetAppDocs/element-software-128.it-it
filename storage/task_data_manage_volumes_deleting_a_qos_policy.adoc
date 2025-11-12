@@ -1,0 +1,29 @@
+---
+permalink: storage/task_data_manage_volumes_deleting_a_qos_policy.html 
+sidebar: sidebar 
+keywords: qos policy, delete, volumes 
+summary: È possibile eliminare un criterio QoS se non è più necessario.  Quando si elimina un criterio QoS, tutti i volumi associati al criterio mantengono le impostazioni QoS ma non vengono più associati al criterio. 
+---
+= Eliminare una policy QoS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile eliminare un criterio QoS se non è più necessario.  Quando si elimina un criterio QoS, tutti i volumi associati al criterio mantengono le impostazioni QoS ma non vengono più associati al criterio.
+
+
+NOTE: Se invece si sta tentando di dissociare un volume da una policy QoS, è possibile modificare le impostazioni QoS per quel volume in personalizzate.
+
+. Selezionare *Gestione* > *Criteri QoS*.
+. Fare clic sull'icona Azioni per il criterio QoS che si desidera eliminare.
+. Nel menu che appare, seleziona *Elimina*.
+. Conferma l'azione.
+
+
+
+
+== Trova maggiori informazioni
+
+xref:task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.adoc[Rimuovere l'associazione della policy QoS di un volume]

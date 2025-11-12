@@ -1,0 +1,47 @@
+---
+permalink: storage/task_data_protection_create_a_snapshot_schedule.html 
+sidebar: sidebar 
+keywords: snapshot schedule, create, volumes, recurring schedule 
+summary: 'È possibile pianificare l"esecuzione automatica di uno snapshot di uno o più volumi a intervalli specificati.' 
+---
+= Creare una pianificazione snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile pianificare l'esecuzione automatica di uno snapshot di uno o più volumi a intervalli specificati.
+
+Quando si configura una pianificazione degli snapshot, è possibile scegliere tra intervalli di tempo basati sui giorni della settimana o sui giorni del mese.  È anche possibile creare una pianificazione ricorrente e specificare i giorni, le ore e i minuti prima che venga eseguito lo snapshot successivo.
+
+Se si pianifica l'esecuzione di uno snapshot in un intervallo di tempo non divisibile per 5 minuti, lo snapshot verrà eseguito nel successivo intervallo di tempo divisibile per 5 minuti.  Ad esempio, se si pianifica l'esecuzione di uno snapshot alle 12:42:00 UTC, questo verrà eseguito alle 12:45:00 UTC.  Non è possibile pianificare l'esecuzione di uno snapshot a intervalli inferiori a 5 minuti.
+
+A partire da Element 12.5, è possibile abilitare la creazione seriale e scegliere di conservare gli snapshot in base al metodo First-In-First-Out (FIFO) dall'interfaccia utente.
+
+* L'opzione *Abilita creazione seriale* specifica che viene replicato solo uno snapshot alla volta.  La creazione di un nuovo snapshot non riesce quando è ancora in corso la replica di uno snapshot precedente.  Se la casella di controllo non è selezionata, è consentita la creazione di uno snapshot quando è ancora in corso un'altra replica dello snapshot.
+* L'opzione *FIFO* aggiunge la possibilità di conservare un numero coerente degli snapshot più recenti.  Quando la casella di controllo è selezionata, gli snapshot vengono conservati secondo il metodo FIFO.  Una volta che la coda di snapshot FIFO raggiunge la sua profondità massima, lo snapshot FIFO più vecchio viene scartato quando viene inserito un nuovo snapshot FIFO.
+
+
+.Passi
+. Selezionare *Protezione dati* > *Pianificazioni*.
+. Seleziona *Crea pianificazione*.
+. Nel campo *ID volume CSV*, immettere un singolo ID volume o un elenco di ID volume separati da virgole da includere nell'operazione di snapshot.
+. Inserisci un nuovo nome per la pianificazione.
+. Selezionare un tipo di pianificazione e impostare la pianificazione tra le opzioni fornite.
+. *Facoltativo:* selezionare *Pianificazione ricorrente* per ripetere la pianificazione degli snapshot indefinitamente.
+. *Facoltativo:* inserisci un nome per il nuovo snapshot nel campo *Nome nuovo snapshot*.
++
+Se si lascia vuoto il campo, il sistema utilizza come nome l'ora e la data di creazione dello snapshot.
+
+. *Facoltativo:* selezionare la casella di controllo *Includi snapshot nella replica quando accoppiato* per garantire che gli snapshot vengano acquisiti nella replica quando il volume padre è accoppiato.
+. *Facoltativo:* selezionare la casella di controllo *Abilita creazione seriale* per garantire che venga replicato solo uno snapshot alla volta.
+. Per impostare la conservazione per lo snapshot, selezionare una delle seguenti opzioni:
++
+** *Facoltativo:* selezionare la casella di controllo *FIFO (First In First out)* per conservare un numero coerente degli snapshot più recenti.
+** Selezionare *Conserva per sempre* per conservare lo snapshot sul sistema a tempo indeterminato.
+** Selezionare *Imposta periodo di conservazione* e utilizzare le caselle di selezione della data per scegliere il periodo di tempo durante il quale il sistema deve conservare lo snapshot.
+
+
+. Seleziona *Crea pianificazione*.
+

@@ -1,0 +1,73 @@
+---
+permalink: api/reference_element_api_disablebmccoldreset.html 
+sidebar: sidebar 
+keywords: BMC cold reset,BMC reset,disable BMC 
+summary: 'È possibile utilizzare il metodo DisableBmcColdReset per disabilitare l"attività in background che reimposta periodicamente Baseboard Management Controller \(BMC\) per tutti i nodi del cluster.' 
+---
+= DisabilitaBmcColdReset
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `DisableBmcColdReset` metodo per disabilitare l'attività in background che reimposta periodicamente il Baseboard Management Controller (BMC) per tutti i nodi del cluster.
+
+
+
+== Parametro
+
+Questo metodo non ha parametri di input.
+
+
+
+== Valori di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+cBmcResetDurationMinutes
+ a| 
+Restituisce il tempo tra gli intervalli di reset.  L'intervallo dovrebbe essere sempre 0 dopo il completamento del comando.
+ a| 
+intero
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "method": "DisableBmcColdReset",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "cBmcResetDurationMinutes": 0
+    }
+}
+----
+
+
+== Nuovo dalla versione
+
+12,0

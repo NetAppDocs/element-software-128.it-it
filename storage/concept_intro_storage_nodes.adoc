@@ -1,0 +1,23 @@
+---
+permalink: storage/concept_intro_storage_nodes.html 
+sidebar: sidebar 
+keywords: storage nodes, management nodes, block space, metadata space, data management, storage management, Bond10G, network interface, network, metadata, data storage, storage, drives, network interfaces 
+summary: 'Un nodo di archiviazione SolidFire è un server contenente una raccolta di unità che comunicano tra loro tramite l"interfaccia di rete Bond10G.  Le unità nel nodo contengono spazio di blocchi e metadati per l"archiviazione e la gestione dei dati.' 
+---
+= Nodi di archiviazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un nodo di archiviazione SolidFire è un server contenente una raccolta di unità che comunicano tra loro tramite l'interfaccia di rete Bond10G.  Le unità nel nodo contengono spazio di blocchi e metadati per l'archiviazione e la gestione dei dati.
+
+I nodi di archiviazione presentano le seguenti caratteristiche:
+
+* Ogni nodo ha un nome univoco.  Se un nome di nodo non viene specificato da un amministratore, il valore predefinito è SF-XXXX, dove XXXX rappresenta quattro caratteri casuali generati dal sistema.
+* Ogni nodo ha la propria cache di scrittura NVRAM(non-volatile random access memory) ad alte prestazioni per migliorare le prestazioni complessive del sistema e ridurre la latenza di scrittura.
+* Ogni nodo è collegato a due reti, una di archiviazione e una di gestione, ciascuna con due collegamenti indipendenti per garantire ridondanza e prestazioni.  Ogni nodo richiede un indirizzo IP su ogni rete.
+* È possibile creare un cluster con nuovi nodi di archiviazione oppure aggiungere nodi di archiviazione a un cluster esistente per aumentare la capacità e le prestazioni di archiviazione.
+* È possibile aggiungere o rimuovere nodi dal cluster in qualsiasi momento senza interrompere il servizio.
+

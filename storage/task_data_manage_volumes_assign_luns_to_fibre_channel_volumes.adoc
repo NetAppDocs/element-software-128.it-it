@@ -1,0 +1,24 @@
+---
+permalink: storage/task_data_manage_volumes_assign_luns_to_fibre_channel_volumes.html 
+sidebar: sidebar 
+keywords: volumes, fc, luns, access group, assign 
+summary: 'È possibile modificare l"assegnazione LUN per un volume Fibre Channel in un gruppo di accesso al volume.  È anche possibile effettuare assegnazioni LUN del volume Fibre Channel quando si crea un gruppo di accesso al volume.' 
+---
+= Assegnare LUN ai volumi Fibre Channel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile modificare l'assegnazione LUN per un volume Fibre Channel in un gruppo di accesso al volume.  È anche possibile effettuare assegnazioni LUN del volume Fibre Channel quando si crea un gruppo di accesso al volume.
+
+L'assegnazione di nuovi LUN Fibre Channel è una funzione avanzata e potrebbe avere conseguenze sconosciute sull'host connesso.  Ad esempio, il nuovo ID LUN potrebbe non essere rilevato automaticamente sull'host e l'host potrebbe richiedere una nuova scansione per rilevarlo.
+
+. Selezionare *Gestione* > *Gruppi di accesso*.
+. Fare clic sull'icona Azioni per il gruppo di accesso che si desidera modificare.
+. Nel menu che si apre, seleziona **Modifica**.
+. In *Assegna ID LUN* nella finestra di dialogo *Modifica gruppo di accesso al volume*, fare clic sulla freccia nell'elenco *Assegnazioni LUN*.
+. Per ogni volume nell'elenco a cui si desidera assegnare un LUN, immettere un nuovo valore nel campo *LUN* corrispondente.
+. Fare clic su *Salva modifiche*.
+

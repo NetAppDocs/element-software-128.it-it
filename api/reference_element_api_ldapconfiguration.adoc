@@ -1,0 +1,132 @@
+---
+permalink: api/reference_element_api_ldapconfiguration.html 
+sidebar: sidebar 
+keywords: object,objects,ldapConfiguration 
+summary: 'L"oggetto ldapConfiguration contiene informazioni sulla configurazione LDAP sul sistema di archiviazione.  È possibile recuperare le informazioni LDAP con il metodo API GetLdapConfiguration.' 
+---
+= Configurazione ldap
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto ldapConfiguration contiene informazioni sulla configurazione LDAP sul sistema di archiviazione.  È possibile recuperare le informazioni LDAP con `GetLdapConfiguration` Metodo API.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+tipo di autorizzazione
+ a| 
+Identifica quale metodo di autenticazione utente utilizzare. Valori possibili:
+
+* Collegamento diretto
+* Cerca e associa
+
+ a| 
+corda
+
+
+
+ a| 
+abilitato
+ a| 
+Identifica se il sistema è configurato o meno per LDAP. Valori possibili:
+
+* VERO
+* falso
+
+ a| 
+booleano
+
+
+
+ a| 
+groupSearchBaseDN
+ a| 
+Il DN di base dell'albero da cui iniziare la ricerca del gruppo (da qui il sistema eseguirà una ricerca nel sottoalbero).
+ a| 
+corda
+
+
+
+ a| 
+groupSearchCustomFilter
+ a| 
+Filtro di ricerca personalizzato utilizzato.
+ a| 
+corda
+
+
+
+ a| 
+groupSearchType
+ a| 
+Controlla il filtro di ricerca del gruppo predefinito utilizzato. Valori possibili:
+
+* NoGroups: nessun supporto di gruppo.
+* ActiveDirectory: appartenenza nidificata di tutti i gruppi AD di un utente.
+* MemberDN: gruppi di stile MemberDN (livello singolo).
+
+ a| 
+corda
+
+
+
+ a| 
+searchBindDN
+ a| 
+Un DN completamente qualificato con cui effettuare l'accesso per eseguire una ricerca LDAP per l'utente (richiede l'accesso in lettura alla directory LDAP).
+ a| 
+corda
+
+
+
+ a| 
+serverURIs
+ a| 
+Un elenco separato da virgole di URI del server LDAP (ad esempio, `ldap://1.2.3.4` E `ldaps://1.2.3.4:123` .)
+ a| 
+corda
+
+
+
+ a| 
+ModelloDNutente
+ a| 
+Una stringa utilizzata per formare un DN utente completamente qualificato.
+ a| 
+corda
+
+
+
+ a| 
+userSearchBaseDN
+ a| 
+Il DN di base dell'albero utilizzato per avviare la ricerca (da qui verrà effettuata una ricerca nel sottoalbero).
+ a| 
+corda
+
+
+
+ a| 
+filtroricercautente
+ a| 
+Filtro LDAP utilizzato.
+ a| 
+corda
+
+|===
+
+
+== Trova maggiori informazioni
+
+xref:reference_element_api_getldapconfiguration.adoc[OttieniLdapConfiguration]

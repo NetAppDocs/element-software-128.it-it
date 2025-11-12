@@ -1,0 +1,23 @@
+---
+permalink: storage/concept_intro_clusters.html 
+sidebar: sidebar 
+keywords: clusters, about clusters, collection of nodes, nodes in a cluster, block storage, logical group, add nodes, access cluster 
+summary: 'Un cluster è il fulcro di un sistema di archiviazione SolidFire ed è costituito da un insieme di nodi.  Per realizzare l"efficienza di archiviazione SolidFire , è necessario disporre di almeno quattro nodi in un cluster.  Un cluster appare sulla rete come un singolo gruppo logico e può quindi essere accessibile come storage a blocchi.' 
+---
+= Cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un cluster è il fulcro di un sistema di archiviazione SolidFire ed è costituito da un insieme di nodi.  Per realizzare l'efficienza di archiviazione SolidFire , è necessario disporre di almeno quattro nodi in un cluster.  Un cluster appare sulla rete come un singolo gruppo logico e può quindi essere accessibile come storage a blocchi.
+
+La creazione di un nuovo cluster inizializza un nodo come proprietario delle comunicazioni per un cluster e stabilisce le comunicazioni di rete per ciascun nodo nel cluster.  Questo processo viene eseguito una sola volta per ogni nuovo cluster.  È possibile creare un cluster utilizzando l'interfaccia utente Element o l'API.
+
+È possibile ampliare un cluster aggiungendo nodi aggiuntivi.  Quando si aggiunge un nuovo nodo, non si verifica alcuna interruzione del servizio e il cluster utilizza automaticamente le prestazioni e la capacità del nuovo nodo.
+
+Gli amministratori e gli host possono accedere al cluster utilizzando indirizzi IP virtuali.  Qualsiasi nodo del cluster può ospitare gli indirizzi IP virtuali.  L'IP virtuale di gestione (MVIP) consente la gestione del cluster tramite una connessione 1GbE, mentre l'IP virtuale di archiviazione (SVIP) consente l'accesso dell'host all'archiviazione tramite una connessione 10GbE.  Questi indirizzi IP virtuali consentono connessioni coerenti indipendentemente dalle dimensioni o dalla composizione di un cluster SolidFire .  Se un nodo che ospita un indirizzo IP virtuale fallisce, un altro nodo nel cluster inizia a ospitare l'indirizzo IP virtuale.
+
+
+NOTE: A partire dalla versione 11.0 di Element, i nodi possono essere configurati con indirizzi IPv4, IPv6 o entrambi per la loro rete di gestione.  Ciò vale sia per i nodi di archiviazione che per quelli di gestione, ad eccezione del nodo di gestione 11.3 e versioni successive che non supportano IPv6.  Quando si crea un cluster, è possibile utilizzare un solo indirizzo IPv4 o IPv6 per MVIP e il tipo di indirizzo corrispondente deve essere configurato su tutti i nodi.

@@ -1,0 +1,67 @@
+---
+permalink: storage/concept_troubleshoot_basic_mdss_drive_troubleshooting.html 
+sidebar: sidebar 
+keywords: mdss drives, troubleshoot, multi-drive slice service 
+summary: 'È possibile ripristinare le unità metadati (o slice) aggiungendole nuovamente al cluster nel caso in cui una o entrambe le unità metadati si guastino.  È possibile eseguire l"operazione di ripristino nell"interfaccia utente NetApp Element se la funzionalità MDSS è già abilitata sul nodo.' 
+---
+= Risoluzione dei problemi di base dell'unità MDSS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile ripristinare le unità metadati (o slice) aggiungendole nuovamente al cluster nel caso in cui una o entrambe le unità metadati si guastino.  È possibile eseguire l'operazione di ripristino nell'interfaccia utente NetApp Element se la funzionalità MDSS è già abilitata sul nodo.
+
+Se una o entrambe le unità di metadati in un nodo subiscono un errore, il servizio di suddivisione verrà arrestato e i dati di entrambe le unità verranno sottoposti a backup su unità diverse nel nodo.
+
+Gli scenari seguenti delineano possibili scenari di errore e forniscono consigli di base per correggere il problema:
+
+
+
+== L'unità slice di sistema non funziona
+
+* In questo scenario, lo slot 2 viene verificato e riportato allo stato disponibile.
+* L'unità slice di sistema deve essere ripopolata prima che il servizio slice possa essere riattivato.
+* È necessario sostituire l'unità slice di sistema; quando l'unità slice di sistema diventa disponibile, aggiungere contemporaneamente l'unità e l'unità slot 2.
+
+
+
+NOTE: Non è possibile aggiungere l'unità nello slot 2 da sola come unità metadati.  È necessario aggiungere entrambe le unità al nodo contemporaneamente.
+
+
+
+== Lo slot 2 non funziona
+
+* In questo scenario, l'unità slice di sistema viene verificata e riportata allo stato disponibile.
+* Dovresti sostituire lo slot 2 con uno di riserva; quando lo slot 2 diventa disponibile, aggiungi contemporaneamente l'unità slice di sistema e l'unità dello slot 2.
+
+
+
+
+== L'unità slice di sistema e lo slot 2 non funzionano
+
+* Dovresti sostituire sia l'unità slice di sistema sia lo slot 2 con un'unità di riserva.  Quando entrambe le unità diventano disponibili, aggiungere contemporaneamente l'unità slice di sistema e l'unità slot 2.
+
+
+
+
+== Ordine delle operazioni
+
+* Sostituire l'unità hardware guasta con un'unità di riserva (sostituire entrambe le unità se entrambe sono guaste).
+* Aggiungere nuovamente le unità al cluster quando sono state ripopolate e sono disponibili.
+
+
+
+
+== Verificare le operazioni
+
+* Verificare che le unità nello slot 0 (o interno) e nello slot 2 siano identificate come unità metadati nell'elenco Unità attive.
+* Verificare che il bilanciamento delle sezioni sia stato completato (non ci siano ulteriori messaggi di spostamento delle sezioni nel registro eventi per almeno 30 minuti).
+
+
+
+
+== Per maggiori informazioni
+
+xref:task_troubleshoot_add_mdss_drives.adoc[Aggiungi unità MDSS]

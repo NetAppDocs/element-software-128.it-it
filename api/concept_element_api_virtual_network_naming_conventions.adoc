@@ -1,0 +1,26 @@
+---
+permalink: api/concept_element_api_virtual_network_naming_conventions.html 
+sidebar: sidebar 
+keywords: storage,system,naming,convention,virtual,network 
+summary: I sistemi di archiviazione NetApp Element utilizzano numeri in aumento continuo come identificatori univoci per tutti gli oggetti nel sistema. 
+---
+= Convenzioni di denominazione delle reti virtuali
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I sistemi di archiviazione NetApp Element utilizzano numeri in aumento continuo come identificatori univoci per tutti gli oggetti nel sistema.
+
+Quando si crea un nuovo volume, il nuovo volumeID è un incremento di esattamente 1.  Questa convenzione è valida per le reti virtuali nei cluster di storage che eseguono il software Element.  La prima rete virtuale creata in un cluster Element ha un VirtualNetworkID pari a 1.  Questo ID non è la stessa cosa di un numero di tag VLAN.
+
+È possibile utilizzare VirtualNetworkID e VirtualNetworkTag (tag VLAN) in modo intercambiabile, ove indicato nei metodi API.
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentazione per le versioni precedenti dei prodotti NetApp SolidFire ed Element"^]
+

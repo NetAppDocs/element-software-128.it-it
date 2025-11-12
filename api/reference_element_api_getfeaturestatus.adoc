@@ -1,0 +1,123 @@
+---
+permalink: api/reference_element_api_getfeaturestatus.html 
+sidebar: sidebar 
+keywords: feature,status,cluster,get,getting,getfeaturestatus 
+summary: È possibile utilizzare il metodo GetFeatureStatus per recuperare lo stato di una feature del cluster. 
+---
+= OttieniStatoFunzionalità
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `GetFeatureStatus` metodo per recuperare lo stato di una funzionalità del cluster.
+
+
+
+== Parametro
+
+Questo metodo ha il seguente parametro di input:
+
+[cols="1a,3a,1a,1a,1a"]
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+caratteristica
+ a| 
+Lo stato di una funzionalità del cluster.  Se non viene fornito alcun valore, il sistema restituisce lo stato di tutte le funzionalità. Valori possibili:
+
+* `Vvols`: Recupera lo stato della funzionalità del cluster VVols.
+* `SnapMirror`: Recupera lo stato della funzionalità del cluster di replica SnapMirror .
+* `Fips`: Recupera lo stato della crittografia FIPS 140-2 per la funzionalità di comunicazione HTTPS.
+* `FipsDrives`: Recupera lo stato della funzionalità di crittografia dell'unità FIPS 140-2.
+* `VolumeLoadBalanceOnActualIOPS`: Recupera lo stato del bilanciamento delle sezioni in base agli IOPS effettivi anziché alla funzionalità Min IOPS.  Disponibile a partire da Element 12.8.
+
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+caratteristiche
+ a| 
+Una matrice di oggetti feature che indicano il nome della feature e il suo stato.  Membri dell'oggetto:
+
+* feature: (stringa) Il nome della feature.
+* abilitato: (booleano) Indica se la funzionalità è abilitata o meno.
+
+ a| 
+Matrice di oggetti JSON
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "method": "GetFeatureStatus",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "features": [
+            {
+                "enabled": true,
+                "feature": "Vvols"
+            },
+            {
+                "enabled": true,
+                "feature": "SnapMirror"
+            },
+            {
+                "enabled": true,
+                "feature": "Fips"
+            },
+            {
+                "enabled": true,
+                "feature": "FipsDrives"
+            },
+            {
+                "enabled": true,
+                "feature": "VolumeLoadBalanceOnActualIOPS"
+            }
+        ]
+    }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

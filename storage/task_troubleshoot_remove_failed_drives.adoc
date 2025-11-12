@@ -1,0 +1,49 @@
+---
+permalink: storage/task_troubleshoot_remove_failed_drives.html 
+sidebar: sidebar 
+keywords: troubleshoot, failed drives, remove 
+summary: 'Il sistema SolidFire segnala un"unità in stato di errore se l"autodiagnosi dell"unità segnala al nodo che si è verificata un"anomalia o se la comunicazione con l"unità si interrompe per cinque minuti e mezzo o più.  Il sistema visualizza un elenco delle unità guaste.  È necessario rimuovere un"unità guasta dall"elenco delle unità guaste nel software NetApp Element .' 
+---
+= Rimuovere le unità non riuscite dal cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il sistema SolidFire segnala un'unità in stato di errore se l'autodiagnosi dell'unità segnala al nodo un errore o se la comunicazione con l'unità si interrompe per cinque minuti e mezzo o più.  Il sistema visualizza un elenco delle unità guaste.  È necessario rimuovere un'unità guasta dall'elenco delle unità guaste nel software NetApp Element .
+
+Le unità nell'elenco *Avvisi* vengono visualizzate come *blockServiceUnhealthy* quando un nodo è offline.  Quando si riavvia il nodo, se il nodo e le sue unità tornano online entro cinque minuti e mezzo, le unità si aggiornano automaticamente e continuano a essere attive nel cluster.
+
+. Nell'interfaccia utente di Element, seleziona *Cluster* > *Unità*.
+. Fare clic su *Non riuscito* per visualizzare l'elenco delle unità non riuscite.
+. Annotare il numero di slot dell'unità guasta.
++
+Queste informazioni sono necessarie per individuare l'unità guasta nello chassis.
+
+. Rimuovere le unità danneggiate utilizzando uno dei seguenti metodi:
++
+|===
+
+
+| Opzione | Passi 
+
+
+ a| 
+Per rimuovere singole unità
+ a| 
+.. Fare clic su *Azioni* per l'unità che si desidera rimuovere.
+.. Fare clic su *Rimuovi*.
+
+
+
+
+ a| 
+Per rimuovere più unità
+ a| 
+.. Seleziona tutte le unità che vuoi rimuovere e fai clic su *Azioni in blocco*.
+.. Fare clic su *Rimuovi*.
+
+
+|===
+

@@ -1,0 +1,195 @@
+---
+permalink: api/reference_element_api_listvirtualvolumes.html 
+sidebar: sidebar 
+keywords: virtual,volume,volumes,vvol,list,listing,listvirtualvolumes 
+summary: È possibile utilizzare il metodo ListVirtualVolumes per elencare i volumi virtuali attualmente presenti nel sistema.  È possibile utilizzare questo metodo per elencare tutti i volumi virtuali oppure solo un sottoinsieme. 
+---
+= ListVirtualVolumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `ListVirtualVolumes` metodo per elencare i volumi virtuali attualmente presenti nel sistema.  È possibile utilizzare questo metodo per elencare tutti i volumi virtuali oppure solo un sottoinsieme.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+dettagli
+ a| 
+Il livello di dettaglio nella risposta. Valori possibili:
+
+* vero: includi maggiori dettagli su ciascun VVol nella risposta.
+* false: includi il livello standard di dettaglio su ciascun VVol nella risposta.
+
+ a| 
+booleano
+ a| 
+Falso
+ a| 
+NO
+
+
+
+ a| 
+limite
+ a| 
+Numero massimo di volumi virtuali da elencare.
+ a| 
+intero
+ a| 
+10000
+ a| 
+NO
+
+
+
+ a| 
+ricorsivo
+ a| 
+Specifica se includere o meno nella risposta informazioni sui figli di ciascun VVol. Valori possibili:
+
+* vero: includi informazioni sui figli di ciascun VVol nella risposta.
+* false: non includere informazioni sui figli di ciascun VVol nella risposta.
+
+ a| 
+booleano
+ a| 
+Falso
+ a| 
+NO
+
+
+
+ a| 
+startVirtualVolumeID
+ a| 
+ID del volume virtuale da cui iniziare l'elenco nella risposta.
+ a| 
+Tipo UUID
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+virtualVolumeIDs
+ a| 
+Un elenco di ID di volumi virtuali per i quali recuperare informazioni.  Se si omette questo parametro, il metodo restituisce informazioni solo su questi volumi virtuali.
+ a| 
+array UUID virtualVolumeID
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+nextVirtualVolumeID
+ a| 
+ID del volume virtuale successivo nell'elenco.
+ a| 
+UUID
+
+
+
+ a| 
+volumi virtuali
+ a| 
+Un elenco di oggetti che descrivono i volumi virtuali attualmente presenti nel sistema.
+ a| 
+xref:reference_element_api_virtualvolume.adoc[volume virtuale]vettore
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "method": "ListVirtualVolumes",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "nextVirtualVolumeID": "00000000-0000-0000-0000-000000000000",
+    "virtualVolumes": [
+      {
+        "bindings": [
+          177
+        ],
+        "children": [],
+        "metadata": {
+          "SFProfileId": "f4e5bade-15a2-4805-bf8e-52318c4ce443",
+          "SFgenerationId": "0",
+          "VMW_ContainerId": "abaab415-bedc-44cd-98b8-f37495884db0",
+          "VMW_VVolName": "asdf",
+          "VMW_VVolType": "Config",
+          "VMW_VmID": "502e0676-e510-ccdd-394c-667f6867fcdf",
+          "VMW_VvolProfile": "f4e5bade-15a2-4805-bf8e-52318c4ce443:0"
+        },
+        "parentVirtualVolumeID": "00000000-0000-0000-0000-000000000000",
+        "snapshotID": 0,
+        "snapshotInfo": null,
+        "status": "done",
+        "storageContainer": {
+          "accountID": 1,
+          "initiatorSecret": "B5)D1y10K)8IDN58",
+          "name": "test",
+          "protocolEndpointType": "SCSI",
+          "status": "active",
+          "storageContainerID": "abaab415-bedc-44cd-98b8-f37495884db0",
+          "targetSecret": "qgae@{o{~8\"2U)U^"
+        },
+        "virtualVolumeID": "269d3378-1ca6-4175-a18f-6d4839e5c746",
+        "virtualVolumeType": "config",
+        "volumeID": 166,
+        "volumeInfo": null
+      }
+    ]
+  }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

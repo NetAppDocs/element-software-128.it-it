@@ -1,0 +1,48 @@
+---
+permalink: storage/task_data_protection_create_a_volume_snapshot.html 
+sidebar: sidebar 
+keywords: volume snapshot, create, active volume, preserve volume 
+summary: 'È possibile creare uno snapshot di un volume attivo per preservare l"immagine del volume in qualsiasi momento.  È possibile creare fino a 32 snapshot per un singolo volume.' 
+---
+= Crea uno snapshot del volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile creare uno snapshot di un volume attivo per preservare l'immagine del volume in qualsiasi momento.  È possibile creare fino a 32 snapshot per un singolo volume.
+
+. Fare clic su *Gestione* > *Volumi*.
+. Fare clic sull'icona *Azioni* per il volume che si desidera utilizzare per lo snapshot.
+. Nel menu che si apre, seleziona *Snapshot*.
+. Nella finestra di dialogo *Crea snapshot del volume*, immettere il nome del nuovo snapshot.
+. *Facoltativo:* selezionare la casella di controllo *Includi snapshot nella replica quando associato* per garantire che lo snapshot venga acquisito nella replica quando il volume padre viene associato.
+. Per impostare la conservazione per lo snapshot, selezionare una delle seguenti opzioni:
++
+** Fare clic su *Conserva per sempre* per conservare lo snapshot sul sistema a tempo indeterminato.
+** Fare clic su *Imposta periodo di conservazione* e utilizzare le caselle di selezione della data per scegliere il periodo di tempo durante il quale il sistema deve conservare lo snapshot.
+
+
+. Per acquisire un singolo snapshot immediato, procedere come segue:
++
+.. Fare clic su *Scatta istantanea ora*.
+.. Fare clic su **Crea snapshot**.
+
+
+. Per pianificare l'esecuzione dello snapshot in un momento futuro, procedere come segue:
++
+.. Fare clic su *Crea pianificazione snapshot*.
+.. Inserisci un *Nome nuovo programma*.
+.. Selezionare un *Tipo di pianificazione* dall'elenco.
+.. *Facoltativo:* selezionare la casella di controllo *Pianificazione ricorrente* per ripetere periodicamente lo snapshot pianificato.
+.. Fare clic su *Crea pianificazione*.
+
+
+
+
+
+
+== Trova maggiori informazioni
+
+xref:task_data_protection_schedule_a_snapshot_task.adoc[Pianifica uno snapshot]

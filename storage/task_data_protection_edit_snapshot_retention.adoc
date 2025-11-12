@@ -1,0 +1,28 @@
+---
+permalink: storage/task_data_protection_edit_snapshot_retention.html 
+sidebar: sidebar 
+keywords: snapshot retention, edit, set a retention period, edit retention period 
+summary: 'È possibile modificare il periodo di conservazione di uno snapshot per controllare quando e se il sistema elimina gli snapshot.  Il periodo di conservazione specificato inizia quando si immette il nuovo intervallo.  Quando si imposta un periodo di conservazione, è possibile selezionare un periodo che inizia all"ora corrente (la conservazione non viene calcolata dall"ora di creazione dello snapshot).  È possibile specificare intervalli in minuti, ore e giorni.' 
+---
+= Modifica la conservazione degli snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile modificare il periodo di conservazione di uno snapshot per controllare quando e se il sistema elimina gli snapshot.  Il periodo di conservazione specificato inizia quando si immette il nuovo intervallo.  Quando si imposta un periodo di conservazione, è possibile selezionare un periodo che inizia all'ora corrente (la conservazione non viene calcolata in base all'ora di creazione dello snapshot).  È possibile specificare intervalli in minuti, ore e giorni.
+
+.Passi
+. Fare clic su *Protezione dati* > *Snapshot*.
+. Fare clic sull'icona *Azioni* relativa allo snapshot che si desidera modificare.
+. Nel menu che si apre, fare clic su *Modifica*.
+. *Facoltativo:* selezionare la casella di controllo **Includi snapshot nella replica quando associato** per garantire che lo snapshot venga acquisito nella replica quando il volume padre è associato.
+. *Facoltativo:* seleziona un'opzione di conservazione per lo snapshot:
++
+** Fare clic su *Conserva per sempre* per conservare lo snapshot sul sistema a tempo indeterminato.
+** Fare clic su *Imposta periodo di conservazione* e utilizzare le caselle di selezione della data per selezionare un periodo di tempo durante il quale il sistema conserverà lo snapshot.
+
+
+. Fare clic su *Salva modifiche*.
+

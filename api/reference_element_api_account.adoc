@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_account.html 
+sidebar: sidebar 
+keywords: account,object,accounts 
+summary: 'L"oggetto account contiene informazioni su un account.  Questo oggetto include solo informazioni "configurate" sull"account, non informazioni di runtime o di utilizzo.' 
+---
+= account
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+IL `account` l'oggetto contiene informazioni su un account.  Questo oggetto include solo informazioni "configurate" sull'account, non informazioni di runtime o di utilizzo.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+`accountID`
+ a| 
+ID account univoco per l'account.
+ a| 
+intero
+
+
+
+ a| 
+`attributes`
+ a| 
+Elenco di coppie nome-valore nel formato oggetto JSON.
+ a| 
+Oggetto JSON
+
+
+
+ a| 
+`enableChap`
+ a| 
+Specifica se le credenziali dell'account CHAP possono essere utilizzate da un iniziatore per accedere ai volumi.
+ a| 
+booleano
+
+
+
+ a| 
+`initiatorSecret`
+ a| 
+Il segreto dell'iniziatore CHAP.
+ a| 
+corda
+
+
+
+ a| 
+`status`
+ a| 
+Lo stato attuale dell'account. Valori possibili:
+
+* attivo: un account attivo.
+* bloccato: Un account bloccato.
+* rimosso: un account che è stato eliminato e ripulito.
+
+ a| 
+corda
+
+
+
+ a| 
+`storageContainerID`
+ a| 
+ID univoco del contenitore di archiviazione del volume virtuale associato a questo account.
+ a| 
+UUID
+
+
+
+ a| 
+`targetSecret`
+ a| 
+Il segreto CHAP di destinazione.
+ a| 
+corda
+
+
+
+ a| 
+`username`
+ a| 
+Il nome utente per l'account.
+ a| 
+corda
+
+
+
+ a| 
+`volumes`
+ a| 
+Un elenco di ID volume per i volumi di proprietà di questo account.
+ a| 
+array di interi
+
+|===
+
+
+== Trova maggiori informazioni
+
+* xref:reference_element_api_addaccount.adoc[Aggiungi account]
+* xref:reference_element_api_getaccountbyid.adoc[OttieniAccountPerID]
+* xref:reference_element_api_getaccountbyname.adoc[OttieniAccountPerNome]
+* xref:reference_element_api_listaccounts.adoc[ElencoAccount]
+

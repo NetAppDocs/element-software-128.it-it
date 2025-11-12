@@ -1,0 +1,45 @@
+---
+permalink: concepts/concept_intro_product_overview.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Un sistema di archiviazione all-flash SolidFire è composto da componenti hardware discreti (unità e nodi) combinati in un unico pool di risorse di archiviazione.  Questo cluster unificato si presenta come un singolo sistema di archiviazione utilizzabile da client esterni ed è gestito tramite il software NetApp Element .' 
+---
+= Panoramica del prodotto
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un sistema di archiviazione all-flash SolidFire è composto da componenti hardware discreti (unità e nodi) combinati in un unico pool di risorse di archiviazione.  Questo cluster unificato si presenta come un singolo sistema di archiviazione utilizzabile da client esterni ed è gestito tramite il software NetApp Element .
+
+Utilizzando l'interfaccia Element, l'API o altri strumenti di gestione, è possibile monitorare la capacità e le prestazioni di archiviazione del cluster SolidFire e gestire l'attività di archiviazione in un'infrastruttura multi-tenant.
+
+
+
+== Caratteristiche SolidFire
+
+Un sistema Solidfire offre le seguenti caratteristiche:
+
+* Offre storage ad alte prestazioni per la tua infrastruttura cloud privata su larga scala
+* Fornisce una scala flessibile che consente di soddisfare le mutevoli esigenze di archiviazione
+* Utilizza un'interfaccia software Element per la gestione dell'archiviazione basata su API
+* Garantisce le prestazioni utilizzando le politiche di qualità del servizio
+* Include il bilanciamento automatico del carico su tutti i nodi del cluster
+* Riequilibra automaticamente i cluster quando vengono aggiunti o sottratti nodi
+
+
+
+
+== Distribuzione di SolidFire
+
+Utilizzare nodi di archiviazione forniti da NetApp e integrati con il software NetApp Element .
+
+link:../concepts/concept_solidfire_concepts_solidfire_architecture_overview.html["Panoramica dell'architettura di archiviazione all-flash SolidFire"]
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+

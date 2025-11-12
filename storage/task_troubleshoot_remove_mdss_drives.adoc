@@ -1,0 +1,24 @@
+---
+permalink: storage/task_troubleshoot_remove_mdss_drives.html 
+sidebar: sidebar 
+keywords: mdss, remove, multi-drive slice service 
+summary: 'È possibile rimuovere le unità del servizio slice multi-unità \(MDSS\).  Questa procedura si applica solo se il nodo ha più unità slice.' 
+---
+= Rimuovere le unità MDSS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile rimuovere le unità MDSS (Multi-Drive Slice Service).  Questa procedura si applica solo se il nodo ha più unità slice.
+
+
+NOTE: Se l'unità slice di sistema e l'unità slot 2 si guastano, il sistema arresta i servizi slice e rimuove le unità.  Se non si verificano guasti e si rimuovono le unità, è necessario rimuovere entrambe le unità contemporaneamente.
+
+. Fare clic su *Cluster* > *Unità*.
+. Nella scheda Unità *Disponibili*, fare clic sulla casella di controllo per le unità slice da rimuovere.
+. Fare clic su *Azioni in blocco*.
+. Fare clic su *Rimuovi*.
+. Conferma l'azione.
+

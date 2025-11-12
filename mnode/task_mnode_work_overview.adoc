@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_work_overview.html 
+summary: 'È possibile utilizzare il nodo di gestione (mNode) per utilizzare i servizi di sistema, gestire le risorse e le impostazioni del cluster, eseguire test e utilità di sistema, configurare Active IQ per il monitoraggio del sistema e abilitare l"accesso al supporto NetApp per la risoluzione dei problemi.' 
+keywords: netapp, mnode, api, rest api, mnode ui, management node ui 
+---
+= Panoramica del nodo di gestione
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare il nodo di gestione (mNode) per utilizzare i servizi di sistema, gestire le risorse e le impostazioni del cluster, eseguire test e utilità di sistema, configurare Active IQ per il monitoraggio del sistema e abilitare l'accesso al supporto NetApp per la risoluzione dei problemi.
+
+
+NOTE: Come best practice, associare un solo nodo di gestione a un'istanza VMware vCenter ed evitare di definire le stesse risorse di archiviazione e di elaborazione o istanze vCenter in più nodi di gestione.
+
+Per i cluster che eseguono il software Element versione 11.3 o successiva, è possibile lavorare con il nodo di gestione utilizzando una delle due interfacce:
+
+* Con l'interfaccia utente del nodo di gestione(`https://[mNode IP]:442` ), è possibile apportare modifiche alle impostazioni di rete e cluster, eseguire test di sistema o utilizzare utilità di sistema.
+* Con l'interfaccia utente API REST integrata(`https://[mNode IP]/mnode` ), è possibile eseguire o comprendere le API relative ai servizi del nodo di gestione, tra cui la configurazione del server proxy, gli aggiornamenti del livello di servizio o la gestione delle risorse.
+
+
+Installa o ripristina un nodo di gestione:
+
+* link:task_mnode_install.html["Installa un nodo di gestione"]
+* link:task_mnode_install_add_storage_NIC.html["Configurare un controller di interfaccia di rete (NIC) di archiviazione"]
+* link:task_mnode_recover.html["Recupera un nodo di gestione"]
+
+
+Accedi al nodo di gestione:
+
+* link:task_mnode_access_ui.html["Accedi al nodo di gestione (interfaccia utente o API REST)"]
+
+
+Cambia il certificato SSL predefinito:
+
+* link:reference_change_mnode_default_ssl_certificate.html["Modificare il certificato SSL predefinito del nodo di gestione"]
+
+
+Eseguire attività con l'interfaccia utente del nodo di gestione:
+
+* link:task_mnode_work_overview_UI.html["Panoramica dell'interfaccia utente del nodo di gestione"]
+
+
+Eseguire attività con le API REST del nodo di gestione:
+
+* link:task_mnode_work_overview_API.html["Panoramica dell'interfaccia utente dell'API REST del nodo di gestione"]
+
+
+Disattiva o abilita la funzionalità SSH remota oppure avvia una sessione di tunnel di supporto remoto con il supporto NetApp per aiutarti a risolvere i seguenti problemi:
+
+* link:task_mnode_enable_node_troubleshooting_sessions.html["Accesso ai nodi di archiviazione tramite SSH per la risoluzione dei problemi di base"]
++
+** link:task_mnode_enable_remote_support_connections.html["Abilita le connessioni remote al supporto NetApp"]
+** link:task_mnode_ssh_management.html["Gestire la funzionalità SSH sul nodo di gestione"]
+
+
+
+
+[discrete]
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+

@@ -1,0 +1,18 @@
+---
+permalink: storage/concept_data_manage_vvol_protocol_endpoints.html 
+sidebar: sidebar 
+keywords: protocol endpoint, access, cluster, storage node, iscsi supported 
+summary: Gli endpoint del protocollo sono punti di accesso utilizzati da un host per indirizzare lo storage su un cluster che esegue il software NetApp Element .  Gli endpoint del protocollo non possono essere eliminati o modificati da un utente, non sono associati a un account e non possono essere aggiunti a un gruppo di accesso al volume. 
+---
+= Scopri di più sugli endpoint del protocollo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Gli endpoint del protocollo sono punti di accesso utilizzati da un host per indirizzare lo storage su un cluster che esegue il software NetApp Element .  Gli endpoint del protocollo non possono essere eliminati o modificati da un utente, non sono associati a un account e non possono essere aggiunti a un gruppo di accesso al volume.
+
+Un cluster che esegue il software Element crea automaticamente un endpoint di protocollo per ogni nodo di archiviazione nel cluster.  Ad esempio, un cluster di storage a sei nodi ha sei endpoint di protocollo mappati su ciascun host ESXi.  Gli endpoint del protocollo vengono gestiti dinamicamente dal software Element e vengono creati, spostati o rimossi in base alle necessità, senza alcun intervento.  Gli endpoint del protocollo sono l'obiettivo del multi-pathing e fungono da proxy I/O per le LUN sussidiarie.  Ogni endpoint del protocollo utilizza un indirizzo SCSI disponibile, proprio come una destinazione iSCSI standard.  Gli endpoint del protocollo vengono visualizzati come un dispositivo di archiviazione a blocco singolo (512 byte) nel client vSphere, ma questo dispositivo di archiviazione non è disponibile per essere formattato o utilizzato come archiviazione.
+
+iSCSI è l'unico protocollo supportato.  Il protocollo Fibre Channel non è supportato.

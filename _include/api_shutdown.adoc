@@ -1,0 +1,95 @@
+= Parametri
+:allow-uri-read: 
+
+
+Puoi usare il `Shutdown` metodo per riavviare o arrestare i nodi in un cluster.  Utilizzando questo metodo è possibile arrestare un singolo nodo, più nodi o tutti i nodi del cluster.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+nodi
+ a| 
+Elenco dei NodeID per i nodi da riavviare o arrestare.
+ a| 
+array di interi
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+opzione
+ a| 
+Azioni da intraprendere per il cluster. Valori possibili:
+
+* restart: riavvia il cluster.
+* halt: esegue uno spegnimento completo.
+
+ a| 
+corda
+ a| 
+ricomincia
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo non ha valore di ritorno.
+
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "Shutdown",
+   "params": {
+     "nodes": [
+       2,
+       3,
+       4
+     ],
+     "option": "halt"
+   },
+   "id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+     "failed": [],
+     "successful": [
+          6
+      [
+   }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

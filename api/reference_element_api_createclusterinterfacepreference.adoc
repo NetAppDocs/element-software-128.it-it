@@ -1,0 +1,91 @@
+---
+permalink: api/reference_element_api_createclusterinterfacepreference.html 
+sidebar: sidebar 
+keywords: cluster,interface,preferences,create,creating,CreateClusterInterfacePreference 
+summary: Il metodo CreateClusterInterfacePreference consente ai sistemi integrati con cluster di archiviazione che eseguono il software Element di creare e archiviare informazioni arbitrarie sul cluster di archiviazione.  Questo metodo è per uso interno. 
+---
+= CreaPreferenzaInterfacciaCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+IL `CreateClusterInterfacePreference` Il metodo consente ai sistemi integrati con cluster di archiviazione che eseguono il software Element di creare e archiviare informazioni arbitrarie sul cluster di archiviazione.  Questo metodo è per uso interno.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+nome
+ a| 
+Nome della preferenza dell'interfaccia del cluster.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+valore
+ a| 
+Valore della preferenza dell'interfaccia del cluster.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo non ha valore di ritorno.
+
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+		"method": "CreateClusterInterfacePreference",
+		"params": {
+			"name": "prefname",
+			"value": "testvalue"
+		},
+	"id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {}
+}
+----
+
+
+== Nuovo dalla versione
+
+11,0

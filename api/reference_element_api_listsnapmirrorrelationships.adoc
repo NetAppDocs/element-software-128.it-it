@@ -1,0 +1,114 @@
+---
+permalink: api/reference_element_api_listsnapmirrorrelationships.html 
+sidebar: sidebar 
+keywords: snapmirror,endpoints,endpoint,list,listing,listsnapmirrorrelationships 
+summary: 'L"interfaccia utente Web del software Element utilizza il metodo ListSnapMirrorRelationships per elencare una o tutte le relazioni SnapMirror su un cluster di archiviazione Element.' 
+---
+= ListSnapMirrorRelationships
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'interfaccia utente Web del software Element utilizza `ListSnapMirrorRelationships` metodo per elencare una o tutte le relazioni SnapMirror su un cluster di archiviazione Element.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Elenca solo le relazioni associate all'ID endpoint specificato.  Se non viene fornito alcun ID endpoint, il sistema elenca le relazioni da tutti gli endpoint SnapMirror noti.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+destinazioneVolume
+ a| 
+Elenca le relazioni associate al volume di destinazione specificato.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+sorgenteVolume
+ a| 
+Elenca le relazioni associate al volume sorgente specificato.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+server virtuale
+ a| 
+Elenca le relazioni sul Vserver specificato.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+ID relazione
+ a| 
+Elenca le relazioni associate all'ID relazione specificato.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+snapMirrorRelationships
+ a| 
+Un elenco di oggetti contenenti informazioni sulle relazioni SnapMirror .
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirrorRelationship]vettore
+
+|===
+
+
+== Nuovo dalla versione
+
+10,1

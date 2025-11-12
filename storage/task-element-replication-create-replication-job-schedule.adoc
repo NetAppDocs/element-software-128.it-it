@@ -1,0 +1,43 @@
+---
+permalink: storage/task-element-replication-create-replication-job-schedule.html 
+sidebar: sidebar 
+keywords: ontap, cli, create, replication, job, schedule 
+summary: È possibile utilizzare il comando job schedule cron create per creare una pianificazione di processi di replica.  La pianificazione dei lavori determina quando SnapMirror aggiorna automaticamente la relazione di protezione dei dati a cui è assegnata la pianificazione. 
+---
+= Creare una pianificazione di processi di replicazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sia che si replichino dati da Element a ONTAP o da ONTAP a Element, è necessario configurare una pianificazione dei processi, specificare una policy e creare e inizializzare la relazione.  È possibile utilizzare una policy predefinita o personalizzata.
+
+Puoi usare il `job schedule cron create` comando per creare una pianificazione di processi di replicazione.  La pianificazione dei lavori determina quando SnapMirror aggiorna automaticamente la relazione di protezione dei dati a cui è assegnata la pianificazione.
+
+.Informazioni su questo compito
+Quando si crea una relazione di protezione dei dati, si assegna una pianificazione dei lavori.  Se non si assegna una pianificazione dei lavori, è necessario aggiornare manualmente la relazione.
+
+.Fare un passo
+. Crea una pianificazione di lavoro:
++
+`job schedule cron create -name _job_name_ -month _month_ -dayofweek _day_of_week_ -day _day_of_month_ -hour _hour_ -minute _minute_`
+
++
+Per `-month` , `-dayofweek` , E `-hour` , puoi specificare `all` per eseguire il lavoro rispettivamente ogni mese, giorno della settimana e ora.
+
++
+A partire da ONTAP 9.10.1, è possibile includere il Vserver nella pianificazione dei lavori:
+
++
+`job schedule cron create -name _job_name_ -vserver _Vserver_name_ -month _month_ -dayofweek _day_of_week_ -day _day_of_month_ -hour _hour_ -minute _minute_`
+
++
+L'esempio seguente crea una pianificazione di lavoro denominata `my_weekly` che si svolge il sabato alle 3:00 del mattino:
+
++
+[listing]
+----
+cluster_dst::> job schedule cron create -name my_weekly -dayofweek "Saturday" -hour 3 -minute 0
+----
+

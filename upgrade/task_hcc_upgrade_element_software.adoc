@@ -1,0 +1,450 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_upgrade_element_software.html 
+summary: Come parte di un aggiornamento del sistema NetApp SolidFire , aggiorni il software NetApp Element . 
+keywords: netapp, solidfire, cluster, element, H610S upgrade, hcc, upgrade role 
+---
+= Aggiorna il software Element
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per aggiornare il software NetApp Element , è possibile utilizzare l'interfaccia utente di controllo NetApp Hybrid Cloud o l'API REST.  Alcune operazioni vengono soppresse durante un aggiornamento del software Element, come l'aggiunta e la rimozione di nodi, l'aggiunta e la rimozione di unità e i comandi associati agli iniziatori, ai gruppi di accesso al volume e alle reti virtuali, tra gli altri.
+
+[CAUTION]
+====
+Il bundle dei servizi di gestione 2.27 include Element Plug-in per vCenter Server 5.5, compatibile solo con il nodo di gestione 12.8. Quando si esegue l'aggiornamento ai servizi di gestione 2.27, è necessario modificare la sequenza di aggiornamento e aggiornare il bundle dei servizi di gestione _dopo_ l'aggiornamento a Element 12.8 per garantire la compatibilità tra il nodo di gestione e i servizi di gestione.
+
+Se si esegue l'aggiornamento ai servizi di gestione dalla versione 2.21.61 alla versione 2.26.40, è necessario aggiornare il bundle dei servizi di gestione _prima_ di eseguire l'aggiornamento a Element 12.8.
+
+====
+.Prima di iniziare
+* *Privilegi di amministratore*: disponi delle autorizzazioni di amministratore del cluster di archiviazione per eseguire l'aggiornamento.
+* *Percorso di aggiornamento valido*: hai controllato le informazioni sul percorso di aggiornamento per la versione di Element a cui stai effettuando l'aggiornamento e hai verificato che il percorso di aggiornamento è valido.https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/What_is_the_upgrade_matrix_for_storage_clusters_running_NetApp_Element_software%3F["NetApp KB: matrice di aggiornamento per cluster di storage che eseguono NetApp Element Software"^]
++
+A partire da Element 12.5, NetApp HealthTools non è più supportato per gli aggiornamenti software di Element.  Se stai eseguendo Element 11.0 o 11.1, devi primalink:https://docs.netapp.com/us-en/element-software-123/upgrade/task_hcc_upgrade_element_software.html#upgrade-element-software-at-connected-sites-using-healthtools["aggiorna a Element 12.3.x utilizzando HealthTools"^] e poi eseguire l'aggiornamento a Element 12.5 o versione successiva utilizzando NetApp Hybrid Cloud Control.
+
+* *Sincronizzazione dell'ora di sistema*: hai verificato che l'ora di sistema su tutti i nodi sia sincronizzata e che NTP sia configurato correttamente per il cluster di archiviazione e i nodi.  Ogni nodo deve essere configurato con un nameserver DNS nell'interfaccia utente Web per nodo(`https://[IP address]:442` ) senza guasti di cluster irrisolti correlati allo sfasamento temporale.
+* *Porte di sistema*: se si utilizza NetApp Hybrid Cloud Control per gli aggiornamenti, è necessario assicurarsi che le porte necessarie siano aperte. Vederelink:../storage/reference_prereq_network_port_requirements.html["Porte di rete"] per maggiori informazioni.
+* *Nodo di gestione*: per l'interfaccia utente e l'API NetApp Hybrid Cloud Control, il nodo di gestione nel tuo ambiente esegue la versione 11.3.
+* *Stato del cluster*: hai verificato che il cluster è pronto per essere aggiornato. Vederelink:task_hcc_upgrade_element_prechecks.html["Eseguire controlli di integrità dell'archiviazione Element prima di aggiornare l'archiviazione"] .
+* *Controller di gestione della scheda base (BMC) aggiornato per i nodi di archiviazione H610S*: hai aggiornato la versione BMC per i tuoi nodi H610S. Vedi illink:https://docs.netapp.com/us-en/hci/docs/rn_H610S_BMC_3.84.07.html["note di rilascio e istruzioni di aggiornamento"^] .
+
+
+[[element-upgrade-tim]]
+* *Tempo di esecuzione dell'aggiornamento*: hai programmato tempo sufficiente per eseguire l'aggiornamento.  Quando si esegue l'aggiornamento al software Element 12.5 o versione successiva, la durata del processo di aggiornamento varia a seconda della versione corrente del software Element e degli aggiornamenti del firmware.
++
+[cols="20,20,20,20,20"]
+|===
+| Nodo di archiviazione | Versione attuale del software Element | Tempo approssimativo di installazione del software e del firmware per nodo^1^ | Tempo approssimativo di sincronizzazione dei dati per nodo^2^ | Tempo di aggiornamento totale approssimativo per nodo 
+
+
+| Tutti i nodi SolidFire e NetApp serie H con firmware aggiornato^3^ | 12.x | 15 minuti | da 10 a 15 minuti | da 20 a 30 minuti 
+
+
+| H610S e H410S | 12.x e 11.8 | 60 minuti | da 30 a 60 minuti | da 90 a 120 minuti 
+
+
+| H610S | 11.7 e precedenti | 90 minuti | da 40 a 70 minuti | Da 130 a 160 minuti Devi anche https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["eseguire uno spegnimento completo del nodo e la disconnessione dell'alimentazione"^] per ogni nodo H610S. 
+|===
++
+^1^Per una matrice completa del firmware e del driver firmware per il tuo hardware, vedilink:../hardware/fw_storage_nodes.html["versioni del firmware di archiviazione supportate per i nodi di archiviazione SolidFire"] .
+
++
+^2^Se si combina un cluster con un carico IOPS di scrittura elevato con un tempo di aggiornamento del firmware più lungo, il tempo di sincronizzazione dei dati aumenterà.
+
++
+^3^ I seguenti nodi non sono supportati.  Se si tenta di aggiornare uno di questi nodi a una versione di Element non supportata, verrà visualizzato un errore che indica che il nodo non è supportato da Element 12.x:
+
++
+** A partire dai nodi di archiviazione Element 12.8, SF4805, SF9605, SF19210 e SF38410.
+** A partire dall'elemento 12.7, nodi di archiviazione SF2405 e SF9608 e nodi FC FC0025 e SF-FCN-01.
+
+
+* *Contratto di licenza con l'utente finale (EULA)*: a partire dalla versione 2.20.69 dei servizi di gestione, è necessario accettare e salvare l'EULA prima di utilizzare l'interfaccia utente o l'API NetApp Hybrid Cloud Control per aggiornare il software Element:
++
+.. Aprire l'indirizzo IP del nodo di gestione in un browser web:
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+.. Accedi a NetApp Hybrid Cloud Control fornendo le credenziali di amministratore del cluster di storage.
+.. Selezionare *Aggiorna* nella parte in alto a destra dell'interfaccia.
+.. Viene visualizzato l'EULA.  Scorri verso il basso, seleziona *Accetto per gli aggiornamenti attuali e futuri* e seleziona *Salva*.
+
+
+
+
+.Opzioni di aggiornamento
+Scegli una delle seguenti opzioni di aggiornamento del software Element:
+
+* <<Utilizzare l'interfaccia utente di controllo NetApp Hybrid Cloud per aggiornare lo storage Element>>
+* <<Utilizzare l'API NetApp Hybrid Cloud Control per aggiornare lo storage Element>>
+
+
+
+IMPORTANT: Se si sta aggiornando un nodo della serie H610S a Element 12.5 o versione successiva e il nodo esegue una versione di Element precedente alla 11.8, sarà necessario eseguire i passaggi di aggiornamento aggiuntivi in questo https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["Articolo della Knowledge Base"^] per ogni nodo di archiviazione.  Se si utilizza Element 11.8 o una versione successiva, non sono necessari ulteriori passaggi di aggiornamento.
+
+
+
+== Utilizzare l'interfaccia utente di controllo NetApp Hybrid Cloud per aggiornare lo storage Element
+
+Utilizzando l'interfaccia utente di controllo di NetApp Hybrid Cloud, è possibile aggiornare un cluster di storage.
+
+
+CAUTION: Per potenziali problemi durante l'aggiornamento dei cluster di storage utilizzando NetApp Hybrid Cloud Control e le relative soluzioni alternative, vedere questo https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Potential_issues_and_workarounds_when_running_storage_upgrades_using_NetApp_Hybrid_Cloud_Control["Articolo della Knowledge Base"^] .
+
+.Passi
+. Aprire l'indirizzo IP del nodo di gestione in un browser web:
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. Accedi a NetApp Hybrid Cloud Control fornendo le credenziali di amministratore del cluster di storage.
+. Selezionare *Aggiorna* nella parte in alto a destra dell'interfaccia.
+. Nella pagina *Aggiornamenti*, seleziona *Archiviazione*.
++
+Nella scheda *Archiviazione* sono elencati i cluster di archiviazione che fanno parte dell'installazione.  Se un cluster non è accessibile da NetApp Hybrid Cloud Control, non verrà visualizzato nella pagina *Aggiornamenti*.
+
+. Scegli tra le seguenti opzioni ed esegui la serie di passaggi applicabili al tuo cluster:
++
+[cols="2*"]
+|===
+| Opzione | Passi 
+
+
+| Tutti i cluster che eseguono Element 11.8 e versioni successive  a| 
+.. Seleziona *Sfoglia* per caricare il pacchetto di aggiornamento che hai scaricato.
+.. Attendi il completamento del caricamento.  Una barra di avanzamento mostra lo stato del caricamento.
++
+
+CAUTION: Il caricamento del file andrà perso se si esce dalla finestra del browser.
+
++
+Una volta caricato e convalidato correttamente il file, verrà visualizzato un messaggio sullo schermo.  La convalida potrebbe richiedere diversi minuti.  Se in questa fase si esce dalla finestra del browser, il caricamento del file viene mantenuto.
+
+.. Seleziona *Inizia aggiornamento*.
++
+
+TIP: Lo *Stato dell'aggiornamento* cambia durante l'aggiornamento per riflettere lo stato del processo.  Cambia anche in risposta alle azioni intraprese, ad esempio sospendendo l'aggiornamento o se l'aggiornamento restituisce un errore. Vedere<<Modifiche allo stato dell'aggiornamento>> .
+
++
+
+NOTE: Mentre l'aggiornamento è in corso, puoi uscire dalla pagina e tornarci in un secondo momento per continuare a monitorare i progressi.  La pagina non aggiorna dinamicamente lo stato e la versione corrente se la riga del cluster è compressa.  Per aggiornare la tabella è necessario espandere la riga del cluster oppure è possibile aggiornare la pagina.
+
++
+Una volta completato l'aggiornamento, sarà possibile scaricare i registri.
+
+
+
+
+
+| Stai aggiornando un cluster H610S che esegue una versione Element precedente alla 11.8.  a| 
+.. Selezionare la freccia a discesa accanto al cluster che si sta aggiornando e scegliere tra le versioni di aggiornamento disponibili.
+.. Seleziona *Inizia aggiornamento*.  Una volta completato l'aggiornamento, l'interfaccia utente richiede di eseguire ulteriori passaggi di aggiornamento.
+.. Completare i passaggi aggiuntivi richiesti nel https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["Articolo della Knowledge Base"^] e conferma nell'interfaccia utente di aver completato la fase 2.
+
+
+Una volta completato l'aggiornamento, sarà possibile scaricare i registri.  Per informazioni sulle varie modifiche dello stato di aggiornamento, vedere<<Modifiche allo stato dell'aggiornamento>> .
+
+|===
+
+
+
+
+=== Modifiche allo stato dell'aggiornamento
+
+Ecco i diversi stati mostrati nella colonna *Stato aggiornamento* nell'interfaccia utente prima, durante e dopo il processo di aggiornamento:
+
+[cols="2*"]
+|===
+| Stato di aggiornamento | Descrizione 
+
+
+| Aggiornato | Il cluster è stato aggiornato all'ultima versione Element disponibile. 
+
+
+| Versioni disponibili | Sono disponibili versioni più recenti del firmware Element e/o di archiviazione per l'aggiornamento. 
+
+
+| In corso | L'aggiornamento è in corso.  Una barra di avanzamento mostra lo stato dell'aggiornamento.  I messaggi sullo schermo mostrano anche gli errori a livello di nodo e visualizzano l'ID di ciascun nodo nel cluster man mano che l'aggiornamento procede.  È possibile monitorare lo stato di ciascun nodo utilizzando l'interfaccia utente Element o il plug-in NetApp Element per l'interfaccia utente vCenter Server. 
+
+
+| Aggiornamento in pausa | Puoi scegliere di mettere in pausa l'aggiornamento.  A seconda dello stato del processo di aggiornamento, l'operazione di pausa può avere esito positivo o negativo.  Verrà visualizzato un messaggio nell'interfaccia utente che chiede di confermare l'operazione di pausa.  Per garantire che il cluster si trovi in una posizione sicura prima di sospendere un aggiornamento, potrebbero essere necessarie fino a due ore affinché l'operazione di aggiornamento venga completamente sospesa.  Per riprendere l'aggiornamento, seleziona *Riprendi*. 
+
+
+| In pausa | Hai messo in pausa l'aggiornamento.  Selezionare *Riprendi* per riprendere il processo. 
+
+
+| Errore | Si è verificato un errore durante l'aggiornamento.  È possibile scaricare il registro degli errori e inviarlo al supporto NetApp .  Dopo aver risolto l'errore, puoi tornare alla pagina e selezionare *Riprendi*.  Quando si riprende l'aggiornamento, la barra di avanzamento torna indietro per alcuni minuti mentre il sistema esegue il controllo dello stato e verifica lo stato attuale dell'aggiornamento. 
+
+
+| Completa con Follow-up | Solo per i nodi H610S che effettuano l'aggiornamento da una versione Element precedente alla 11.8.  Una volta completata la fase 1 del processo di aggiornamento, questo stato richiede di eseguire ulteriori passaggi di aggiornamento (vedere https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["Articolo della Knowledge Base"^] ).  Dopo aver completato la fase 2 e confermato di averla completata, lo stato cambia in *Aggiornato*. 
+|===
+
+
+== Utilizzare l'API NetApp Hybrid Cloud Control per aggiornare lo storage Element
+
+È possibile utilizzare le API per aggiornare i nodi di archiviazione in un cluster alla versione più recente del software Element.  Puoi utilizzare lo strumento di automazione che preferisci per eseguire le API.  Il flusso di lavoro API qui documentato utilizza come esempio l'interfaccia utente dell'API REST disponibile sul nodo di gestione.
+
+.Passi
+. Scaricare il pacchetto di aggiornamento dell'archiviazione su un dispositivo accessibile al nodo di gestione.
++
+Vai al software Element https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["pagina dei download"^] e scaricare l'immagine più recente del nodo di archiviazione.
+
+. Carica il pacchetto di aggiornamento dell'archiviazione sul nodo di gestione:
++
+.. Aprire l'interfaccia utente dell'API REST del nodo di gestione sul nodo di gestione:
++
+[listing]
+----
+https://<ManagementNodeIP>/package-repository/1/
+----
+.. Seleziona *Autorizza* e completa quanto segue:
++
+... Immettere il nome utente e la password del cluster.
+... Inserisci l'ID cliente come `mnode-client` .
+... Selezionare *Autorizza* per iniziare una sessione.
+... Chiudere la finestra di autorizzazione.
+
+
+.. Dall'interfaccia utente dell'API REST, seleziona *POST /packages*.
+.. Seleziona *Provalo*.
+.. Selezionare *Sfoglia* e selezionare il pacchetto di aggiornamento.
+.. Selezionare *Esegui* per avviare il caricamento.
+.. Dalla risposta, copia e salva l'ID del pacchetto(`"id"` ) per utilizzarlo in una fase successiva.
+
+
+. Verificare lo stato del caricamento.
++
+.. Dall'interfaccia utente dell'API REST, seleziona *GET​ /packages​/{id}​/status*.
+.. Seleziona *Provalo*.
+.. Inserisci l'ID del pacchetto copiato nel passaggio precedente in *id*.
+.. Selezionare *Esegui* per avviare la richiesta di stato.
++
+La risposta indica `state` COME `SUCCESS` una volta completato.
+
+
+
+. Individuare l'ID del cluster di archiviazione:
++
+.. Aprire l'interfaccia utente dell'API REST del nodo di gestione sul nodo di gestione:
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. Seleziona *Autorizza* e completa quanto segue:
++
+... Immettere il nome utente e la password del cluster.
+... Inserisci l'ID cliente come `mnode-client` .
+... Selezionare *Autorizza* per iniziare una sessione.
+... Chiudere la finestra di autorizzazione.
+
+
+.. Dall'interfaccia utente dell'API REST, seleziona *GET /installations*.
+.. Seleziona *Provalo*.
+.. Selezionare *Esegui*.
+.. Dalla risposta, copia l'ID della risorsa di installazione(`"id"` ).
+.. Dall'interfaccia utente dell'API REST, seleziona *GET /installations/{id}*.
+.. Seleziona *Provalo*.
+.. Incolla l'ID della risorsa di installazione nel campo *id*.
+.. Selezionare *Esegui*.
+.. Dalla risposta, copia e salva l'ID del cluster di archiviazione(`"id"` ) del cluster che intendi aggiornare per utilizzarlo in un passaggio successivo.
+
+
+. Eseguire l'aggiornamento dello storage:
++
+.. Aprire l'interfaccia utente dell'API REST di archiviazione sul nodo di gestione:
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+.. Seleziona *Autorizza* e completa quanto segue:
++
+... Immettere il nome utente e la password del cluster.
+... Inserisci l'ID cliente come `mnode-client` .
+... Selezionare *Autorizza* per iniziare una sessione.
+... Chiudere la finestra di autorizzazione.
+
+
+.. Selezionare *POST /aggiornamenti*.
+.. Seleziona *Provalo*.
+.. Immettere l'ID del pacchetto di aggiornamento nel campo dei parametri.
+.. Immettere l'ID del cluster di archiviazione nel campo dei parametri.
++
+Il payload dovrebbe essere simile al seguente esempio:
+
++
+[listing]
+----
+{
+  "config": {},
+  "packageId": "884f14a4-5a2a-11e9-9088-6c0b84e211c4",
+  "storageId": "884f14a4-5a2a-11e9-9088-6c0b84e211c4"
+}
+----
+.. Selezionare *Esegui* per avviare l'aggiornamento.
++
+La risposta dovrebbe indicare lo stato come `initializing` :
+
++
+[listing]
+----
+{
+  "_links": {
+    "collection": "https://localhost:442/storage/upgrades",
+    "self": "https://localhost:442/storage/upgrades/3fa85f64-1111-4562-b3fc-2c963f66abc1",
+    "log": https://localhost:442/storage/upgrades/3fa85f64-1111-4562-b3fc-2c963f66abc1/log
+  },
+  "storageId": "114f14a4-1a1a-11e9-9088-6c0b84e200b4",
+  "upgradeId": "334f14a4-1a1a-11e9-1055`-6c0b84e2001b4",
+  "packageId": "774f14a4-1a1a-11e9-8888-6c0b84e200b4",
+  "config": {},
+  "state": "initializing",
+  "status": {
+    "availableActions": [
+      "string"
+    ],
+    "message": "string",
+    "nodeDetails": [
+      {
+        "message": "string",
+        "step": "NodePreStart",
+        "nodeID": 0,
+        "numAttempt": 0
+      }
+    ],
+    "percent": 0,
+    "step": "ClusterPreStart",
+    "timestamp": "2020-04-21T22:10:57.057Z",
+    "failedHealthChecks": [
+      {
+        "checkID": 0,
+        "name": "string",
+        "displayName": "string",
+        "passed": true,
+        "kb": "string",
+        "description": "string",
+        "remedy": "string",
+        "severity": "string",
+        "data": {},
+        "nodeID": 0
+      }
+    ]
+  },
+  "taskId": "123f14a4-1a1a-11e9-7777-6c0b84e123b2",
+  "dateCompleted": "2020-04-21T22:10:57.057Z",
+  "dateCreated": "2020-04-21T22:10:57.057Z"
+}
+----
+.. Copia l'ID di aggiornamento(`"upgradeId"` ) che fa parte della risposta.
+
+
+. Verificare l'avanzamento e i risultati dell'aggiornamento:
++
+.. Selezionare *GET ​/upgrades/{upgradeId}*.
+.. Seleziona *Provalo*.
+.. Inserisci l'ID di aggiornamento del passaggio precedente in *upgradeId*.
+.. Selezionare *Esegui*.
+.. Se durante l'aggiornamento si verificano problemi o si verificano requisiti particolari, procedere come segue:
++
+[cols="2*"]
+|===
+| Opzione | Passi 
+
+
+| È necessario correggere i problemi di integrità del cluster dovuti a `failedHealthChecks` messaggio nel corpo della risposta.  a| 
+... Andare all'articolo specifico della Knowledge Base elencato per ciascun problema oppure eseguire la soluzione specificata.
+... Se viene specificata una KB, completare la procedura descritta nell'articolo della KB pertinente.
+... Dopo aver risolto i problemi del cluster, ripetere l'autenticazione se necessario e selezionare *PUT ​/upgrades/{upgradeId}*.
+... Seleziona *Provalo*.
+... Inserisci l'ID di aggiornamento del passaggio precedente in *upgradeId*.
+... Entra `"action":"resume"` nel corpo della richiesta.
++
+[listing]
+----
+{
+  "action": "resume"
+}
+----
+... Selezionare *Esegui*.
+
+
+
+
+| È necessario sospendere l'aggiornamento perché la finestra di manutenzione sta per chiudersi o per un altro motivo.  a| 
+... Se necessario, ripetere l'autenticazione e selezionare *PUT ​/upgrades/{upgradeId}*.
+... Seleziona *Provalo*.
+... Inserisci l'ID di aggiornamento del passaggio precedente in *upgradeId*.
+... Entra `"action":"pause"` nel corpo della richiesta.
++
+[listing]
+----
+{
+  "action": "pause"
+}
+----
+... Selezionare *Esegui*.
+
+
+
+
+| Se si sta aggiornando un cluster H610S che esegue una versione Element precedente alla 11.8, viene visualizzato lo stato `finishedNeedsAck` nel corpo della risposta. È necessario eseguire ulteriori passaggi di aggiornamento per ciascun nodo di archiviazione H610S.  a| 
+... Completare i passaggi di aggiornamento aggiuntivi in questo https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["Articolo della Knowledge Base"^] per ogni nodo.
+... Se necessario, ripetere l'autenticazione e selezionare *PUT ​/upgrades/{upgradeId}*.
+... Seleziona *Provalo*.
+... Inserisci l'ID di aggiornamento del passaggio precedente in *upgradeId*.
+... Entra `"action":"acknowledge"` nel corpo della richiesta.
++
+[listing]
+----
+{
+  "action": "acknowledge"
+}
+----
+... Selezionare *Esegui*.
+
+
+|===
+.. Eseguire l'API *GET ​/upgrades/{upgradeId}* più volte, secondo necessità, fino al completamento del processo.
++
+Durante l'aggiornamento, il `status` indica `running` se non si riscontrano errori.  Man mano che ogni nodo viene aggiornato, il `step` il valore cambia in `NodeFinished` .
+
++
+L'aggiornamento è terminato con successo quando `percent` il valore è `100` e il `state` indica `finished` .
+
+
+
+
+
+
+
+== Cosa succede se un aggiornamento non riesce utilizzando NetApp Hybrid Cloud Control
+
+Se un'unità o un nodo si guasta durante un aggiornamento, l'interfaccia utente di Element mostrerà gli errori del cluster.  Il processo di aggiornamento non passa al nodo successivo e attende la risoluzione degli errori del cluster.  La barra di avanzamento nell'interfaccia utente mostra che l'aggiornamento è in attesa della risoluzione degli errori del cluster.  In questa fase, selezionare *Pausa* nell'interfaccia utente non funzionerà, perché l'aggiornamento attende che il cluster sia integro.  Sarà necessario contattare il supporto NetApp per ricevere assistenza nell'indagine sul guasto.
+
+NetApp Hybrid Cloud Control ha un periodo di attesa preimpostato di tre ore, durante il quale può verificarsi uno dei seguenti scenari:
+
+* Gli errori del cluster vengono risolti entro la finestra temporale di tre ore e l'aggiornamento riprende.  In questo scenario non è necessario intraprendere alcuna azione.
+* Il problema persiste dopo tre ore e lo stato dell'aggiornamento mostra *Errore* con un banner rosso.  Dopo aver risolto il problema, puoi riprendere l'aggiornamento selezionando *Riprendi*.
+* Il supporto NetApp ha stabilito che l'aggiornamento deve essere interrotto temporaneamente per adottare misure correttive prima della scadenza delle tre ore.  Il supporto utilizzerà l'API per annullare l'aggiornamento.
+
+
+
+CAUTION: L'interruzione dell'aggiornamento del cluster durante l'aggiornamento di un nodo potrebbe comportare la rimozione non corretta delle unità dal nodo.  Se le unità vengono rimosse in modo improprio, aggiungerle nuovamente durante un aggiornamento richiederà l'intervento manuale del supporto NetApp .  Il nodo potrebbe impiegare più tempo per eseguire gli aggiornamenti del firmware o le attività di sincronizzazione post-aggiornamento.  Se l'aggiornamento sembra bloccato, contattare il supporto NetApp per ricevere assistenza.
+
+[discrete]
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+

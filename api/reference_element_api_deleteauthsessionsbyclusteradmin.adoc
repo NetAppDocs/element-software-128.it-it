@@ -1,0 +1,105 @@
+---
+permalink: api/reference_element_api_deleteauthsessionsbyclusteradmin.html 
+sidebar: sidebar 
+keywords: auth sessions,cluster,admin,delete,authentication sessions 
+summary: È possibile utilizzare il metodo DeleteAuthSessionsByClusterAdmin per eliminare tutte le sessioni di autenticazione associate al ClusterAdminID specificato.  Se il ClusterAdminID specificato è mappato a un gruppo di utenti, tutte le sessioni di autenticazione per tutti i membri di quel gruppo verranno eliminate.  Per visualizzare un elenco di sessioni da eliminare, utilizzare il metodo ListAuthSessionsByClusterAdmin con il parametro ClusterAdminID. 
+---
+= DeleteAuthSessionsByClusterAdmin
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `DeleteAuthSessionsByClusterAdmin` metodo per eliminare tutte le sessioni di autenticazione associate allo specificato `ClusterAdminID` .  Se il ClusterAdminID specificato è mappato a un gruppo di utenti, tutte le sessioni di autenticazione per tutti i membri di quel gruppo verranno eliminate.  Per visualizzare un elenco di sessioni per una possibile eliminazione, utilizzare il metodo ListAuthSessionsByClusterAdmin con `ClusterAdminID` parametro.
+
+
+
+== Parametri
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+ID amministratore cluster
+ a| 
+Identificatore univoco per l'amministratore del cluster.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+SÌ
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+sessioni
+ a| 
+Informazioni sulla sessione per le sessioni di autenticazione eliminate.
+ a| 
+link:reference_element_api_authsessioninfo.html["authSessionInfo"]
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "method": "DeleteAuthSessionsByClusterAdmin",
+  "params": {
+    "clusterAdminID": 1
+  }
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+"sessions": [
+      {
+        "accessGroupList": [
+          "administrator"
+        ],
+        "authMethod": "Cluster",
+        "clusterAdminIDs": [
+          1
+        ],
+        "finalTimeout": "2020-03-14T19:21:24Z",
+        "idpConfigVersion": 0,
+        "lastAccessTimeout": "2020-03-11T19:51:24Z",
+        "sessionCreationTime": "2020-03-11T19:21:24Z",
+        "sessionID": "b12bfc64-f233-44df-8b9f-6fb6c011abf7",
+        "username": "admin"
+      }
+    ]
+}
+----
+
+
+== Nuovo dalla versione
+
+12,0

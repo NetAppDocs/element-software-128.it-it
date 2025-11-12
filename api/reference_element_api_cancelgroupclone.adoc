@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_cancelgroupclone.html 
+sidebar: sidebar 
+keywords:  
+summary: 'È possibile utilizzare il metodo CancelGroupClone per interrompere un processo di clonazione in corso su un gruppo di volumi.  Quando si annulla un"operazione di clonazione di gruppo, il sistema completa e rimuove l"asyncHandle associato all"operazione.' 
+---
+= AnnullaGruppoClona
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `CancelGroupClone` metodo per interrompere un processo di clonazione in corso su un gruppo di volumi.  Quando si annulla un'operazione di clonazione di gruppo, il sistema completa e rimuove l'asyncHandle associato all'operazione.
+
+
+
+== Parametro
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+groupCloneID
+ a| 
+Il cloneID per il processo di clonazione in corso.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+SÌ
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo non ha valori di ritorno.
+
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "CancelGroupClone",
+   "params": {
+      "cloneID" : 5,
+   },
+   "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {}
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

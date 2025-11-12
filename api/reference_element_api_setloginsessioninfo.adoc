@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_setloginsessioninfo.html 
+sidebar: sidebar 
+keywords: authentication,login,session,info,timeout,setloginsessioninfo 
+summary: 'È possibile utilizzare il metodo SetLoginSessionInfo per impostare il periodo di validità di un"autenticazione di accesso per una sessione.  Una volta trascorso il periodo di accesso senza attività sul sistema, l"autenticazione scade.  Per continuare ad accedere al cluster una volta trascorso il periodo di accesso, sono necessarie nuove credenziali di accesso.' 
+---
+= SetLoginSessionInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `SetLoginSessionInfo` metodo per impostare il periodo di tempo per cui è valida un'autenticazione di accesso per una sessione.  Una volta trascorso il periodo di accesso senza attività sul sistema, l'autenticazione scade.  Per continuare ad accedere al cluster una volta trascorso il periodo di accesso, sono necessarie nuove credenziali di accesso.
+
+
+
+== Parametro
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+tempo scaduto
+ a| 
+Periodo di scadenza dell'autenticazione del cluster.  Formattato in HH:mm:ss.  Ad esempio: 01:30:00, 00:90:00 e 00:00:5400 possono essere tutti utilizzati per ottenere un periodo di timeout di 90 minuti.  Il valore minimo di timeout è 1 minuto.  Se non viene specificato alcun valore o è impostato su zero, la sessione di accesso non ha alcun valore di timeout.
+ a| 
+corda
+ a| 
+30 minuti
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo non ha valore di ritorno.
+
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "method": "SetLoginSessionInfo",
+  "params": {
+    "timeout" : "01:30:00"
+   },
+   "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {}
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

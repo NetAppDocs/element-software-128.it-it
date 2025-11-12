@@ -1,0 +1,55 @@
+---
+permalink: storage/task_snapmirror_add_labels_to_snapshot_schedules.html 
+sidebar: sidebar 
+keywords: element, ui, snapmirror, labels, schedules, policies 
+summary: È possibile aggiungere etichette SnapMirror alle pianificazioni degli snapshot per garantire che venga applicata una policy SnapMirror .  È possibile visualizzare le etichette disponibili da una finestra di dialogo di relazione SnapMirror esistente o da NetAppONTAP System Manager. 
+---
+= Aggiungere etichette SnapMirror alle pianificazioni degli snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile aggiungere etichette SnapMirror alle pianificazioni degli snapshot per garantire che venga applicata una policy SnapMirror .  È possibile visualizzare le etichette disponibili da una finestra di dialogo di relazione SnapMirror esistente o da NetAppONTAP System Manager.
+
+.Cosa ti servirà
+* SnapMirror deve essere abilitato a livello di cluster.
+* L'etichetta che vuoi aggiungere esiste già in ONTAP.
+
+
+.Passi
+. Fare clic su *Protezione dati* > *Pianificazioni*.
+. Aggiungere un'etichetta SnapMirror a una pianificazione in uno dei seguenti modi:
++
+[cols="25,75"]
+|===
+| Opzione | Passi 
+
+
+ a| 
+Creazione di un nuovo programma
+ a| 
+.. Seleziona *Crea pianificazione*.
+.. Inserisci tutti gli altri dettagli rilevanti.
+.. Seleziona *Crea pianificazione*.
+
+
+
+
+ a| 
+Modifica della pianificazione esistente
+ a| 
+.. Fare clic sull'icona *Azioni* per la pianificazione a cui si desidera aggiungere un'etichetta e selezionare *Modifica*.
+.. Nella finestra di dialogo visualizzata, immettere il testo nel campo *Etichetta SnapMirror *.
+.. Selezionare *Salva modifiche*.
+
+
+|===
+
+
+
+
+== Trova maggiori informazioni
+
+xref:task_data_protection_create_a_snapshot_schedule.adoc[Creare una pianificazione snapshot]

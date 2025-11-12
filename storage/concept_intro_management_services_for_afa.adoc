@@ -1,0 +1,14 @@
+---
+permalink: storage/concept_intro_management_services_for_afa.html 
+sidebar: sidebar 
+keywords: management services, aff 
+summary: 'I servizi di gestione forniscono funzionalità di gestione centralizzata ed estesa per l"archiviazione all-flash SolidFire .  Questi servizi includono la telemetria del sistema Active IQ , la registrazione e gli aggiornamenti dei servizi, nonché il servizio QoSSIOC per Element Plug-in per vCenter.' 
+---
+= Servizi di gestione per l'archiviazione all-flash SolidFire
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I servizi di gestione forniscono funzionalità di gestione centralizzata ed estesa per l'archiviazione all-flash SolidFire .  Questi servizi includono la telemetria del sistema Active IQ , la registrazione e gli aggiornamenti dei servizi, nonché il servizio QoSSIOC per Element Plug-in per vCenter.

@@ -1,0 +1,134 @@
+---
+permalink: api/reference_element_api_removeinitiatorsfromvolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: initiators,initiator,volume,access,group,remove,removing,removeinitiatorsfromvolumeaccessgroup 
+summary: È possibile utilizzare il metodo RemoveInitiatorsFromVolumeAccessGroup per rimuovere gli iniziatori da un gruppo di accesso al volume specificato. 
+---
+= RemoveInitiatorsFromVolumeAccessGroup
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `RemoveInitiatorsFromVolumeAccessGroup` metodo per rimuovere gli iniziatori da un gruppo di accesso al volume specificato.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+volumeAccessGroupID
+ a| 
+ID del gruppo di accesso al volume da cui vengono rimossi gli iniziatori.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+iniziatori
+ a| 
+Elenco di ID o nomi degli iniziatori (IQN e WWPN) da includere nel gruppo di accesso al volume.  Se si passa un elenco di nomi di iniziatori, gli iniziatori vengono creati se non esistono già.  Se si passa un elenco di ID iniziatori, il metodo restituisce un errore se uno qualsiasi degli iniziatori non esiste già.  Il passaggio dei nomi degli iniziatori è deprecato; è consigliabile utilizzare gli ID degli iniziatori ogniqualvolta possibile.
+ a| 
+array di interi (consigliato) o array di stringhe (obsoleto)
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+deleteOrphanInitiators
+ a| 
+Specifica se eliminare o meno gli oggetti iniziatori dopo che sono stati rimossi da un gruppo di accesso al volume. Valori possibili:
+
+* true: elimina gli oggetti iniziatori dopo che sono stati rimossi da un gruppo di accesso al volume.
+* false: non eliminare gli oggetti iniziatori dopo che sono stati rimossi da un gruppo di accesso al volume. Questa è l'impostazione predefinita.
+
+ a| 
+booleano
+ a| 
+falso
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+volumeAccessGroup
+ a| 
+Un oggetto contenente informazioni sul gruppo di accesso al volume appena modificato.
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[volumeAccessGroup]
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "id": 13171,
+  "method": "RemoveInitiatorsFromVolumeAccessGroup",
+  "params": {
+    "initiators": [114,115],
+    "volumeAccessGroupID": 96
+  }
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id": 13171,
+  "result": {
+    "volumeAccessGroup": {
+      "attributes": {},
+      "deletedVolumes": [
+        327
+      ],
+      "initiatorIDs": [],
+      "initiators": [],
+      "name": "test",
+      "volumeAccessGroupID": 96,
+      "volumes": [
+        346
+      ]
+    }
+  }
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

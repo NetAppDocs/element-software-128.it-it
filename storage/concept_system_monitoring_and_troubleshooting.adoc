@@ -1,0 +1,36 @@
+---
+permalink: storage/concept_system_monitoring_and_troubleshooting.html 
+sidebar: sidebar 
+keywords: trouble, troubleshoot, monitor, element, alert, event 
+summary: È necessario monitorare il sistema a fini diagnostici e per ottenere informazioni sulle tendenze delle prestazioni e sugli stati delle varie operazioni del sistema.  Potrebbe essere necessario sostituire nodi o SSD per scopi di manutenzione. 
+---
+= Risolvi i problemi del tuo sistema
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario monitorare il sistema a fini diagnostici e per ottenere informazioni sulle tendenze delle prestazioni e sugli stati delle varie operazioni del sistema.  Potrebbe essere necessario sostituire nodi o SSD per scopi di manutenzione.
+
+* link:task_monitor_information_about_system_events.html["Visualizza informazioni sugli eventi di sistema"]
+* link:reference_monitor_status_of_running_tasks.html["Visualizza lo stato delle attività in esecuzione"]
+* link:task_monitor_system_alerts.html["Visualizza gli avvisi di sistema"]
+* link:task_monitor_node_performance_activity.html["Visualizza l'attività delle prestazioni del nodo"]
+* link:task_monitor_volume_performance.html["Visualizza le prestazioni del volume"]
+* link:task_monitor_iscsi_sessions.html["Visualizza le sessioni iSCSI"]
+* link:task_monitor_fibre_channel_sessions.html["Visualizza le sessioni Fibre Channel"]
+* link:concept_troubleshoot_drives.html["Risoluzione dei problemi delle unità"]
+* link:concept_remove_nodes_from_cluster.html["Risoluzione dei problemi dei nodi"]
+* link:concept_per_node_work_with_utilities.html["Lavorare con utilità per nodo per nodi di archiviazione"]
+* link:concept_mnode_work_with_the_management_node.html["Lavorare con il nodo di gestione"]
+* link:concept_monitor_understand_cluster_fullness_levels.html["Comprendere i livelli di pienezza del cluster"]
+
+
+
+
+== Per maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+

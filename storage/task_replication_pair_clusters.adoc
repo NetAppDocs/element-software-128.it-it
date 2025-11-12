@@ -1,0 +1,47 @@
+---
+permalink: storage/task_replication_pair_clusters.html 
+sidebar: sidebar 
+keywords: pair clusters, replication, connect clusters, data protection 
+summary: 'Per utilizzare la funzionalità di replica in tempo reale, è necessario innanzitutto associare due cluster.  Dopo aver associato e connesso due cluster, è possibile configurare i volumi attivi su un cluster in modo che vengano replicati continuamente su un secondo cluster, garantendo una protezione continua dei dati (CDP).' 
+---
+= Cluster di coppie per la replicazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per utilizzare la funzionalità di replica in tempo reale, è necessario innanzitutto associare due cluster.  Dopo aver associato e connesso due cluster, è possibile configurare i volumi attivi su un cluster in modo che vengano replicati continuamente su un secondo cluster, garantendo una protezione continua dei dati (CDP).
+
+.Cosa ti servirà
+* È necessario disporre dei privilegi di amministratore del cluster per uno o entrambi i cluster da associare.
+* Tutti i MIP e i SIP dei nodi vengono instradati l'uno verso l'altro.
+* Meno di 2000 ms di latenza di andata e ritorno tra i cluster.
+* Entrambi i cluster di storage devono avere nomi di cluster, MVIP, SVIP e tutti gli indirizzi IP dei nodi univoci.
+* La differenza tra le versioni del software Element sui cluster non è maggiore di una versione principale.  Se la differenza è maggiore, è necessario aggiornare uno dei cluster per eseguire la replica dei dati.
+
+
+
+NOTE: L'associazione dei cluster richiede la piena connettività tra i nodi sulla rete di gestione.  La replica richiede la connettività tra i singoli nodi sulla rete del cluster di archiviazione.
+
+È possibile associare un cluster a un massimo di altri quattro cluster per replicare i volumi.  È anche possibile associare tra loro i cluster all'interno del gruppo di cluster.
+
+
+
+== Accoppiare i cluster utilizzando MVIP o una chiave di associazione
+
+È possibile associare un cluster di origine e uno di destinazione utilizzando l'MVIP del cluster di destinazione se è presente l'accesso dell'amministratore del cluster a entrambi i cluster.  Se l'accesso dell'amministratore del cluster è disponibile solo su un cluster in una coppia di cluster, è possibile utilizzare una chiave di associazione sul cluster di destinazione per completare l'associazione del cluster.
+
+. Selezionare uno dei seguenti metodi per associare i cluster:
++
+** link:task_replication_pair_cluster_using_mvip.html["Cluster di coppie tramite MVIP"]: Utilizzare questo metodo se l'amministratore del cluster ha accesso a entrambi i cluster. Questo metodo utilizza l'MVIP del cluster remoto per accoppiare due cluster.
+** link:task_replication_pair_cluster_using_pairing_key.html["Accoppia i cluster utilizzando una chiave di associazione"]: Utilizzare questo metodo se l'amministratore del cluster ha accesso solo a uno dei cluster. Questo metodo genera una chiave di associazione che può essere utilizzata sul cluster di destinazione per completare l'associazione del cluster.
+
+
+
+
+
+
+== Trova maggiori informazioni
+
+xref:reference_prereq_network_port_requirements.adoc[Requisiti delle porte di rete]

@@ -1,0 +1,30 @@
+---
+permalink: storage/task_post_deploy_configure_system_options.html 
+sidebar: sidebar 
+keywords: deployment, post deployment options, credentials, components, FIPS security, passwords, MFA, multifactor authentication, mutli-factor authentication, security, EKM, key management, external key management, FIPS 
+summary: 'Dopo aver configurato il sistema SolidFire , potresti voler eseguire alcune attività facoltative.  Inoltre, è possibile configurare le impostazioni per l"autenticazione a più fattori, la gestione delle chiavi esterne e la sicurezza FIPS (Federal Information Processing Standards).' 
+---
+= Configurare le opzioni del sistema SolidFire dopo la distribuzione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver configurato il sistema SolidFire , potresti voler eseguire alcune attività facoltative.
+
+Se modifichi le credenziali nel sistema, potresti voler conoscere l'impatto sugli altri componenti.
+
+Inoltre, è possibile configurare le impostazioni per l'autenticazione a più fattori, la gestione delle chiavi esterne e la sicurezza FIPS (Federal Information Processing Standards).  Dovresti anche aggiornare le password quando necessario.
+
+
+
+== Trova maggiori informazioni
+
+* link:task_post_deploy_credentials.html["Modificare le credenziali in NetApp HCI e NetApp SolidFire"]
+* link:reference_post_deploy_change_default_ssl_certificate.html["Cambia il certificato SSL predefinito del software Element"]
+* link:task_post_deploy_credential_change_ipmi_password.html["Cambia la password IPMI per i nodi"]
+* link:task_system_manage_mfa_set_up_multi_factor_authentication.html["Abilita l'autenticazione a più fattori"]
+* link:concept_system_manage_key_get_started_with_external_key_management.html["Inizia con la gestione delle chiavi esterne"]
+* link:task_system_manage_fips_create_a_cluster_supporting_fips_drives.html["Creare un cluster che supporti le unità FIPS"]
+

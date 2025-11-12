@@ -1,0 +1,51 @@
+---
+permalink: storage/task_data_manage_volumes_purge_a_volume.html 
+sidebar: sidebar 
+keywords: volumes, purge a volume 
+summary: Quando un volume viene eliminato, viene rimosso definitivamente dal sistema.  Tutti i dati nel volume andranno persi. 
+---
+= Svuota un volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando un volume viene eliminato, viene rimosso definitivamente dal sistema.  Tutti i dati nel volume andranno persi.
+
+Il sistema elimina automaticamente i volumi eliminati otto ore dopo l'eliminazione.  Tuttavia, se si desidera eliminare un volume prima dell'orario programmato, è possibile farlo.
+
+
+NOTE: Se si elimina un numero elevato di volumi contemporaneamente o se ai volumi eliminati sono associati molti snapshot, il processo di eliminazione potrebbe non riuscire e restituire l'errore "xDBConnectionLoss", che verrebbe visualizzato nel registro API nell'interfaccia utente Web di Element.  In tal caso, riprovare l'eliminazione con volumi inferiori.
+
+. Selezionare *Gestione* > *Volumi*.
+. Fare clic sul pulsante *Eliminato*.
+. Eseguire i passaggi per eliminare un singolo volume o più volumi.
++
+|===
+
+
+| Opzione | Passi 
+
+
+ a| 
+Svuotare un singolo volume
+ a| 
+.. Fare clic sull'icona Azioni relativa al volume che si desidera eliminare.
+.. Fare clic su *Elimina*.
+.. Conferma l'azione.
+
+
+
+
+ a| 
+Svuota più volumi
+ a| 
+.. Selezionare i volumi che si desidera eliminare.
+.. Fare clic su *Azioni in blocco*.
+.. Nel menu che si apre, seleziona *Elimina*.
+.. Conferma l'azione.
+
+
+|===
+

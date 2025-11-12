@@ -1,0 +1,32 @@
+---
+permalink: storage/concept_system_manage_nodes_node_versioning_and_compatibility.html 
+sidebar: sidebar 
+keywords: compatibility, node version, clusters, software version, compatible versions, major, minor, micro 
+summary: 'La compatibilità dei nodi si basa sulla versione del software Element installata su un nodo.  I cluster di storage basati sul software Element creano automaticamente un"immagine di un nodo nella versione del software Element sul cluster se il nodo e il cluster non hanno versioni compatibili.' 
+---
+= Versionamento e compatibilità dei nodi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La compatibilità dei nodi si basa sulla versione del software Element installata su un nodo.  I cluster di storage basati sul software Element creano automaticamente un'immagine di un nodo nella versione del software Element sul cluster se il nodo e il cluster non hanno versioni compatibili.
+
+L'elenco seguente descrive i livelli di significatività della versione software che compongono il numero di versione del software Element:
+
+* *Maggiore*
++
+Il primo numero indica la versione del software.  Un nodo con un numero di componente principale non può essere aggiunto a un cluster contenente nodi con un numero di patch principale diverso, né è possibile creare un cluster con nodi con versioni principali miste.
+
+* *Minore*
++
+Il secondo numero indica funzionalità software minori o miglioramenti alle funzionalità software esistenti che sono stati aggiunti a una versione principale.  Questo componente viene incrementato all'interno di un componente di versione principale per indicare che questa versione incrementale non è compatibile con nessun'altra versione incrementale del software Element con un componente secondario diverso.  Ad esempio, 11.0 non è compatibile con 11.1 e 11.1 non è compatibile con 11.2.
+
+* *Micro*
++
+Il terzo numero indica una patch compatibile (release incrementale) con la versione del software Element rappresentata dai componenti major.minor.  Ad esempio, 11.0.1 è compatibile con 11.0.2 e 11.0.2 è compatibile con 11.0.3.
+
+
+
+Per garantire la compatibilità, i numeri di versione principale e secondaria devono corrispondere.  Per garantire la compatibilità, i micronumeri non devono necessariamente corrispondere.

@@ -1,0 +1,63 @@
+---
+permalink: storage/task_data_protection_configure_custom_protection_domains.html 
+sidebar: sidebar 
+keywords:  
+summary: È possibile configurare domini di protezione personalizzati per migliorare la resilienza del cluster. 
+---
+= Configurare domini di protezione personalizzati
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per i cluster Element che contengono più di due nodi di archiviazione, è possibile configurare domini di protezione personalizzati per ciascun nodo.  Quando si configurano domini di protezione personalizzati, è necessario assegnare tutti i nodi del cluster a un dominio.
+
+
+TIP: Quando si assegnano domini di protezione, inizia una sincronizzazione dei dati tra i nodi e alcune operazioni del cluster non sono disponibili finché la sincronizzazione dei dati non viene completata.  Dopo aver configurato un dominio di protezione personalizzato per un cluster, quando si aggiunge un nuovo nodo di archiviazione, non è possibile aggiungere unità per il nuovo nodo finché non si assegna un dominio di protezione per il nodo e non si consente il completamento della sincronizzazione dei dati.  Visita illink:../concepts/concept_solidfire_concepts_data_protection.html#protection-domains["Documentazione sui domini di protezione"] per saperne di più sui domini di protezione.
+
+
+NOTE: Affinché uno schema di dominio di protezione personalizzato sia utile per un cluster, tutti i nodi di archiviazione all'interno di ogni chassis devono essere assegnati allo stesso dominio di protezione personalizzato.  Per ottenere questo risultato, è necessario creare tutti i domini di protezione personalizzati necessari (lo schema di dominio di protezione personalizzato più piccolo possibile è di tre domini).  Come buona pratica, configura un numero uguale di nodi per dominio e prova a garantire che ogni nodo assegnato a un dominio specifico sia dello stesso tipo.
+
+.Passi
+. Fare clic su *Cluster* > *Nodi*.
+. Fare clic su *Configura domini di protezione*.
++
+Nella finestra *Configura domini di protezione personalizzati*, è possibile visualizzare i domini di protezione attualmente configurati (se presenti), nonché le assegnazioni dei domini di protezione per i singoli nodi.
+
+. Inserisci un nome per il nuovo dominio di protezione personalizzato e fai clic su *Crea*.
++
+Ripetere questo passaggio per tutti i nuovi domini di protezione che si desidera creare.
+
+. Per ogni nodo nell'elenco *Assegna nodi*, fare clic sul menu a discesa nella colonna *Dominio di protezione* e selezionare un dominio di protezione da assegnare a quel nodo.
++
+
+CAUTION: Prima di applicare le modifiche, assicurati di comprendere il layout del nodo e dello chassis, lo schema del dominio di protezione personalizzato configurato e gli effetti dello schema sulla protezione dei dati.  Se si applica uno schema di dominio di protezione e si hanno immediatamente necessità di apportare modifiche, potrebbe volerci del tempo prima che sia possibile farlo a causa della sincronizzazione dei dati che avviene una volta applicata una configurazione.
+
+. Fare clic su *Configura domini di protezione*.
+
+
+.Risultato
+A seconda delle dimensioni del cluster, la sincronizzazione dei dati tra i domini potrebbe richiedere del tempo.  Una volta completata la sincronizzazione dei dati, è possibile visualizzare le assegnazioni personalizzate del dominio di protezione nella pagina *Cluster* > *Nodi* e la dashboard dell'interfaccia utente Web di Element mostra lo stato di protezione del cluster nel riquadro *Stato del dominio di protezione personalizzato*.
+
+.Possibili errori
+Ecco alcuni errori che potresti visualizzare dopo aver applicato una configurazione personalizzata del dominio di protezione:
+
+|===
+
+
+| Errore | Descrizione | Risoluzione 
+
+
+| Errore di SetProtectionDomainLayout: ProtectionDomainLayout renderebbe inutilizzabile NodeID {9}.  Non è possibile utilizzare contemporaneamente nomi predefiniti e non predefiniti. | A un nodo non è assegnato alcun dominio di protezione. | Assegnare un dominio di protezione al nodo. 
+
+
+| Errore SetProtectionDomainLayout: il tipo di dominio di protezione 'personalizzato' divide il tipo di dominio di protezione 'chassis'. | A un nodo in uno chassis multi-nodo viene assegnato un dominio di protezione diverso dagli altri nodi nello chassis. | Assicurarsi che a tutti i nodi nello chassis sia assegnato lo stesso dominio di protezione. 
+|===
+
+
+== Trova maggiori informazioni
+
+* link:../concepts/concept_solidfire_concepts_data_protection.html#custom_pd["Domini di protezione personalizzati"^]
+* link:../api/concept_element_api_about_the_api.html["Gestisci l'archiviazione con l'API Element"^]
+

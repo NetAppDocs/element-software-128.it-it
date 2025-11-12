@@ -1,0 +1,88 @@
+---
+permalink: api/reference_element_api_getsoftwareencryptionatrestinfo.html 
+sidebar: sidebar 
+keywords: system, api, security, get, getting, software encryption at rest 
+summary: È possibile utilizzare il metodo GetSoftwareEncryptionAtRestInfo per ottenere le informazioni utilizzate dal cluster per crittografare i dati inattivi. 
+---
+= Ottieni informazioni sulla crittografia software a riposo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `GetSoftwareEncryptionAtRestInfo` Metodo per ottenere informazioni sulla crittografia software a riposo che il cluster utilizza per crittografare i dati a riposo.
+
+
+
+== Parametri
+
+Questo metodo non ha parametri di input.
+
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+[cols="4*"]
+|===
+| Parametro | Descrizione | Tipo | Opzionale 
+
+
+| masterKeyInfo | Informazioni sulla chiave master di crittografia a riposo del software corrente. | EncryptionKeyInfo | VERO 
+
+
+| rekeyMasterKeyAsyncResultID | ID del risultato asincrono dell'operazione di reimpostazione delle chiavi corrente o più recente (se presente), se non è stata ancora eliminata. `GetAsyncResult` l'output includerà un `newKey` campo che contiene informazioni sulla nuova chiave principale e un `keyToDecommission` campo che contiene informazioni sulla vecchia chiave. | intero | VERO 
+
+
+| stato | Stato attuale della crittografia software a riposo.  I valori possibili sono `disabled` O `enabled` . | corda | Falso 
+
+
+| versione | Numero di versione che viene incrementato ogni volta che viene abilitata la crittografia software a riposo. | intero | Falso 
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+ "method": "getsoftwareencryptionatrestinfo"
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "masterKeyInfo": {
+            "keyCreatedTime": "2021-09-20T23:15:56Z",
+            "keyID": "4d80a629-a11b-40ab-8b30-d66dd5647cfd",
+            "keyManagementType": "internal"
+        },
+        "state": "enabled",
+        "version": 1
+    }
+}
+----
+
+
+== Nuovo dalla versione
+
+12,3
+
+[discrete]
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentazione per le versioni precedenti dei prodotti NetApp SolidFire ed Element"^]
+

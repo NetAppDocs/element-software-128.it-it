@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_getsnapmirrorclusteridentity.html 
+sidebar: sidebar 
+keywords: get,getting,SnapMirror,cluster,identity,GetSnapMirrorClusterIdentity 
+summary: 'L"interfaccia utente Web del software Element utilizza GetSnapMirrorClusterIdentity per ottenere informazioni sull"identità del cluster ONTAP .' 
+---
+= OttieniSnapMirrorClusterIdentity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'interfaccia utente web del software Element utilizza `GetSnapMirrorClusterIdentity` per ottenere informazioni sull'identità del cluster ONTAP .
+
+
+
+== Parametro
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Se specificato, il sistema elenca l'identità del cluster dell'endpoint con lo snapMirrorEndpointID specificato.  Se non specificato, il sistema elenca l'identità del cluster di tutti gli endpoint SnapMirror noti.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+snapMirrorClusterIdentity
+ a| 
+Un elenco delle identità del cluster degli endpoint SnapMirror .
+ a| 
+xref:reference_element_api_snapmirrorclusteridentity.adoc[snapMirrorClusterIdentity]vettore
+
+|===
+
+
+== Nuovo dalla versione
+
+10,1

@@ -1,0 +1,217 @@
+---
+permalink: api/reference_element_api_syncjob.html 
+sidebar: sidebar 
+keywords: object,objects,syncjob 
+summary: 'L"oggetto syncJob contiene informazioni sui processi di clonazione, replica remota o sincronizzazione delle sezioni in esecuzione su un cluster.' 
+---
+= sincronizzazioneJob
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto syncJob contiene informazioni sui processi di clonazione, replica remota o sincronizzazione delle sezioni in esecuzione su un cluster.
+
+È possibile recuperare le informazioni di sincronizzazione con `ListSyncJobs` Metodo API.
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+blocchi al secondo
+ a| 
+Numero di blocchi di dati trasferiti al secondo dal cluster di origine al cluster di destinazione.  Presente solo se il membro del tipo è impostato su remoto.
+ a| 
+intero
+
+
+
+ a| 
+tipo di ramo
+ a| 
+Restituito solo per i processi di sincronizzazione della replica remota. Valori possibili:
+
+* istantanea
+* volume
+
+ a| 
+corda
+
+
+
+ a| 
+byte al secondo
+ a| 
+Numero di byte che il clone elabora al secondo.  Presente solo se il membro del tipo è impostato su clone o slice.
+ a| 
+galleggiante
+
+
+
+ a| 
+cloneID
+ a| 
+Identificatore dell'operazione di clonazione in corso.  Presente solo se il membro del tipo è impostato su clone.
+ a| 
+intero
+
+
+
+ a| 
+byte correnti
+ a| 
+Numero di byte elaborati dal clone nel volume di origine.  Presente solo se il membro del tipo è impostato su clone o slice.
+ a| 
+intero
+
+
+
+ a| 
+dstServiceID
+ a| 
+Identificatore del servizio che ospita la replica primaria per il volume.  Presente solo se il membro del tipo è impostato su remoto.
+ a| 
+intero
+
+
+
+ a| 
+dstVolumeID
+ a| 
+ID del volume di destinazione.  Presente solo se il membro del tipo è impostato su clone o remoto.
+ a| 
+intero
+
+
+
+ a| 
+tempo trascorso
+ a| 
+Tempo trascorso, in secondi, dall'inizio del processo di sincronizzazione.
+ a| 
+float o intero a seconda del tipo di operazione di sincronizzazione
+
+
+
+ a| 
+groupCloneID
+ a| 
+ID dell'operazione di clonazione del gruppo in corso.
+ a| 
+intero
+
+
+
+ a| 
+ID nodo
+ a| 
+Specifica il nodo su cui avviene la clonazione.  Presente solo se il membro del tipo è impostato su clone.
+ a| 
+intero
+
+
+
+ a| 
+percentuale completata
+ a| 
+Percentuale di completamento del processo di sincronizzazione.
+ a| 
+float o intero a seconda del tipo di operazione di sincronizzazione
+
+
+
+ a| 
+tempo rimanente
+ a| 
+Tempo stimato, in secondi, per completare l'operazione.
+ a| 
+galleggiante
+
+
+
+ a| 
+sliceID
+ a| 
+ID dell'unità slice in fase di sincronizzazione.
+ a| 
+intero
+
+
+
+ a| 
+palcoscenico
+ a| 
+Presente solo se il membro del tipo è impostato su remoto o clone. Valori possibili:
+
+* metadati: la replica sta determinando quali dati devono essere trasferiti al cluster remoto.  Lo stato non viene segnalato per questa fase del processo di replicazione.
+* dati: la replicazione è in corso e consiste nel trasferire la maggior parte dei dati al cluster remoto.
+* intero: indica la compatibilità con le versioni precedenti della slice per i processi di sincronizzazione delle slice.
+
+ a| 
+corda
+
+
+
+ a| 
+ID istantanea
+ a| 
+ID dello snapshot da cui è stato creato il clone.  Presente solo se il membro del tipo è impostato su clone.
+ a| 
+intero
+
+
+
+ a| 
+IDServizioSorgente
+ a| 
+ID del servizio di origine.
+ a| 
+intero
+
+
+
+ a| 
+IDVolumesorgente
+ a| 
+ID del volume di origine.
+ a| 
+intero
+
+
+
+ a| 
+byte totali
+ a| 
+Numero totale di byte del clone.  Presente solo se il membro del tipo è impostato su clone o slice.
+ a| 
+intero
+
+
+
+ a| 
+tipo
+ a| 
+Il tipo di operazione di sincronizzazione. Valori possibili:
+
+* clone
+* fetta
+* bloccare
+* remoto
+
+ a| 
+corda
+
+|===
+
+
+== Trova maggiori informazioni
+
+xref:reference_element_api_listsyncjobs.adoc[ListSyncJobs]

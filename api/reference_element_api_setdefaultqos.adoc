@@ -1,0 +1,139 @@
+---
+permalink: api/reference_element_api_setdefaultqos.html 
+sidebar: sidebar 
+keywords: qos,value,configure,configuring,default,set,setting,setdefaultqos 
+summary: 'È possibile utilizzare il metodo SetDefaultQoS per configurare i valori QoS predefiniti della qualità del servizio (misurati in input e output al secondo, o IOPS) per un volume.' 
+---
+= Imposta QoS predefinito
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `SetDefaultQoS` Metodo per configurare i valori predefiniti di qualità del servizio (QoS) (misurati in input e output al secondo, o IOPS) per un volume.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+minIOPS
+ a| 
+Numero minimo di IOPS sostenuti forniti dal cluster a un volume.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+IOPS massimi
+ a| 
+Numero massimo di IOPS sostenuti forniti dal cluster a un volume.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+burstIOPS
+ a| 
+Numero massimo di IOPS consentito in uno scenario di burst breve.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+minIOPS
+ a| 
+Numero minimo di IOPS sostenuti forniti dal cluster a un volume.
+ a| 
+intero
+
+
+
+ a| 
+IOPS massimi
+ a| 
+Numero massimo di IOPS sostenuti forniti dal cluster a un volume.
+ a| 
+intero
+
+
+
+ a| 
+burstIOPS
+ a| 
+Numero massimo di IOPS consentito in uno scenario di burst breve.
+ a| 
+intero
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "SetDefaultQoS",
+    "params": {
+        "burstIOPS":8000,
+        "maxIOPS":1000,
+        "minIOPS":200
+    },
+    "id": 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+    "id":1,
+    "result": {
+        "burstIOPS":8000,
+        "maxIOPS":1000,
+        "minIOPS":200
+    ​}
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

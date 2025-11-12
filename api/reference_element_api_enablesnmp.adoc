@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_enablesnmp.html 
+sidebar: sidebar 
+keywords: SNMP,enable,enabling,EnableSNMP 
+summary: 'È possibile utilizzare il metodo EnableSnmp per abilitare SNMP sui nodi del cluster.  Quando si abilita SNMP, l"azione si applica a tutti i nodi del cluster e i valori passati sostituiscono tutti i valori impostati in qualsiasi precedente chiamata a EnableSnmp.' 
+---
+= AbilitaSnmp
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `EnableSnmp` metodo per abilitare SNMP sui nodi del cluster.  Quando si abilita SNMP, l'azione si applica a tutti i nodi del cluster e i valori passati sostituiscono tutti i valori impostati in qualsiasi chiamata precedente a `EnableSnmp` .
+
+
+
+== Parametro
+
+Questo metodo ha il seguente parametro di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+snmpV3Enabled
+ a| 
+Se impostato su true, SNMP v3 è abilitato su ciascun nodo del cluster.  Se impostato su false, SNMP v2 è abilitato.
+ a| 
+booleano
+ a| 
+falso
+ a| 
+NO
+
+|===
+
+
+== Valore di ritorno
+
+Questo metodo non ha valore di ritorno.
+
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "method": "EnableSnmp",
+  "params": {
+      "snmpV3Enabled"  : "true"
+  },
+  "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {}
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

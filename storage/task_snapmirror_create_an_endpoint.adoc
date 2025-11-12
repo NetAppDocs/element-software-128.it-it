@@ -1,0 +1,42 @@
+---
+permalink: storage/task_snapmirror_create_an_endpoint.html 
+sidebar: sidebar 
+keywords: element, endpoints, create, snapmirror, ui 
+summary: 'Prima di poter creare una relazione, è necessario creare un endpoint SnapMirror nell"interfaccia utente NetApp Element .' 
+---
+= Crea un endpoint SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di poter creare una relazione, è necessario creare un endpoint SnapMirror nell'interfaccia utente NetApp Element .
+
+Un endpoint SnapMirror è un cluster ONTAP che funge da destinazione di replica per un cluster che esegue il software Element.  Prima di creare una relazione SnapMirror , è necessario creare un endpoint SnapMirror .
+
+È possibile creare e gestire fino a quattro endpoint SnapMirror su un cluster di archiviazione che esegue il software Element.
+
+
+NOTE: Se un endpoint esistente è stato originariamente creato utilizzando l'API e le credenziali non sono state salvate, è possibile visualizzare l'endpoint nell'interfaccia utente dell'elemento e verificarne l'esistenza, ma non può essere gestito utilizzando l'interfaccia utente dell'elemento.  Questo endpoint può quindi essere gestito solo tramite l'API Element.
+
+Per i dettagli sui metodi API, vedere link:../api/concept_element_api_about_the_api.html["Gestisci l'archiviazione con l'API Element"].
+
+.Cosa ti servirà
+* Dovresti aver abilitato SnapMirror nell'interfaccia utente di Element per il cluster di archiviazione.
+* Conosci le credenziali ONTAP per l'endpoint.
+
+
+.Passi
+. Fare clic su *Protezione dati* > *Endpoint SnapMirror *.
+. Fare clic su *Crea endpoint*.
+. Nella finestra di dialogo *Crea un nuovo endpoint*, immettere l'indirizzo IP di gestione del cluster del sistema ONTAP .
+. Immettere le credenziali di amministratore ONTAP associate all'endpoint.
+. Esaminare i dettagli aggiuntivi:
++
+** LIF: elenca le interfacce logiche intercluster ONTAP utilizzate per comunicare con Element.
+** Stato: mostra lo stato corrente dell'endpoint SnapMirror .  I valori possibili sono: connesso, disconnesso e non gestito.
+
+
+. Fare clic su *Crea endpoint*.
+

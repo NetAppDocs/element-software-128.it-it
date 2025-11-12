@@ -1,0 +1,132 @@
+---
+permalink: api/reference_element_api_addidpclusteradmin.html 
+sidebar: sidebar 
+keywords: IdP,idp,cluster,admin,add,adding,addIdpclusteradmin 
+summary: 'È possibile utilizzare il metodo AddIpdClusterAdmin per aggiungere un utente amministratore del cluster autenticato da un provider di identità di terze parti \(IdP\).  Gli account di amministrazione del cluster IdP vengono configurati in base alle informazioni sui valori degli attributi SAML fornite nell"asserzione SAML dell"IdP associata all"utente.  Se un utente si autentica correttamente con l"IdP e ha istruzioni di attributi SAML all"interno dell"asserzione SAML che corrispondono a più account di amministrazione del cluster IdP, l"utente avrà il livello di accesso combinato di quegli account di amministrazione del cluster IdP corrispondenti.' 
+---
+= AddIdpClusterAdmin
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `AddIpdClusterAdmin` metodo per aggiungere un utente amministratore del cluster autenticato da un Identity Provider (IdP) di terze parti.  Gli account di amministrazione del cluster IdP vengono configurati in base alle informazioni sui valori degli attributi SAML fornite nell'asserzione SAML dell'IdP associata all'utente.  Se un utente si autentica correttamente con l'IdP e ha istruzioni di attributi SAML all'interno dell'asserzione SAML che corrispondono a più account di amministrazione del cluster IdP, l'utente avrà il livello di accesso combinato di quegli account di amministrazione del cluster IdP corrispondenti.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+accesso
+ a| 
+Controlla quali metodi può utilizzare questo amministratore del cluster IdP.
+ a| 
+matrice di stringhe
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+accettareEula
+ a| 
+Accettare il Contratto di licenza con l'utente finale.  Impostare su true per aggiungere un account amministratore del cluster al sistema.  Se omesso o impostato su false, la chiamata al metodo fallisce.
+ a| 
+booleano
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+attributi
+ a| 
+Elenco di coppie nome-valore nel formato oggetto JSON.
+ a| 
+Oggetto JSON
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+nome utente
+ a| 
+Un mapping attributo-valore SAML a un amministratore del cluster IdP (ad esempio, email=test@example.com).  Ciò può essere definito utilizzando un soggetto SAML specifico utilizzando `NameID` o come voce nell'istruzione dell'attributo SAML, come ad esempio `eduPersonAffiliation` .
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+ID amministratore cluster
+ a| 
+Identificatore univoco per l'amministratore del cluster appena creato.
+ a| 
+intero
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+    "method": "AddIdpClusterAdmin",
+    "params": {
+        "username": "email=test@example.com",
+        "acceptEula": true,
+        "access": ["administrator"]
+    }
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+    "result": {
+        "clusterAdminID": 13
+    }
+}
+----
+
+
+== Nuovo dalla versione
+
+12,0

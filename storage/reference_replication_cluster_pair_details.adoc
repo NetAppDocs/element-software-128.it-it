@@ -1,0 +1,40 @@
+---
+permalink: storage/reference_replication_cluster_pair_details.html 
+sidebar: sidebar 
+keywords: cluster pairs, replication, data protection 
+summary: La pagina Coppie di cluster nella scheda Protezione dati fornisce informazioni sui cluster che sono stati associati o che sono in fase di associazione.  Il sistema visualizza messaggi di associazione e di avanzamento nella colonna Stato. 
+---
+= Dettagli della coppia di cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La pagina Coppie di cluster nella scheda Protezione dati fornisce informazioni sui cluster che sono stati associati o che sono in fase di associazione.  Il sistema visualizza messaggi di associazione e di avanzamento nella colonna Stato.
+
+* *ID*
++
+Un ID generato dal sistema assegnato a ciascuna coppia di cluster.
+
+* *Nome del cluster remoto*
++
+Il nome dell'altro cluster nella coppia.
+
+* *MVIP remoto*
++
+L'indirizzo IP virtuale di gestione dell'altro cluster nella coppia.
+
+* *Stato*
++
+Stato di replicazione del cluster remoto
+
+* *Replica dei volumi*
++
+Numero di volumi contenuti nel cluster che vengono accoppiati per la replica.
+
+* *UUID*
++
+Un ID univoco assegnato a ciascun cluster nella coppia.
+
+

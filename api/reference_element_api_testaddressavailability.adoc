@@ -1,0 +1,143 @@
+---
+permalink: api/reference_element_api_testaddressavailability.html 
+sidebar: sidebar 
+keywords: ip,address,availability,test,testing,ensemble,cluster,testaddressavailability 
+summary: 'È possibile utilizzare il metodo TestAddressAvailability per verificare se un determinato indirizzo IP è in uso su un"interfaccia all"interno del cluster di archiviazione.' 
+---
+= Disponibilità dell'indirizzo di prova
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `TestAddressAvailability` Metodo per verificare se un determinato indirizzo IP è in uso su un'interfaccia all'interno del cluster di archiviazione.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+interfaccia
+ a| 
+L'interfaccia di rete di destinazione (ad esempio eth0, Bond10G, ecc.).
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+indirizzo
+ a| 
+L'indirizzo IP da ricercare sull'interfaccia di destinazione.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+virtualNetworkTag
+ a| 
+ID VLAN di destinazione.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+tempo scaduto
+ a| 
+Timeout in secondi per testare l'indirizzo di destinazione.
+ a| 
+intero
+ a| 
+5
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+indirizzo
+ a| 
+L'indirizzo IP è stato testato.
+ a| 
+corda
+
+
+
+ a| 
+disponibile
+ a| 
+Vero se l'indirizzo IP richiesto è in uso, falso in caso contrario.
+ a| 
+booleano
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+	"method": "TestAddressAvailability",
+	"params": {
+		"interface": "Bond10G",
+		"address": "10.0.0.1",
+		"virtualNetworkTag": 1234
+	}
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"address":"10.0.0.1",
+		"available": true
+	}
+}
+----
+
+
+== Nuovo dalla versione
+
+11,0

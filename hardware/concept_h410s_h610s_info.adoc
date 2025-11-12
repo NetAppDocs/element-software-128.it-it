@@ -1,0 +1,31 @@
+---
+permalink: hardware/concept_h410s_h610s_info.html 
+sidebar: sidebar 
+keywords: h410s, h610s, hardware installation, hardware maintenance 
+summary: 'Puoi trovare informazioni sull"installazione e la manutenzione dei nodi di archiviazione della serie H.' 
+---
+= Informazioni hardware H410S e H610S
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi trovare informazioni sull'installazione e la manutenzione dei nodi di archiviazione della serie H.
+
+Ecco i link ai contenuti di installazione e manutenzione:
+
+* link:task_h410s_h610s_install.html["Installare nodi di archiviazione della serie H"^]
+* link:task_h410s_repl.html["Sostituire un nodo H410S"^]
+* link:task_h610s_repl.html["Sostituisci un nodo H610S"^]
+* link:task_hseries_driverepl.html["Sostituire le unità"^]
+* link:task_psu_repl.html["Sostituire un alimentatore"^]
+
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentazione per le versioni precedenti dei prodotti NetApp SolidFire ed Element"^]
+

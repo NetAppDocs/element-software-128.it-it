@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-nodes.html 
+summary: Puoi visualizzare le risorse di archiviazione nel tuo sistema utilizzando la pagina Nodi di controllo cloud ibrido. 
+keywords: netapp, element, cluster, inventory, nodes, storage 
+---
+= Visualizza il tuo inventario nella pagina Nodi
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi visualizzare le risorse di archiviazione nel tuo sistema e determinarne gli indirizzi IP, i nomi e le versioni del software.
+
+È possibile visualizzare le informazioni di archiviazione per i sistemi a più nodi.  Selink:../concepts/concept_solidfire_concepts_data_protection.html#custom_pd["domini di protezione personalizzati"] sono assegnati, è possibile vedere quali domini di protezione sono assegnati a nodi specifici.
+
+.Passi
+. Aprire l'indirizzo IP del nodo di gestione in un browser web. Per esempio:
++
+[listing]
+----
+https://[management node IP address]
+----
+. Accedi a NetApp Hybrid Cloud Control fornendo le credenziali di amministratore del cluster di storage all-flash SolidFire .
+. Nella barra di navigazione a sinistra, seleziona *Nodi*.
++
+image::hcc_nodes_storage_2nodes.png[Immagine della pagina dei nodi di controllo del cloud ibrido]
+
++
+
+NOTE: Quando si avvia per la prima volta una nuova sessione NetApp Hybrid Cloud Control, potrebbe verificarsi un ritardo nel caricamento della pagina dei nodi NetApp Hybrid Cloud Control quando il nodo di gestione gestisce molti cluster.  Il tempo di caricamento varia a seconda del numero di cluster gestiti attivamente dal nodo di gestione.  Nei lanci successivi i tempi di caricamento saranno più rapidi.
+
+. Nella scheda *Archiviazione* della pagina Nodi, rivedere le seguenti informazioni:
++
+.. Cluster a due nodi: nella scheda Archiviazione viene visualizzata un'etichetta "a due nodi" e vengono elencati i nodi testimone associati.
+.. Cluster a tre nodi: vengono elencati i nodi di archiviazione e i nodi testimone associati.  Nei cluster a tre nodi è presente un nodo testimone distribuito in standby per mantenere un'elevata disponibilità in caso di guasto del nodo.
+.. Cluster con quattro o più nodi: vengono visualizzate le informazioni per i cluster con quattro o più nodi.  I nodi testimone non sono applicabili.  Se si è iniziato con due o tre nodi di archiviazione e si sono aggiunti altri nodi, i nodi testimone continueranno a essere visualizzati.  In caso contrario, la tabella Nodi testimone non verrà visualizzata.
+.. Versione del bundle del firmware: a partire dalla versione 2.14 dei servizi di gestione, se si dispone di cluster che eseguono Element 12.0 o versioni successive, è possibile visualizzare la versione del bundle del firmware per tali cluster.  Se i nodi di un cluster hanno versioni firmware diverse, nella colonna *Versione bundle firmware* è possibile visualizzare *Multiple*.
+.. Domini di protezione personalizzati: se nel cluster sono in uso domini di protezione personalizzati, è possibile visualizzare le assegnazioni dei domini di protezione personalizzati per ciascun nodo nel cluster.  Se i domini di protezione personalizzati non sono abilitati, questa colonna non viene visualizzata.
+
+
+. È possibile manipolare le informazioni contenute in queste pagine in diversi modi:
++
+.. Per filtrare l'elenco degli elementi nei risultati, selezionare l'icona *Filtro* e selezionare i filtri.  È anche possibile inserire del testo per il filtro.
+.. Per mostrare o nascondere le colonne, seleziona l'icona *Mostra/Nascondi colonne*.
+.. Per scaricare la tabella, seleziona l'icona *Download*.
+
+
+
+
+
+TIP: Per visualizzare il numero di storage, consultare la dashboard di NetApp Hybrid Cloud Control (HCC). Vederelink:task-hcc-dashboard.html["Monitora le risorse di archiviazione con la dashboard HCC"] .
+
+[discrete]
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+

@@ -1,0 +1,36 @@
+---
+permalink: storage/task_monitor_volume_performance.html 
+sidebar: sidebar 
+keywords: volume performance, view, view alerts 
+summary: 'È possibile visualizzare informazioni dettagliate sulle prestazioni di tutti i volumi nel cluster.  È possibile ordinare le informazioni in base all"ID del volume o in base a una qualsiasi delle colonne relative alle prestazioni.  È anche possibile filtrare le informazioni in base a determinati criteri.' 
+---
+= Visualizza le prestazioni del volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile visualizzare informazioni dettagliate sulle prestazioni di tutti i volumi nel cluster.  È possibile ordinare le informazioni in base all'ID del volume o in base a una qualsiasi delle colonne relative alle prestazioni.  È anche possibile filtrare le informazioni in base a determinati criteri.
+
+È possibile modificare la frequenza con cui il sistema aggiorna le informazioni sulle prestazioni nella pagina facendo clic sull'elenco *Aggiorna ogni* e scegliendo un valore diverso.  L'intervallo di aggiornamento predefinito è di 10 secondi se il cluster ha meno di 1000 volumi; in caso contrario, il valore predefinito è di 60 secondi.  Se si sceglie il valore Mai, l'aggiornamento automatico della pagina è disabilitato.
+
+Puoi riattivare l'aggiornamento automatico cliccando su *Attiva aggiornamento automatico*.
+
+. Nell'interfaccia utente di Element, seleziona *Reporting* > *Volume Performance*.
+. Nell'elenco dei volumi, fare clic sull'icona Azioni per un volume.
+. Fare clic su *Visualizza dettagli*.
++
+Nella parte inferiore della pagina viene visualizzata una barra contenente informazioni generali sul volume.
+
+. Per visualizzare informazioni più dettagliate sul volume, fare clic su *Vedi altri dettagli*.
++
+Il sistema visualizza informazioni dettagliate e grafici delle prestazioni per il volume.
+
+
+
+
+
+== Trova maggiori informazioni
+
+xref:reference_monitor_volume_performance_details.adoc[Dettagli sulle prestazioni del volume]

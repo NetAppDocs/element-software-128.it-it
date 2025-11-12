@@ -1,0 +1,98 @@
+---
+permalink: api/reference_element_api_setntpinfo.html 
+sidebar: sidebar 
+keywords: ntp,info,set,setting,setntpinfo 
+summary: È possibile utilizzare il metodo SetNtpInfo per configurare NTP sui nodi del cluster.  I valori impostati con questa interfaccia si applicano a tutti i nodi del cluster.  Se un server broadcast NTP trasmette periodicamente informazioni orarie sulla rete, è possibile configurare facoltativamente i nodi come client broadcast. 
+---
+= ImpostaNtpInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `SetNtpInfo` metodo per configurare NTP sui nodi del cluster.  I valori impostati con questa interfaccia si applicano a tutti i nodi del cluster.  Se un server broadcast NTP trasmette periodicamente informazioni orarie sulla rete, è possibile configurare facoltativamente i nodi come client broadcast.
+
+
+
+== Parametri
+
+
+NOTE: Assicurati di utilizzare server NTP interni alla tua rete, anziché quelli predefiniti di installazione.
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+server
+ a| 
+Elenco dei server NTP da aggiungere a ciascun nodo della configurazione NTP.
+ a| 
+matrice di stringhe
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+client di trasmissione
+ a| 
+Abilita ogni nodo del cluster come client broadcast.
+ a| 
+booleano
+ a| 
+falso
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo non ha valori di ritorno.
+
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+   "method": "SetNtpInfo",
+   "params": {
+     "servers"  : [
+       "ntpserver1.example.org",
+       "ntpserver2.example.org",
+       "ntpserver3.example.org"
+     ],
+     "broadcastclient" : false
+   },
+   "id" : 1
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+    "id" : 1,
+    "result" : {}
+}
+----
+
+
+== Nuovo dalla versione
+
+9,6

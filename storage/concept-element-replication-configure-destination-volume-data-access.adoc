@@ -1,0 +1,19 @@
+---
+permalink: storage/concept-element-replication-configure-destination-volume-data-access.html 
+sidebar: sidebar 
+keywords: ontap, cli, configure, destination, volume, data access 
+summary: 'Dopo aver reso scrivibile il volume di destinazione, è necessario configurarlo per l"accesso ai dati.  Gli host SAN possono accedere ai dati dal volume di destinazione finché il volume di origine non viene riattivato.' 
+---
+= Configurare il volume di destinazione per l'accesso ai dati
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver reso scrivibile il volume di destinazione, è necessario configurarlo per l'accesso ai dati.  Gli host SAN possono accedere ai dati dal volume di destinazione finché il volume di origine non viene riattivato.
+
+. Mappare l'Element LUN sul gruppo di iniziatori appropriato.
+. Creare sessioni iSCSI dagli iniziatori host SAN ai LIF SAN.
+. Sul client SAN, eseguire una nuova scansione dell'archiviazione per rilevare la LUN connessa.
+

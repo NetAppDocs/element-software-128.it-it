@@ -1,0 +1,125 @@
+---
+permalink: api/reference_element_api_setloginbanner.html 
+sidebar: sidebar 
+keywords: terms,use,banner,configure,set,setting,setloginbanner,login 
+summary: 'È possibile utilizzare il metodo SetLoginBanner per configurare il banner dei Termini di utilizzo che gli utenti visualizzano quando accedono all"interfaccia web di Element.' 
+---
+= ImpostaLoginBanner
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `SetLoginBanner` Metodo per configurare il banner dei Termini di utilizzo che gli utenti vedono quando accedono all'interfaccia web di Element.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+bandiera
+ a| 
+Il testo desiderato del banner dei Termini di utilizzo.  La lunghezza massima consentita è di 4.096 caratteri.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+abilitato
+ a| 
+Lo stato del banner Termini di utilizzo. Valori possibili:
+
+* `true`: Il banner dei Termini di utilizzo viene visualizzato al momento dell'accesso all'interfaccia web.
+* `false`: Il banner dei Termini di utilizzo non viene visualizzato al momento dell'accesso all'interfaccia web.
+
+ a| 
+booleano
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+bandiera
+ a| 
+Il testo attuale del banner Termini di utilizzo.  Questo valore può contenere testo anche quando il banner è disattivato.
+ a| 
+corda
+
+
+
+ a| 
+abilitato
+ a| 
+Lo stato del banner Termini di utilizzo. Valori possibili:
+
+* vero: il banner Termini di utilizzo viene visualizzato al momento dell'accesso all'interfaccia web.
+* false: il banner dei Termini di utilizzo non viene visualizzato al momento dell'accesso all'interfaccia web.
+
+ a| 
+booleano
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+  "id": 3920,
+  "method": "SetLoginBanner",
+  "params": {
+    "banner": "Welcome to NetApp!",
+    "enabled": true
+  }
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+  "id": 3920,
+  "result": {
+    "loginBanner": {
+      "banner": "Welcome to NetApp!",
+      "enabled": true
+    }
+  }
+}
+----
+
+
+== Nuovo dalla versione
+
+10,0

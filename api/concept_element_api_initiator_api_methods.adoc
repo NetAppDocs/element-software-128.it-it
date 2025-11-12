@@ -1,0 +1,28 @@
+---
+permalink: api/concept_element_api_initiator_api_methods.html 
+sidebar: sidebar 
+keywords: initiator,method,methods,API,managing,manage 
+summary: I metodi di avvio consentono di aggiungere, rimuovere, visualizzare e modificare gli oggetti di avvio iSCSI, che gestiscono la comunicazione tra il sistema di archiviazione e i client di archiviazione esterni. 
+---
+= Metodi API dell'iniziatore
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I metodi di avvio consentono di aggiungere, rimuovere, visualizzare e modificare gli oggetti di avvio iSCSI, che gestiscono la comunicazione tra il sistema di archiviazione e i client di archiviazione esterni.
+
+* xref:reference_element_api_createinitiators.adoc[CreaIniziatori]
+* xref:reference_element_api_deleteinitiators.adoc[EliminaIniziatori]
+* xref:reference_element_api_listinitiators.adoc[Iniziatori di elenchi]
+* xref:reference_element_api_modifyinitiators.adoc[ModificaIniziatori]
+
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentazione per le versioni precedenti dei prodotti NetApp SolidFire ed Element"^]
+

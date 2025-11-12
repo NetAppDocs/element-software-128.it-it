@@ -1,0 +1,355 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_install.html 
+summary: È possibile installare il nodo di gestione per il cluster che esegue il software NetApp Element . 
+keywords: netapp, element, management node, mnode, storage, install 
+---
+= Installa un nodo di gestione
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile installare manualmente il nodo di gestione per il cluster che esegue il software NetApp Element utilizzando l'immagine appropriata per la configurazione.
+
+Questa procedura manuale è destinata agli amministratori di storage all-flash SolidFire che non utilizzano NetApp Deployment Engine per l'installazione del nodo di gestione.
+
+.Prima di iniziare
+* La versione del cluster esegue il software NetApp Element 11.3 o versione successiva.
+* La tua installazione utilizza IPv4.  Il nodo di gestione 11.3 non supporta IPv6.
++
+
+NOTE: Se è necessario il supporto IPv6, è possibile utilizzare il nodo di gestione 11.1.
+
+* Hai l'autorizzazione per scaricare il software dal sito di supporto NetApp .
+* Hai identificato il tipo di immagine del nodo di gestione corretto per la tua piattaforma:
++
+[cols="30,30"]
+|===
+| Piattaforma | Tipo di immagine di installazione 
+
+
+| Microsoft Hyper-V | .iso 
+
+
+| KVM | .iso 
+
+
+| VMware vSphere | .iso, .ova 
+
+
+| Citrix XenServer | .iso 
+
+
+| OpenStack | .iso 
+|===
+* (Nodo di gestione 12.0 e versioni successive con server proxy) Hai aggiornato NetApp Hybrid Cloud Control alla versione 2.16 dei servizi di gestione prima di configurare un server proxy.
+
+
+.Informazioni su questo compito
+Il nodo di gestione Element 12.2 è un aggiornamento facoltativo.  Non è necessario per le distribuzioni esistenti.
+
+Prima di seguire questa procedura, dovresti avere una comprensione dilink:../concepts/concept_solidfire_concepts_volumes.html#persistent-volumes["Volumi persistenti"] e se vuoi usarli o meno.  I volumi persistenti sono facoltativi ma consigliati per il ripristino dei dati di configurazione del nodo di gestione in caso di perdita di una macchina virtuale (VM).
+
+
+
+== Passaggio 1: scaricare ISO o OVA e distribuire la VM
+
+Scaricare l'ISO o l'OVA appropriato dal sito di supporto NetApp e installare la VM.
+
+.Passi
+. Scarica l'OVA o l'ISO per la tua installazione dalink:https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["Element Software"^] pagina sul sito di supporto NetApp .
++
+.. Selezionare *Scarica l'ultima versione* e accettare l'EULA.
+.. Seleziona l'immagine del nodo di gestione che desideri scaricare.
+
+
+. Se hai scaricato l'OVA, segui questi passaggi:
++
+.. Distribuisci l'OVA.
+.. Se il cluster di archiviazione si trova su una subnet separata dal nodo di gestione (eth0) e si desidera utilizzare volumi persistenti, aggiungere un secondo controller di interfaccia di rete (NIC) alla VM sulla subnet di archiviazione (ad esempio, eth1) o assicurarsi che la rete di gestione possa instradare verso la rete di archiviazione.
+
+
+. Se hai scaricato l'ISO, segui questi passaggi:
++
+.. Crea una nuova VM a 64 bit dal tuo hypervisor con la seguente configurazione:
++
+*** Sei CPU virtuali
+*** 24 GB di RAM
+*** Tipo di adattatore di archiviazione impostato su LSI Logic Parallel
++
+
+IMPORTANT: L'impostazione predefinita per il nodo di gestione potrebbe essere LSI Logic SAS.  Nella finestra *Nuova macchina virtuale*, verificare la configurazione dell'adattatore di archiviazione selezionando *Personalizza hardware* > *Hardware virtuale*.  Se necessario, modificare LSI Logic SAS in *LSI Logic Parallel*.
+
+*** Disco virtuale da 400 GB, thin provisioning
+*** Un'interfaccia di rete virtuale con accesso a Internet e accesso allo storage MVIP.
+*** (Facoltativo) Un'interfaccia di rete virtuale con accesso alla rete di gestione del cluster di storage.  Se il cluster di archiviazione si trova su una subnet separata dal nodo di gestione (eth0) e si desidera utilizzare volumi persistenti, aggiungere un secondo controller di interfaccia di rete (NIC) alla VM sulla subnet di archiviazione (eth1) o assicurarsi che la rete di gestione possa instradare verso la rete di archiviazione.
++
+
+IMPORTANT: Non accendere la VM prima del passaggio che indica di farlo più avanti in questa procedura.
+
+
+
+.. Collegare l'ISO alla VM e avviare l'immagine di installazione .iso.
++
+
+NOTE: L'installazione di un nodo di gestione tramite l'immagine potrebbe comportare un ritardo di 30 secondi prima che venga visualizzata la schermata iniziale.
+
+
+
+. Una volta completata l'installazione, accendere la macchina virtuale per il nodo di gestione.
+
+
+
+
+== Passaggio 2: creare l'amministratore del nodo di gestione e configurare la rete
+
+Una volta completata l'installazione della VM, creare l'utente amministratore del nodo di gestione e configurare la rete del nodo di gestione.
+
+.Passi
+. Utilizzando l'interfaccia utente del terminale (TUI), creare un utente amministratore del nodo di gestione.
++
+
+TIP: Per spostarsi tra le opzioni del menu, premere i tasti freccia Su o Giù.  Per spostarsi tra i pulsanti, premere Tab.  Per passare dai pulsanti ai campi, premere Tab.  Per navigare tra i campi, premere i tasti freccia Su o Giù.
+
+. Se sulla rete è presente un server DHCP (Dynamic Host Configuration Protocol) che assegna IP con un'unità di trasmissione massima (MTU) inferiore a 1500 byte, è necessario eseguire i seguenti passaggi:
++
+.. Posizionare temporaneamente il nodo di gestione su una rete vSphere senza DHCP, ad esempio iSCSI.
+.. Riavviare la VM o riavviare la rete della VM.
+.. Utilizzando l'interfaccia utente terminale (TUI), configurare l'IP corretto sulla rete di gestione con un MTU maggiore o uguale a 1500 byte.
+.. Riassegnare la rete VM corretta alla VM.
+
+
++
+
+NOTE: Un DHCP che assegna IP con un MTU inferiore a 1500 byte può impedire la configurazione della rete del nodo di gestione o l'utilizzo dell'interfaccia utente del nodo di gestione.
+
+. Configurare la rete del nodo di gestione (eth0).
++
+
+NOTE: Se è necessaria una scheda di rete aggiuntiva per isolare il traffico di archiviazione, consultare le istruzioni per la configurazione di un'altra scheda di rete:link:task_mnode_install_add_storage_NIC.html["Configurare un controller di interfaccia di rete (NIC) di archiviazione"] .
+
+
+
+
+
+== Passaggio 3: configurare la sincronizzazione dell'ora
+
+Prima di configurare il nodo di gestione, sincronizzare l'ora tra il nodo di gestione e il cluster di archiviazione.
+
+.Passi
+. Verificare che l'ora sia sincronizzata tra il nodo di gestione e il cluster di archiviazione tramite NTP:
+
+
+
+NOTE: A partire dall'elemento 12.3.1, i sotto-passaggi da (a) a (e) vengono eseguiti automaticamente.  Per il nodo di gestione 12.3.1, procedere a<<substep_f_install_config_time_sync,sottofase (f)>> per completare la configurazione della sincronizzazione dell'ora.
+
+. Accedi al nodo di gestione tramite SSH o la console fornita dal tuo hypervisor.
+. Fermare NTPD:
++
+[listing]
+----
+sudo service ntpd stop
+----
+. Modifica il file di configurazione NTP `/etc/ntp.conf` :
++
+.. Commenta i server predefiniti(`server 0.gentoo.pool.ntp.org` ) aggiungendo un `#` davanti a ciascuno.
+.. Aggiungere una nuova riga per ogni server di riferimento orario predefinito che si desidera aggiungere. I server di riferimento orario predefiniti devono essere gli stessi server NTP utilizzati sul cluster di archiviazione che si utilizzerà in un <<set-up-the-management-node,passo successivo>>.
++
+[listing]
+----
+vi /etc/ntp.conf
+
+#server 0.gentoo.pool.ntp.org
+#server 1.gentoo.pool.ntp.org
+#server 2.gentoo.pool.ntp.org
+#server 3.gentoo.pool.ntp.org
+server <insert the hostname or IP address of the default time server>
+----
+.. Una volta completato, salvare il file di configurazione.
+
+
+. Forza una sincronizzazione NTP con il server appena aggiunto.
++
+[listing]
+----
+sudo ntpd -gq
+----
+. Riavviare NTPD.
++
+[listing]
+----
+sudo service ntpd start
+----
+. [[substep_f_install_config_time_sync]]Disabilitare la sincronizzazione oraria con l'host tramite l'hypervisor (di seguito è riportato un esempio VMware):
++
+
+NOTE: Se si distribuisce mNode in un ambiente hypervisor diverso da VMware, ad esempio dall'immagine .iso in un ambiente Openstack, fare riferimento alla documentazione dell'hypervisor per i comandi equivalenti.
+
++
+.. Disattiva la sincronizzazione periodica dell'ora:
++
+[listing]
+----
+vmware-toolbox-cmd timesync disable
+----
+.. Visualizza e conferma lo stato attuale del servizio:
++
+[listing]
+----
+vmware-toolbox-cmd timesync status
+----
+.. In vSphere, verificare che `Synchronize guest time with host` la casella non è selezionata nelle opzioni della VM.
++
+
+NOTE: Non abilitare questa opzione se in futuro apporti modifiche alla VM.
+
+
+
+
+
+
+NOTE: Non modificare l'NTP dopo aver completato la configurazione della sincronizzazione dell'ora perché influisce sull'NTP quando si esegue il <<set-up-the-management-node,comando di configurazione>> sul nodo di gestione.
+
+
+
+== Passaggio 4: impostare il nodo di gestione
+
+Configurare il nodo di gestione utilizzando `setup-mnode` comando.
+
+.Passi
+. Configurare ed eseguire il comando di configurazione del nodo di gestione:
++
+
+NOTE: Ti verrà richiesto di inserire le password in un prompt sicuro.  Se il cluster si trova dietro un server proxy, è necessario configurare le impostazioni del proxy in modo da poter raggiungere una rete pubblica.
+
++
+[listing]
+----
+sudo /sf/packages/mnode/setup-mnode --mnode_admin_user [username] --storage_mvip [mvip] --storage_username [username] --telemetry_active [true]
+----
++
+.. Sostituisci il valore tra parentesi quadre [ ] (incluse le parentesi) per ciascuno dei seguenti parametri obbligatori:
++
+
+NOTE: La forma abbreviata del nome del comando è tra parentesi ( ) e può essere sostituita al nome completo.
+
++
+*** *--mnode_admin_user (-mu) [nome utente]*: Nome utente per l'account amministratore del nodo di gestione.  Probabilmente si tratta del nome utente dell'account utente utilizzato per accedere al nodo di gestione.
+*** *--storage_mvip (-sm) [indirizzo MVIP]*: l'indirizzo IP virtuale di gestione (MVIP) del cluster di archiviazione che esegue il software Element. Configurare il nodo di gestione con lo stesso cluster di archiviazione utilizzato durante <<configure-time-sync,Configurazione dei server NTP>>.
+*** *--storage_username (-su) [nome utente]*: il nome utente dell'amministratore del cluster di archiviazione per il cluster specificato da `--storage_mvip` parametro.
+*** *--telemetry_active (-t) [true]*: Mantieni il valore true che abilita la raccolta dati per l'analisi da parte di Active IQ.
+
+
+.. (Facoltativo): aggiungere i parametri dell'endpoint Active IQ al comando:
++
+*** *--remote_host (-rh) [AIQ_endpoint]*: l'endpoint in cui i dati di telemetria Active IQ vengono inviati per essere elaborati.  Se il parametro non è incluso, viene utilizzato l'endpoint predefinito.
+
+
+.. (Consigliato): aggiungere i seguenti parametri del volume persistente.  Non modificare o eliminare l'account e i volumi creati per la funzionalità dei volumi persistenti, altrimenti si verificherà una perdita di capacità di gestione.
++
+*** *--use_persistent_volumes (-pv) [true/false, default: false]*: Abilita o disabilita i volumi persistenti.  Immettere il valore true per abilitare la funzionalità dei volumi persistenti.
+*** *--persistent_volumes_account (-pva) [nome_account]*: Se `--use_persistent_volumes` è impostato su true, utilizzare questo parametro e immettere il nome dell'account di archiviazione che verrà utilizzato per i volumi persistenti.
++
+
+NOTE: Utilizzare un nome account univoco per i volumi persistenti, diverso da qualsiasi nome account esistente nel cluster.  È di fondamentale importanza mantenere l'account per i volumi persistenti separato dal resto dell'ambiente.
+
+*** *--persistent_volumes_mvip (-pvm) [mvip]*: immettere l'indirizzo IP virtuale di gestione (MVIP) del cluster di archiviazione che esegue il software Element che verrà utilizzato con i volumi persistenti.  Questa operazione è necessaria solo se il nodo di gestione gestisce più cluster di archiviazione.  Se non vengono gestiti più cluster, verrà utilizzato il cluster MVIP predefinito.
+
+
+.. Configurare un server proxy:
++
+*** *--use_proxy (-up) [true/false, default: false]*: Abilita o disabilita l'uso del proxy.  Questo parametro è necessario per configurare un server proxy.
+*** *--proxy_hostname_or_ip (-pi) [host]*: Il nome host o l'IP del proxy.  Questo è necessario se si desidera utilizzare un proxy.  Se lo specifichi, ti verrà chiesto di inserire `--proxy_port` .
+*** *--proxy_username (-pu) [nome utente]*: Il nome utente del proxy.  Questo parametro è facoltativo.
+*** *--proxy_password (-pp) [password]*: La password del proxy.  Questo parametro è facoltativo.
+*** *--proxy_port (-pq) [porta, predefinita: 0]*: La porta proxy.  Se lo specifichi, ti verrà chiesto di inserire il nome host o l'IP del proxy(`--proxy_hostname_or_ip` ).
+*** *--proxy_ssh_port (-ps) [porta, predefinita: 443]*: La porta del proxy SSH.  Per impostazione predefinita, la porta è 443.
+
+
+.. (Facoltativo) Utilizzare la guida sui parametri se sono necessarie ulteriori informazioni su ciascun parametro:
++
+*** *--help (-h)*: Restituisce informazioni su ciascun parametro.  I parametri sono definiti come obbligatori o facoltativi in base all'implementazione iniziale.  I requisiti dei parametri di aggiornamento e ridistribuzione potrebbero variare.
+
+
+.. Esegui il `setup-mnode` comando.
+
+
+
+
+
+
+== Passaggio 5: configurare le risorse del controller
+
+Individua l'ID di installazione e aggiungi una risorsa del controller vCenter.
+
+.Passi
+. Individuare l'ID di installazione:
++
+.. Da un browser, accedi all'interfaccia utente dell'API REST del nodo di gestione:
+.. Accedere all'MVIP di archiviazione ed effettuare l'accesso. Questa azione determina l'accettazione del certificato per il passaggio successivo.
+.. Aprire l'interfaccia utente dell'API REST del servizio di inventario sul nodo di gestione:
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. Seleziona *Autorizza* e completa quanto segue:
++
+... Immettere il nome utente e la password del cluster.
+... Inserisci l'ID cliente come `mnode-client` .
+... Selezionare *Autorizza* per iniziare una sessione.
+
+
+.. Dall'interfaccia utente dell'API REST, seleziona *GET ​/installations*.
+.. Seleziona *Provalo*.
+.. Selezionare *Esegui*.
+.. Dal corpo della risposta del codice 200, copiare e salvare il `id` per l'installazione da utilizzare in una fase successiva.
++
+L'installazione presenta una configurazione di risorse di base creata durante l'installazione o l'aggiornamento.
+
+
+
+. Aggiungere una risorsa del controller vCenter per NetApp Hybrid Cloud Control alle risorse note del nodo di gestione:
++
+.. Accedi all'interfaccia utente dell'API del servizio mnode sul nodo di gestione immettendo l'indirizzo IP del nodo di gestione seguito da `/mnode` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. Seleziona *Autorizza* o qualsiasi icona a forma di lucchetto e completa quanto segue:
++
+... Immettere il nome utente e la password del cluster.
+... Inserisci l'ID cliente come `mnode-client` .
+... Selezionare *Autorizza* per iniziare una sessione.
+... Chiudi la finestra.
+
+
+.. Selezionare *POST /assets/{asset_id}/controllers* per aggiungere una sotto-risorsa del controller.
++
+
+NOTE: È necessario creare un nuovo ruolo NetApp HCC in vCenter per aggiungere una sotto-risorsa del controller.  Questo nuovo ruolo NetApp HCC limiterà la visualizzazione dei servizi del nodo di gestione alle sole risorse NetApp. Vederelink:task_mnode_create_netapp_hcc_role_vcenter.html["Creare un ruolo NetApp HCC in vCenter"] .
+
+.. Seleziona *Provalo*.
+.. Inserisci l'ID della risorsa di base padre che hai copiato negli appunti nel campo *asset_id*.
+.. Inserisci i valori del payload richiesti con il tipo `vCenter` e credenziali vCenter.
+.. Selezionare *Esegui*.
+
+
+
+
+
+
+== Trova maggiori informazioni
+
+* link:../concepts/concept_solidfire_concepts_volumes.html#persistent-volumes["Volumi persistenti"]
+* link:task_mnode_add_assets.html["Aggiungere una risorsa controller al nodo di gestione"]
+* link:task_mnode_install_add_storage_NIC.html["Configurare una scheda di rete di archiviazione"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+

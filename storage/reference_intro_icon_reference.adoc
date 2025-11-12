@@ -1,0 +1,106 @@
+---
+permalink: storage/reference_intro_icon_reference.html 
+sidebar: sidebar 
+keywords: icons, element interface, actions, system resources, quick reference 
+summary: 'L"interfaccia del software NetApp Element visualizza icone che rappresentano le azioni che è possibile intraprendere sulle risorse di sistema.' 
+---
+= Icone nell'interfaccia Element
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'interfaccia del software NetApp Element visualizza icone che rappresentano le azioni che è possibile intraprendere sulle risorse di sistema.
+
+La seguente tabella fornisce un rapido riferimento:
+
+|===
+
+
+| Icona | Descrizione 
+
+
+ a| 
+image:../media/element_icon_action.gif["Icona Azioni nell'interfaccia utente web Element OS"]
+ a| 
+Azioni
+
+
+
+ a| 
+image:../media/element_icon_backupto.gif["Icona Backupto nell'interfaccia utente web Element OS"]
+ a| 
+Backup su
+
+
+
+ a| 
+image:../media/element_icon_clone.gif["Icona clone nell'interfaccia utente web Element OS"]
+ a| 
+Clona o copia
+
+
+
+ a| 
+image:../media/element_icon_delete.gif["Elimina l'icona nell'interfaccia utente web Element OS"]
+ a| 
+Elimina o elimina
+
+
+
+ a| 
+image:../media/element_icon_edit.gif["Icona di modifica nell'interfaccia utente web Element OS"]
+ a| 
+Modificare
+
+
+
+ a| 
+image:../media/element_icon_filter.gif["Icona del filtro nell'interfaccia utente web Element OS"]
+ a| 
+Filtro
+
+
+
+ a| 
+image:../media/element_icon_pair.gif["Icona di coppia nell'interfaccia utente web Element OS"]
+ a| 
+Paio
+
+
+
+ a| 
+image:../media/element_icon_refresh.gif["Aggiorna l'icona nell'interfaccia utente web Element OS"]
+ a| 
+Aggiorna
+
+
+
+ a| 
+image:../media/element_icon_restore.gif["Ripristina l'icona nell'interfaccia utente web Element OS"]
+ a| 
+Ripristinare
+
+
+
+ a| 
+image:../media/element_icon_restorefrom.gif["Ripristina dall'icona nell'interfaccia utente web Element OS"]
+ a| 
+Ripristina da
+
+
+
+ a| 
+image:../media/element_icon_rollback.gif["Icona di rollback nell'interfaccia utente web Element OS"]
+ a| 
+Ripristino
+
+
+
+ a| 
+image:../media/element_icon_snapshot.gif["Icona Snapshot nell'interfaccia utente web Element OS"]
+ a| 
+Istantanea
+
+|===

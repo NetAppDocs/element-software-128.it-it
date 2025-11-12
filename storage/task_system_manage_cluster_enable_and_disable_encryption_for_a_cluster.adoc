@@ -1,0 +1,78 @@
+---
+permalink: storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html 
+sidebar: sidebar 
+keywords: enable, disable, encryption at rest, cluster, sed, hardware-based, encryption settings, software-based 
+summary: Con i cluster SolidFire è possibile crittografare tutti i dati archiviati nel cluster utilizzando la crittografia basata su software o hardware a riposo. 
+---
+= Abilitare e disabilitare la crittografia a riposo per un cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Con i cluster SolidFire è possibile crittografare tutti i dati inattivi archiviati sulle unità del cluster.  È possibile abilitare la protezione a livello di cluster delle unità auto-crittografanti (SED) utilizzandolink:../concepts/concept_solidfire_concepts_security.html["crittografia a riposo basata su hardware o software"] .
+
+È possibile abilitare la crittografia hardware a riposo tramite l'interfaccia utente o l'API di Element.  L'abilitazione della funzionalità di crittografia hardware a riposo non influisce sulle prestazioni o sull'efficienza del cluster.  È possibile abilitare la crittografia software a riposo solo tramite l'API Element.
+
+La crittografia basata su hardware a riposo non è abilitata per impostazione predefinita durante la creazione del cluster e può essere abilitata e disabilitata dall'interfaccia utente di Element.
+
+
+WARNING: Per i cluster di archiviazione all-flash SolidFire , la crittografia software a riposo deve essere abilitata durante la creazione del cluster e non può essere disabilitata dopo la creazione del cluster.
+
+.Cosa ti servirà
+* Si dispone dei privilegi di amministratore del cluster per abilitare o modificare le impostazioni di crittografia.
+* Per la crittografia a riposo basata su hardware, è necessario assicurarsi che il cluster sia in uno stato di integrità prima di modificare le impostazioni di crittografia.
+* Se si disabilita la crittografia, è necessario che due nodi partecipino a un cluster per accedere alla chiave per disabilitare la crittografia su un'unità.
+
+
+
+
+== Controllare lo stato di crittografia a riposo
+
+Per visualizzare lo stato corrente della crittografia a riposo e/o della crittografia software a riposo sul cluster, utilizzarelink:../api/reference_element_api_getclusterinfo.html["Ottieni informazioni sul cluster"^] metodo.  Puoi usare illink:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["Ottieni informazioni sulla crittografia software a riposo"^] metodo per ottenere le informazioni che il cluster utilizza per crittografare i dati a riposo.
+
+
+NOTE: La dashboard dell'interfaccia utente del software Element su `https://<MVIP>/` attualmente mostra solo lo stato di crittografia a riposo per la crittografia basata su hardware.
+
+.Opzioni
+* <<Abilita la crittografia basata su hardware a riposo>>
+* <<Abilita la crittografia basata su software a riposo>>
+* <<Disabilitare la crittografia basata su hardware a riposo>>
+
+
+
+
+== Abilita la crittografia basata su hardware a riposo
+
+
+NOTE: Per abilitare la crittografia a riposo utilizzando una configurazione di gestione delle chiavi esterna, è necessario abilitare la crittografia a riposo tramitelink:../api/reference_element_api_enableencryptionatrest.html["API"] .  L'abilitazione tramite il pulsante Element UI esistente ripristinerà l'utilizzo delle chiavi generate internamente.
+
+. Dall'interfaccia utente dell'elemento, seleziona *Cluster* > *Impostazioni*.
+. Selezionare *Abilita crittografia a riposo*.
+
+
+
+
+== Abilita la crittografia basata su software a riposo
+
+
+NOTE: La crittografia software a riposo non può essere disabilitata dopo essere stata abilitata sul cluster.
+
+. Durante la creazione del cluster, eseguire il comandolink:../api/reference_element_api_createcluster.html["metodo di creazione del cluster"] con `enableSoftwareEncryptionAtRest` impostato su `true` .
+
+
+
+
+== Disabilitare la crittografia basata su hardware a riposo
+
+. Dall'interfaccia utente dell'elemento, seleziona *Cluster* > *Impostazioni*.
+. Selezionare *Disabilita crittografia a riposo*.
+
+
+[discrete]
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentazione per le versioni precedenti dei prodotti NetApp SolidFire ed Element"^]
+

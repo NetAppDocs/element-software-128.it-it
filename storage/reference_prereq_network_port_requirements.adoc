@@ -1,0 +1,553 @@
+---
+permalink: storage/reference_prereq_network_port_requirements.html 
+sidebar: sidebar 
+keywords: network port requirements, TCP ports, firewall, utilities, URL, access attempt, ICMP, MIP, SIP, MVIP, SVIP 
+summary: Potrebbe essere necessario consentire alle seguenti porte TCP di passare attraverso il firewall perimetrale del data center, in modo da poter gestire il sistema da remoto e consentire ai client esterni al data center di connettersi alle risorse.  Alcune di queste porte potrebbero non essere necessarie, a seconda di come si utilizza il sistema. 
+---
+= Requisiti delle porte di rete
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Potrebbe essere necessario consentire alle seguenti porte TCP e UDP di passare attraverso il firewall perimetrale del data center, in modo da poter gestire il sistema da remoto e consentire ai client esterni al data center di connettersi alle risorse.  Alcune di queste porte potrebbero non essere necessarie, a seconda di come si utilizza il sistema.
+
+Tutte le porte sono TCP, salvo diversa indicazione, e tutte le porte TCP devono supportare la comunicazione handshake a tre vie tra NetApp Support Server, nodo di gestione e nodi che eseguono il software Element.  Ad esempio, l'host su un nodo di gestione sorgente comunica con l'host su un cluster di storage MVIP destinazione tramite la porta TCP 443, e l'host di destinazione comunica di nuovo con l'host di origine tramite una porta qualsiasi.
+
+
+TIP: Abilitare ICMP tra il nodo di gestione, i nodi che eseguono il software Element e il cluster MVIP.
+
+Nella tabella vengono utilizzate le seguenti abbreviazioni:
+
+* MIP: indirizzo IP di gestione, un indirizzo per nodo
+* SIP: indirizzo IP di archiviazione, un indirizzo per nodo
+* MVIP: indirizzo IP virtuale di gestione
+* SVIP: indirizzo IP virtuale di archiviazione
+
+
+[cols="25,25,15,35"]
+|===
+| Fonte | Destinazione | Porta | Descrizione 
+
+
+ a| 
+client iSCSI
+ a| 
+Cluster di archiviazione MVIP
+ a| 
+443
+ a| 
+(Facoltativo) Accesso all'interfaccia utente e all'API
+
+
+
+ a| 
+client iSCSI
+ a| 
+Cluster di archiviazione SVIP
+ a| 
+3260
+ a| 
+Comunicazioni iSCSI del client
+
+
+
+ a| 
+client iSCSI
+ a| 
+Nodo di archiviazione SIP
+ a| 
+3260
+ a| 
+Comunicazioni iSCSI del client
+
+
+
+ a| 
+Nodo di gestione
+ a| 
+`sfsupport.solidfire.com`
+ a| 
+22
+ a| 
+Tunnel SSH inverso per l'accesso al supporto
+
+
+
+ a| 
+Nodo di gestione
+ a| 
+Nodo di archiviazione MIP
+ a| 
+22
+ a| 
+Accesso SSH per supporto
+
+
+
+ a| 
+Nodo di gestione
+ a| 
+server DNS
+ a| 
+53 TCP/UDP
+ a| 
+Ricerca DNS
+
+
+
+ a| 
+Nodo di gestione
+ a| 
+Nodo di archiviazione MIP
+ a| 
+442
+ a| 
+Accesso tramite interfaccia utente e API al nodo di archiviazione e agli aggiornamenti software Element
+
+
+
+ a| 
+Nodo di gestione
+ a| 
+Cluster di archiviazione MVIP
+ a| 
+442
+ a| 
+Accesso tramite interfaccia utente e API al nodo di archiviazione e agli aggiornamenti software Element
+
+
+
+ a| 
+Nodo di gestione
+ a| 
+`monitoring.solidfire.com`
+ a| 
+443
+ a| 
+Reporting del cluster di archiviazione ad Active IQ
+
+
+
+ a| 
+Nodo di gestione
+ a| 
+Cluster di archiviazione MVIP
+ a| 
+443
+ a| 
+Accesso tramite interfaccia utente e API al nodo di archiviazione e agli aggiornamenti software Element
+
+
+
+ a| 
+Nodo di gestione
+ a| 
+repo.netapp.com
+ a| 
+443
+ a| 
+Fornisce l'accesso ai componenti necessari per installare/aggiornare la distribuzione in locale.
+
+
+
+| Nodo di gestione | Nodo di archiviazione BMC/IPMI | 623 UDP | Porta RMCP.  Ciò è necessario per gestire i sistemi abilitati IPMI. 
+
+
+ a| 
+Nodo di gestione
+ a| 
+Nodo testimone
+ a| 
+9442
+ a| 
+Servizio API di configurazione per nodo
+
+
+
+ a| 
+Nodo di gestione
+ a| 
+Server vCenter
+ a| 
+9443
+ a| 
+Registrazione del plug-in vCenter.  Una volta completata la registrazione, la porta potrà essere chiusa.
+
+
+
+ a| 
+server SNMP
+ a| 
+Cluster di archiviazione MVIP
+ a| 
+161 UDP
+ a| 
+Interrogazione SNMP
+
+
+
+ a| 
+server SNMP
+| Nodo di archiviazione MIP  a| 
+161 UDP
+ a| 
+Interrogazione SNMP
+
+
+
+| Nodo di archiviazione BMC/IPMI | Nodo di gestione | 623 UDP | Porta RMCP.  Ciò è necessario per gestire i sistemi abilitati IPMI. 
+
+
+ a| 
+Nodo di archiviazione MIP
+ a| 
+server DNS
+ a| 
+53 TCP/UDP
+ a| 
+Ricerca DNS
+
+
+
+ a| 
+Nodo di archiviazione MIP
+ a| 
+Nodo di gestione
+ a| 
+80
+ a| 
+Aggiornamenti software Element
+
+
+
+ a| 
+Nodo di archiviazione MIP
+ a| 
+Punto finale S3/Swift
+ a| 
+80
+ a| 
+(Facoltativo) Comunicazione HTTP all'endpoint S3/Swift per backup e ripristino
+
+
+
+ a| 
+Nodo di archiviazione MIP
+ a| 
+server NTP
+ a| 
+123 UDP
+ a| 
+NTP
+
+
+
+ a| 
+Nodo di archiviazione MIP
+ a| 
+Nodo di gestione
+ a| 
+162 UDP
+ a| 
+(Facoltativo) Trappole SNMP
+
+
+
+ a| 
+Nodo di archiviazione MIP
+ a| 
+server SNMP
+ a| 
+162 UDP
+ a| 
+(Facoltativo) Trappole SNMP
+
+
+
+ a| 
+Nodo di archiviazione MIP
+ a| 
+server LDAP
+ a| 
+389 TCP/UDP
+ a| 
+(Facoltativo) Ricerca LDAP
+
+
+
+ a| 
+Nodo di archiviazione MIP
+ a| 
+Nodo di gestione
+ a| 
+443
+ a| 
+Aggiornamenti dello storage degli elementi
+
+
+
+ a| 
+Nodo di archiviazione MIP
+ a| 
+Cluster di archiviazione remota MVIP
+ a| 
+443
+ a| 
+Comunicazione di associazione del cluster di replicazione remota
+
+
+
+ a| 
+Nodo di archiviazione MIP
+ a| 
+Nodo di archiviazione remoto MIP
+ a| 
+443
+ a| 
+Comunicazione di associazione del cluster di replicazione remota
+
+
+
+ a| 
+Nodo di archiviazione MIP
+ a| 
+Punto finale S3/Swift
+ a| 
+443
+ a| 
+(Facoltativo) Comunicazione HTTPS all'endpoint S3/Swift per backup e ripristino
+
+
+
+ a| 
+Nodo di archiviazione MIP
+ a| 
+Nodo di gestione
+ a| 
+514 TCP/UDP
+
+10514 TCP/UDP
+ a| 
+Inoltro Syslog
+
+
+
+ a| 
+Nodo di archiviazione MIP
+ a| 
+Server Syslog
+ a| 
+514 TCP/UDP
+
+10514 TCP/UDP
+ a| 
+Inoltro Syslog
+
+
+
+ a| 
+Nodo di archiviazione MIP
+ a| 
+server LDAPS
+ a| 
+636 TCP/UDP
+ a| 
+Ricerca LDAPS
+
+
+
+ a| 
+Nodo di archiviazione MIP
+ a| 
+Nodo di archiviazione remoto MIP
+ a| 
+2181
+ a| 
+Comunicazione intercluster per la replicazione remota
+
+
+
+ a| 
+Nodo di archiviazione SIP
+ a| 
+Nodo di archiviazione remoto SIP
+ a| 
+2181
+ a| 
+Comunicazione intercluster per la replicazione remota
+
+
+
+ a| 
+Nodo di archiviazione SIP
+ a| 
+Nodo di archiviazione SIP
+ a| 
+3260
+ a| 
+Internodo iSCSI
+
+
+
+ a| 
+Nodo di archiviazione SIP
+ a| 
+Nodo di archiviazione remoto SIP
+ a| 
+dall'4000 al 4020
+ a| 
+Trasferimento dati da nodo a nodo di replicazione remota
+
+
+
+ a| 
+Amministratore di sistema PC
+ a| 
+Nodo di gestione
+ a| 
+442
+ a| 
+Accesso HTTPS all'interfaccia utente al nodo di gestione
+
+
+
+ a| 
+Amministratore di sistema PC
+ a| 
+Nodo di archiviazione MIP
+ a| 
+442
+ a| 
+Accesso API e interfaccia utente HTTPS al nodo di archiviazione
+
+
+
+ a| 
+Amministratore di sistema PC
+ a| 
+Nodo di gestione
+ a| 
+443
+ a| 
+Accesso HTTPS all'interfaccia utente e all'API per il nodo di gestione
+
+
+
+ a| 
+Amministratore di sistema PC
+ a| 
+Cluster di archiviazione MVIP
+ a| 
+443
+ a| 
+Accesso API e interfaccia utente HTTPS al cluster di archiviazione
+
+
+
+ a| 
+Amministratore di sistema PC
+ a| 
+Controller di gestione della scheda base del nodo di archiviazione (BMC)/Interfaccia di gestione della piattaforma intelligente (IPMI) serie H410 e H600
+ a| 
+443
+ a| 
+Accesso HTTPS all'interfaccia utente e all'API per il controllo remoto del nodo
+
+
+
+ a| 
+Amministratore di sistema PC
+ a| 
+Nodo di archiviazione MIP
+ a| 
+443
+ a| 
+Creazione di cluster di archiviazione HTTPS, accesso all'interfaccia utente post-distribuzione al cluster di archiviazione
+
+
+
+ a| 
+Amministratore di sistema PC
+ a| 
+Nodo di archiviazione BMC/IPMI serie H410 e H600
+ a| 
+623 UDP
+ a| 
+Porta del protocollo di controllo della gestione remota.  Ciò è necessario per gestire i sistemi abilitati IPMI.
+
+
+
+ a| 
+Amministratore di sistema PC
+ a| 
+Nodo testimone
+ a| 
+8080
+ a| 
+Interfaccia utente web per nodo Witness Node
+
+
+
+ a| 
+Server vCenter
+ a| 
+Cluster di archiviazione MVIP
+ a| 
+443
+ a| 
+Accesso all'API del plug-in vCenter
+
+
+
+ a| 
+Server vCenter
+ a| 
+Plug-in remoto
+ a| 
+8333
+ a| 
+Servizio plug-in vCenter remoto
+
+
+
+ a| 
+Server vCenter
+ a| 
+Nodo di gestione
+ a| 
+8443
+ a| 
+(Facoltativo) Servizio QoSSIOC del plug-in vCenter.
+
+
+
+ a| 
+Server vCenter
+ a| 
+Cluster di archiviazione MVIP
+ a| 
+8444
+ a| 
+Accesso al provider vCenter VASA (solo VVols)
+
+
+
+ a| 
+Server vCenter
+ a| 
+Nodo di gestione
+ a| 
+9443
+ a| 
+Registrazione del plug-in vCenter.  Una volta completata la registrazione, la porta potrà essere chiusa.
+
+|===
+
+
+== Per maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+

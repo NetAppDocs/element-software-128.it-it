@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_abortsnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords:  
+summary: 'L"interfaccia utente Web del software Element utilizza il metodo AbortSnapMirrorRelationship per interrompere i trasferimenti SnapMirror avviati ma non ancora completati.' 
+---
+= AbortSnapMirrorRelationship
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'interfaccia utente Web del software Element utilizza `AbortSnapMirrorRelationship` Metodo per interrompere i trasferimenti SnapMirror avviati ma non ancora completati.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+ID endpoint del sistema di archiviazione ONTAP remoto che comunica con il cluster di archiviazione Element.
+ a| 
+intero
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+destinazioneVolume
+ a| 
+Il volume di destinazione nella relazione SnapMirror .
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Nessuno
+ a| 
+SÌ
+
+
+
+ a| 
+Punto di controllo chiaro
+ a| 
+Determina se cancellare o meno il checkpoint di riavvio. Valori possibili:
+
+* VERO
+* falso
+
+ a| 
+booleano
+ a| 
+falso
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha i seguenti valori di ritorno:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+snapMirrorRelationship
+ a| 
+Un oggetto contenente informazioni sulla relazione SnapMirror interrotta.
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirrorRelationship]
+
+|===
+
+
+== Nuovo dalla versione
+
+10,1

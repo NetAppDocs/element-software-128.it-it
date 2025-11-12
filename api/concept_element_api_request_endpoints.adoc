@@ -1,0 +1,54 @@
+---
+permalink: api/concept_element_api_request_endpoints.html 
+sidebar: sidebar 
+keywords: request,endpoints 
+summary: 'Esistono tre tipi di endpoint di richiesta utilizzati nell"API (cluster di archiviazione, creazione di cluster di archiviazione e per nodo).  Dovresti sempre utilizzare l"endpoint più recente supportato dalla tua versione del software Element.' 
+---
+= Endpoint della richiesta
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Esistono tre tipi di endpoint di richiesta utilizzati nell'API (cluster di archiviazione, creazione di cluster di archiviazione e per nodo).  Dovresti sempre utilizzare l'endpoint più recente supportato dalla tua versione del software Element.
+
+I tre endpoint della richiesta nell'API sono designati nei seguenti modi:
+
+
+
+== Metodi API del cluster
+
+L'endpoint HTTPS per le richieste API a livello di cluster di archiviazione è `+https://<mvip>/json-rpc/<api-version>+` , Dove:
+
+* `<mvip>`è l'indirizzo IP virtuale di gestione per il cluster di archiviazione.
+* `<api-version>`è la versione dell'API che stai utilizzando.
+
+
+
+
+== Metodi API di creazione di cluster e bootstrap
+
+L'endpoint HTTPS per la creazione di un cluster di archiviazione e l'accesso alle richieste API bootstrap è `+https://<nodeIP>/json-rpc/<api-version>+` , Dove:
+
+* `<nodeIP>`è l'indirizzo IP del nodo che stai aggiungendo al cluster.
+* `<api-version>`è la versione dell'API che stai utilizzando.
+
+
+
+
+== Metodi API per nodo
+
+L'endpoint HTTPS per le richieste API dei singoli nodi di archiviazione è `+https://<nodeIP>:442/json-rpc/<api-version>+` , Dove:
+
+* `<nodeIP>`è l'indirizzo IP di gestione del nodo di archiviazione; 442 è la porta su cui è in esecuzione il server HTTPS.
+* `<api-version>`è la versione dell'API che stai utilizzando.
+
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentazione per le versioni precedenti dei prodotti NetApp SolidFire ed Element"^]
+

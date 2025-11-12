@@ -1,0 +1,27 @@
+---
+permalink: storage/task_data_protection_edit_members_of_group_snapshot.html 
+sidebar: sidebar 
+keywords: group snapshot members, edit 
+summary: È possibile modificare le impostazioni di conservazione per i membri di uno snapshot di gruppo esistente. 
+---
+= Modifica dei membri dello snapshot del gruppo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile modificare le impostazioni di conservazione per i membri di uno snapshot di gruppo esistente.
+
+. Fare clic su *Protezione dati* > *Snapshot*.
+. Fare clic sulla scheda *Membri*.
+. Fare clic sull'icona Azioni relativa al membro dello snapshot di gruppo che si desidera modificare.
+. Nel menu che si apre, seleziona *Modifica*.
+. Per modificare l'impostazione di replica per lo snapshot, selezionare una delle seguenti opzioni:
++
+** Fare clic su *Conserva per sempre* per conservare lo snapshot sul sistema a tempo indeterminato.
+** Fare clic su *Imposta periodo di conservazione* e utilizzare le caselle di selezione della data per scegliere il periodo di tempo durante il quale il sistema deve conservare lo snapshot.
+
+
+. Fare clic su *Salva modifiche*.
+

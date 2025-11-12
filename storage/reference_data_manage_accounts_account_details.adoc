@@ -1,0 +1,54 @@
+---
+permalink: storage/reference_data_manage_accounts_account_details.html 
+sidebar: sidebar 
+keywords: account, volumes 
+summary: 'La pagina Account nella scheda Gestione fornisce informazioni su ciascun account nel sistema, come ID, nome utente e dettagli sull"efficienza per i volumi assegnati a ciascun account.' 
+---
+= Dettagli dell'account
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La pagina Account nella scheda Gestione fornisce informazioni su ciascun account nel sistema, come ID, nome utente e dettagli sull'efficienza per i volumi assegnati a ciascun account.
+
+* *ID*
++
+ID generato dal sistema per l'account.
+
+* *Nome utente*
++
+Nome assegnato all'account al momento della sua creazione.
+
+* *Stato*
++
+Lo stato dell'account. Valori possibili:
+
++
+** attivo: un account attivo.
+** bloccato: Un account bloccato.
+** rimosso: un account che è stato eliminato e ripulito.
+
+
+* *Volumi attivi*
++
+Numero di volumi attivi assegnati all'account.
+
+* *Compressione*
++
+Punteggio di efficienza della compressione per i volumi assegnati all'account.
+
+* *Deduplicazione*
++
+Punteggio di efficienza della deduplicazione per i volumi assegnati all'account.
+
+* *Provisioning sottile*
++
+Punteggio di efficienza del thin provisioning per i volumi assegnati all'account.
+
+* *Efficienza complessiva*
++
+Punteggio di efficienza complessivo per i volumi assegnati all'account.
+
+

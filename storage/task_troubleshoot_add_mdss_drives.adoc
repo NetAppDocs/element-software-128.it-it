@@ -1,0 +1,24 @@
+---
+permalink: storage/task_troubleshoot_add_mdss_drives.html 
+sidebar: sidebar 
+keywords: mdss, add, multi-drive slice service 
+summary: 'È possibile aggiungere una seconda unità metadati su un nodo SolidFire convertendo l"unità a blocchi nello slot 2 in un"unità slice.  Ciò si ottiene abilitando la funzionalità del servizio multi-drive slice \(MDSS\).  Per abilitare questa funzionalità, è necessario contattare l"assistenza NetApp .' 
+---
+= Aggiungi unità MDSS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile aggiungere una seconda unità metadati su un nodo SolidFire convertendo l'unità a blocchi nello slot 2 in un'unità slice.  Ciò si ottiene abilitando la funzionalità Multi-Drive Slice Service (MDSS).  Per abilitare questa funzionalità, è necessario contattare l'assistenza NetApp .
+
+Per riportare un'unità slice in uno stato disponibile potrebbe essere necessario sostituire un'unità guasta con una nuova o di riserva.  È necessario aggiungere l'unità slice di sistema contemporaneamente all'unità per lo slot 2.  Se si tenta di aggiungere solo l'unità slice dello slot 2 o prima di aggiungere l'unità slice di sistema, il sistema genererà un errore.
+
+. Fare clic su *Cluster* > *Unità*.
+. Fare clic su *Disponibile* per visualizzare l'elenco delle unità disponibili.
+. Selezionare le unità slice da aggiungere.
+. Fare clic su *Azioni in blocco*.
+. Fare clic su *Aggiungi*.
+. Verificare nella scheda *Unità attive* che le unità siano state aggiunte.
+

@@ -1,0 +1,30 @@
+---
+permalink: storage/task_replication_pair_clusters_using_mvip_or_a_pairing_key.html 
+sidebar: sidebar 
+keywords: pair cluster, mvip, pairing key, cluster pairing 
+summary: 'È possibile associare un cluster di origine e uno di destinazione utilizzando l"MVIP del cluster di destinazione se è presente l"accesso dell"amministratore del cluster a entrambi i cluster.  Se l"accesso dell"amministratore del cluster è disponibile solo su un cluster in una coppia di cluster, è possibile utilizzare una chiave di associazione sul cluster di destinazione per completare l"associazione del cluster.' 
+---
+= Accoppiare i cluster utilizzando MVIP o una chiave di associazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile associare un cluster di origine e uno di destinazione utilizzando l'MVIP del cluster di destinazione se è presente l'accesso dell'amministratore del cluster a entrambi i cluster.  Se l'accesso dell'amministratore del cluster è disponibile solo su un cluster in una coppia di cluster, è possibile utilizzare una chiave di associazione sul cluster di destinazione per completare l'associazione del cluster.
+
+. Selezionare uno dei seguenti metodi per associare i cluster:
++
+** Accoppiamento di cluster tramite MVIP: utilizzare questo metodo se l'amministratore del cluster ha accesso a entrambi i cluster. Questo metodo utilizza l'MVIP del cluster remoto per accoppiare due cluster.
+** Associare i cluster utilizzando una chiave di associazione: utilizzare questo metodo se l'amministratore del cluster ha accesso solo a uno dei cluster. Questo metodo genera una chiave di associazione che può essere utilizzata sul cluster di destinazione per completare l'associazione del cluster.
+
+
+
+
+
+
+== Trova maggiori informazioni
+
+* xref:task_replication_pair_cluster_using_mvip.adoc[Cluster di coppie tramite MVIP]
+* xref:task_replication_pair_cluster_using_pairing_key.adoc[Accoppia i cluster utilizzando una chiave di associazione]
+

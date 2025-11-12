@@ -1,0 +1,53 @@
+---
+permalink: storage/task_data_manage_vol_access_group_create_an_initiator.html 
+sidebar: sidebar 
+keywords: initiator, create, fc, iscsi, aliases, chap 
+summary: È possibile creare iniziatori iSCSI o Fibre Channel e, facoltativamente, assegnare loro degli alias. 
+---
+= Creare un iniziatore
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile creare iniziatori iSCSI o Fibre Channel e, facoltativamente, assegnare loro degli alias.
+
+È anche possibile assegnare attributi CHAP basati sull'iniziatore utilizzando una chiamata API.  Per aggiungere un nome account CHAP e credenziali per ogni iniziatore, è necessario utilizzare `CreateInitiator` Chiamata API per rimuovere e aggiungere l'accesso e gli attributi CHAP.  L'accesso dell'iniziatore può essere limitato a una o più VLAN specificando uno o più virtualNetworkID tramite `CreateInitiators` E `ModifyInitiators` Chiamate API.  Se non viene specificata alcuna rete virtuale, l'iniziatore può accedere a tutte le reti.
+
+Per maggiori dettagli, consultare le informazioni di riferimento dell'API. link:../api/concept_element_api_about_the_api.html["Gestisci l'archiviazione con l'API Element"]
+
+.Passi
+. Fare clic su *Gestione* > *Iniziatori*.
+. Fare clic su *Crea iniziatore*.
+. Eseguire i passaggi per creare un singolo iniziatore o più iniziatori:
++
+[cols="25,75"]
+|===
+| Opzione | Passi 
+
+
+ a| 
+Creare un singolo iniziatore
+ a| 
+.. Fare clic su *Crea un singolo iniziatore*.
+.. Inserire l'IQN o il WWPN dell'iniziatore nel campo *IQN/WWPN*.
+.. Inserisci un nome descrittivo per l'iniziatore nel campo *Alias*.
+.. Fare clic su *Crea iniziatore*.
+
+
+
+
+ a| 
+Crea più iniziatori
+ a| 
+.. Fare clic su *Crea iniziatori in blocco*.
+.. Inserire un elenco di IQN o WWPN nella casella di testo.
+.. Fare clic su *Aggiungi iniziatori*.
+.. Selezionare un iniziatore dall'elenco risultante e fare clic sull'icona Aggiungi corrispondente nella colonna *Alias* per aggiungere un alias per l'iniziatore.
+.. Fare clic sul segno di spunta per confermare il nuovo alias.
+.. Fare clic su *Crea iniziatori*.
+
+
+|===
+

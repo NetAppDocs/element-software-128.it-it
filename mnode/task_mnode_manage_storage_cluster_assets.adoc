@@ -1,0 +1,252 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_manage_storage_cluster_assets.html 
+summary: 'È possibile aggiungere, rimuovere e modificare le risorse del cluster di archiviazione del nodo di gestione utilizzando l"interfaccia utente dell"API REST.' 
+keywords: netapp, mnode, management node, rest api, Element, assets 
+---
+= Creare e gestire risorse di cluster di archiviazione
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile aggiungere nuove risorse del cluster di archiviazione al nodo di gestione, modificare le credenziali archiviate per le risorse del cluster di archiviazione note ed eliminare le risorse del cluster di archiviazione dal nodo di gestione utilizzando l'API REST.
+
+.Cosa ti servirà
+* Assicurati che la versione del cluster di storage esegua il software NetApp Element 11.3 o versione successiva.
+* Assicurarsi di aver distribuito un nodo di gestione che esegue la versione 11.3 o successiva.
+
+
+.Opzioni di gestione delle risorse del cluster di archiviazione
+Scegli una delle seguenti opzioni:
+
+* <<Recupera l'ID di installazione e l'ID cluster di una risorsa cluster di archiviazione>>
+* <<Aggiungi una nuova risorsa cluster di archiviazione>>
+* <<Modifica le credenziali archiviate per una risorsa del cluster di archiviazione>>
+* <<Elimina una risorsa del cluster di archiviazione>>
+
+
+
+
+== Recupera l'ID di installazione e l'ID cluster di una risorsa cluster di archiviazione
+
+È possibile utilizzare l'API REST per ottenere l'ID di installazione e l'ID del cluster di archiviazione.  Per aggiungere una nuova risorsa del cluster di archiviazione è necessario l'ID di installazione, mentre per modificare o eliminare una risorsa specifica del cluster di archiviazione è necessario l'ID del cluster.
+
+.Passi
+. Accedi all'interfaccia utente dell'API REST per il servizio di inventario immettendo l'indirizzo IP del nodo di gestione seguito da `/inventory/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+. Seleziona *Autorizza* o qualsiasi icona a forma di lucchetto e completa quanto segue:
++
+.. Immettere il nome utente e la password del cluster.
+.. Inserisci l'ID cliente come `mnode-client` .
+.. Selezionare *Autorizza* per iniziare una sessione.
+.. Chiudi la finestra.
+
+
+. Selezionare *GET /installations*.
+. Seleziona *Provalo*.
+. Selezionare *Esegui*.
++
+L'API restituisce un elenco di tutte le installazioni note.
+
+. Dal corpo della risposta del codice 200, salvare il valore nel `id` campo, che puoi trovare nell'elenco delle installazioni.  Questo è l'ID di installazione. Per esempio:
++
+[listing, subs="+quotes"]
+----
+"installations": [
+    {
+      *"id": "1234a678-12ab-35dc-7b4a-1234a5b6a7ba",*
+      "name": "my-sf-installation",
+      "_links": {
+        "collection": "https://localhost/inventory/1/installations",
+        "self": "https://localhost/inventory/1/installations/1234a678-12ab-35dc-7b4a-1234a5b6a7ba"
+      }
+    }
+  ]
+----
+. Accedi all'interfaccia utente dell'API REST per il servizio di archiviazione immettendo l'indirizzo IP del nodo di gestione seguito da `/storage/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. Seleziona *Autorizza* o qualsiasi icona a forma di lucchetto e completa quanto segue:
++
+.. Immettere il nome utente e la password del cluster.
+.. Inserisci l'ID cliente come `mnode-client` .
+.. Selezionare *Autorizza* per iniziare una sessione.
+.. Chiudi la finestra.
+
+
+. Selezionare *GET /clusters*.
+. Seleziona *Provalo*.
+. Inserisci l'ID di installazione salvato in precedenza nel `installationId` parametro.
+. Selezionare *Esegui*.
++
+L'API restituisce un elenco di tutti i cluster di archiviazione noti in questa installazione.
+
+. Dal corpo della risposta del codice 200, trova il cluster di archiviazione corretto e salva il valore nel cluster `storageId` campo.  Questo è l'ID del cluster di archiviazione.
+
+
+
+
+== Aggiungi una nuova risorsa cluster di archiviazione
+
+È possibile utilizzare l'API REST per aggiungere una o più nuove risorse del cluster di archiviazione all'inventario del nodo di gestione.  Quando si aggiunge una nuova risorsa del cluster di archiviazione, questa viene automaticamente registrata nel nodo di gestione.
+
+.Cosa ti servirà
+* Hai copiato il<<Recupera l'ID di installazione e l'ID cluster di una risorsa cluster di archiviazione,ID cluster di archiviazione e ID di installazione>> per tutti i cluster di archiviazione che desideri aggiungere.
+* Se si aggiunge più di un nodo di archiviazione, è necessario aver letto e compreso le limitazioni dellink:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["Cluster autorevole"] e supporto di più cluster di storage.
++
+
+NOTE: Tutti gli utenti definiti sul cluster autorevole vengono definiti come utenti su tutti gli altri cluster collegati all'istanza NetApp Hybrid Cloud Control.
+
+
+
+.Passi
+. Accedi all'interfaccia utente dell'API REST per il servizio di archiviazione immettendo l'indirizzo IP del nodo di gestione seguito da `/storage/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. Seleziona *Autorizza* o qualsiasi icona a forma di lucchetto e completa quanto segue:
++
+.. Immettere il nome utente e la password del cluster.
+.. Inserisci l'ID cliente come `mnode-client` .
+.. Selezionare *Autorizza* per iniziare una sessione.
+.. Chiudi la finestra.
+
+
+. Selezionare *POST /clusters*.
+. Seleziona *Provalo*.
+. Immettere le informazioni del nuovo cluster di archiviazione nei seguenti parametri nel campo *Corpo della richiesta*:
++
+[listing]
+----
+{
+  "installationId": "a1b2c34d-e56f-1a2b-c123-1ab2cd345d6e",
+  "mvip": "10.0.0.1",
+  "password": "admin",
+  "userId": "admin"
+}
+----
++
+|===
+| Parametro | Tipo | Descrizione 
+
+
+| `installationId` | corda | L'installazione in cui aggiungere il nuovo cluster di archiviazione.  Inserisci in questo parametro l'ID di installazione salvato in precedenza. 
+
+
+| `mvip` | corda | Indirizzo IP virtuale di gestione IPv4 (MVIP) del cluster di storage. 
+
+
+| `password` | corda | Password utilizzata per comunicare con il cluster di archiviazione. 
+
+
+| `userId` | corda | ID utente utilizzato per comunicare con il cluster di archiviazione (l'utente deve disporre di privilegi di amministratore). 
+|===
+. Selezionare *Esegui*.
++
+L'API restituisce un oggetto contenente informazioni sulla risorsa del cluster di archiviazione appena aggiunta, ad esempio nome, versione e indirizzo IP.
+
+
+
+
+
+== Modifica le credenziali archiviate per una risorsa del cluster di archiviazione
+
+È possibile modificare le credenziali archiviate che il nodo di gestione utilizza per accedere a un cluster di archiviazione.  L'utente scelto deve avere accesso come amministratore del cluster.
+
+
+NOTE: Assicurati di aver seguito i passaggi in<<Recupera l'ID di installazione e l'ID cluster di una risorsa cluster di archiviazione>> prima di continuare.
+
+.Passi
+. Accedi all'interfaccia utente dell'API REST per il servizio di archiviazione immettendo l'indirizzo IP del nodo di gestione seguito da `/storage/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. Seleziona *Autorizza* o qualsiasi icona a forma di lucchetto e completa quanto segue:
++
+.. Immettere il nome utente e la password del cluster.
+.. Inserisci l'ID cliente come `mnode-client` .
+.. Selezionare *Autorizza* per iniziare una sessione.
+.. Chiudi la finestra.
+
+
+. Selezionare *PUT /clusters/{storageId}*.
+. Seleziona *Provalo*.
+. Incolla l'ID del cluster di archiviazione copiato in precedenza nel `storageId` parametro.
+. Modificare uno o entrambi i seguenti parametri nel campo *Corpo della richiesta*:
++
+[listing]
+----
+{
+  "password": "adminadmin",
+  "userId": "admin"
+}
+----
++
+|===
+| Parametro | Tipo | Descrizione 
+
+
+| `password` | corda | Password utilizzata per comunicare con il cluster di archiviazione. 
+
+
+| `userId` | corda | ID utente utilizzato per comunicare con il cluster di archiviazione (l'utente deve disporre di privilegi di amministratore). 
+|===
+. Selezionare *Esegui*.
+
+
+
+
+== Elimina una risorsa del cluster di archiviazione
+
+È possibile eliminare una risorsa del cluster di archiviazione se il cluster di archiviazione non è più in servizio.  Quando si rimuove una risorsa del cluster di archiviazione, la sua registrazione dal nodo di gestione viene automaticamente annullata.
+
+
+NOTE: Assicurati di aver seguito i passaggi in<<Recupera l'ID di installazione e l'ID cluster di una risorsa cluster di archiviazione>> prima di continuare.
+
+.Passi
+. Accedi all'interfaccia utente dell'API REST per il servizio di archiviazione immettendo l'indirizzo IP del nodo di gestione seguito da `/storage/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. Seleziona *Autorizza* o qualsiasi icona a forma di lucchetto e completa quanto segue:
++
+.. Immettere il nome utente e la password del cluster.
+.. Inserisci l'ID cliente come `mnode-client` .
+.. Selezionare *Autorizza* per iniziare una sessione.
+.. Chiudi la finestra.
+
+
+. Selezionare *ELIMINA /clusters/{storageId}*.
+. Seleziona *Provalo*.
+. Inserisci l'ID del cluster di archiviazione copiato in precedenza nel `storageId` parametro.
+. Selezionare *Esegui*.
++
+In caso di successo, l'API restituisce una risposta vuota.
+
+
+
+[discrete]
+== Trova maggiori informazioni
+
+* link:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["Cluster autorevole"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+

@@ -1,0 +1,113 @@
+---
+permalink: api/reference_element_api_snapmirrorpolicy.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorPolicy 
+summary: 'L"oggetto snapMirrorPolicy contiene informazioni su una policy SnapMirror archiviata su un sistema ONTAP .' 
+---
+= snapMirrorPolicy
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'oggetto snapMirrorPolicy contiene informazioni su una policy SnapMirror archiviata su un sistema ONTAP .
+
+
+
+== Membri dell'oggetto
+
+Questo oggetto contiene i seguenti membri:
+
+|===
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+L'ID del sistema ONTAP di destinazione.
+ a| 
+intero
+
+
+
+ a| 
+NomePolitica
+ a| 
+Il nome univoco assegnato alla policy.
+ a| 
+corda
+
+
+
+ a| 
+tipo di politica
+ a| 
+Il tipo di politica. Valori possibili:
+
+* specchio asincrono
+* specchio_vault
+
+ a| 
+corda
+
+
+
+ a| 
+commento
+ a| 
+Una descrizione leggibile associata alla policy SnapMirror .
+ a| 
+corda
+
+
+
+ a| 
+trasferimentoPriorità
+ a| 
+La priorità con cui viene eseguito un trasferimento SnapMirror . Valori possibili:
+
+* normale: la priorità predefinita.  Questi trasferimenti vengono programmati prima della maggior parte dei trasferimenti a bassa priorità.
+* basso: questi trasferimenti hanno la priorità più bassa e vengono programmati dopo la maggior parte dei normali trasferimenti prioritari.
+
+ a| 
+corda
+
+
+
+ a| 
+policyRules
+ a| 
+Un elenco di oggetti che descrivono le regole della policy.
+ a| 
+xref:reference_element_api_snapmirrorpolicyrule.adoc[snapMirrorPolicyRule]vettore
+
+
+
+ a| 
+totalKeepCount
+ a| 
+Il conteggio totale della conservazione per tutte le regole nella policy.
+ a| 
+intero
+
+
+
+ a| 
+totalRules
+ a| 
+Numero totale di regole nella policy.
+ a| 
+intero
+
+
+
+ a| 
+vserverName
+ a| 
+Nome del Vserver per la policy SnapMirror .
+ a| 
+corda
+
+|===

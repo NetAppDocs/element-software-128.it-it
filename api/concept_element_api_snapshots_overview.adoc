@@ -1,0 +1,26 @@
+---
+permalink: api/concept_element_api_snapshots_overview.html 
+sidebar: sidebar 
+keywords: snapshot,overview 
+summary: Uno snapshot del volume è una copia di un volume effettuata in un dato momento.  È possibile utilizzare gli snapshot per riportare un volume allo stato in cui si trovava al momento della creazione dello snapshot. 
+---
+= Panoramica delle istantanee
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Uno snapshot del volume è una copia di un volume effettuata in un dato momento.  È possibile utilizzare gli snapshot per riportare un volume allo stato in cui si trovava al momento della creazione dello snapshot.
+
+È possibile raggruppare gli snapshot dei volumi in modo che i volumi correlati possano essere sottoposti a backup o rollback in modo coerente.  Uno snapshot di gruppo cattura un'immagine in un dato momento di tutti i file di suddivisione del volume.  È quindi possibile utilizzare l'immagine per riportare un gruppo di volumi a uno stato temporale specifico e garantire che tutti i dati siano coerenti in tutti i volumi del gruppo.
+
+È possibile pianificare l'esecuzione autonoma degli snapshot del volume a intervalli definiti.  È possibile definire gli intervalli in base all'ora, ai giorni della settimana o ai giorni del mese.  È anche possibile utilizzare snapshot pianificati per garantire che gli snapshot vengano sottoposti a backup su un archivio remoto a scopo di archiviazione.
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentazione per le versioni precedenti dei prodotti NetApp SolidFire ed Element"^]
+

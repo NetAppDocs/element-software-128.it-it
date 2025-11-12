@@ -1,0 +1,30 @@
+---
+permalink: storage/task_intro_provide_feedback.html 
+sidebar: sidebar 
+keywords: feedback, web user interface, UI issues, feedback form, relevant information, screenshots 
+summary: 'Puoi contribuire a migliorare l"interfaccia utente web del software Element e risolvere eventuali problemi dell"interfaccia utente utilizzando il modulo di feedback accessibile in tutta l"interfaccia utente.' 
+---
+= Fornire feedback
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi contribuire a migliorare l'interfaccia utente web del software Element e risolvere eventuali problemi dell'interfaccia utente utilizzando il modulo di feedback accessibile in tutta l'interfaccia utente.
+
+. Da qualsiasi pagina dell'interfaccia utente di Element, fare clic sul pulsante *Feedback*.
+. Inserisci le informazioni rilevanti nei campi Riepilogo e Descrizione.
+. Allega eventuali screenshot utili.
+. Inserisci un nome e un indirizzo email.
+. Seleziona la casella di controllo per includere i dati relativi al tuo ambiente attuale.
+. Fare clic su *Invia*.
+
+
+
+
+== Trova maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+

@@ -1,0 +1,159 @@
+---
+permalink: api/reference_element_api_updateidpconfiguration.html 
+sidebar: sidebar 
+keywords: IdP,idp,configuration,update 
+summary: È possibile utilizzare il metodo UpdateIdpConfiguration per aggiornare una configurazione esistente con un IdP di terze parti per il cluster. 
+---
+= Aggiorna configurazione Idp
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi usare il `UpdateIdpConfiguration` metodo per aggiornare una configurazione esistente con un IdP di terze parti per il cluster.
+
+
+
+== Parametri
+
+Questo metodo ha i seguenti parametri di input:
+
+|===
+| Nome | Descrizione | Tipo | Valore predefinito | Necessario 
+
+
+ a| 
+generateNewCertificate
+ a| 
+Se specificato come vero, viene generata una nuova chiave SAML e un nuovo certificato che sostituiscono la coppia esistente.  Nota: la sostituzione del certificato esistente interromperà la fiducia stabilita tra il cluster e l'IdP finché i metadati del Service Provider del cluster non verranno ricaricati nell'IdP.  Se non specificato o impostato su false, il certificato e la chiave SAML rimangono invariati.
+ a| 
+booleano
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+idpConfigurationID
+ a| 
+UUID per la configurazione dell'IdP di terze parti.
+ a| 
+UUID
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+idpMetadata
+ a| 
+Metadati IdP per i dettagli di configurazione e integrazione per l'accesso singolo SAML 2.0.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+Nome idp
+ a| 
+Nome utilizzato per identificare e recuperare un provider IdP per l'accesso singolo SAML 2.0.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+
+
+ a| 
+nuovoIdpName
+ a| 
+Se specificato, questo nome sostituisce il vecchio nome IdP.
+ a| 
+corda
+ a| 
+Nessuno
+ a| 
+NO
+
+|===
+
+
+== Valori di ritorno
+
+Questo metodo ha il seguente valore di ritorno:
+
+|===
+
+
+| Nome | Descrizione | Tipo 
+
+
+ a| 
+idpConfigInfo
+ a| 
+Informazioni sulla configurazione dell'IdP di terze parti.
+ a| 
+link:reference_element_api_idpconfiginfo.html["idpConfigInfo"]
+
+|===
+
+
+== Richiedi esempio
+
+Le richieste per questo metodo sono simili al seguente esempio:
+
+[listing]
+----
+{
+"method": "UpdateIdpConfiguration",
+"params": {
+        "idpConfigurationID": "f983c602-12f9-4c67-b214-bf505185cfed",
+        "generateNewCertificate": true
+    }
+}
+----
+
+
+== Esempio di risposta
+
+Questo metodo restituisce una risposta simile al seguente esempio:
+
+[listing]
+----
+{
+    "result": {
+        "idpConfigInfo": {
+        "enabled": true,
+        "idpConfigurationID": "f983c602-12f9-4c67-b214-bf505185cfed",
+        "idpMetadata": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n
+        <EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\"\r\n
+        xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"\r\n
+        xmlns:shibmd=\"urn:mace:shibboleth:metadata:1.0\"\r\n
+        xmlns:xml=\"http://www.w3.org/XML/1998/namespace\"\r\n
+        ...</Organization>\r\n
+        </EntityDescriptor>",
+        "idpName": "https://privider.name.url.com",
+        "serviceProviderCertificate": "-----BEGIN CERTIFICATE-----\n
+        MI...BHi\n
+        -----END CERTIFICATE-----\n",
+        "spMetadataUrl": "https://10.193.100.100/auth/ui/saml2"
+        }
+    }
+}
+----
+
+
+== Nuovo dalla versione
+
+12,0

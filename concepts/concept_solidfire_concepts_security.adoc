@@ -1,0 +1,80 @@
+---
+permalink: concepts/concept_solidfire_concepts_security.html 
+sidebar: sidebar 
+keywords: solidfire security, element security, encryption at rest, software encryption at rest, external key management, fips 140-2, mfa 
+summary: Quando utilizzi il software NetApp Element , i tuoi dati sono protetti da protocolli di sicurezza standard del settore. 
+---
+= Sicurezza
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando utilizzi il tuo sistema di archiviazione all-flash SolidFire , i tuoi dati sono protetti da protocolli di sicurezza standard del settore.
+
+
+
+== Crittografia a riposo (hardware)
+
+Tutte le unità nei nodi di archiviazione sono in grado di sfruttare la crittografia AES a 256 bit a livello di unità.  Ogni unità ha la propria chiave di crittografia, che viene creata quando l'unità viene inizializzata per la prima volta.  Quando si abilita la funzionalità di crittografia, viene creata una password per l'intero cluster e parti della password vengono poi distribuite a tutti i nodi del cluster.  Nessun singolo nodo memorizza l'intera password.  La password viene quindi utilizzata per proteggere con password tutti gli accessi alle unità.  La password è necessaria per sbloccare l'unità e non è più necessaria a meno che non venga rimossa l'alimentazione dall'unità o quest'ultima non sia bloccata.
+
+link:../storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html["Abilitazione della funzionalità di crittografia hardware a riposo"^]non influisce sulle prestazioni o sull'efficienza del cluster.  Se un'unità o un nodo abilitato alla crittografia viene rimosso dalla configurazione del cluster tramite l'API Element o l'interfaccia utente Element, la crittografia a riposo verrà disabilitata sulle unità.  Dopo aver rimosso l'unità, è possibile cancellarla in modo sicuro utilizzando `SecureEraseDrives` Metodo API.  Se un'unità fisica o un nodo viene rimosso forzatamente, i dati rimangono protetti dalla password dell'intero cluster e dalle chiavi di crittografia individuali dell'unità.
+
+
+
+== Crittografia a riposo (software)
+
+Un altro tipo di crittografia a riposo, la crittografia software a riposo, consente di crittografare tutti i dati scritti su SSD in un cluster di archiviazione. link:../storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html["Quando abilitato"^] , crittografa automaticamente tutti i dati scritti e decrittografa tutti i dati letti nel software.  La crittografia software a riposo rispecchia l'implementazione dell'unità auto-crittografante (SED) nell'hardware per garantire la sicurezza dei dati in assenza di SED.
+
+
+WARNING: Per i cluster di archiviazione all-flash SolidFire , la crittografia software a riposo deve essere abilitata durante la creazione del cluster e non può essere disabilitata dopo la creazione del cluster.
+
+Sia la crittografia a riposo basata su software che su hardware può essere utilizzata in modo indipendente o in combinazione tra loro.
+
+
+
+== Gestione delle chiavi esterne
+
+È possibile configurare il software Element in modo che utilizzi un servizio di gestione delle chiavi (KMS) di terze parti conforme a KMIP per gestire le chiavi di crittografia del cluster di archiviazione.  Quando si abilita questa funzionalità, la chiave di crittografia della password di accesso all'unità a livello di cluster del cluster di archiviazione viene gestita da un KMS specificato dall'utente.
+
+Element può utilizzare i seguenti servizi di gestione delle chiavi:
+
+* Gemalto SafeNet KeySecure
+* SafeNet AT KeySecure
+* Controllo chiave HyTrust
+* Responsabile della sicurezza dei dati Vormetric
+* IBM Security Key Lifecycle Manager
+
+
+Per ulteriori informazioni sulla configurazione della gestione delle chiavi esterne, vederelink:../storage/concept_system_manage_key_get_started_with_external_key_management.html["per iniziare con la gestione delle chiavi esterne"] documentazione.
+
+
+
+== Autenticazione multifattoriale
+
+L'autenticazione a più fattori (MFA) consente di richiedere agli utenti di presentare più tipi di prove per l'autenticazione con l'interfaccia utente Web NetApp Element o con l'interfaccia utente del nodo di storage al momento dell'accesso.  È possibile configurare Element in modo che accetti solo l'autenticazione a più fattori per gli accessi che si integrano con il sistema di gestione utenti e il provider di identità esistenti.  È possibile configurare Element per integrarlo con un provider di identità SAML 2.0 esistente, in grado di applicare più schemi di autenticazione, ad esempio password e messaggio di testo, password e messaggio di posta elettronica o altri metodi.
+
+È possibile abbinare l'autenticazione a più fattori ai provider di identità (IdP) più comuni e compatibili con SAML 2.0, come Microsoft Active Directory Federation Services (ADFS) e Shibboleth.
+
+Per configurare MFA, vedere link:../storage/task_system_manage_mfa_set_up_multi_factor_authentication.html["abilitare l'autenticazione a più fattori"] documentazione.
+
+
+
+== FIPS 140-2 per HTTPS e crittografia dei dati a riposo
+
+I cluster di storage NetApp SolidFire supportano la crittografia conforme ai requisiti FIPS (Federal Information Processing Standard) 140-2 per i moduli crittografici.  È possibile abilitare la conformità FIPS 140-2 sul cluster SolidFire sia per le comunicazioni HTTPS sia per la crittografia delle unità.
+
+Quando si abilita la modalità operativa FIPS 140-2 sul cluster, il cluster attiva il NetApp Cryptographic Security Module (NCSM) e sfrutta la crittografia certificata FIPS 140-2 Livello 1 per tutte le comunicazioni tramite HTTPS all'interfaccia utente e all'API NetApp Element .  Tu usi il `EnableFeature` API Element con `fips` parametro per abilitare la crittografia HTTPS FIPS 140-2.  Nei cluster di archiviazione con hardware compatibile con FIPS, è anche possibile abilitare la crittografia delle unità FIPS per i dati inattivi utilizzando `EnableFeature` API Element con `FipsDrives` parametro.
+
+Per ulteriori informazioni sulla preparazione di un nuovo cluster di archiviazione per la crittografia FIPS 140-2, vederelink:../storage/task_system_manage_fips_create_a_cluster_supporting_fips_drives.html["Creare un cluster che supporti le unità FIPS"] .
+
+Per ulteriori informazioni sull'abilitazione di FIPS 140-2 su un cluster esistente e preparato, vederelink:../api/reference_element_api_enablefeature.html["l'API dell'elemento EnableFeature"] .
+
+
+
+== Per maggiori informazioni
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentazione del software SolidFire ed Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element per vCenter Server"^]
+
