@@ -13,12 +13,13 @@ summary: È possibile utilizzare il metodo DisableEncryptionAtRest per rimuovere
 [role="lead"]
 Puoi usare il `DisableEncryptionAtRest` metodo per rimuovere la crittografia precedentemente applicata al cluster utilizzando `EnableEncryptionAtRest` metodo.  Questo metodo di disattivazione è asincrono e restituisce una risposta prima che la crittografia venga disabilitata.  Puoi usare il `GetClusterInfo` metodo per interrogare il sistema per vedere quando il processo è stato completato.
 
+[NOTE]
+====
+* Non è possibile utilizzare questo metodo per disattivare la crittografia software a riposo.  Per disabilitare la crittografia software a riposo, è necessariolink:reference_element_api_createcluster.html["creare un nuovo cluster"] con la crittografia software a riposo disabilitata.
+* Per visualizzare lo stato corrente della crittografia a riposo, della crittografia software a riposo o di entrambe sul cluster, utilizzare link:../api/reference_element_api_getclusterinfo.html["metodo per ottenere informazioni sul cluster"]. Puoi usare il `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["metodo per ottenere informazioni che il cluster utilizza per crittografare i dati a riposo"].
 
-TIP: Per visualizzare lo stato corrente della crittografia a riposo e/o della crittografia software a riposo sul cluster, utilizzarelink:../api/reference_element_api_getclusterinfo.html["metodo per ottenere informazioni sul cluster"] . Puoi usare il `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["metodo per ottenere informazioni che il cluster utilizza per crittografare i dati a riposo"].
 
-
-NOTE: Non è possibile utilizzare questo metodo per disattivare la crittografia software a riposo.  Per disabilitare la crittografia software a riposo, è necessariolink:reference_element_api_createcluster.html["creare un nuovo cluster"] con la crittografia software a riposo disabilitata.
-
+====
 
 
 == Parametri
