@@ -15,7 +15,7 @@ Puoi usare il `EnableEncryptionAtRest` metodo per abilitare la crittografia Adva
 
 [NOTE]
 ====
-* Per visualizzare lo stato corrente della crittografia a riposo e/o della crittografia software a riposo sul cluster, utilizzarelink:../api/reference_element_api_getclusterinfo["metodo per ottenere informazioni sul cluster"^] . Puoi usare il `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo["metodo per ottenere informazioni che il cluster utilizza per crittografare i dati a riposo"^].
+* Per vedere lo stato attuale della crittografia a riposo e/o della crittografia software a riposo sul cluster, usa link:../api/reference_element_api_getclusterinfo.html["metodo per ottenere informazioni sul cluster"]. Puoi usare  `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["metodo per ottenere informazioni che il cluster utilizza per crittografare i dati a riposo"].
 * Questo metodo non abilita la crittografia software a riposo.  Questo può essere fatto solo utilizzando illink:../api/reference_element_api_createcluster.html["metodo di creazione del cluster"^] con `enableSoftwareEncryptionAtRest` impostato su `true` .
 
 
